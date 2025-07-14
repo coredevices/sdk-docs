@@ -6,6 +6,11 @@ podman build -t sdk-docs .
 podman run -p 4000:4000 -v $(pwd):/app sdk-docs
 ```
 
+This builds the documentation site by mounting it in Docker. To use it, just run:
+```shell
+serve __public__
+```
+
 # [developer.pebble.com][site]
 
 [![Build Status](https://magnum.travis-ci.com/pebble/developer.getpebble.com.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]

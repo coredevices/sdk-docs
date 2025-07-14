@@ -131,8 +131,5 @@ DEPENDENCIES
   slugize (>= 0.0.3)
   uglifier (>= 2.7.0)
 
-RUBY VERSION
-   ruby 2.2.4p230
-
 BUNDLED WITH
    1.13.6

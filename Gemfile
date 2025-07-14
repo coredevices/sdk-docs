@@ -13,7 +13,7 @@
 # limitations under the License.
 
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.2.9'
 
 gem 'slugize', '>= 0.0.3'
 gem 'jekyll', '>= 3.0.3'

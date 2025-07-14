@@ -1,0 +1,53 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+libs:
+  - name: jquery
+    path: /js/libs/jquery-1.11.2.js
+  - name: moment
+    path: /js/libs/moment.js
+  - name: responsive
+    path: /js/libs/responsive.js
+  - name: slick
+    path: /js/libs/slick.js
+  - name: jquery.fitvids
+    path: /js/libs/jquery.fitvids.js
+  - name: jquery.scrollTo
+    path: /js/libs/jquery.scrollTo.js
+  - name: jquery.vide
+    path: /js/libs/jquery.vide.js
+  - name: handlebars.runtime-v2.0.0
+    path: /js/libs/handlebars.runtime-v2.0.0.js
+  - name: utils
+    path: /js/libs/utils.js
+  - name: tether
+    path: /js/libs/tether.js
+  - name: select
+    path: /js/libs/select.js
+  - name: algoliasearch
+    path: /js/libs/algoliasearch.js
+  - name: query-string
+    path: /js/libs/query-string.js
+  - name: mmenu
+    path: /js/libs/jquery.mmenu.oncanvas.js
+  - name: mmenu-offcanvas
+    path: /js/libs/jquery.mmenu.offcanvas.js
+  - name: mmenu-footer
+    path: /js/libs/jquery.mmenu.footer.js
+  - name: cookies
+    path: /js/libs/cookies.js
+  - name: heir
+    path: /js/libs/heir.js
+  - name: EventEmitter
+    path: /js/libs/EventEmitter.js

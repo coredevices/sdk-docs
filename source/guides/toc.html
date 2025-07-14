@@ -1,0 +1,64 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+layout: guides/master
+permalink: /guides/toc/
+title: Guides Table of Contents
+---
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          {% for group in site.data.guides %}
+            <option value="{{ group[0] }}">{{ group[1].title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-l-8 guides__toc">
+    <h1 class="pagetitle">Guides Table of Contents</h1>
+    {% for item in site.data.guides %}
+      {% assign group_name = item[0] %}
+      {% assign group = item[1] %}
+      {% assign group_index = forloop.index %}
+      {% capture grp_url %}/guides/{{ group_name }}/{% endcapture %}
+      <h2 id="{{ item[0] }}" class="anchor"><a href="/guides/{{ group_name }}/">{{ group_index }}. {{ group.title }}</a></h2>
+      <p>{{ group.description }}</p>
+      {% if group.guides.size %}
+        {% assign group_guides = group.guides | sort: group.sort_by %}
+        {% for guide in group_guides %}
+          {% if guide.menu %}
+            <h4><a href="{{ site.baseurl }}{{ guide.url }}">{{ guide.title }}</a></h4>
+            <p>{{ guide.summary }}</p>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="col-l-4">
+    <div class="gray-box gray-box--fixed gray-box--scrollspy">
+      <h3>Overview</h3>
+      <ul>
+        {% for item in site.data.guides %}
+          <li class="toc__item toc__item--level1"><a href="#{{ item[0] }}">{{ item[1].title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+__public__
+.sass-cache/
+.env
+tmp/
+source/stylesheets/
+log/
+.bundle/
+coverage/
+node_modules/
+vendor/
+.ruby-version
+.jekyll-metadata

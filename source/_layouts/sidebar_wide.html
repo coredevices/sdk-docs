@@ -1,0 +1,38 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: master
+---
+<div class="sidebar__wrapper">
+  <div class="sidebar sidebar--wide">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span><span>|</span><span>developer</span>
+    </a>
+    <ul class="mainmenu">
+      {% include mainmenu.html %}
+    </ul>
+    <div class="sidebar__legal">
+      <a href="{{ site.links.legal.privacy }}" target="_blank">Privacy Policy</a>
+      &middot;
+      <a href="{{ site.links.legal.cookies }}" target="_blank">Cookie Policy</a>
+    </div>
+    <a href="{{ site.links.devportal }}" target="_blank" class="sidebar__footer">Publish your app <i class="fa fa-angle-right fa-fw"></i></a>
+  </div>
+</div>
+<div class="content content--narrow">
+  {% include search.html %}
+  {{ content }}
+</div>

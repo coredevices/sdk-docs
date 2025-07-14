@@ -1,0 +1,243 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: docs
+docs_language: c
+scripts:
+  - docs/c
+---
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          {% include docs/shared/select-list.html title="Modules" anchor="modules" items=page.group.groups %}
+          {% include docs/shared/select-list.html title="Functions" anchor="functions" items=page.group.functions %}
+          {% include docs/shared/select-list.html title="Data Structures" anchor="structs" items=page.group.structs %}
+          {% include docs/shared/select-list.html title="Unions" anchor="unions" items=page.group.unions %}
+          {% include docs/shared/select-list.html title="Enums" anchor="enums" items=page.group.enums %}
+          {% include docs/shared/select-list.html title="Typedefs" anchor="typedefs" items=page.group.typedefs %}
+          {% include docs/shared/select-list.html title="Macro Defintions" anchor="defines" items=page.group.defines %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      {% if page.group.basalt_only %}
+      <div class="alert alert--bg-lightblue alert--fg-white" >
+        <p>The APIs on this page will only work with SDK 3.x.</p>
+      </div>
+      {% endif %}
+
+      {% if_starts_with page.path 'docs/c/preview/' %}
+      {% include docs/c/preview.html %}
+      {% endif_starts_with %}
+
+      <h1 class="pagetitle">{{ page.title }}</h1>
+
+      {{ page.group.summary }}
+      {{ page.group.description }}
+
+      {% include docs/c/elements/note.html data=page.group.data %}
+      {% include docs/c/elements/see.html data=page.group.data %}
+
+      {% if page.group.groups.size > 0 %}
+        <h2 class="anchor" id="modules">Modules</h2>
+        {% for group in page.group.groups %}
+          <div class="docs__module">
+            <h4><a href="{{ group.url }}">{{ group.name }}</a></h4>
+            {% if group.summary.size > 0 %}
+            {{ group.summary }}
+            {% else %}
+            <p>&nbsp;</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.functions.size > 0 %}
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for function in page.group.functions %}
+          <div class="docs__item__anchor" id="{{ function.name }}">
+            {% if function.uniform %}
+              {% include docs/c/function.html function=function platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if function.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/function.html function=function platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=function.name type='function' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.structs.size > 0 %}
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for struct in page.group.structs %}
+          <div class="docs__item__anchor" id="{{ struct.name }}">
+            {% if struct.uniform %}
+              {% include docs/c/struct.html struct=struct platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if struct.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/struct.html struct=struct platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=struct.name type='struct' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.unions.size > 0 %}
+        <h2 class="anchor" id="unions">Union<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for union in page.group.unions %}
+          <div class="docs__item__anchor" id="{{ union.name }}">
+            {% if union.uniform %}
+              {% include docs/c/struct.html struct=union platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if union.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/struct.html struct=union platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=union.name type='union' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.enums.size > 0 %}
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for enum in page.group.enums %}
+          <div class="docs__item__anchor" id="{{ enum.name }}">
+            {% if enum.uniform %}
+            {% include docs/c/enum.html enum=enum platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if enum.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/enum.html enum=enum platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=enum.name type='enum' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.typedefs.size > 0 %}
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for typedef in page.group.typedefs %}
+          <div class="docs__item__anchor" id="{{ typedef.name }}">
+            {% if typedef.uniform %}
+            {% include docs/c/typedef.html typedef=typedef platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if typedef.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/typedef.html typedef=typedef platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=typedef.name type='typedef' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.group.defines.size > 0 %}
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        {% for define in page.group.defines %}
+          <div class="docs__item__anchor" id="{{ define.name }}">
+            {% if define.uniform %}
+            {% include docs/c/define.html define=define platform='basalt' %}
+            {% else %}
+              {% include docs/c/elements/tabs.html %}
+              {% for platform in page.platforms %}
+                {% if define.platforms contains platform %}
+                <section data-platform="{{ platform }}">
+                  {% include docs/c/define.html define=define platform=platform %}
+                </section>
+                {% else %}
+                  {% include docs/c/elements/missing.html platform=platform name=define.name type='define' %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      {% include docs/shared/graybox-list.html title="Modules" anchor="modules" items=page.group.groups %}
+      {% include docs/shared/graybox-list.html title="Functions" anchor="functions" items=page.group.functions %}
+      {% include docs/shared/graybox-list.html title="Data Structures" anchor="structs" items=page.group.structs %}
+      {% include docs/shared/graybox-list.html title="Unions" anchor="unions" items=page.group.unions %}
+      {% include docs/shared/graybox-list.html title="Enums" anchor="enums" items=page.group.enums %}
+      {% include docs/shared/graybox-list.html title="Typedefs" anchor="typedefs" items=page.group.typedefs %}
+      {% include docs/shared/graybox-list.html title="Macro Defintions" anchor="defines" items=page.group.defines %}
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>

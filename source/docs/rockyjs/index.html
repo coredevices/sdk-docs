@@ -1,0 +1,74 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+permalink: /feed.xml
+layout: docs
+title: Pebble Rocky.js API Documentation
+docs_language: rockyjs
+---
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__js">
+      <h1 class="pagetitle">{{ page.title }}</h1>
+
+      <p>
+        Pebble's JavaScript API allows developers to write watchfaces in
+        JavaScript, that are executed via the firmware's
+        <a href="//github.com/pebble/jerryscript">JerryScript</a> engine. For
+        instructions on getting started with Pebble's JavaScript API, see the
+        <a href="/tutorials/js-watchface-tutorial">JS Watchface Tutorial</a>.
+      </p>
+
+      <p>The JavaScript API is broken down into the following modules:</p>
+
+      <hr>
+
+      {% for module in site.data.docs_tree.rockyjs %}
+
+        {% if module['kind'] == "member" or module['kind'] == "namespace" %}
+        <div class="docs__module">
+          <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
+          <p>{{ module.summary | markdownify }}</p>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <hr>
+      <p>The JavaScript API also includes the following global functions:</p>
+
+      {% for module in site.data.docs_tree.rockyjs %}
+        {% if module.kind == "function" %}
+        <div class="docs__module">
+          <div id="{{ module.name }}">
+            {% include docs/js/function.html child=module global=true %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <hr>
+    </div>
+  </div>
+  <div class="col-l-4">
+    <div class="gray-box">
+      <p>
+        To learn more about how to use this part of the Pebble SDK, check out the
+        <a href="/tutorials/js-watchface-tutorial/">JavaScript Watchface tutorial</a>,
+        which also includes links to example apps.
+      </p>
+      {% include docs/js/mozilla.html %}
+    </div>
+  </div>
+</div>

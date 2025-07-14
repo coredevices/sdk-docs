@@ -1,0 +1,71 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: more
+title: Pebble Open Source
+menu_section: more
+menu_subsection: open-source
+permalink: /open-source/
+---
+<div class="container">
+  <div class="row">
+    <div class="col-m-8">
+      <h1 class="pagetitle">Pebble Open Source</h1>
+      <p>
+        Here at Pebble we are big believers in the power of open source. Our
+        firmware is <a href="/blog/2014/10/10/FreeRTOS-Modifications-From-Pebble-v2/">built upon FreeRTOS</a>,
+        and all of our mobile and web applications make use of many different
+        open source libraries.
+      </p>
+      <p>
+        Whenever possible, we like to give back to the open source community,
+        so here are just some of our open source projects available for anyone
+        to use in their own work.
+      <p>
+        You can also check out our GitHub profile at
+        <a href="https://github.com/pebble/">https://github.com/pebble/</a>.
+      </p>
+      {% for group in site.data['open-source'] %}
+        <h2 id="{{ group.slug }}" class="anchor">{{ group.name }}</h2>
+        {% for project in group.projects %}
+          <h3 class="header--skinny header--flat-bottom">
+            <a href="https://github.com/{{ project.github}}/">{{ project.name }}</a>
+          </h3>
+          {{ project.summary | markdownify }}
+        {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="col-m-4">
+      <div class="gray-box gray-box--fixed">
+        <h3>Sections</h3>
+        <ul class="toc">
+          {% for group in site.data['open-source'] %}
+          <li class="toc__item toc__item--level1"><a href="#{{ group.slug }}">{{ group.name }}</a></li>
+          {% endfor %}
+        </ul>
+        <h3>Work For Us!</h3>
+        <p>
+          As a rapidly growing company, we're always on the lookout for new
+          talent to grow our various teams. If you or anyone you know has the
+          technical skills, wearable enthusiasm and a taste for the Valley
+          lifestyle, have a look at
+          <a href="{{ site.links.jobs }}">our jobs page</a> to see a list
+          of open positions.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

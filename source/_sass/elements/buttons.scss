@@ -1,0 +1,129 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.btn {
+  background-color: $white;
+  border-radius: 4px;
+  color: $darker-grey;
+  font-weight: 700;
+  padding: 0.5em 2em;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+
+  &:hover {
+    color: $darker-grey;
+  }
+}
+
+input.btn,
+submit.btn {
+  border: none;
+  font-size: inherit;
+}
+
+$btn-colors: $white  $gray-02   $green   $blue   $red   $purple   $yellow   $orange   $lightblue   $dark-red $orange-02 $android-green;
+$btn-names:  'white' gray-02  'green'  'blue'  'red'  'purple'  'yellow'  'orange'  'lightblue'  'dark-red'  'orange-02' 'android-green';
+
+@each $color in $btn-colors {
+  $i: index($btn-colors, $color);
+
+  .btn--fg-#{nth($btn-names, $i)} {
+    color: $color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color;
+    }
+  }
+
+  .btn--bg-#{nth($btn-names, $i)} {
+    background-color: $color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: darken($color, 10);
+    }
+  }
+}
+
+// Generate a pair of button classes for each section (original and alternate).
+// This should be used when adding buttons in each section, in case we change
+// the colours in the future.
+@each $color in $modifier-colors {
+  $i: index($modifier-colors, $color);
+
+  .btn--#{nth($modifier-color-names, $i)} {
+    background-color: $color;
+    color: nth($modifier-colors-fg, $i);
+
+    &:hover,
+    &:focus {
+      color: nth($modifier-colors-fg, $i);
+      background-color: darken($color, 10);
+    }
+
+    a {
+      color: nth($modifier-colors-fg, $i);
+    }
+  }
+
+  .btn--#{nth($modifier-color-names, $i)}--alt {
+    background-color: complement($color);
+    color: nth($modifier-colors-fg, $i);
+
+    &:hover,
+    &:focus {
+      color: nth($modifier-colors-fg, $i);
+      background-color: darken(complement($color), 10);
+    }
+
+    a {
+      color: nth($modifier-colors-fg, $i);
+    }
+  }
+}
+
+
+.btn + .btn {
+  margin-left: 1em;
+}
+
+.btn--wide {
+  width: 100%;
+  padding: 0.5em 0;
+}
+
+.btn--center {
+  display: table;
+  margin: 0 auto;
+}
+
+.btn--small {
+  font-size: 0.9em;
+  padding: 0.5em 1.5em;
+}
+
+.btn--square {
+  border-radius: 0
+}
+
+.btn--ios {
+  color: $white;
+  background-color: $black;
+}

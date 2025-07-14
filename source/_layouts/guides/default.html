@@ -1,0 +1,107 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: guides/master
+sidebar_only: false
+regenerate: true
+---
+{% include utils/toc_small.html toc=page.toc %}
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">{{ page.title }}</h1>
+    {% if page.platforms contains 'basalt' and page.platforms contains 'chalk' and page.platforms contains 'diorite' and page.platforms contains 'emery' %}
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide does not apply to apps built to run on the Aplite platform
+        (Pebble Classic, Pebble Steel).
+      </p>
+    </div>
+    {% elsif page.platforms contains 'basalt' and page.platforms contains 'chalk' %}
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide only applies for apps built to run on the Basalt or Chalk platforms
+        (Pebble Time, Pebble Time Steel and Pebble Time Round).
+      </p>
+    </div>
+    {% elsif page.platforms contains 'basalt' %}
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide only applies for apps built to run on the Basalt platform
+        (Pebble Time and Pebble Time Steel).
+      </p>
+    </div>
+    {% elsif page.platforms contains 'chalk' %}
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide only applies for apps built to run on the Chalk platform
+        (Pebble Time Round watches).
+      </p>
+    </div>
+    {% endif %}
+<!-- 
+    {% if page.platform_choice %}
+    {% include platform-choice.html %}
+    {% endif %}
+ -->
+    <div class="markdown markdown--staff">
+    {% if page.platform_choice %}
+    {% include platform-choice.html %}
+    {% endif %}
+    {{ content }}
+    </div>
+    {% unless page.hide_comments %}
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com{{ page.url }}">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    {% endunless %}
+    {% comment %}
+    <hr>
+    <div>
+      <a href="javascript:void(0);" style="float: right; color: #666;" data-modal-target="#modal-contributors-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle fa-fw fa-lg"></i></a>
+      <h4 id="contributors">Contributors</h4>
+      {% git_contributors page %}
+    </div>
+    {% endcomment %}
+  </div>
+  {% if page.toc or page.related_docs or page.related_examples %}
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        {% include utils/toc_large.html toc=page.toc %}
+        {% if page.related_docs %}
+          <h3>Related SDK Docs</h3>
+          <ul>
+            {% for doc in page.related_docs %}
+            <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if page.related_examples %}
+          <h3>Examples</h3>
+          <ul>
+            {% for example in page.related_examples %}
+            <li><a href="{{ example.url }}" target="_blank">{{ example.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,111 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+url: https://developer.pebble.com
+https_url: https://developer.pebble.com
+baseurl:
+asset_path: /assets
+external_server: https://developer-api.getpebble.com
+
+title: Pebble Developers
+description: The official developer website for the Pebble smartwatch.
+
+source: source/
+destination: __public__/
+plugins_dir: plugins/
+
+debug: true
+
+gems: [jekyll-paginate]
+
+# Blog Options
+permalink: none
+paginate: 8
+paginate_path: "blog/:num"
+excerpt_separator: "\n\n\n"
+future: true
+
+disqus:
+  short_name: pebbletechblog
+  show_comment_count: true
+
+# Markdown Options
+markdown: PebbleMarkdownParser
+markdown_ext:  md
+
+# SASS options.
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# Helpful and easily changeable external links.
+links:
+  pebble: https://www.pebble.com
+  jobs: https://www.pebble.com/jobs/
+  twitter: https://twitter.com/pebbledev/
+  cloudpebble: https://cloudpebble.net/
+  cloudpebble_beta: https://beta.cloudpebble.net/
+  devportal: https://dev-portal.getpebble.com/
+  site_repo: https://github.com/pebble/developer.getpebble.com/
+  community_resources_repo: https://github.com/pebble/community-resources/
+  github: https://github.com/pebble/
+  forums: https://forums.pebble.com
+  forums_developer: https://forums.pebble.com/c/development
+  pebblekit_android: https://github.com/pebble/pebble-android-sdk/
+  pebblekit_ios: https://github.com/pebble/pebble-ios-sdk/
+  examples_org: https://github.com/pebble-examples
+  pebblekit_android_jar: https://oss.sonatype.org/service/local/repositories/releases/content/com/getpebble/pebblekit/3.0.0/pebblekit-3.0.0-eclipse.jar
+  legal:
+    privacy: https://www.pebble.com/legal/privacy/
+    cookies: https://www.pebble.com/legal/cookies/
+  s3_assets: https://developer-assets.getpebble.com
+  pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
+  libpebble: https://github.com/pebble/libpebble2
+  kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
+  discord_invite: http://discord.gg/aRUAYFN
+
+# Jekyll collections.
+collections:
+  guides:
+    output: true
+    permalink: /guides/:path/
+  changelogs:
+    output: true
+    permalink: /sdk/changelogs/:path/
+
+# Default options based for various scopes
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "blog/post"
+      generate_toc: true
+      permalink: /blog/:year/:month/:day/:title/
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: guides/default
+      menu: true
+      generate_toc: true
+      guide_group:
+      guide_subgroup:
+      menu_section: guides
+  - scope:
+      path: ""
+      type: changelogs
+    values:
+      layout: sdk/changelog
+      generate_toc: true

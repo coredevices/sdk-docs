@@ -1,0 +1,78 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This is a list of all of the Pebble blog authors.
+# If you're writing a blog post for the first time, add an entry for yourself!
+
+alex:
+  name: Alex Lin
+alexey:
+  name: Alexey Komissarouk
+  photo: https://avatars1.githubusercontent.com/u/268126?v=1&s=100
+brad:
+  name: Brad Murray
+  photo: https://avatars2.githubusercontent.com/u/33967?v=3&s=100
+cat:
+  name: Cat Haines
+  photo: https://avatars1.githubusercontent.com/u/1187089?v=3&s=100
+cherie:
+  name: Cherie Williams
+  photo: https://avatars1.githubusercontent.com/u/318582?v=1&s=100
+  job: Developer Evangelist
+chrislewis:
+  name: Chris Lewis
+  photo: https://avatars3.githubusercontent.com/u/5732010?v=3&s=100
+jonb:
+  name: Jon Barlow
+  photo: https://avatars0.githubusercontent.com/u/876597?v=3&s=100
+meiguro:
+  name: Meiguro
+  photo: https://avatars2.githubusercontent.com/u/4428900?v=3&s=100
+katharine:
+  name: Katharine Berry
+  photo: https://avatars1.githubusercontent.com/u/110792?v=3&s=100
+katherine:
+  name: Katherine McAuliffe
+  photo: https://avatars1.githubusercontent.com/u/8052313?v=3&s=100
+keegan:
+  name: Keegan Lillo
+  photo: https://avatars1.githubusercontent.com/u/3537963?v=3&s=100
+kirby:
+  name: Kirby Kohlmorgen
+  photo: https://avatars1.githubusercontent.com/u/1156201?v=3&s=100
+pebble:
+  name: Team Pebble
+  photo: https://avatars0.githubusercontent.com/u/1048268?v=1&s=100
+rperryng:
+  name: Ryan Perry-Nguyen
+  photo: https://avatars3.githubusercontent.com/u/6402435?v=3&s=100
+ryan:
+  name: Ryan Case
+thomas:
+  name: Thomas Sarlandie
+  photo: https://avatars1.githubusercontent.com/u/779005?v=3&s=100
+tom:
+  name: Tom Maremaa
+niharika:
+  name: Niharika Bedekar
+lukasz:
+  name: Łukasz Zalewski
+  photo: https://avatars3.githubusercontent.com/u/4211799?v=3&s=100
+
+# To fix in posts:
+# Chris Lewis
+# team pebble
+# cherie & thomas
+# Matt Clark (SetPebble)
+# tom@getpebble.com

@@ -1,0 +1,94 @@
+{
+  "guides": {
+    "settings": {
+      "attributesToIndex": [
+        "unordered(title)",
+        "unordered(content)",
+        "unordered(type)"
+      ],
+      "attributesToSnippet": [
+        "content:30"
+      ],
+      "attributesForFaceting": [
+      ],
+      "attributeForDistinct": "urlDisplay",
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  },
+  "blog-posts": {
+    "settings": {
+      "attributesToIndex": [
+        "unordered(title)",
+        "unordered(content)",
+        "unordered(type)"
+      ],
+      "attributesToSnippet": [
+        "content:30"
+      ],
+      "attributesForFaceting": [
+      ],
+      "customRanking": [
+        "asc(age)"
+      ],
+      "attributeForDistinct": "urlDisplay",
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  },
+  "documentation": {
+    "settings": {
+      "attributesToIndex": [
+        "title",
+        "splitTitle",
+        "unordered(summary)",
+        "unordered(type)"
+      ],
+      "attributesToSnippet": [
+        "summary:30"
+      ],
+      "attributesForFaceting": [
+        "language"
+      ],
+      "customRanking": [
+        "desc(ranking)"
+      ],
+      "attributeForDistinct": null,
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  },
+  "examples": {
+    "settings": {
+      "attributesToIndex": [
+        "unordered(title)",
+        "unordered(summary)",
+        "unordered(type)"
+      ],
+      "attributesToSnippet": [
+        "summary:30"
+      ],
+      "attributesForFaceting": [
+      ],
+      "attributeForDistinct": null,
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  },
+  "other": {
+    "settings": {
+      "attributesToIndex": [
+        "unordered(title)",
+        "unordered(content)"
+      ],
+      "attributesToSnippet": [
+        "content:30"
+      ],
+      "attributesForFaceting": [
+      ],
+      "attributeForDistinct": null,
+      "highlightPreTag": "<span class=\"search__result__highlight\">",
+      "highlightPostTag": "</span>"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: sidebar_narrow
+menu_section: more
+sidebar_only: false
+---
+  <div class="section-menu section-menu--more section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/more/">More</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item{% if page.menu_subsection == 'inspiration' %} active{% endif %}"><a href="/inspiration/">App Inspiration</a></li>
+      <li class="section-menu__item{% if layout.menu_subsection == 'examples' or page.menu_subsection == 'examples' %} active{% endif %}"><a href="/examples/">Examples</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'contact' %} active{% endif %}"><a href="/contact/">Contact</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'faqs' %} active{% endif %}"><a href="/faqs/">FAQs</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'open-source' %} active{% endif %}"><a href="/open-source/">Open Source</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'build' %} active{% endif %}"><a href="/build/">Build Tools</a></li>
+      {% comment %}
+      <li class="section-menu__item{% if layout.menu_subsection == 'videos' or page.menu_subsection == 'videos' %} active{% endif %}"><a href="/videos/">Videos</a></li>
+      <li class="section-menu__item{% if layout.menu_subsection == 'contributing' or page.menu_subsection == 'contributing' %} active{% endif %}"><a href="/contributing/">Contributing</a></li>
+      {% endcomment %}
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  {% include search.html %}
+  {{ content }}
+</div>

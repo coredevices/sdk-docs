@@ -1,0 +1,38 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+
+{% assign data = include.struct.data[include.platform] %}
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">{{ include.struct.name }}</span></div>
+  <div class="docs__item__body">
+    {% include docs/c/elements/summary.html item=data %}
+    {% include docs/c/elements/description.html item=data %}
+    {% include docs/c/elements/note.html data=data %}
+    <h4>Data Fields</h4>
+    <dl>
+      {% for child in include.struct.children %}
+      {% if child.platforms contains include.platform %}
+      {% assign child_data=child.data[include.platform] %}
+      <dt><span style="color: #777">{{ child_data['type'] }}</span> {{ child.name }}</dt>
+      <dd>{{ child_data['summary'] }}
+      {{ child_data['description'] }}</dt>
+      {% include docs/c/elements/note.html data=child_data %}
+      {% endif %}
+      {% endfor %}
+    </dl>
+    {% include docs/c/elements/see.html data=data %}
+  </div>
+</div>

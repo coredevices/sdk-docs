@@ -1,0 +1,102 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- name: CloudPebble
+  slug: cloudpebble
+  projects:
+    - name: CloudPebble
+      github: pebble/cloudpebble
+      summary: Web-based IDE for Pebble development.
+      license: MIT
+    - name: CloudPebble QEMU Controller
+      github: pebble/cloudpebble-qemu-controller
+      summary: Controls QEMUs
+      license: MIT
+    - name: CloudPebble ycmd Proxy
+      github: pebble/cloudpebble-ycmd-proxy
+      summary: Handles communication with the autocompletion daemon(s) on behalf of CloudPebble clients.
+      license: MIT
+- name: Pebble SDK
+  slug: pebble-sdk
+  projects:
+    - name: libpebble2
+      github: pebble/libpebble2
+      summary: Library for communication with Pebble devices and emulators
+      license: MIT
+    - name: pebble-tool
+      github: pebble/pebble-tool
+      summary: The Pebble tool, as distributed in the Pebble SDK
+      license: MIT
+    - name: pypkjs
+      github: pebble/pypkjs
+      summary: Python implementation of PebbleKit JS
+      license: MIT
+    - name: PyV8
+      github: pebble/pyv8
+      summary: Pebble fork of PyV8
+      license: Apache License 2.0
+    - name: QEMU
+      github: pebble/qemu
+      summary: Pebble's fork of QEMU, with support for Pebble and Pebble Time
+      license: GPLv2
+- name: Node.js
+  slug: node
+  projects:
+    - name: pebble-api
+      github: pebble/pebble-api-node
+      summary: Node.js client for the Pebble timeline APIs
+      license: MIT
+    - name: koa-bunyan-logger
+      github: pebble/koa-bunyan-logger
+      summary: Koa middleware for bunyan request logging
+      license: MIT
+    - name: yieldb
+      github: pebble/yieldb
+      summary: Simple, expressive and yieldable MongoDB
+      license: MIT
+    - name: event-loop-lag
+      github: pebble/event-loop-lag
+      summary: Measures Node.js event loop lag
+      license: MIT
+    - name: joi-objectid
+      github: pebble/joi-objectid
+      summary: A MongoDB ObjectId validator for Joi
+      license: MIT
+    - name: koa-joi-router
+      github: pebble/koa-joi-router
+      summary: Easy, rich and fully validated koa routing.
+      license: MIT
+    - name: koa-resourcer
+      github: pebble/koa-resourcer
+      summary: A simple resource directory mounter for koa
+      license: MIT
+    - name: has-own
+      github: pebble/has-own
+      summary: "A safer .hasOwnProperty() where property name comes first: `hasOwn(name, obj)`"
+      license: MIT
+    - name: qdog
+      github: pebble/qdog
+      summary: Module used for adding and reading from SQS and eventually Redis
+      license: MIT
+- name: Other
+  slug: other
+  projects:
+    - name: Pebble.js
+      github: pebble/pebblejs
+      summary: Program the Pebble with simply JavaScript
+      license: MIT
+    - name: git-deploy
+      github: pebble/git-deploy
+      summary: Git driven deployment strategy using git-hooks. 
+      license: MIT

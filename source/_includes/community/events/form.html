@@ -1,0 +1,64 @@
+{% comment %}
+Copyright 2025 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+{% endcomment %}
+
+<form action="{{ site.data_server }}/events/submit" method="post" id="js-events-form">
+  <div class="gray-box">
+    <h3>Add an Event</h3>
+    <div class="alert" id="form-errors" style="display: none;"></div>
+    <div class="row">
+      <div class="col-m-6">
+        <div class="form__group">
+          <label for="submission_name">Your Name</label><input type="text" id="event-name" name="submission_name">
+        </div>
+        <div class="form__group">
+          <label for="email">Email Address</label><input type="email" id="event-email" name="submission_email">
+        </div>
+        <div class="form__group">
+          <label for="title">Event Title</label><input type="text" id="event-title" name="title">
+        </div>
+        <div class="form__group">
+          <label for="start_date">Start Date</label><input type="date" id="event-start-date" name="start_date">
+        </div>
+        <div class="form__group">
+          <label for="end_date">End Date</label><input type="date" id="event-end-date" name="end_date">
+        </div>
+        <div class="form__group">
+          <label for="type">Event Type</label>
+          <div class="select-style">
+            <select id="event-type" name="type">
+              <option>Hackathon</option>
+              <option>Meetup</option>
+              <option>Party</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-m-6">
+        <div class="form__group">
+          <label for="location">Location</label><input type="text" id="event-location" name="location">
+        </div>
+        <div class="form__group">
+          <label for="website">Website</label><input type="text" id="event-website" name="website">
+        </div>
+        <div class="form__group">
+          <label for="details">Details</label><textarea id="event-description" name="details" rows=5></textarea></div>
+
+        <p style="text-right"><input type="submit" value="Submit" class="btn btn--fg-white btn--bg-green"></p>
+      </div>
+    </div>
+  </div>
+</form>

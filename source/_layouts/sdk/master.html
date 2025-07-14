@@ -1,0 +1,50 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: sidebar_narrow
+menu_section: sdk
+---
+  <div class="section-menu section-menu--sdk section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/sdk/">SDK</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item{% if page.menu_subsection == 'download' %} active{% endif %}"><a href="/sdk/download/">Download</a></li>
+      <li class="section-menu__item{% if page.menu_subsection == 'install' %} open{% if page.menu_platform == nil %} active{% endif %}{% endif %}">
+        <a href="/sdk/install/">Installation</a>
+        <ul>
+          <li class="section-menu__subitem{% if page.menu_platform == 'mac' %} active{% endif %}"><a href="/sdk/install/mac/"><span>Mac OS X</span></a></li>
+          <li class="section-menu__subitem{% if page.menu_platform == 'linux' %} active{% endif %}"><a href="/sdk/install/linux/"><span>Linux</span></a></li>
+          <li class="section-menu__subitem{% if page.menu_platform == 'windows' %} active{% endif %}"><a href="/sdk/install/windows/"><span>Windows</span></a></li>
+        </ul>
+      </li>
+      <li class="section-menu__item{% if page.collection == 'changelogs' %} open{% endif %}">
+        <a href="/sdk/changelogs/{{ site.data.sdk.c.version }}/">Changelog</a>
+        <ul>
+          {% assign changelogs = site.changelogs | sort: 'date' | reverse %}
+          {% for changelog in changelogs %}
+            <li class="section-menu__subitem{% if page.url == changelog.url %} active{% endif %}"><a href="{{ changelog.url }}"><span>{{ changelog.path | basename: '.md' }}</span></a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="section-menu__item{% if page.menu_subsection == 'round-getting-started' %} active{% endif %}"><a href="/sdk/round-getting-started/">Getting Started with Pebble Time Round</a></li>
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  {% include search.html %}
+  {{ content }}
+</div>

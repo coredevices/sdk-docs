@@ -1,0 +1,106 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This is the listing of the various areas of the Guides.
+# It is used to build the primary navigation and the Guides.
+
+app-resources:
+  title: App Resources
+  description: Information on the many kinds of files that can be used inside Pebble apps.
+  category: beautiful-apps
+  sort_by: title
+
+appstore-publishing:
+  title: Appstore Publishing
+  description: How to get your app ready for going live in the Pebble appstore.
+  category: publishing-apps
+  sort_by: order
+
+best-practices:
+  title: Best Practices
+  description: Information to help optimize apps and ensure a good user experience.
+  category: building-apps
+  sort_by: title
+
+communication:
+  title: Communication
+  description: How to talk to the phone via PebbleKit with JavaScript and on Android or iOS.
+  category: interactive-apps
+  sort_by: title
+
+debugging:
+  title: Debugging
+  description: How to find and fix common compilation and runtime problems in apps.
+  category: building-apps
+  sort_by: title
+
+design-and-interaction:
+  title: Design and Interaction
+  description: Information on creating the best app user experiences and layout designs.
+  category: beautiful-apps
+  sort_by: order
+
+events-and-services:
+  title: Events and Services
+  description: How to get data from the onboard sensors and services including the accelerometer, compass, and microphone.
+  category: interactive-apps
+  sort_by: title
+
+graphics-and-animations:
+  title: Graphics and Animations
+  description: Information on using animations and drawing shapes, text, and images, as well as more advanced techniques.
+  category: beautiful-apps
+  sort_by: title
+
+migration:
+  title: Migrating Older Apps
+  description: Information useful for updating old code from older apps to use newer SDKs.
+  category: publishing-apps
+  sort_by: title
+
+pebble-packages:
+  title: Pebble Packages
+  description: How to create and use Pebble Packages
+  category: building-apps
+  sort_by: title
+
+pebble-timeline:
+  title: Pebble Timeline
+  description: How to use Pebble timeline to bring timely information to app users outside the app itself via web services.
+  category: interactive-apps
+  sort_by: title
+
+rocky-js:
+  title: Rocky.js
+  description: Information on creating apps with JavaScript using Rocky.js
+  category: interactive-apps
+  sort_by: title
+
+smartstraps:
+  title: Smartstraps
+  description: Information on creating and talking to smartstraps.
+  category: interactive-apps
+  sort_by: title
+
+tools-and-resources:
+  title: Tools and Resources
+  description: Information on all the software tools available when writing Pebble apps, as well as other resources.
+  category: building-apps
+  sort_by: title
+
+user-interfaces:
+  title: User Interfaces
+  description: How to build effective user interfaces. Includes information on events, persistent storage, background worker, wakeups and app configuration.
+  category: beautiful-apps
+  sort_by: title

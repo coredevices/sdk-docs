@@ -1,0 +1,94 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- city: San Francisco
+  group_id: PebbleSF
+  pin:
+    latitude: 37.774929
+    longitude: -122.419416
+- city: London
+  group_id: PebbleLDN
+  pin:
+    latitude: 51.507351
+    longitude: -0.127758
+- city: Paris
+  group_id: PebbleFR
+  pin:
+    latitude: 48.86
+    longitude: 2.34
+- city: Ottawa
+  group_id: PebbleOTT
+  pin:
+    latitude: 45.42
+    longitude: -75.7
+- city: Chicago
+  group_id: PebbleChi
+  pin:
+    latitude: 41.88
+    longitude: -87.64
+- city: Hamburg
+  group_id: Pebble_HH
+  pin:
+    latitude: 53.54999923706055
+    longitude: 10
+- city: Houston
+  group_id: Pebble-Houston
+  pin:
+    latitude: 29.719999313354492
+    longitude: -95.22000122070312
+- city: Los Angeles
+  group_id: PebbleLA
+  pin:
+    latitude: 33.970001220703125
+    longitude: -118.23999786376953
+- city: New York
+  group_id: PebbleNYC
+  pin:
+    latitude: 40.709999084472656
+    longitude: -74.01000213623047
+- city: Orlando
+  group_id: PebbleORL
+  pin:
+    latitude: 28.540000915527344
+    longitude: -81.37000274658203
+- city: Seattle
+  group_id: PebbleSEA
+  pin:
+    latitude: 47.61000061035156
+    longitude: -122.33000183105469
+- city: Helsinki
+  group_id: PebbleHEL
+  pin:
+    latitude: 60.16999816894531
+    longitude: 24.940000534057617
+- city: Amsterdam
+  group_id: PebbleAMS
+  pin:
+    latitude: 52.369998931884766
+    longitude: 4.889999866485596
+- city: Brussels
+  group_id: PebbleBelgium
+  pin:
+    latitude: 50.83000183105469
+    longitude: 4.329999923706055
+- city: Reno
+  group_id: PebbleReno
+  pin:
+    latitude: 39.529998779296875
+    longitude: -119.80999755859375
+- city: Toronto
+  group_id: PebbleTO
+  pin:
+    latitude: 43.63999938964844
+    longitude: -79.43000030517578

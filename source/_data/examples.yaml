@@ -1,0 +1,458 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- title: Pebble Faces
+  repo: pebble-examples/pebble-faces
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/pebble-faces/11305757db5fa9ce5e448aa0ba4e7beb8a38b020/screenshots/screenshot.png
+  screenshot_platform: aplite
+  description: |
+    This Pebble application downloads, de-compresses and displays PNG images 
+    from the Internet.
+  featured: true
+  tags:
+    - Images
+- title: Weather Cards Example
+  repo: pebble-examples/cards-example
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/cards-example/master/screenshots/screenshot1.gif
+  screenshot_platform: basalt
+  description: |
+    This example shows how to implement a cards based weather app, demonstrating the Pebble Draw Commands API, which allows you to draw and animate vector graphics.
+  featured: true
+  tags:
+    - Graphics
+    - Color
+- title: KS Clock Face
+  repo: pebble-examples/ks-clock-face
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/ks-clock-face/master/screenshots/screenshot-color.png
+  description: |
+    Animated color Pebble watchface from the Pebble Time Kickstarter video.
+    Expands from a dot, sweeping the clock arms as it does so.
+  tags:
+    - Color
+    - Animation
+- title: Concentricity
+  repo: pebble-examples/concentricity
+  languages:
+    - c
+  hardware_platforms:
+    - chalk
+    - basalt
+    - aplite
+  featured: true
+  screenshot_platform: chalk
+  screenshot: https://raw.githubusercontent.com/pebble-examples/concentricity/master/screenshots/concentricity~chalk.png
+  description: |
+    Example watchface for aplite, basalt and chalk showing the hours, minutes and seconds with
+    concentric rings around the center of the display.
+  tags:
+    - Graphics
+    - Color
+    - Watchface
+- title: Time Dots
+  repo: pebble-examples/time-dots
+  languages:
+    - c
+  hardware_platforms:
+    - chalk
+  featured: true
+  screenshot_platform: chalk
+  screenshot: https://raw.githubusercontent.com/pebble-examples/time-dots/master/screenshot.png
+  description: |
+    Example watchface for Pebble Time Round showing the hours and minutes as a
+    bar and dots.
+  tags:
+    - Color
+- title: ContentIndicator Demo
+  repo: pebble-examples/content-indicator-demo
+  languages:
+    - c
+  hardware_platforms:
+    - chalk
+  featured: true
+  screenshot_platform: chalk
+  screenshot: https://raw.githubusercontent.com/pebble-examples/content-indicator-demo/master/screenshot.png
+  description: |
+    Example watchapp showing use of the ContentIndicator UI component.
+  tags:
+    - Color
+- title: owm-weather
+  repo: pebble-hacks/owm-weather
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - aplite
+    - basalt
+    - chalk
+  featured: true
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-hacks/owm-weather/master/screenshots/basalt.png
+  no_cloudpebble: true
+  description: |
+    Library for easy fetching of weather data from OpenWeatherMap.org. Includes 
+    a simple test app as a proof of concept usage of a weather C API.
+  tags:
+    - Color
+    - Libraries
+    - Watchface
+    - PebbleKit
+- title: Tricorder
+  repo: pebble-examples/tricorder
+  no_cloudpebble: true
+  languages:
+    - c
+    - java
+    - objective-c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/tricorder/72e677141285b3ac2bf4659d6e88ba9c61dc500b/screenshot.png
+  description: |
+    Datalogging example app that communicates with PebbleKit Android and iOS
+    companion apps. Records many different stats such as connection state,
+    battery level, etc.
+  featured: true
+  tags:
+    - Color
+    - Datalogging
+    - PebbleKit
+- title: Block World
+  repo: pebble-hacks/block-world
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://github.com/pebble-hacks/block-world/raw/master/screenshots/screenshot.png
+  description: |
+    Simple 'block-builder' game for Pebble SDK 3.0. Uses modified PGE and
+    isometric libraries to show a grid of 16 x 16 x 14 blocks that can be placed
+    by the user.
+  featured: true
+  tags:
+    - Color
+    - Graphics
+    - Animation
+    - Game
+- title: Pandas and Bananas
+  repo: pebble-hacks/pandas-and-bananas
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://github.com/pebble-hacks/pandas-and-bananas/raw/master/screenshots/screenshot.png
+  description: |
+    Color game for Pebble SDK 3.0 that sees the user controlling a panda via
+    accelerometer tilting or buttons to catch fruit and avoid bombs.
+  featured: true
+  tags:
+    - Color
+    - Graphics
+    - Animation
+    - Game
+- title: GBitmapSequence Example
+  repo: pebble-hacks/gbitmap-sequence-example
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://github.com/pebble-hacks/gbitmap-sequence-example/raw/master/screenshots/gbitmap-sequence.gif
+  description: |
+    Example app showing the usage of the GBItmapSequence API in Pebble SDK 3.0.
+  tags:
+    - Color
+    - Graphics
+    - Animation
+- title: Isotime
+  repo: pebble-hacks/isotime
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://github.com/pebble-hacks/isotime/raw/master/screenshots/screenshot.png
+  description: |
+    Color watchface for Pebble SDK 3.0. Uses PGE plus PGE Isometric libraries to
+    show the time on digits built with individual segments. Staggered animation
+    of segments that change each minute. Sleeps completely between animations.
+  tags:
+    - Color
+    - Graphics
+    - Animation
+    - Watchface
+- title: PDC Image
+  repo: pebble-examples/pdc-image
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/pdc-image/master/screenshots/screenshot.png
+  description: |
+    A simple example Pebble project demonstrating how to use the Draw Commands
+    API to load and display a vector file in the Pebble Drawing Commands format.
+  tags:
+    - Graphics
+    - Images
+- title: PebbleKit JS Weather
+  repo: pebble-examples/pebblekit-js-weather
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/pebblekit-js-weather/master/weather-screenshot~bw.png
+  description: |
+    This watchapp uses PebbleKit JS to fetch weather data from the
+    openweathermap.org and display it on the watch. It uses the location
+    provided by the phone to look up the nearest location, and sends temperature
+    data along with that location's name. A weather icon is also displayed.
+  featured: true
+- title: Hello Timeline
+  repo: pebble-examples/hello-timeline
+  no_cloudpebble: true
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/hello-timeline/master/screenshots/screenshot.png
+  description: |
+    This example app shows how to use the Pebble timeline API with user tokens.
+  featured: true
+  tags:
+    - Timeline
+- title: Timeline TV Tracker
+  repo: pebble-examples/timeline-tv-tracker
+  no_cloudpebble: true
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/timeline-tv-tracker/master/pebble/screenshots/screenshot1.png
+  description: |
+    This example demonstrates the usage of topics and shared pins in the Pebble
+    timeline API.
+  featured: true
+  tags:
+    - Timeline
+- title: UI Patterns
+  repo: pebble-examples/ui-patterns
+  languages:
+    - c
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/ui-patterns/master/screenshots/dialog-choice.png
+  description: |
+    Example project showing implementations of recommended Pebble UI design
+    patterns.
+  featured: true
+  tags:
+    - Design
+    - Images
+- title: Font Browser
+  repo: pebble-examples/app-font-browser
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/app-font-browser/master/app-font-browser-screenshot.png
+  description: |
+    This example show how to load and display all the Pebble built-in system
+    fonts. It also uses the Clicks API to allow the user to cycle through each
+    font in both directions.
+  tags:
+    - Fonts
+- title: Tea Timer
+  repo: pebble-examples/feature-app-wakeup
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-app-wakeup/master/feature-app-wakeup-screenshot.png
+  description: |
+    This example shows how the Wakeup API works.
+  tags:
+    - Wakeup
+- title: Timeline Push Pin
+  repo: pebble-examples/timeline-push-pin
+  no_cloudpebble: true
+  languages:
+    - c
+    - js
+  hardware_platforms:
+    - basalt
+  screenshot_platform: basalt
+  screenshot: https://raw.githubusercontent.com/pebble-examples/timeline-push-pin/master/screenshots/screenshot1.png
+  description: |
+    This is a Pebble SDK 3.0 example app that demonstrates how an app can use
+    PebbleKit JS to push a pin to itself through the public timeline API. It
+    includes a segment of JS code (marked 'timeline lib') that can be re-used in
+    any Pebble app that needs to push pins to its user.
+  featured: true
+  tags:
+    - Timeline
+- title: Simple Analog
+  repo: pebble-examples/simple-analog
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/simple-analog/master/simple-analog-screenshot.png
+  description: |
+    Example analog watchface that uses hands instead of numbers.
+  featured: true
+  tags:
+    - Watchface
+    - Analog
+- title: Classio Battery Connection
+  repo: pebble-examples/classio-battery-connection
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/classio-battery-connection/master/classio-battery-connection-screenshot.png
+  description: |
+    Example watchface showing the time, including seconds. This version also
+    displays the battery level and status of the Bluetooth connection.
+  tags:
+    - Watchface
+    - Battery Service
+    - Bluetooth Service
+- title: Persist Counter
+  repo: pebble-examples/feature-persist-counter
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-persist-counter/master/feature-persist-counter-screenshot.png
+  description: |
+    This example shows how to use the Persistent Storage API.
+  tags:
+    - Persistent Storage
+    - ActionBarLayer
+- title: Menu Layer
+  repo: pebble-examples/feature-menu-layer
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-menu-layer/master/feature-menu-layer-screenshot.png
+  description: |
+    This example shows how to use the MenuLayer.
+  tags:
+    - MenuLayer
+- title: Transparent Images
+  repo: pebble-examples/feature-image-transparent
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-image-transparent/master/feature-image-transparent-screenshot.png
+  description: |
+    This example demonstrates how to display an image with black, white and
+    transparent sections.
+  tags:
+    - Images
+- title: Frame Buffer
+  repo: pebble-examples/feature-frame-buffer
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-frame-buffer/master/feature-frame-buffer-screenshot.png
+  description: |
+    This example shows how to capture and manipulate the frame buffer.
+  tags:
+    - Graphics
+    - Frame Buffer
+- title: Custom Font
+  repo: pebble-examples/feature-custom-font
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-custom-font/master/feature-custom-font-screenshot.png
+  description: |
+    This example shows how to use a custom font.
+  tags:
+    - Fonts
+- title: Background Counter
+  repo: pebble-examples/feature-background-counter
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-background-counter/master/feature-background-counter-screenshot.png
+  description: |
+    This example shows how to use the Worker API (background worker).
+  tags:
+    - Background Worker
+- title: Accel Discs
+  repo: pebble-examples/feature-accel-discs
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+  screenshot_platform: aplite
+  screenshot: https://raw.githubusercontent.com/pebble-examples/feature-accel-discs/master/feature-accel-discs-screenshot.png
+  description: |
+    This example shows how to use the accelerometer.
+  tags:
+    - Accelerometer Service
+    - Graphics

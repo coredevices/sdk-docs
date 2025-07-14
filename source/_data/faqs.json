@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Pebble SDK",
+    "questions": [
+      {
+        "question": "What are the Aplite, Basalt, and Chalk platforms?",
+        "answer": "These are the platform names we use to describe our different generations of watches. Aplite refers to the original Pebble and Pebble Steel. Basalt refers to Pebble Time. Chalk refers to Pebble Time Round."
+      },
+      {
+        "question": "I cannot find the \"Developer Mode\" or \"Developer Connection\" toggle in the iOS or Android application",
+        "answer": "Please make sure you have updated your mobile applications to at least 2.0. On iOS, you first need to enable Developer Mode in the global _Settings_ application on the phone. On Android, this can be enabled from the navigation drawer."
+      },
+      {
+        "question": "`pebble` tool error: 'RuntimeError: Freetype library not found'",
+        "answer": "Please install the freetype library on your computer: \n\n* Mac OS users can use the [homebrew](http://brew.sh/) packaging system and run `brew install freetype`.\n\n* Linux users should not have to do anything."
+      },
+      {
+        "question": "How do I save the state between app invocations, for example, if I want to store user selections etc and persist it across app invocations?",
+        "answer": "Use the [Persistent Storage API](/guides/events-and-services/persistent-storage), or [PebbleKit JS](/guides/communication/using-pebblekit-js) `localStorage`."
+      },
+      {
+        "question": "How do I calculate the total size of a dictionary?",
+        "answer": "If you have a pointer to a `DictionaryIterator`, you can easily calculate the total size of this dictionary:\n\n```c\nint size = (int)received->end - (int)received->dictionary;\n```"
+      },
+      {
+        "question": "Can I get realtime accelerometer data?",
+        "answer": "Yes. See [this community blog post (external link)](http://ninedof.wordpress.com/2014/03/28/streaming-pebble-accelerometer-data/) for more information."
+      }
+    ]
+  },
+  {
+    "title": "App Communication",
+    "questions": [
+      {
+        "question": "App message error: 'The app rejected the update'",
+        "answer": "This is likely caused by a mismatch between your watch application UUID and the UUID you registered for on the mobile application. Please make sure you use the same UUID on both ends."
+      }
+    ]
+  },
+  {
+    "title": "Memory Management",
+    "questions": [
+      {
+        "question": "How apps are loaded for execution? For example, are apps always in RAM, or loaded in RAM one at a time when the user starts that specific app?",
+        "answer": "Apps (code and static variables) are loaded entirely in RAM when they are started. Your resources are only loaded in RAM when you call `resource_load()` or one of the function that calls it (like `fonts_load_custom_font()` or `gbitmap_create_with_resource_id()`). Your app, and all memory it has allocated, will be removed from RAM when it is terminated."
+      },
+      {
+        "question": "What is the maximum code segment size? The data segment size?",
+        "answer": "All segments share the same memory space. There is no limit on the segment sizes but the global limit of memory available to apps is currently around 24k bytes."
+      },
+      {
+        "question": "Is there a separate Read-Only data segment vs a Read-Write data?",
+        "answer": "No. For apps, the data segment is all Read-Write."
+      },
+      {
+        "question": "Can one app invoke another app to get around app size limits?",
+        "answer": "You can use the PebbleKit iOS or Android to launch any application on Pebble."
+      }
+    ]
+  },
+  {
+    "title": "App Publishing",
+    "questions": [
+      {
+        "question": "My companion app got rejected",
+        "answer": "It probably hasn't been accepted yet. You will get a confirmation email from pebbledev after it has been submitted to Apple. After this, it will be 2-3 days for it to be officially in the MFi program."
+      }
+    ],
+    "hidden-questions": [
+      {
+        "question": "When is JS bundling?",
+        "answer": "Check tweets from @pebbledev and the bundling [forum thread](https://forums.getpebble.com/discussion/12451/pebble-js-bundling-updates)"
+      },
+      {
+        "question": "Why does this app say 'coming soon'?",
+        "answer": "See 'When is JS bundling?'"
+      },
+      {
+        "question": "I don't want this app to show 'coming soon'",
+        "answer": "Publish the release, but don't press 'Make Public'. The JS will still be included in the next bundling. Once it has been bundled, make it public."
+      }
+    ]
+  },
+  {
+    "title": "Hardware Issues",
+    "questions": [
+      {
+        "question": "My screen is artifacting/flashing/ customer support issues",
+        "answer": "Contact [support@getpebble.com](mailto:support@getpebble.com) for RMA issues."
+      }
+    ]
+  },
+  {
+    "title": "Pebble SDK 1.x Migration",
+    "questions": [
+      {
+        "question": "In my old app `PBL_APP_INFO` I was setting the flags `APP_INFO_STANDARD_APP | APP_INFO_VISIBILITY_SHOWN_ON_COMMUNICATION`. How do I do that with the new `appinfo.json` file?",
+        "answer": "You can add another flag to `package.json` under the `\"watchapp\"` block:\n\n```js\n\"watchapp\": {\n  \"watchface\": false\n  \"onlyShownOnCommunication\": true}\n```"
+      }
+    ]
+  }
+]

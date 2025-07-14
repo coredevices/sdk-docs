@@ -1,0 +1,273 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import 'bourbon/bourbon';
+
+@import 'colors';
+
+@import 'base/base';
+@import 'responsive/responsive';
+@import 'font-awesome/font-awesome';
+
+@import 'header';
+@import 'footer';
+
+* {
+  @include box-sizing(border-box);
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: $header-height;
+  background-color: $gray-01;
+}
+
+.anchor[id],
+.anchor[name] {
+  &::before {
+    content: ' ';
+    display: block;
+    height: $header-height;
+    margin-top: -0.7 * $header-height;
+    visibility: hidden;
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+code {
+  background-color: $white;
+  border-radius: 2px;
+  color: darken($base-font-color, 20);
+  font-family: $monospace;
+  font-size: $base-font-size;
+  padding: 2px 4px;
+  box-shadow: inset 0 0 2px #bbb;
+}
+
+a code {
+  color: darken($base-link-color, 10);
+}
+
+.container {
+  max-width: none;
+  padding: 1em;
+  position: relative;
+}
+
+.vcenter {
+   display: table-cell;
+   vertical-align: middle;
+}
+
+.vcenter--wrapper {
+  display: table;
+  width: 100%;
+}
+
+.hcenter {
+  display: table-cell;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hcenter--wrapper {
+  display: table;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.pagetitle {
+  text-transform: uppercase;
+  line-height: 1.1;
+
+  a {
+    color: $base-text-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.pagetitle--skinny {
+  margin: 0;
+}
+
+.pagesubtitle {
+  font-weight: normal;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 1em;
+}
+
+.noscript--hide {
+}
+
+.noscript--show {
+  display: none;
+}
+
+.git-contributors {
+  li {
+    display: inline-block;
+    margin-right: 0.5em;
+
+    &:after {
+      content: ', ';
+    }
+
+    &:last-child {
+
+      &:after {
+        content: '';
+      }
+    }
+  }
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+@import 'elements/alert';
+@import 'elements/buttons';
+@import 'elements/form';
+@import 'elements/mobile-nav';
+@import 'elements/highlight';
+@import 'elements/inline-list';
+@import 'elements/markdown';
+@import 'elements/screenshot';
+@import 'elements/sidebar';
+@import 'elements/spinner';
+@import 'elements/table';
+// @import 'elements/terminal';
+@import 'elements/toc';
+// @import 'elements/typeahead';
+// @import 'elements/video';
+@import 'elements/bigbox';
+@import 'elements/full-height';
+@import 'elements/sectionmenu';
+@import 'elements/search';
+@import 'elements/gray-box';
+@import 'elements/ribbon';
+@import 'elements/pagination';
+@import 'elements/landing-slider';
+@import 'elements/platform-choice';
+@import 'elements/dual-image';
+
+@import 'sections/getting-started';
+
+@import 'libs/slick';
+@import 'mmenu/jquery.mmenu.all.scss';
+
+@import 'sections/events';
+@import 'sections/blog';
+@import 'sections/documentation';
+@import 'sections/examples';
+@import 'sections/guides';
+@import 'sections/retreat';
+@import 'sections/inspiration';
+@import 'sections/round';
+@import 'sections/sdk';
+
+@import 'debug';
+
+.mm-page {
+  height: 100%;
+  position: inherit;
+
+  > div {
+    height: 100%;
+  }
+}
+
+.mmenu__wrapper {
+  height: 100%;
+}
+
+.mm-opened,
+.mm-opening {
+  .mm-page {
+    margin-top: -1 * $header-height;
+  }
+
+  .content {
+    padding-top: $header-height;
+  }
+}
+
+.color-picker polygon {
+  cursor: pointer;
+}
+
+.size-helper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: #222;
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.modal-content {
+  background-color: $gray-01;
+}
+
+.header--skinny {
+  font-weight: normal;
+}
+
+.header--flat-bottom {
+  margin-bottom: 0;
+}
+
+video {
+  max-width: 100%;
+}
+
+.video--fullwidth {
+  width: 100%;
+}
+
+.embed.embed--youtube {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+
+  iframe,
+  .video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

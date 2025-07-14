@@ -1,0 +1,70 @@
+<!--
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+---
+layout: docs
+permalink: /docs/c/
+title: C SDK Documentation
+docs_language: c
+---
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+      <h1 class="pagetitle">{{ page.title }}</h1>
+      <p>
+        This is the contents page for the
+        <a href="/sdk/download/">Pebble C SDK</a>. Here you will find
+        information on all the available modules, functions and objects that can
+        be used to create watchapps and watchfaces for Pebble.
+      </p>
+      <p>
+        The C SDK is broken down into these {{ site.data.docs_tree.c.size }}
+        top level modules. Click on them to browse around the rest of the SDK.
+      </p>
+      <p>
+        You can also use the search bar at the top of the page to find what
+        you are looking for.
+      </p>
+
+      {% for module in site.data.docs_tree.c %}
+        <div class="docs__module">
+          <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
+          {% if module.summary.size > 0 %}
+          {{ module.summary }}
+          {% else %}
+          <p>&nbsp;</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-l-4">
+    <div class="gray-box">
+      <p>
+        To learn more about how to use this SDK, take a look at the
+        <a href="/guides/pebble-apps/">Writing Apps for Pebble</a> section of
+        the Developer Guides.
+      </p>
+      <p>
+        You can also view the
+        <a href="/getting-started/watchface-tutorial/part1/">C SDK Tutorial</a>.
+        This will guide you through the first stages to creating a Pebble
+        watchface, adding customized images and fonts and extra
+        web-based content.
+      </p>
+    </div>
+  </div>
+</div>

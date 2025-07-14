@@ -1,0 +1,35 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+
+{% assign data = include.define.data[include.platform] %}
+<div class="docs__item docs__item--define">
+  {% if data.params.size > 0 %}
+  <div class="docs__item__header">
+    <span>#define {{ data.type }} </span><span class="docs__item__name">{{ include.define.name }} </span><span>(</span>{% for param in data.params %}<span class="docs__item__param">{% if param.type %}{{ param.type }}{% if param.name %} {% endif %}{% endif %}{% if param.name %} {{ param.name }}{% endif %}</span><span>{% unless forloop.last %}, {% endunless %}</span>{% endfor %}<span{% if data.params.size > 1 %} class="docs__item__param__end"{% endif %}>)</span>
+    <div class="clearfix"></div>
+  </div>
+  {% else %}
+  <div class="docs__item__header">#define <span class="docs__item__name">{{ include.define.name }} </span> {{ data.initializer }}</div>
+  {% endif %}
+  <div class="docs__item__body">
+    {% include docs/c/elements/summary.html item=data %}
+    {% include docs/c/elements/description.html item=data %}
+    {% include docs/c/elements/note.html data=data %}
+    {% include docs/c/elements/parameters.html data=data %}
+    {% include docs/c/elements/returns.html data=data %}
+    {% include docs/c/elements/see.html data=data %}
+  </div>
+</div>

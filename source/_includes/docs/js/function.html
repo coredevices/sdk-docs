@@ -1,0 +1,41 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+
+<div class="docs__item__header">
+  {% unless include.global %} {{ page.js_module.name }}.{% endunless %}<span class="docs__item__name">{{ include.child.name }}</span>({% for param in include.child.params %}<span class="docs__item__param">{{ param.name }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %})
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  {% include docs/js/desc.html desc=include.child.description %}
+  {% if include.child.params.size > 0 %}
+    <h4>Parameters</h4>
+    <dl>
+      {% for param in include.child.params %}
+        <dt><span style="color: #777">{{ param.type.name }}</span> {{ param.name }}</dt>
+        <dd>{% include docs/js/desc.html desc=param.description %}</dt>
+      {% endfor %}
+    </dl>
+  {% endif %}
+
+  {% if include.child.returns.size > 0 %}
+    <h4>Returns</h4>
+    {% for return in include.child.returns %}
+      {% include docs/js/desc.html desc=return.description %}
+    {% endfor %}
+  {% endif %}
+
+</div>

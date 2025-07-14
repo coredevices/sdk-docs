@@ -1,0 +1,65 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+
+{% if include.desc.type == "root" %}
+{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}
+
+{% elsif include.desc.type == "paragraph" %}
+{% capture description %}{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}{% endcapture %}
+<p>{{ description | strip_newlines }}</p>
+
+{% elsif include.desc.type == "heading" %}
+{% capture description %}<p>{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}</p>{% endcapture %}
+<h{{ include.desc.depth }}>{{ description | strip_newlines }}</h{{ include.desc.depth }}>
+
+{% elsif include.desc.type == "list" %}
+{% capture description %}{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}{% endcapture %}
+<{% if include.desc.ordered %}ol{% else %}ul{% endif %} class="desc-list">
+{{ description | strip_newlines }}
+</{% if include.desc.ordered %}ol{% else %}ul{% endif %}>
+
+{% elsif include.desc.type == "listItem" %}
+{% capture description %}{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}{% endcapture %}
+<li>{{ description | strip_newlines }}</li>
+
+{% elsif include.desc.type == "strong" %}
+{% capture description %}{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}{% endcapture %}
+<strong>{{ description | strip_newlines }}</strong>
+
+{% elsif include.desc.type == "link" %}
+{% capture title %}{% for child in include.desc.children %}
+{% include docs/js/desc.html desc=child %}
+{% endfor %}{% endcapture %}
+<a href="{{ include.desc.url }}">{{ title | strip_newlines }}</a>
+
+{% elsif include.desc.type == "inlineCode" %}
+<code>{{ include.desc.value }}</code>
+
+{% elsif include.desc.type == "text" %}
+{{ include.desc.value }}
+{% endif %}

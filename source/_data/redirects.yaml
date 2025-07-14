@@ -1,0 +1,2765 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+-
+  - /1/01_GetStarted/01_Step_1/index.html
+  - /getting-started/
+-
+  - /1/01_GetStarted/01_Step_2/index.html
+  - /getting-started/
+-
+  - /1/01_GetStarted/01_Step_3/index.html
+  - /getting-started/
+-
+  - /1/01_GetStarted/01_Step_4/index.html
+  - /getting-started/
+-
+  - /1/01_GetStarted/index.html
+  - /getting-started/
+-
+  - /1/02_Guides/01_AppsVsWatchfaces/index.html
+  - /guides/publishing-tools/publish-to-pebble-appstore/
+-
+  - /1/02_Guides/02_KeyConcepts/index.html
+  - /guides/pebble-apps/
+-
+  - /1/02_Guides/03_AppAnatomy/index.html
+  - /guides/pebble-apps/app-structure/
+-
+  - /1/02_Guides/04_UsingResources/index.html
+  - /guides/pebble-apps/resources/
+-
+  - /1/02_Guides/05_UiFramework/index.html
+  - /guides/pebble-apps/display-and-animations/layers/
+-
+  - /1/02_Guides/06_Performance/index.html
+  - /guides/best-practices/
+-
+  - /1/02_Guides/07_CommunicatingPhone/index.html
+  - /guides/pebble-apps/communications/
+-
+  - /1/02_Guides/08_Sports/index.html
+  - /guides/mobile-apps/
+-
+  - /1/02_Reference/05_UiFramework/index.html
+  - /docs/c/group___u_i.html
+-
+  - /1/03_API_Reference/03_Android/index.html
+  - /docs/pebblekit-android/
+-
+  - /1/04_MoreResources/00_Examples/index.html
+  - /examples/
+-
+  - /1/04_MoreResources/01_FAQ/index.html
+  - /faqs/
+-
+  - /1/04_MoreResources/015_libpebble/index.html
+  - /community/libraries/libpebble/
+-
+  - /1/04_MoreResources/02_Support/index.html
+  - /contact/
+-
+  - /1/04_MoreResources/3rd-Party/index.html
+  - /community/
+-
+  - /1/04_MoreResources/Whitelisting/index.html
+  - /guides/publishing-tools/whitelisting/
+-
+  - /1/getting-started/index.html
+  - /getting-started/
+-
+  - /1/GettingStarted/HelloWorld/index.html
+  - /getting-started/watchface-tutorial/
+-
+  - /1/GettingStarted/Linux/index.html
+  - /sdk/install/linux/
+-
+  - /1/GettingStarted/MacOS/index.html
+  - /sdk/install/mac/
+-
+  - /1/GettingStarted/UsingExamples/index.html
+  - /examples/
+-
+  - /1/GettingStarted/Windows/index.html
+  - /sdk/install/windows/
+-
+  - /1/index.html
+  - /
+-
+  - /2/additional/battery-perform-guide.html
+  - /guides/best-practices/battery-perform-guide/
+-
+  - /2/additional/developer-connection/index.html
+  - /guides/publishing-tools/developer-connection/
+-
+  - /2/additional/faqs.html
+  - /faqs/
+-
+  - /2/additional/hello-world/index.html
+  - /getting-started/watchface-tutorial/
+-
+  - /2/additional/pebble-tool/index.html
+  - /guides/publishing-tools/pebble-tool/
+-
+  - /2/additional/technical-support.html
+  - /contact/
+-
+  - /2/additional/third-party-libs.html
+  - /community/libraries/
+-
+  - /2/additional/using-examples/index.html
+  - /examples/
+-
+  - /2/android-reference/allclasses-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/allclasses-noframe.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/Constants.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants/
+-
+  - /2/android-reference/com/getpebble/android/kit/Constants.PebbleAppType.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleAppType/
+-
+  - /2/android-reference/com/getpebble/android/kit/Constants.PebbleDataType.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleDataType/
+-
+  - /2/android-reference/com/getpebble/android/kit/package-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/package-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/package-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.FirmwareVersionInfo.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.FirmwareVersionInfo/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.PebbleAckReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleAckReceiver/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.PebbleDataLogReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataLogReceiver/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.PebbleDataReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataReceiver/
+-
+  - /2/android-reference/com/getpebble/android/kit/PebbleKit.PebbleNackReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleNackReceiver/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/package-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/package-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/package-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/PebbleDictionary.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/PebbleDictionary.PebbleDictTypeException.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.PebbleDictTypeException/
+-
+  - /2/android-reference/com/getpebble/android/kit/util/PebbleDictionary.TupleOverflowException.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.TupleOverflowException/
+-
+  - /2/android-reference/constant-values.html
+  - /docs/pebblekit-android/com/constant-values/
+-
+  - /2/android-reference/deprecated-list.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/help-doc.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/index-all.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/index.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/overview-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/overview-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/overview-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/allclasses-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/allclasses-noframe.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/Constants.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/Constants.PebbleAppType.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleAppType/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/Constants.PebbleDataType.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleDataType/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/package-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/package-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/package-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.FirmwareVersionInfo.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.FirmwareVersionInfo/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.PebbleAckReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleAckReceiver/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.PebbleDataLogReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataLogReceiver/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.PebbleDataReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataReceiver/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/PebbleKit.PebbleNackReceiver.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleNackReceiver/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/package-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/package-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/package-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/PebbleDictionary.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/PebbleDictionary.PebbleDictTypeException.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.PebbleDictTypeException/
+-
+  - /2/android-reference/PebbleKit-Android/com/getpebble/android/kit/util/PebbleDictionary.TupleOverflowException.html
+  - /docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.TupleOverflowException/
+-
+  - /2/android-reference/PebbleKit-Android/constant-values.html
+  - /docs/pebblekit-android/com/constant-values/
+-
+  - /2/android-reference/PebbleKit-Android/deprecated-list.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/help-doc.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/index-all.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/index.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/overview-frame.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/overview-summary.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/overview-tree.html
+  - /docs/pebblekit-android/
+-
+  - /2/android-reference/PebbleKit-Android/serialized-form.html
+  - /docs/pebblekit-android/com/serialized-form/
+-
+  - /2/android-reference/serialized-form.html
+  - /docs/pebblekit-android/com/serialized-form/
+-
+  - /2/api-reference/_a_p_i_changelog.html
+  - /docs/c/
+-
+  - /2/api-reference/annotated.html
+  - /docs/c/
+-
+  - /2/api-reference/classes.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_1c0b520d3dde23966608b739253ba894.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_2b0141dd57d5fafe8882ba9edd393fcc.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_31b2ddb2365bf074d9be377bc0cb8b65.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_4e7c8c4fc0d923782da8a23d70a9725b.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_4fef79e7177ba769987a8da36c892c5f.html
+  - /docs/c/
+-
+  - /2/api-reference/dir_786940c6392c5fad07a9f448ec172eeb.html
+  - /docs/c/
+-
+  - /2/api-reference/functions_vars.html
+  - /docs/c/
+-
+  - /2/api-reference/functions.html
+  - /docs/c/
+-
+  - /2/api-reference/group___accelerometer_service.html
+  - /docs/c/group___accelerometer_service.html
+-
+  - /2/api-reference/group___action_bar_layer.html
+  - /docs/c/group___action_bar_layer.html
+-
+  - /2/api-reference/group___animation.html
+  - /docs/c/group___animation.html
+-
+  - /2/api-reference/group___app_comm.html
+  - /docs/c/group___app_comm.html
+-
+  - /2/api-reference/group___app_focus_service.html
+  - /docs/c/group___app_focus_service.html
+-
+  - /2/api-reference/group___app_message.html
+  - /docs/c/group___app_message.html
+-
+  - /2/api-reference/group___app_sync.html
+  - /docs/c/group___app_sync.html
+-
+  - /2/api-reference/group___app_worker_service.html
+  - /docs/c/group___app_worker.html
+-
+  - /2/api-reference/group___app_worker.html
+  - /docs/c/group___app_worker.html
+-
+  - /2/api-reference/group___app.html
+  - /docs/c/group___app.html
+-
+  - /2/api-reference/group___battery_state_service.html
+  - /docs/c/group___battery_state_service.html
+-
+  - /2/api-reference/group___bitmap_layer.html
+  - /docs/c/group___bitmap_layer.html
+-
+  - /2/api-reference/group___bluetooth_connection_service.html
+  - /docs/c/group___bluetooth_connection_service.html
+-
+  - /2/api-reference/group___clicks.html
+  - /docs/c/group___clicks.html
+-
+  - /2/api-reference/group___compass_service.html
+  - /docs/c/group___compass_service.html
+-
+  - /2/api-reference/group___data_logging.html
+  - /docs/c/group___data_logging.html
+-
+  - /2/api-reference/group___data_spooling.html
+  - /docs/c/group___data_logging.html
+-
+  - /2/api-reference/group___data_structures.html
+  - /docs/c/group___data_structures.html
+-
+  - /2/api-reference/group___dictionary.html
+  - /docs/c/group___dictionary.html
+-
+  - /2/api-reference/group___drawing.html
+  - /docs/c/group___drawing.html
+-
+  - /2/api-reference/group___event_service.html
+  - /docs/c/group___event_service.html
+-
+  - /2/api-reference/group___fonts.html
+  - /docs/c/group___fonts.html
+-
+  - /2/api-reference/group___foundation.html
+  - /docs/c/group___foundation.html
+-
+  - /2/api-reference/group___graphics_context.html
+  - /docs/c/group___graphics_context.html
+-
+  - /2/api-reference/group___graphics_types.html
+  - /docs/c/group___graphics_types.html
+-
+  - /2/api-reference/group___graphics.html
+  - /docs/c/group___graphics.html
+-
+  - /2/api-reference/group___inverter_layer.html
+  - /docs/c/group___inverter_layer.html
+-
+  - /2/api-reference/group___launch_reason.html
+  - /docs/c/group___launch_reason.html
+-
+  - /2/api-reference/group___layer.html
+  - /docs/c/group___layer.html
+-
+  - /2/api-reference/group___light.html
+  - /docs/c/group___light.html
+-
+  - /2/api-reference/group___logging.html
+  - /docs/c/group___logging.html
+-
+  - /2/api-reference/group___math.html
+  - /docs/c/group___math.html
+-
+  - /2/api-reference/group___memory_management.html
+  - /docs/c/group___memory_management.html
+-
+  - /2/api-reference/group___menu_layer.html
+  - /docs/c/group___menu_layer.html
+-
+  - /2/api-reference/group___number_window.html
+  - /docs/c/group___number_window.html
+-
+  - /2/api-reference/group___path_drawing.html
+  - /docs/c/group___path_drawing.html
+-
+  - /2/api-reference/group___persistent.html
+  - /docs/c/group___storage.html
+-
+  - /2/api-reference/group___property_animation.html
+  - /docs/c/group___property_animation.html
+-
+  - /2/api-reference/group___resources.html
+  - /docs/c/group___resources.html
+-
+  - /2/api-reference/group___rot_bitmap_layer.html
+  - /docs/c/group___rot_bitmap_layer.html
+-
+  - /2/api-reference/group___scroll_layer.html
+  - /docs/c/group___scroll_layer.html
+-
+  - /2/api-reference/group___simple_menu_layer.html
+  - /docs/c/group___simple_menu_layer.html
+-
+  - /2/api-reference/group___standard_c.html
+  - /docs/c/group___standard_c.html
+-
+  - /2/api-reference/group___standard_i_o.html
+  - /docs/c/group___standard_i_o.html
+-
+  - /2/api-reference/group___standard_math.html
+  - /docs/c/group___standard_math.html
+-
+  - /2/api-reference/group___standard_memory.html
+  - /docs/c/group___standard_memory.html
+-
+  - /2/api-reference/group___standard_string.html
+  - /docs/c/group___standard_string.html
+-
+  - /2/api-reference/group___standard_time.html
+  - /docs/c/group___standard_time.html
+-
+  - /2/api-reference/group___storage.html
+  - /docs/c/group___storage.html
+-
+  - /2/api-reference/group___text_drawing.html
+  - /docs/c/group___text_drawing.html
+-
+  - /2/api-reference/group___text_layer.html
+  - /docs/c/group___text_layer.html
+-
+  - /2/api-reference/group___tick_timer_service.html
+  - /docs/c/group___tick_timer_service.html
+-
+  - /2/api-reference/group___time.html
+  - /docs/c/group___standard_time.html
+-
+  - /2/api-reference/group___timer.html
+  - /docs/c/group___timer.html
+-
+  - /2/api-reference/group___u_i.html
+  - /docs/c/group___u_i.html
+-
+  - /2/api-reference/group___u_u_i_d.html
+  - /docs/c/group___u_u_i_d.html
+-
+  - /2/api-reference/group___vibes.html
+  - /docs/c/group___vibes.html
+-
+  - /2/api-reference/group___wakeup.html
+  - /docs/c/group___wakeup.html
+-
+  - /2/api-reference/group___wall_time.html
+  - /docs/c/group___wall_time.html
+-
+  - /2/api-reference/group___watch_info.html
+  - /docs/c/group___watch_info.html
+-
+  - /2/api-reference/group___window_stack.html
+  - /docs/c/group___window_stack.html
+-
+  - /2/api-reference/group___window.html
+  - /docs/c/group___window.html
+-
+  - /2/api-reference/group___worker.html
+  - /docs/c/group___worker.html
+-
+  - /2/api-reference/index.html
+  - /docs/c/
+-
+  - /2/api-reference/modules.html
+  - /docs/c/
+-
+  - /2/api-reference/pages.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_10.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_11.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_12.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_13.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_14.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_15.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_16.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_17.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_65.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_66.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_68.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_69.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_6f.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_70.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_75.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_76.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_78.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_79.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_7a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/all_f.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_70.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_76.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/classes_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enums_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_65.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_66.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_68.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_79.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/enumvalues_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_66.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_68.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_69.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_70.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_75.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_76.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/functions_f.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_10.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_11.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_65.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_66.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_69.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_70.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_75.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_76.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/groups_f.html
+  - /docs/c/
+-
+  - /2/api-reference/search/nomatches.html
+  - /docs/c/
+-
+  - /2/api-reference/search/pages_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/pages_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_69.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_75.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/typedefs_d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_0.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_1.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_10.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_11.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_12.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_13.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_14.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_15.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_2.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_3.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_4.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_5.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_61.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_62.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_63.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_64.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_65.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_67.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_68.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_69.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_6f.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_7.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_70.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_72.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_73.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_74.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_75.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_76.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_77.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_78.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_79.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_7a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_8.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_9.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_a.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_b.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_c.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_d.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_e.html
+  - /docs/c/
+-
+  - /2/api-reference/search/variables_f.html
+  - /docs/c/
+-
+  - /2/api-reference/struct_app_message_callbacks.html
+  - /docs/c/group___app_message.html
+-
+  - /2/changelog-2.0.0.html
+  - /sdk/changelogs/2.0.0/
+-
+  - /2/changelog-2.0.1.html
+  - /sdk/changelogs/2.0.1/
+-
+  - /2/changelog-2.0.2.html
+  - /sdk/changelogs/2.0.2/
+-
+  - /2/changelog-2.1.1.html
+  - /sdk/changelogs/2.1.1/
+-
+  - /2/changelog-2.1.html
+  - /sdk/changelogs/2.1/
+-
+  - /2/changelog-2.2.html
+  - /sdk/changelogs/2.2/
+-
+  - /2/changelog-2.3.html
+  - /sdk/changelogs/2.3/
+-
+  - /2/changelog-2.4.1.html
+  - /sdk/changelogs/2.4.1/
+-
+  - /2/changelog-2.4.html
+  - /sdk/changelogs/2.4/
+-
+  - /2/changelog-2.5.html
+  - /sdk/changelogs/2.5/
+-
+  - /2/changelog-2.6.1.html
+  - /sdk/changelogs/2.6.1/
+-
+  - /2/changelog-2.6.html
+  - /sdk/changelogs/2.6/
+-
+  - /2/changelog-2.7.html
+  - /sdk/changelogs/2.7/
+-
+  - /2/changelog-beta0.html
+  - /sdk/changelogs/2.0-BETA0/
+-
+  - /2/changelog-dp2.html
+  - /sdk/changelogs/2.0-DP2/
+-
+  - /2/changelog-dp3.html
+  - /sdk/changelogs/2.0-DP3/
+-
+  - /2/design/index.html
+  - /guides/best-practices/design/
+-
+  - /2/design/ux-design-guide.html
+  - /guides/best-practices/design/
+-
+  - /2/design/ux-platform.html
+  - /guides/best-practices/design/
+-
+  - /2/distribute/distributing-apps.html
+  - /guides/publishing-tools/publish-to-pebble-appstore/
+-
+  - /2/distribute/publish-to-pebble-app-store.html
+  - /guides/publishing-tools/publish-to-pebble-appstore/
+-
+  - /2/distribute/publish-to-pebble-appstore.html
+  - /guides/publishing-tools/publish-to-pebble-appstore/
+-
+  - /2/distribute/whitelisting.html
+  - /guides/publishing-tools/whitelisting/
+-
+  - /2/getting-started/developer-connection/index.html
+  - /guides/publishing-tools/developer-connection/
+-
+  - /2/getting-started/hello-world/index.html
+  - /getting-started/watchface-tutorial/
+-
+  - /2/getting-started/index.html
+  - /sdk/install/
+-
+  - /2/getting-started/install-pebble-sdk/index.html
+  - /sdk/install/
+-
+  - /2/getting-started/linux/index.html
+  - /sdk/install/linux/
+-
+  - /2/getting-started/macosx/index.html
+  - /sdk/install/mac/
+-
+  - /2/getting-started/pb-sdk/index.html
+  - /guides/publishing-tools/pebble-tool/
+-
+  - /2/getting-started/pebble-tool/index.html
+  - /guides/publishing-tools/pebble-tool/
+-
+  - /2/getting-started/using-examples/index.html
+  - /examples/
+-
+  - /2/getting-started/windows/index.html
+  - /sdk/install/windows/
+-
+  - /2/guides/about-pebble-apps.html
+  - /guides/
+-
+  - /2/guides/accelerometer.html
+  - /guides/pebble-apps/sensors/accelerometer/
+-
+  - /2/guides/anatomy-of-pebble-application.html
+  - /guides/pebble-apps/app-structure/
+-
+  - /2/guides/app-phone-communication.html
+  - /guides/pebble-apps/communications/
+-
+  - /2/guides/background-guide.html
+  - /guides/pebble-apps/app-structure/background-guide/
+-
+  - /guides/pebble-apps/app-structure/background-guide/index.html
+  - /guides/pebble-apps/background/
+-
+  - /2/guides/battery-perform-guide.html
+  - /guides/best-practices/battery-perform-guide/
+-
+  - /2/guides/compass.html
+  - /guides/pebble-apps/sensors/magnetometer/
+-
+  - /2/guides/conceptual-overview.html
+  - /guides/
+-
+  - /2/guides/creating-ios-android-apps.html
+  - /guides/mobile-apps/
+-
+  - /2/guides/creating-pebble-watchapps.html
+  - /guides/pebble-apps/
+-
+  - /2/guides/datalogging-guide.html
+  - /guides/pebble-apps/communications/pebble-datalogging/
+-
+  - /2/guides/dataspooling-guide.html
+  - /guides/pebble-apps/communications/pebble-datalogging/
+-
+  - /2/guides/developer-guide.html
+  - /guides/
+-
+  - /2/guides/developer-roadmap.html
+  - /guides/
+-
+  - /2/guides/event-service-guide.html
+  - /guides/pebble-apps/app-events/
+-
+  - /2/guides/index.html
+  - /guides/
+-
+  - /2/guides/javascript-guide.html
+  - /guides/js-apps/pebblekit-js/
+-
+  - /2/guides/managing-resources.html
+  - /guides/pebble-apps/resources/
+-
+  - /2/guides/migration-guide.html
+  - /sdk/migration-guide/
+-
+  - /2/guides/persistent-storage.html
+  - /guides/pebble-apps/app-structure/persistent-storage/
+-
+  - /2/guides/prerequisites.html
+  - /guides/
+-
+  - /2/guides/ui-design-framework.html
+  - /guides/best-practices/design/
+-
+  - /2/guides/ui-framework.html
+  - /guides/pebble-apps/display-and-animations/layers/
+-
+  - /2/guides/ux-fonts.html
+  - /guides/pebble-apps/display-and-animations/ux-fonts/
+-
+  - /2/guides/wakeup.html
+  - /guides/pebble-apps/app-events/wakeup/
+-
+  - /2/index.html
+  - /sdk/install/
+-
+  - /2/ios-reference/Categories/NSDataPebble.html
+  - /docs/pebblekit-ios/Categories/NSData+Pebble/
+-
+  - /2/ios-reference/Categories/NSDictionaryPebble.html
+  - /docs/pebblekit-ios/Categories/NSDictionary+Pebble/
+-
+  - /2/ios-reference/Categories/NSErrorPebble.html
+  - /docs/pebblekit-ios/Categories/NSError+Pebble/
+-
+  - /2/ios-reference/Categories/NSJSONSerializationPBJSONHelpers.html
+  - /docs/pebblekit-ios/
+-
+  - /2/ios-reference/Categories/NSNumberstdint.html
+  - /docs/pebblekit-ios/
+-
+  - /2/ios-reference/Classes/PBBitmap.html
+  - /docs/pebblekit-ios/Classes/PBBitmap/
+-
+  - /2/ios-reference/Classes/PBDataLoggingService.html
+  - /docs/pebblekit-ios/Classes/PBDataLoggingService/
+-
+  - /2/ios-reference/Classes/PBDataLoggingSessionMetadata.html
+  - /docs/pebblekit-ios/Classes/PBDataLoggingSessionMetadata/
+-
+  - /2/ios-reference/Classes/PBDataSpoolingService.html
+  - /docs/pebblekit-ios/Classes/PBDataLoggingService/
+-
+  - /2/ios-reference/Classes/PBDataSpoolMetadata.html
+  - /docs/pebblekit-ios/Classes/PBDataLoggingSessionMetadata/
+-
+  - /2/ios-reference/Classes/PBFirmwareMetadata.html
+  - /docs/pebblekit-ios/Classes/PBFirmwareMetadata/
+-
+  - /2/ios-reference/Classes/PBFirmwareVersion.html
+  - /docs/pebblekit-ios/Classes/PBFirmwareVersion/
+-
+  - /2/ios-reference/Classes/PBPebbleCentral.html
+  - /docs/pebblekit-ios/Classes/PBPebbleCentral/
+-
+  - /2/ios-reference/Classes/PBResourceMetadata.html
+  - /docs/pebblekit-ios/Classes/PBResourceMetadata/
+-
+  - /2/ios-reference/Classes/PBSportsUpdate.html
+  - /docs/pebblekit-ios/Classes/PBSportsUpdate/
+-
+  - /2/ios-reference/Classes/PBVersionInfo.html
+  - /docs/pebblekit-ios/Classes/PBVersionInfo/
+-
+  - /2/ios-reference/Classes/PBWatch.html
+  - /docs/pebblekit-ios/Classes/PBWatch/
+-
+  - /2/ios-reference/Constants/PBAppState.html
+  - /docs/pebblekit-ios/Constants/PBAppState/
+-
+  - /2/ios-reference/hierarchy.html
+  - /docs/pebblekit-ios/hierarchy/
+-
+  - /2/ios-reference/index.html
+  - /docs/pebblekit-ios/
+-
+  - /2/ios-reference/Protocols/PBDataLoggingServiceDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/
+-
+  - /2/ios-reference/Protocols/PBDataSpoolingServiceDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/
+-
+  - /2/ios-reference/Protocols/PBPebbleCentralDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBPebbleCentralDelegate/
+-
+  - /2/ios-reference/Protocols/PBPhoneCallSimulatorDelegate.html
+  - /docs/pebblekit-ios/
+-
+  - /2/ios-reference/Protocols/PBWatchDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBWatchDelegate/
+-
+  - /2/mobile-app-guide/android-guide.html
+  - /guides/mobile-apps/android/
+-
+  - /2/mobile-app-guide/index.html
+  - /guides/mobile-apps/
+-
+  - /2/mobile-app-guide/ios-guide.html
+  - /guides/mobile-apps/ios/
+-
+  - /2/releasenotice-beta1.html
+  - /sdk/changelogs/2.0-BETA1/
+-
+  - /2/releasenotice-beta2.html
+  - /sdk/changelogs/2.0-BETA2/
+-
+  - /2/releasenotice-beta3.html
+  - /sdk/changelogs/2.0-BETA3/
+-
+  - /2/releasenotice-beta4.html
+  - /sdk/changelogs/2.0-BETA4/
+-
+  - /2/releasenotice-beta5.html
+  - /sdk/changelogs/2.0-BETA5/
+-
+  - /2/releasenotice-beta6.html
+  - /sdk/changelogs/2.0-BETA6/
+-
+  - /2/releasenotice-beta7.html
+  - /sdk/changelogs/2.0-BETA7/
+-
+  - /blog/13/index.html
+  - /blog/archive/
+-
+  - /blog/2013/07/02/Lots-of-goodies-In-Pebble-SDK-1.12/index.html
+  - /blog/2013/07/03/Lots-of-goodies-In-Pebble-SDK-1.12/
+-
+  - /blog/2013/12/19/Javascript-Tips-and-Tricks/index.html
+  - /blog/2013/12/20/Pebble-Javascript-Tips-and-Tricks/
+-
+  - /blog/2014/03/07/Pebble-App-Challenge/index.html
+  - /blog/2014/03/10/Pebble-App-Challenge/
+-
+  - /blog/2014/04/18/Learn-to-Program-My-Pebble/index.html
+  - /blog/2014/04/30/Learn-to-Program-My-Pebble/
+-
+  - /blog/2014/05/22/FreeRTOS-Modifications-From-Pebble/index.html
+  - /blog/2014/05/23/FreeRTOS-Modifications-From-Pebble/
+-
+  - /blog/2014/06/02/Android-Beta-Channel/index.html
+  - /blog/2014/06/12/Android-Beta-Channel/
+-
+  - /blog/2014/07/20/Pebble-XDA-Challenge/index.html
+  - /blog/2014/07/21/Pebble-XDA-Challenge/
+-
+  - /blog/archive.html
+  - /blog/archive/
+-
+  - /blog/archives/index.html
+  - /blog/archive/
+-
+  - /download-sdk/hello-world/index.html
+  - /getting-started/
+-
+  - /download-sdk/index.html
+  - /sdk/
+-
+  - /download-sdk/linux/index.html
+  - /sdk/install/linux/
+-
+  - /download-sdk/macosx/index.html
+  - /sdk/install/mac/
+-
+  - /download-sdk/windows/index.html
+  - /sdk/install/windows/
+-
+  - /events/aahackathon/index.html
+  - /community/events/aahackathon/
+-
+  - /events/developer-retreat-2013/index.html
+  - /community/events/developer-retreat-2013/
+-
+  - /events/developer-retreat-2014/detailed-schedule/index.html
+  - /community/events/developer-retreat-2014/detailed-schedule/
+-
+  - /events/developer-retreat-2014/index.html
+  - /community/events/developer-retreat-2014/
+-
+  - /events/index.html
+  - /community/events/
+-
+  - /community/events/meetups/index.html
+  - /community/events/
+-
+  - /getting-started/pebble-js-tutorial/part1.html
+  - /getting-started/pebble-js-tutorial/part1/
+-
+  - /getting-started/pebble-js-tutorial/part2.html
+  - /getting-started/pebble-js-tutorial/part2/
+-
+  - /getting-started/pebble-js-tutorial/part3.html
+  - /getting-started/pebble-js-tutorial/part3/
+-
+  - /getting-started/watchface-tutorial/part1.html
+  - /getting-started/watchface-tutorial/part1/
+-
+  - /getting-started/watchface-tutorial/part2.html
+  - /getting-started/watchface-tutorial/part2/
+-
+  - /getting-started/watchface-tutorial/part3.html
+  - /getting-started/watchface-tutorial/part3/
+-
+  - /hacktech.html
+  - /community/events/
+-
+  - /help/index.html
+  - /community/#stackoverflow
+-
+  - /iossdkref/Categories/NSDataPebble.html
+  - /docs/pebblekit-ios/Categories/NSData+Pebble/
+-
+  - /iossdkref/Categories/NSDictionaryPebble.html
+  - /docs/pebblekit-ios/Categories/NSDictionary+Pebble/
+-
+  - /iossdkref/Categories/NSErrorPebble.html
+  - /docs/pebblekit-ios/Categories/NSError+Pebble/
+-
+  - /iossdkref/Categories/NSNumberstdint.html
+  - /docs/pebblekit-ios/
+-
+  - /iossdkref/Classes/PBBitmap.html
+  - /docs/pebblekit-ios/Classes/PBBitmap/
+-
+  - /iossdkref/Classes/PBFirmwareMetadata.html
+  - /docs/pebblekit-ios/Classes/PBFirmwareMetadata/
+-
+  - /iossdkref/Classes/PBFirmwareVersion.html
+  - /docs/pebblekit-ios/Classes/PBFirmwareVersion/
+-
+  - /iossdkref/Classes/PBPebbleCentral.html
+  - /docs/pebblekit-ios/Classes/PBPebbleCentral/
+-
+  - /iossdkref/Classes/PBResourceMetadata.html
+  - /docs/pebblekit-ios/Classes/PBResourceMetadata/
+-
+  - /iossdkref/Classes/PBSportsUpdate.html
+  - /docs/pebblekit-ios/Classes/PBSportsUpdate/
+-
+  - /iossdkref/Classes/PBVersionInfo.html
+  - /docs/pebblekit-ios/Classes/PBVersionInfo/
+-
+  - /iossdkref/Classes/PBWatch.html
+  - /docs/pebblekit-ios/Classes/PBWatch/
+-
+  - /iossdkref/hierarchy.html
+  - /docs/pebblekit-ios/hierarchy/
+-
+  - /iossdkref/index.html
+  - /docs/pebblekit-ios/
+-
+  - /iossdkref/Protocols/PBPebbleCentralDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBPebbleCentralDelegate/
+-
+  - /iossdkref/Protocols/PBWatchDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBWatchDelegate/
+-
+  - /pennapps/index.html
+  - /blog/2014/03/20/pebble-goes-to-pennapps/
+-
+  - /sdkref/_a_p_i_changelog.html
+  - /docs/c/
+-
+  - /sdkref/annotated.html
+  - /docs/c/
+-
+  - /sdkref/classes.html
+  - /docs/c/
+-
+  - /sdkref/deprecated.html
+  - /docs/c/
+-
+  - /sdkref/dir_12afb154e95f5ba9bfd17ab65812e041.html
+  - /docs/c/
+-
+  - /sdkref/dir_15848a8d8d88d7953349a1e66f00cc04.html
+  - /docs/c/
+-
+  - /sdkref/dir_195aa4215760a77c8f43641b003b8f9c.html
+  - /docs/c/
+-
+  - /sdkref/dir_1e13eb70021b1d47a39bb763c978d2ce.html
+  - /docs/c/
+-
+  - /sdkref/dir_216c439117919bd6d1adc992c7f3b723.html
+  - /docs/c/
+-
+  - /sdkref/dir_243a4ba6b4f893d71afbb5a3e90552fa.html
+  - /docs/c/
+-
+  - /sdkref/dir_27fab2247fd80ac2fd263abffd8e1ad2.html
+  - /docs/c/
+-
+  - /sdkref/dir_2cdcb59b0cca3e640f5c28bb8465114a.html
+  - /docs/c/
+-
+  - /sdkref/dir_4fc88152649b3a7b0043869ddaf105b0.html
+  - /docs/c/
+-
+  - /sdkref/dir_63fecb0f73dd89b61c12f9cdbcf5ac7b.html
+  - /docs/c/
+-
+  - /sdkref/dir_68267d1309a1af8e8297ef4c3efbcdba.html
+  - /docs/c/
+-
+  - /sdkref/dir_9ba741889d9ec19694f6ba9fcf5ef84a.html
+  - /docs/c/
+-
+  - /sdkref/dir_aebb8dcc11953d78e620bbef0b9e2183.html
+  - /docs/c/
+-
+  - /sdkref/dir_c606c3a6e71085b9c99fda67e11b8127.html
+  - /docs/c/
+-
+  - /sdkref/dir_d1b33b83e9183a627b5a5eb67373ce17.html
+  - /docs/c/
+-
+  - /sdkref/dir_e322425b022fc9be25271df294647aa3.html
+  - /docs/c/
+-
+  - /sdkref/dir_f2f479b6cf6f4b2ff244ee0a1c5fadbb.html
+  - /docs/c/
+-
+  - /sdkref/functions_vars.html
+  - /docs/c/
+-
+  - /sdkref/functions.html
+  - /docs/c/
+-
+  - /sdkref/group___action_bar_layer.html
+  - /docs/c/group___action_bar_layer.html
+-
+  - /sdkref/group___animation.html
+  - /docs/c/group___animation.html
+-
+  - /sdkref/group___app_comm.html
+  - /docs/c/group___app_comm.html
+-
+  - /sdkref/group___app_message.html
+  - /docs/c/group___app_message.html
+-
+  - /sdkref/group___app_sync.html
+  - /docs/c/group___app_sync.html
+-
+  - /sdkref/group___app.html
+  - /docs/c/group___app.html
+-
+  - /sdkref/group___bitmap_layer.html
+  - /docs/c/group___bitmap_layer.html
+-
+  - /sdkref/group___clicks.html
+  - /docs/c/group___clicks.html
+-
+  - /sdkref/group___dictionary.html
+  - /docs/c/group___dictionary.html
+-
+  - /sdkref/group___drawing.html
+  - /docs/c/group___drawing.html
+-
+  - /sdkref/group___fonts.html
+  - /docs/c/group___fonts.html
+-
+  - /sdkref/group___foundation.html
+  - /docs/c/group___foundation.html
+-
+  - /sdkref/group___graphics_context.html
+  - /docs/c/group___graphics_context.html
+-
+  - /sdkref/group___graphics_types.html
+  - /docs/c/group___graphics_types.html
+-
+  - /sdkref/group___graphics.html
+  - /docs/c/group___graphics.html
+-
+  - /sdkref/group___inverter_layer.html
+  - /docs/c/group___inverter_layer.html
+-
+  - /sdkref/group___layer.html
+  - /docs/c/group___layer.html
+-
+  - /sdkref/group___light.html
+  - /docs/c/group___light.html
+-
+  - /sdkref/group___logging.html
+  - /docs/c/group___logging.html
+-
+  - /sdkref/group___math.html
+  - /docs/c/group___math.html
+-
+  - /sdkref/group___media_utils.html
+  - /docs/c/
+-
+  - /sdkref/group___menu_layer.html
+  - /docs/c/group___menu_layer.html
+-
+  - /sdkref/group___number_window.html
+  - /docs/c/group___number_window.html
+-
+  - /sdkref/group___path_drawing.html
+  - /docs/c/group___path_drawing.html
+-
+  - /sdkref/group___property_animation.html
+  - /docs/c/group___property_animation.html
+-
+  - /sdkref/group___resources.html
+  - /docs/c/group___resources.html
+-
+  - /sdkref/group___scroll_layer.html
+  - /docs/c/group___scroll_layer.html
+-
+  - /sdkref/group___simple_menu_layer.html
+  - /docs/c/group___simple_menu_layer.html
+-
+  - /sdkref/group___standard_c.html
+  - /docs/c/group___standard_c.html
+-
+  - /sdkref/group___standard_i_o.html
+  - /docs/c/group___standard_i_o.html
+-
+  - /sdkref/group___standard_math.html
+  - /docs/c/group___standard_math.html
+-
+  - /sdkref/group___standard_memory.html
+  - /docs/c/group___standard_memory.html
+-
+  - /sdkref/group___standard_string.html
+  - /docs/c/group___standard_string.html
+-
+  - /sdkref/group___standard_time.html
+  - /docs/c/group___standard_time.html
+-
+  - /sdkref/group___text_drawing.html
+  - /docs/c/group___text_drawing.html
+-
+  - /sdkref/group___text_layer.html
+  - /docs/c/group___text_layer.html
+-
+  - /sdkref/group___timer.html
+  - /docs/c/group___timer.html
+-
+  - /sdkref/group___u_i.html
+  - /docs/c/group___u_i.html
+-
+  - /sdkref/group___vibes.html
+  - /docs/c/group___vibes.html
+-
+  - /sdkref/group___wall_time.html
+  - /docs/c/group___wall_time.html
+-
+  - /sdkref/group___window_stack.html
+  - /docs/c/group___window_stack.html
+-
+  - /sdkref/group___window.html
+  - /docs/c/group___window.html
+-
+  - /sdkref/index.html
+  - /docs/c/
+-
+  - /sdkref/modules.html
+  - /docs/c/
+-
+  - /sdkref/pages.html
+  - /docs/c/
+-
+  - /sdkref/search/all_61.html
+  - /docs/c/
+-
+  - /sdkref/search/all_62.html
+  - /docs/c/
+-
+  - /sdkref/search/all_63.html
+  - /docs/c/
+-
+  - /sdkref/search/all_64.html
+  - /docs/c/
+-
+  - /sdkref/search/all_65.html
+  - /docs/c/
+-
+  - /sdkref/search/all_66.html
+  - /docs/c/
+-
+  - /sdkref/search/all_67.html
+  - /docs/c/
+-
+  - /sdkref/search/all_68.html
+  - /docs/c/
+-
+  - /sdkref/search/all_69.html
+  - /docs/c/
+-
+  - /sdkref/search/all_6b.html
+  - /docs/c/
+-
+  - /sdkref/search/all_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/all_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/all_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/all_6f.html
+  - /docs/c/
+-
+  - /sdkref/search/all_70.html
+  - /docs/c/
+-
+  - /sdkref/search/all_72.html
+  - /docs/c/
+-
+  - /sdkref/search/all_73.html
+  - /docs/c/
+-
+  - /sdkref/search/all_74.html
+  - /docs/c/
+-
+  - /sdkref/search/all_75.html
+  - /docs/c/
+-
+  - /sdkref/search/all_76.html
+  - /docs/c/
+-
+  - /sdkref/search/all_77.html
+  - /docs/c/
+-
+  - /sdkref/search/all_78.html
+  - /docs/c/
+-
+  - /sdkref/search/all_79.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_61.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_62.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_63.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_64.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_67.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_68.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_69.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_70.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_72.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_73.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_74.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_76.html
+  - /docs/c/
+-
+  - /sdkref/search/classes_77.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_61.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_62.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_64.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_67.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_70.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_73.html
+  - /docs/c/
+-
+  - /sdkref/search/enums_74.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_61.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_62.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_64.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_67.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_68.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_73.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_74.html
+  - /docs/c/
+-
+  - /sdkref/search/enumvalues_79.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_61.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_62.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_63.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_64.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_66.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_67.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_68.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_69.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_70.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_72.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_73.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_74.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_76.html
+  - /docs/c/
+-
+  - /sdkref/search/functions_77.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_61.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_62.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_63.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_64.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_66.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_67.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_69.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_70.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_72.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_73.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_74.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_75.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_76.html
+  - /docs/c/
+-
+  - /sdkref/search/groups_77.html
+  - /docs/c/
+-
+  - /sdkref/search/nomatches.html
+  - /docs/c/
+-
+  - /sdkref/search/pages_61.html
+  - /docs/c/
+-
+  - /sdkref/search/pages_64.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_61.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_63.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_64.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_67.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_69.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_70.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_72.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_73.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_74.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_75.html
+  - /docs/c/
+-
+  - /sdkref/search/typedefs_77.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_61.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_62.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_63.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_64.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_65.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_67.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_68.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_69.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_6b.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_6c.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_6d.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_6e.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_6f.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_70.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_72.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_73.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_74.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_75.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_76.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_77.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_78.html
+  - /docs/c/
+-
+  - /sdkref/search/variables_79.html
+  - /docs/c/
+-
+  - /sdkref/struct_app_message_callbacks.html
+  - /docs/c/group___app_message.html
+-
+  - /sdkref/struct_progress_layer.html
+  - /docs/c/
+-
+  - /sdkref/struct_rot_bmp_pair_layer.html
+  - /docs/c/group___rot_bitmap_layer.html
+-
+  - /guides/pebble-apps/display-and-animations/resources/index.html
+  - /guides/pebble-apps/resources/
+-
+  - /blog/archive/index.html
+  - /blog/
+-
+ - /guides/js-apps/pebblekit-js/index.html
+ - /guides/pebble-apps/pebblekit-js/
+-
+ - /guides/js-apps/pebblekit-js/adding-js/index.html
+ - /guides/pebble-apps/pebblekit-js/adding-js/
+-
+ - /guides/js-apps/pebblekit-js/js-app-comm/index.html
+ - /guides/pebble-apps/pebblekit-js/js-app-comm/
+-
+ - /guides/js-apps/pebblekit-js/js-capabilities/index.html
+ - /guides/pebble-apps/pebblekit-js/js-capabilities/
+-
+ - /guides/js-apps/pebblekit-js/app-configuration/index.html
+ - /guides/pebble-apps/pebblekit-js/app-configuration/
+-
+ - /guides/js-apps/pebble-js/index.html
+ - /guides/js-apps/
+-
+ - /guides/js-apps/pebble-js/js-ui/index.html
+ - /guides/js-apps/js-ui/
+-
+ - /guides/js-apps/pebble-js/js-ajax/index.html
+ - /guides/js-apps/js-ajax/
+-
+ - /guides/js-apps/pebble-js/js-other/index.html
+ - /guides/js-apps/js-other/
+-
+  - /getting-started/index.html
+  - /tutorials/
+-
+  - /getting-started/watchface-tutorial/index.html
+  - /tutorials/watchface-tutorial/part1/
+-
+  - /getting-started/watchface-tutorial/part1/index.html
+  - /tutorials/watchface-tutorial/part1/
+-
+  - /getting-started/watchface-tutorial/part2/index.html
+  - /tutorials/watchface-tutorial/part2/
+-
+  - /getting-started/watchface-tutorial/part3/index.html
+  - /tutorials/watchface-tutorial/part3/
+-
+  - /getting-started/pebble-js-tutorial/index.html
+  - /tutorials/pebble-js-tutorial/part1/
+-
+  - /getting-started/pebble-js-tutorial/part1/index.html
+  - /tutorials/pebble-js-tutorial/part1/
+-
+  - /getting-started/pebble-js-tutorial/part2/index.html
+  - /tutorials/pebble-js-tutorial/part2/
+-
+  - /getting-started/pebble-js-tutorial/part3/index.html
+  - /tutorials/pebble-js-tutorial/part3/
+-
+  - /getting-started/android-tutorial/index.html
+  - /guides/communication/using-pebblekit-android/
+-
+  - /getting-started/android-tutorial/part1/index.html
+  - /guides/communication/using-pebblekit-android/
+-
+  - /getting-started/android-tutorial/part2/index.html
+  - /guides/communication/using-pebblekit-android/
+-
+  - /getting-started/android-tutorial/part3/index.html
+  - /guides/communication/using-pebblekit-android/
+-
+  - /tutorials/android-tutorial/part1/
+  - /guides/communication/using-pebblekit-android/
+-
+  - /tutorials/android-tutorial/part2/
+  - /guides/communication/using-pebblekit-android/
+-
+  - /tutorials/android-tutorial/part3/
+  - /guides/communication/using-pebblekit-android/
+-
+  - /getting-started/ios-tutorial/index.html
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /getting-started/ios-tutorial/part1/index.html
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /getting-started/ios-tutorial/part2/index.html
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /getting-started/ios-tutorial/part3/index.html
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /tutorials/ios-tutorial/part1/
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /tutorials/ios-tutorial/part2/
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /tutorials/ios-tutorial/part3/
+  - /guides/communication/using-pebblekit-ios/
+-
+  - /smartstraps/index.html
+  - /guides/hardware/
+-
+  - /tools/color-picker/index.html
+  - /more/color-picker/
+-
+  - /color-picker/index.html
+  - /more/color-picker/
+-
+  - /sdk/migration-guide/index.html
+  - /guides/migration/migration-guide-3/
+-
+  - /sdk/migration-guide-2/index.html
+  - /guides/migration/migration-guide/
+-
+  - /sdk/whats-new/index.html
+  - /sdk/changelogs/
+-
+ - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-1/index.html
+ - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/
+-
+ - /guides/publishing-tools/pebble-trademark/index.html
+ - /legal/pebble-trademark/
+-
+ - /guides/publishing-tools/whitelisting/index.html
+ - /guides/appstore-publishing/whitelisting/
+-
+ - /guides/pebble-timeline/timeline-enabling/index.html
+ - /guides/pebble-timeline/
+-
+ - /guides/best-practices/battery-perform-guide/index.html
+ - /guides/best-practices/conserving-battery-life/
+-
+ - /guides/best-practices/design/index.html
+ - /guides/design-and-interaction/
+-
+ - /sdk/beta/index.html
+ - /sdk/download/
+-
+ - /guides/pebble-apps/sensors/health/index.html
+ - /guides/events-and-services/health/
+-
+ - /guides/best-practices/multi-platform/index.html
+ - /guides/best-practices/building-for-every-pebble/
+-
+ - /guides/js-apps/index.html
+ - /guides/
+-
+ - /guides/mobile-apps/index.html
+ - /guides/communication/about-pebble-communication/
+-
+ - /guides/mobile-apps/android/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/android/android-advanced/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/android/android-comms/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/android/android-datalogging/index.html
+ - /guides/communication/datalogging/
+-
+ - /guides/mobile-apps/android/android-examples/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/android/android-sports/index.html
+ - /guides/communication/using-the-sports-api/
+-
+ - /guides/mobile-apps/ios/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/ios/ios-comms/index.html
+ - /guides/communication/
+-
+ - /guides/mobile-apps/ios/ios-datalogging/index.html
+ - /guides/communication/datalogging/
+-
+ - /guides/mobile-apps/ios/ios-install/index.html
+ - /guides/communication/using-pebblekit-android-or-ios/
+-
+ - /guides/mobile-apps/ios/ios-sports/index.html
+ - /guides/communication/
+-
+ - /guides/pebble-apps/index.html
+ - /guides/
+-
+ - /guides/pebble-apps/app-events/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-events/app-interruptions/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-events/battery-service/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-events/bluetooth-connection/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-events/tick-timer/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-events/wakeup/index.html
+ - /guides/user-interfaces/events/
+-
+ - /guides/pebble-apps/app-structure/index.html
+ - /guides/user-interfaces/
+-
+ - /guides/pebble-apps/app-structure/clicks/index.html
+ - /guides/events-and-services/buttons/
+-
+ - /guides/pebble-apps/app-structure/persistent-storage/index.html
+ - /guides/user-interfaces/persistent-storage/
+-
+ - /guides/pebble-apps/app-structure/windows/index.html
+ - /guides/user-interfaces/layers/
+-
+ - /guides/pebble-apps/background/index.html
+ - /guides/user-interfaces/background-worker/
+-
+ - /guides/pebble-apps/communications/index.html
+ - /guides/communication/
+-
+ - /guides/pebble-apps/communications/appmessage/index.html
+ - /guides/communication/sending-and-receiving-data/
+-
+ - /guides/pebble-apps/communications/appsync/index.html
+ - /guides/communication/sending-and-receiving-data/
+-
+ - /guides/pebble-apps/communications/pebble-datalogging/index.html
+ - /guides/communication/datalogging/
+-
+ - /guides/pebble-apps/debugging/index.html
+ - /guides/debugging/
+-
+ - /guides/pebble-apps/debugging/runtime-problems/index.html
+ - /guides/debugging/common-runtime-errors/
+-
+ - /guides/pebble-apps/debugging/common-c-problems/index.html
+ - /guides/debugging/common-syntax-errors/
+-
+ - /guides/pebble-apps/debugging/debugging-guide/index.html
+ - /guides/debugging/debugging-with-app-logs/
+-
+ - /guides/pebble-apps/display-and-animations/index.html
+ - /guides/graphics-and-animations/
+-
+ - /guides/pebble-apps/display-and-animations/action-menu/index.html
+ - /guides/user-interfaces/
+-
+ - /guides/pebble-apps/display-and-animations/circular-graphics/index.html
+ - /guides/user-interfaces/creating-round-apps/
+-
+ - /guides/pebble-apps/display-and-animations/composite-animations/index.html
+ - /guides/graphics-and-animations/animations/
+-
+ - /guides/pebble-apps/display-and-animations/drawing/index.html
+ - /guides/graphics-and-animations/drawing-primitives-images-and-text/
+-
+ - /guides/pebble-apps/display-and-animations/intro-to-colors/index.html
+ - /guides/graphics-and-animations/
+-
+ - /guides/pebble-apps/display-and-animations/layers/index.html
+ - /guides/user-interfaces/layers/
+-
+ - /guides/pebble-apps/display-and-animations/property-animations/index.html
+ - /guides/graphics-and-animations/animations/
+-
+ - /guides/pebble-apps/display-and-animations/ux-fonts/index.html
+ - /guides/app-resources/fonts/
+-
+ - /guides/pebble-apps/pebblekit-js/index.html
+ - /guides/communication/using-pebblekit-js/
+-
+ - /guides/pebble-apps/pebblekit-js/adding-js/index.html
+ - /guides/communication/using-pebblekit-js/
+-
+ - /guides/pebble-apps/pebblekit-js/app-configuration/index.html
+ - /guides/user-interfaces/app-configuration/
+-
+ - /guides/pebble-apps/pebblekit-js/js-app-comm/index.html
+ - /guides/communication/using-pebblekit-js/
+-
+ - /guides/pebble-apps/pebblekit-js/js-capabilities/index.html
+ - /guides/communication/using-pebblekit-js/
+-
+ - /guides/pebble-apps/resources/index.html
+ - /guides/app-resources/
+-
+ - /guides/pebble-apps/resources/animated-pngs/index.html
+ - /guides/app-resources/animated-images/
+-
+ - /guides/pebble-apps/resources/font-resources/index.html
+ - /guides/app-resources/fonts/
+-
+ - /guides/pebble-apps/resources/image-resources/index.html
+ - /guides/app-resources/images/
+-
+ - /guides/pebble-apps/resources/raw-resources/index.html
+ - /guides/app-resources/raw-data-files/
+-
+ - /guides/pebble-apps/sensors/index.html
+ - /guides/events-and-services/
+-
+ - /guides/pebble-apps/sensors/accelerometer/index.html
+ - /guides/events-and-services/accelerometer/
+-
+ - /guides/pebble-apps/sensors/dictation/index.html
+ - /guides/events-and-services/dictation/
+-
+ - /guides/pebble-apps/sensors/magnetometer/index.html
+ - /guides/events-and-services/compass/
+-
+ - /guides/hardware/index.html
+ - /guides/smartstraps/
+-
+ - /guides/hardware/smartstrap-hardware/index.html
+ - /guides/smartstraps/smartstrap-hardware/
+-
+ - /guides/hardware/smartstrap-protocol/index.html
+ - /guides/smartstraps/smartstrap-protocol/
+-
+ - /guides/hardware/talking-to-pebble/index.html
+ - /guides/smartstraps/takling-to-pebble/
+-
+ - /guides/hardware/talking-to-smartstraps/index.html
+ - /guides/smartstraps/takling-to-smartstraps/
+-
+ - /guides/timeline/index.html
+ - /guides/pebble-timeline/
+-
+ - /guides/timeline/pin-structure/index.html
+ - /guides/pebble-timeline/pin-structure/
+-
+ - /guides/timeline/timeline-architecture/index.html
+ - /guides/pebble-timeline/timeline-architecture/
+-
+ - /guides/timeline/timeline-enabling/index.html
+ - /guides/pebble-timeline/timeline-enabling/
+-
+ - /guides/timeline/timeline-js/index.html
+ - /guides/pebble-timeline/timeline-js/
+-
+ - /guides/timeline/timeline-libraries/index.html
+ - /guides/pebble-timeline/timeline-libraries/
+-
+ - /guides/timeline/timeline-public/index.html
+ - /guides/pebble-timeline/timeline-public/
+-
+ - /guides/publishing-tools/index.html
+ - /guides/
+-
+ - /guides/publishing-tools/cloudpebble-ui-editor/index.html
+ - /guides/tools-and-resources/cloudpebble/
+-
+ - /guides/publishing-tools/developer-connection/index.html
+ - /guides/tools-and-resources/developer-connection/
+-
+ - /guides/publishing-tools/i18n-guide/index.html
+ - /guides/tools-and-resources/internationalization/
+-
+ - /guides/publishing-tools/pebble-tool/index.html
+ - /guides/tools-and-resources/pebble-tool/
+-
+ - /guides/publishing-tools/pebble-trademark/index.html
+ - /guides/publishing-tools/
+-
+ - /guides/publishing-tools/publish-to-pebble-appstore/index.html
+ - /guides/appstore-publishing/
+-
+ - /guides/publishing-tools/publishing-faq/index.html
+ - /guides/appstore-publishing/
+-
+ - /guides/publishing-tools/screenshots/index.html
+ - /guides/appstore-publishing/
+-
+ - /guides/publishing-tools/whitelisting/index.html
+ - /guides/appstore-publishing/
+-
+ - /guides/publishing-tools/pebble-trademark/index.html
+ - /legal/pebble-trademark/
+-
+ - /guides/publishing-tools/whitelisting/index.html
+ - /guides/appstore-publishing/whitelisting/
+-
+ - /more/color-picker/index.html
+ - /guides/tools-and-resources/color-picker/
+-
+ - /guides/pebble-apps/app-structure/app-metadata/index.html
+ - /guides/tools-and-resources/app-metadata/
+-
+ - /guides/user-interfaces/events/index.html
+ - /guides/events-and-services/events/
+-
+ - /guides/graphics-and-animations/converting-svg-to-pdc/index.html
+ - /guides/app-resources/converting-svg-to-pdc/
+-
+ - /docs/pebblejs/index.html
+ - http://pebble.github.io/pebblejs/
+-
+ - /sdk/round-getting-started/index.html
+ - /round/getting-started/index.html
+-
+ - /docs/c/preview/User_Interface/Layer
+ - /docs/c/User_Interface/Layer
+-
+ - /docs/pebblekit-ios/Classes/Protocols/PBDataLoggingServiceDelegate.html
+ - /docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/
+-
+ - /docs/pebblekit-ios/Classes/Classes/PBFirmwareVersion.html
+ - /docs/pebblekit-ios/Classes/PBFirmwareVersion/
+-
+ - /docs/pebblekit-ios/Protocols/Classes/PBWatch.html
+ - /docs/pebblekit-ios/Classes/PBWatch/
+-
+ - /docs/pebblekit-ios/Classes/Protocols/PBWatchDelegate.html
+ - /docs/pebblekit-ios/Protocols/PBWatchDelegate/
+-
+ - /docs/pebblekit-ios/Classes/Classes/PBVersionInfo.html
+ - /docs/pebblekit-ios/Classes/PBVersionInfo/
+-
+ - /docs/pebblekit-ios/Classes/Classes/PBPebbleCentral.html
+ - /docs/pebblekit-ios/Classes/PBPebbleCentral/
+-
+ - /sdk/migration/migration-guide-3
+ - /guides/migration/migration-guide-3/
+-
+ - /guides/pebble-imeline/pin-structure
+ - /guides/pebble-timeline/pin-structure/

@@ -1,0 +1,188 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.bigbox {
+  text-align: center;
+  padding: 2em;
+  overflow: hidden;
+  position: relative;
+
+  p {
+    font-size: 1.2 * $base-font-size;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+
+    a {
+      color: $base-font-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .btn {
+    margin-top: 1em;
+  }
+
+  .vcenter,
+  .vcenter--wrapper {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.bigbox--half {
+  height: 50%;
+}
+
+.bigbox--third {
+  height: 33.33%;
+}
+
+.bigbox--lightblue {
+  background-color: $lightblue;
+  color: $white;
+}
+
+.bigbox--blue {
+  background-color: $bigbox--blue;
+  color: $white;
+}
+
+.bigbox--dark-blue {
+  background-color: $bigbox--blue;
+  color: $white;
+}
+
+.bigbox--green {
+  background-color: $bigbox--green;
+  color: $white;
+}
+
+.bigbox--dark-green {
+  background-color: $bigbox--darkgreen;
+  color: $white;
+}
+
+.bigbox--orange {
+  background-color: $orange;
+  color: $white;
+}
+
+.bigbox--red {
+  background-color: $red;
+  color: $white;
+}
+
+.bigbox--dark-red {
+  background-color: $dark-red;
+  color: $white;
+}
+
+.bigbox--lightgray {
+  background-color: $gray-04;
+}
+
+.bigbox--gray {
+  background-color: $gray-05;
+}
+
+.bigbox--darkgray {
+  background-color: $gray-02;
+  color: $white;
+}
+
+
+.bigbox--meetups--map {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.bigbox--android {
+  color: $white;
+  background-color: $android-green;
+
+  i {
+    font-size: 6em;
+    padding-bottom: 20px;
+  }
+}
+
+
+.bigbox--ios {
+  color: $black;
+  background-color: $white;
+
+  i {
+    font-size: 6em;
+    padding-bottom: 20px;
+  }
+}
+
+.bigbox__banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $green;
+  color: $white;
+  padding: 0.50rem;
+
+  &:hover {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+.bigbox--has-banner {
+  padding-top: 2.5em;
+}
+
+.bigbox__highlight {
+  &:hover {
+    -webkit-filter: brightness(110%);
+  }
+}
+
+.bigbox__guides-beautiful {
+  background-color: $blue;
+  color: $breakfast-room-white;
+  background-image: url('/assets/images/landing-page/first_time_bg.png');
+}
+
+.bigbox__guides-building {
+  background-color: $gray-02;
+  color: $breakfast-room-white;
+  background-image: url('/assets/images/landing-page/back_for_more_bg.png');
+}
+
+.bigbox__guides-publishing {
+  background-color: $blue;
+  color: $breakfast-room-white;
+  background-image: url('/assets/images/landing-page/meta_bg.png');
+}
+
+.bigbox__guides-interactive {
+  background-color: $gray-02;
+  color: $breakfast-room-white;
+  background-image: url('/assets/images/landing-page/interactive_bg.png');
+}

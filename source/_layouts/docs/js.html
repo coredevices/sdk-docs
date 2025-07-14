@@ -1,0 +1,131 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: docs
+---
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          {% include docs/shared/select-list.html title="Methods" anchor="methods" items=page.js_module.processed_functions %}
+          {% include docs/shared/select-list.html title="Members" anchor="members" items=page.js_module.processed_members %}
+          {% include docs/shared/select-list.html title="Typedefs" anchor="typedefs" items=page.js_module.processed_typedefs %}
+
+          {% include docs/js/examples.html title="Examples" %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__js">
+
+      {% include docs/js/warning.html %}
+
+      <h1 class="pagetitle">{{ page.js_module.name }}</h1>
+
+      {% include docs/js/desc.html desc=page.js_module.description %}
+
+      {% if page.js_module.processed_functions.size > 0 %}
+        <h3 class="anchor" id="methods">Methods</h3>
+        {% for child in page.js_module.processed_functions %}
+          <div class="docs__item__anchor" id="{{ child.name }}">
+            <div class="docs__item docs__item--function">
+              {% include docs/js/function.html child=child %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.js_module.processed_members.size > 0 %}
+        <h3 class="anchor" id="members">Members</h3>
+        {% for child in page.js_module.processed_members %}
+          <div class="docs__item__anchor" id="{{ child.name }}">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                {{ page.js_module.name }}.<span class="docs__item__name">{{ child.name }}</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                {% include docs/js/desc.html desc=child.description %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if page.js_module.processed_typedefs.size > 0 %}
+        <h3 class="anchor" id="typedefs">Typedefs</h3>
+        {% for child in page.js_module.processed_typedefs %}
+          <div class="docs__item__anchor" id="{{ child.name }}">
+            <div class="docs__item docs__item--typedef">
+              {% if child.type.name == "Object" %}
+                <div class="docs__item__header">
+                  <span class="docs__item__name">{{ child.name }}</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="docs__item__body">
+                  {% include docs/js/desc.html desc=child.description %}
+                  {% if child.properties.size > 0 %}
+                  <h4>Properties</h4>
+                  <dl>
+                    {% for prop in child.properties %}
+                    <dt><span style="color: #777">{{ prop.type.names | first | escape }}</span> {{ prop.name }}</dt>
+                    {% include docs/js/desc.html desc=prop.description %}
+                    {% endfor %}
+                  </dl>
+                  {% endif %}
+                </div>
+              {% elsif child.type.name == "Function" %}
+                {% include docs/js/function.html child=child %}
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      {% include docs/shared/graybox-list.html title="Methods" anchor="methods" items=page.js_module.processed_functions %}
+      {% include docs/shared/graybox-list.html title="Members" anchor="members" items=page.js_module.processed_members %}
+      {% include docs/shared/graybox-list.html title="Typedefs" anchor="typedefs" items=page.js_module.processed_typedefs %}
+
+      {% include docs/js/examples.html title="Examples" %}
+      {% include docs/js/mozilla.html %}
+    </div>
+  </div>
+</div>
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you need some help understanding the something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>

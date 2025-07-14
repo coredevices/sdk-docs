@@ -1,0 +1,134 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+upcoming:
+  - date: November 7-8th
+    month: November 2014
+    name: Toyota Hackathon in Redwood City, CA
+    url: http://www.eventbrite.com/e/toyota-itc-connected-vehicle-hackathon-tickets-13303967525?aff=zvents
+    items:
+      - "Up to 5 Pebbles as prize for team with: Best use of Pebble API"
+      - $50 refurbished Pebbles for developers to purchase
+      - Mentors on-site throughout the event
+
+  - date: November 7-9th
+    month: November 2014
+    name: HackATL in Atlanta, GA
+    url: http://hackatl.org/
+    items:
+      - Up to 10 Pebbles given to those who make Pebble hacks!
+      - Limited loaner Pebbles available at the event to develop on
+
+  - date: November 8-9th
+    month: November 2014
+    name: UnituHack in London, England
+    url: http://unituhack.com
+    items:
+      - "Up to 5 Pebbles as prize for team with: Best use of Pebble API"
+      - Limited loaner Pebbles available at the event to develop on
+      - $50 refurbished Pebbles for developers to purchase
+      - Mentors on-site throughout the event
+
+  - date: November 15-16th
+    month: November 2014
+    name: Hack Shanghai in Shanghai, China
+    url: http://www.hackshanghai.com/
+    items:
+      - "5 Pebbles as prize for team with: Best use of Pebble API"
+      - 11 Pebbles as prize for various prize tiers
+
+past:
+  - date: October 11-12th
+    month: October 2014
+    name: HackRU in New Brunswick, NJ
+    url: http://www.hackru.org/
+    items:
+      - "Mystery # of Pebbles for team with: Best use of Pebble API"
+      - $75 refurbished Pebbles for developers to purchase
+      - Loaner Pebbles available through the MLH Hardware Lab at the event
+      - Pebble API Workshop
+      - Mentors on-site throughout the event
+      - T-shirts, stickers, other swag
+
+  - date: October 17-19th
+    month: October 2014
+    name: BoilerMake in West Lafayette, IN
+    url: http://www.boilermake.org/
+    items:
+      - "Up to 4 Pebble Steels as prize for team with: Best use of Pebble API"
+      - $4500 in Pebbles as various prizes
+      - $50 refurbished Pebbles for developers to purchase
+      - $80 new Pebbles for purchase
+      - Loaner Pebbles available through the MLH Hardware Lab at the event
+      - 30 min Pebble API Workshop
+      - Mentors on-site throughout the event
+      - Stickers at table
+
+  - date: October 17-18th
+    month: October 2014
+    name: DubHacks in Seattle, WA
+    url: http://dubhacks.co/
+    items:
+      - 5 Pebbles as a prize
+      - Loaner Pebbles available through the MLH Hardware Lab at the event
+      - Remote Pebble support
+
+  - date: October 19-21st
+    month: October 2014
+    name: Modev Wearables + Things in Washington, DC
+    url: http://wnt2014.gomodev.com/
+    items:
+      - Hackathon + Conference presence
+      - 10 Pebbles as prize at hackathon
+      - $50 refurbished Pebbles for developers to purchase
+      - 30 min Pebble API Workshop on Oct 20th
+      - Mentor on-site throughout the event
+
+  - date: October 20-21st
+    month: October 2014
+    name: Internet of Things Conference in San Francisco, CA
+    url: http://iotaconf.com/index.html
+    items:
+      - $80 new Pebbles (all colors) for sale
+      - $180 gift box Pebble Steels (black/steel) for sale
+      - 30 min presentation on advanced graphics
+      - Stickers and other swag available
+      - Team Pebble on site to answer questions
+
+  - date: October 25-26th
+    month: October 2014
+    name: TeenHacks in Fullerton, CA
+    url: http://teenhacks.org/
+    items:
+      - 4 Pebbles as a prize
+      - Remote Pebble support
+      - Stickers available
+
+  - date: October 30th
+    month: October 2014
+    name: The Perfect Trip DevCon 2014 in San Francisco, CA
+    url: https://developer.concur.com/devcon/PerfectTripFundAwards
+    items:
+      - 8 Pebbles as a prize
+      - Remote Pebble support
+      - Stickers available
+
+  - date: November 5th
+    month: November 2014
+    name: Toyota Pre-Hack Meetup in Redwood City, CA
+    url: http://www.eventbrite.com/e/nestgsv-connected-vehicle-meetup-tickets-13838032929?aff=NestGSV
+    items:
+      - $50 refurbished Pebbles for developers to purchase
+      - Pebble API Demo
+      - Mentors on-site throughout the event

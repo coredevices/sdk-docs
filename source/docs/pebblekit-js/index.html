@@ -1,0 +1,77 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+permalink: /feed.xml
+layout: docs
+title: PebbleKit JavaScript Documentation
+docs_language: pebblekit_js
+---
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__js">
+      <h1 class="pagetitle">{{ page.title }}</h1>
+
+      <p>
+        PebbleKit JS is a JavaScript component of the Pebble SDK which runs 
+        within the Pebble mobile application. It provides access to GPS, 
+        storage and Internet connectivity to applications running on Pebble 
+        smartwatches. 
+      </p>
+
+      <div class="alert alert--large alert--fg-white alert--bg-dark-red">
+        This does not relate to JavaScript running on the watch. For embedded   
+        JavaScript see <a href="/docs/rockyjs/">Rocky.js</a>.
+      </div>
+
+      <p>
+        The PebbleKit JS API is provided via the `Pebble` namespace:
+      </p>
+      <hr>
+
+      {% for module in site.data.docs_tree.pebblekit_js %}
+        {% if module['kind'] == "member" or module['kind'] == "namespace" %}
+        <div class="docs__module">
+          <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
+          <p>{{ module.summary | markdownify }}</p>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <hr>
+
+      <p>PebbleKit JS also provides access to the following standard JS functionality:</p>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation">Geolocation</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/LocalStorage">LocalStorage</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-l-4">
+    <div class="gray-box">
+      <p>
+        To learn more about how to use this part of the Pebble SDK, check out the
+        {% guide_link communication/using-pebblekit-js "PebbleKit JS guide" %},
+        which also includes links to example apps.
+      </p>
+      <p>
+        You can also view the third part of the
+        <a href="/tutorials/watchface-tutorial/part3/">Create a C Watchface</a>
+        tutorial series for an example JS implementation.
+      </p>
+    </div>
+  </div>
+</div>

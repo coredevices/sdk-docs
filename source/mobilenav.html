@@ -1,0 +1,146 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+---
+<div class="js-mobile-nav">
+  <ul>
+    <li class="mobile-nav--home"><a href="/">Home</a></li>
+    <li class="mobile-nav--tutorials"><a href="/tutorials/">Tutorials</a>
+      <ul>
+        <li><a href="/tutorials/beginner/">Learn C Basics</a>
+          <ul>
+            <li><a href="/tutorials/beginner/primer/">Learning C for the Pebble SDK</a></li>
+            <li><a href="/tutorials/beginner/simple-c-program/">A Simple C Program</a></li>
+            <li><a href="/tutorials/beginner/hello-pebble/">Hello, Pebble!</a></li>
+            <li><a href="/tutorials/beginner/more-c/">More C Concepts</a></li>
+          </ul>
+        </li>
+        <li><a href="/tutorials/watchface-tutorial/part1/">Create a C Watchface</a>
+          <ul>
+            <li><a href="/tutorials/watchface-tutorial/part1/">Build Your Own Watchface</a></li>
+            <li><a href="/tutorials/watchface-tutorial/part2/">Customize Your Watchface</a></li>
+            <li><a href="/tutorials/watchface-tutorial/part3/">Adding Content From The Web</a></li>
+          </ul>
+        </li>
+        <li><a href="/tutorials/pebble-js-tutorial/part1/">Create a JS Watchapp</a>
+          <ul>
+            <li><a href="/tutorials/pebble-js-tutorial/part1/">Build A Watchapp with Pebble.js</a></li>
+            <li><a href="/tutorials/pebble-js-tutorial/part2/">Expanded Weather Forecasts</a></li>
+            <li><a href="/tutorials/pebble-js-tutorial/part3/">Adding More Details</a></li>
+          </ul>
+        </li>
+        <li><a href="/tutorials/intermediate/">Add More Features</a>
+          <ul>
+            <li><a href="/tutorials/intermediate/add-date/">Add a Date View</a></li>
+            <li><a href="/tutorials/intermediate/add-date/">Add a Battery Meter</a></li>
+            <li><a href="/tutorials/intermediate/add-date/">Add Connection Alerts</a></li>
+          </ul>
+        </li>
+        <li><a href="/tutorials/advanced/">Go Beyond</a>
+          <ul>
+            <li><a href="/tutorials/advanced/vector-animations/">Vector Animations</a></li>
+          </ul>
+        </li>
+        <li><a href="/tutorials/android-tutorial/">PebbleKit Android Tutorial</a>
+          <ul>
+            <li><a href="/tutorials/android-tutorial/part1/">Integrating with Android</a></li>
+            <li><a href="/tutorials/android-tutorial/part2/">Controlling Apps From Pebble</a></li>
+            <li><a href="/tutorials/android-tutorial/part3/">Rock, Paper, Scissors with Pebble</a></li>
+          </ul>
+        <li><a href="/tutorials/ios-tutorial">PebbleKit iOS Tutorial</a>
+          <ul>
+            <li><a href="/tutorials/ios-tutorial/part1/">Integrating with iOS</a></li>
+            <li><a href="/tutorials/ios-tutorial/part2/">Controlling Apps From Pebble</a></li>
+            <li><a href="/tutorials/ios-tutorial/part3/">Rock, Paper, Scissors with Pebble</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="mobile-nav--sdk"><a href="/sdk/">Get the SDK</a></li>
+    <li class="mobile-nav--guides"><a href="/guides/">Guides</a>
+      <!-- layouts/guides/master -->
+      <ul>
+        {% for group in site.data.guides %}
+          {% assign grp_name = group[0] %}
+          {% assign grp = group[1] %}
+          <li data-page="{{ page.url }}">
+            <a href="/guides/{{ grp_name }}/">{{ grp.title }}</a>
+            <ul>
+              {% for sub in grp.subgroups %}
+                {% assign sub_grp_name = sub[0] %}
+                {% assign sub_grp = sub[1] %}
+                <li>
+                  <a href="/guides/{{ grp_name }}/{{ sub_grp_name }}/">{{ sub_grp.title }}</a>
+                  {% assign sub_docs = sub_grp.guides %}
+                  <ul>
+                    {% for doc in sub_docs %}
+                      {% if doc.menu %}
+                        <li>
+                          <a href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+              {% assign group_docs = grp.guides %}
+              {% for doc in group_docs %}
+                {% if doc.menu %}
+                  <li>
+                    <a href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li class="mobile-nav--docs"><a href="/docs/">Documentation</a>
+      <ul>
+        <li class=""><a href="/docs/c/">Pebble C</a>
+          {% include docs/menu.html tree=site.data.docs_tree.c %}
+        </li>
+        {% if site.data.docs_tree.c_preview %}
+        <li class=""><a href="/docs/c_preview/">Pebble C (preview)</a>
+          {% include docs/menu.html tree=site.data.docs_tree.c_preview %}
+        </li>
+        {% endif %}
+        <li class=""><a href="/docs/rockyjs/">Pebble JavaScript API</a>
+          {% include docs/menu.html tree=site.data.docs_tree.rockyjs %}
+        </li>
+        <li class=""><a href="/docs/pebblekit-js/">PebbleKit JavaScript</a>
+          {% include docs/menu.html tree=site.data.docs_tree.pebblekit-js %}
+        </li>
+        <li class=""><a href="/docs/pebblekit-ios/">PebbleKit iOS</a>
+          {% include docs/menu.html tree=site.data.docs_tree.pebblekit-ios %}
+        </li>
+        <li class=""><a href="/docs/pebblekit-android/">PebbleKit Android</a>
+          {% include docs/menu.html tree=site.data.docs_tree.pebblekit-android %}
+        </li>
+      </ul>
+    </li>
+    <li class="mobile-nav--examples"><a href="/examples/">Examples</a></li>
+    <li class="mobile-nav--blog"><a href="/blog/">Blog</a></li>
+    <li class="mobile-nav--more"><a href="/more/">More</a>
+      <!-- layouts/more -->
+      <ul>
+        <li><a href="{{ site.links.examples_org }}" target="_blank">Examples</a></li>
+        <li><a href="/inspiration">App Inspiration</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/build/">Build Tools</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

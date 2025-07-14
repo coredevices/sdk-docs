@@ -1,0 +1,85 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+layout: default
+menu_section: examples
+scripts:
+  - examples
+---
+<div class="container">
+  <div class="col-m-8">
+    <div class="row js-no-examples" style="display: none;">
+      <div class="alert alert--large alert--fg-white alert--bg-orange">
+        <p>There are no examples that match the filters on the right.</p>
+      </div>
+    </div>
+    {% assign examples = site.data.examples | sort: 'featured' %}
+    {% for example in examples reversed %}
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="{{ example.tags | join: '|' }}"  data-languages="{{ example.languages | join: '|' }}"  data-hardware-platforms="{{ example.hardware_platforms | join: '|' }}">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          {% if example.screenshot_platform == 'chalk' %}
+          <img src="{{ example.screenshot | assetify }}" class="pebble-screenshot pebble-screenshot--time-round-silver-20 pebble-screenshot--smaller">
+          {% elsif example.screenshot_platform == 'basalt' %}
+          <img src="{{ example.screenshot | assetify }}" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          {% else %}
+          <img src="{{ example.screenshot | assetify }}" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          {% endif %}
+        </div>
+        <div>
+          <h2>{{ example.title }}</h2>
+          <div class="example__meta">
+            {% for tag in example.tags %}{{ tag }}{% unless forloop.last %} &middot; {% endunless %}{% endfor %}
+          </div>
+          {{ example.description | markdownify }}
+          <p>
+            <a href="https://github.com/{{ example.repo }}/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            {% unless example.no_cloudpebble %}
+              {% if example.beta_cloudpebble %}
+              <a href="{{ site.links.cloudpebble_beta }}ide/import/github/{{ example.repo }}/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              {% else %}
+            <a href="{{ site.links.cloudpebble }}ide/import/github/{{ example.repo }}/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              {% endif %}
+            {% endunless %}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="col-m-4">
+    <div class="gray-box gray-box--fixed">
+      <div class="examples__filters" data-filter-type="languages">
+        <h3>Language</h3>
+        {% assign languages = site.data.examples_metadata.languages | hash_sort: 'count' %}
+        {% for language in languages reversed %}
+        <a href="#{{ language | first }}" class="examples__tag js-examples-tag">{{ language | first }}</a>
+        {% endfor %}
+      </div>
+      <div class="examples__filters" data-filter-type="hardware-platforms">
+        <h3>Hardware Platform</h3>
+        {% assign hardware_platforms = site.data.examples_metadata.hardware_platforms | hash_sort: 'count' %}
+        {% for hw in hardware_platforms reversed %}
+        <a href="#{{ hw | first }}" class="examples__tag js-examples-tag">{{ hw | first }}</a>
+        {% endfor %}
+      </div>
+      <div class="examples__filters" data-filter-type="tags">
+        <h3>Tags</h3>
+        {% assign tags = site.data.examples_metadata.tags | hash_sort: 'count' %}
+        {% for tag in tags reversed %}
+        <a href="#{{ tag | first }}" class="examples__tag js-examples-tag">{{ tag | first }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

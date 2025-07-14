@@ -1,3 +1,11 @@
+# Pebble SDK Documentation
+
+### Build and Run
+```shell
+podman build -t sdk-docs .
+podman run -p 4000:4000 -v $(pwd):/app sdk-docs
+```
+
 # [developer.pebble.com][site]
 
 [![Build Status](https://magnum.travis-ci.com/pebble/developer.getpebble.com.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]

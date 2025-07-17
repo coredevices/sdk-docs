@@ -11,6 +11,29 @@ This builds the documentation site by mounting it in Docker. To use it, just run
 serve __public__
 ```
 
+## Building documentation
+
+The project searches for 3 zip files specified in source/_data/docs.yaml: documentation for C, PebbleKit Android, and PebbleKit iOS
+
+### C
+
+In the PebbleOS repo, make a file called Doxyfile-new with the following changes:
+- GENERATE_XML = YES
+- CREATE_SUBDIRS = NO
+
+Then run `doxygen Doxyfile-new`. This creates the folder `build/doxygen` which contains a folder called `xml`. Put that inside a folder called aplite, do `ln -s aplite basalt` (and chalk, diorite), then run:
+`7zz a PebbleSDK-4.3_docs.zip aplite basalt chalk diorite`. That will generate a zip file, which you can serve at the URL specified in .env
+
+### JS
+
+This is generated from the source of `https://github.com/pebble/pebble-android-sdk` which seems to be written using Java 7.
+
+To generate documentation, install Java 8 (it's good to use `jenv`) then run `7zz a pebblekit_android_4.0.1.zip javadoc`
+
+## Deplying the static site
+
+`vercel --archive=tgz`. The --archive flag is needed since the number of generated files exceeds Vercel's limit.
+
 # [developer.pebble.com][site]
 
 [![Build Status](https://magnum.travis-ci.com/pebble/developer.getpebble.com.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]

@@ -14,10 +14,10 @@
 # limitations under the License.
 
 layout: sdk/markdown
-title: Pebble SDK Installation
-permalink: /sdk/download/
+title: Installing the Pebble SDK
+permalink: /sdk/
 menu_section: sdk
-menu_subsection: download
+menu_subsection: install
 generate_toc: true
 scripts:
   - sdk/index

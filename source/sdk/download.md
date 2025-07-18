@@ -60,3 +60,21 @@ uv tool install pebble-tool
 ```
 
 The `pebble` tool allows you to create, build, and install Pebble projects on your watch and an emulator.
+
+## Next Steps
+
+Now that you have the Pebble SDK downloaded and installed on your computer,
+it is time to learn how to write your first app!
+
+You should checkout the [Tutorials](/tutorials/) for a step-by-step look at how
+to write a simple C Pebble application.
+
+### Installation Problems?
+
+If you have any issues with downloading or installing the Pebble SDK, feel free to post your comments in the
+[SDK Installation Help forum][sdk-install-help]. Please provide as many details as you can about the issues
+you may have encountered.
+
+**Tip:** Copying and pasting commands from your Terminal output will help a great deal.
+
+[sdk-install-help]: https://forums.getpebble.com/categories/sdk-install/

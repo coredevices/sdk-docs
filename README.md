@@ -6,10 +6,20 @@ podman build -t sdk-docs .
 podman run -p 4000:4000 -v $(pwd):/app sdk-docs
 ```
 
-This builds the documentation site by mounting it in Docker. To use it, just run:
+This builds the documentation site by mounting it in Docker and serves it on localhost.
+
+### Deploy
+The static site files are in `__public__`. To serve them locally, run:
 ```shell
 serve __public__
 ```
+
+To deploy to Vercel, run:
+```shell
+vercel --archive=tgz
+```
+The --archive flag is needed since the number of generated files exceeds Vercel's limit.
+
 
 ## Building documentation
 
@@ -29,10 +39,6 @@ Then run `doxygen Doxyfile-new`. This creates the folder `build/doxygen` which c
 This is generated from the source of `https://github.com/pebble/pebble-android-sdk` which seems to be written using Java 7.
 
 To generate documentation, install Java 8 (it's good to use `jenv`) then run `7zz a pebblekit_android_4.0.1.zip javadoc`
-
-## Deplying the static site
-
-`vercel --archive=tgz`. The --archive flag is needed since the number of generated files exceeds Vercel's limit.
 
 # [developer.pebble.com][site]
 

@@ -40,7 +40,7 @@ This is generated from the source of `https://github.com/pebble/pebble-android-s
 
 To generate documentation, install Java 8 (it's good to use `jenv`) then run `7zz a pebblekit_android_4.0.1.zip javadoc`
 
-# [developer.pebble.com][site]
+# Old docs
 
 [![Build Status](https://magnum.travis-ci.com/pebble/developer.getpebble.com.svg?token=HUQ9CCUxB447Nq1exrnd)][travis]
 
@@ -218,7 +218,6 @@ the text color, use `--fg-<COLOR>`.
 
 Trouble building the developer site? Read the [Troubleshooting](/docs/troubleshooting.md) page for some possible solutions.
 
-[site]: https://developer.pebble.com
 [markdown]: ./docs/markdown.md
 [slick]: http://kenwheeler.github.io/slick/
 [tinypng]: https://tinypng.com/

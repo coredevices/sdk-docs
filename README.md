@@ -16,7 +16,7 @@ serve __public__
 
 To deploy to Vercel, run:
 ```shell
-vercel --archive=tgz
+vercel --archive=tgz --prod
 ```
 The --archive flag is needed since the number of generated files exceeds Vercel's limit.
 

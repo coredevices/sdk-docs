@@ -27,21 +27,20 @@ scripts:
 
 The Pebble SDK requires some dependencies. Run the command below that corresponds to your operating system.
 
-### Mac OS X
+#### Mac OS X
 
 ```bash
-brew update
 brew install glib
 brew install pixman
 ```
 
-### Linux (Ubuntu)
+#### Linux (Ubuntu)
 
 ```bash
 sudo apt install libsdl1.2debian libfdt1
 ```
 
-### Windows
+#### Windows
 
 The Pebble SDK does not natively support Windows, but you can use WSL. Once you've installed Ubuntu in WSL, run:
 
@@ -71,10 +70,10 @@ to write a simple C Pebble application.
 
 ### Installation Problems?
 
-If you have any issues with downloading or installing the Pebble SDK, feel free to post your comments in the
-[SDK Installation Help forum][sdk-install-help]. Please provide as many details as you can about the issues
+If you have any issues with downloading or installing the Pebble SDK, feel free to post your comments in `#sdk-dev` in the
+[Rebble Discord][rebble-discord]. Please provide as many details as you can about the issues
 you may have encountered.
 
 **Tip:** Copying and pasting commands from your Terminal output will help a great deal.
 
-[sdk-install-help]: https://forums.getpebble.com/categories/sdk-install/
+[rebble-discord]: https://discord.com/invite/aRUAYFN

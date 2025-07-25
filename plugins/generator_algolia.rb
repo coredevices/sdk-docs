@@ -61,6 +61,7 @@ module Jekyll
     def generate_all
       generate_blog_posts
       generate_guides
+      generate_community_resources
       generate_documentation
       generate_none_guide_guides
       generate_other
@@ -108,6 +109,29 @@ module Jekyll
         }
       end.compact
       @indexes['documentation'].save_objects(documents)
+    end
+
+    def generate_community_resources
+      resources = %w(community_tools community_apps community_libraries)
+      documents = []
+      resources.each do | type |
+        return nil if @site.collections[type].nil?
+
+        @site.collections[type].docs.each do | resource |
+          document = {
+            'objectID'   => resource.url,
+            'title'      => resource.data['name'],
+            'url'        => resource.url,
+            'content'    => HTMLEntities.new.decode(resource.get_output),
+            'resourceType'       => type,
+            'type'       => 'community resource',
+            'randomCode' => @random_code
+          }
+          documents << document
+        end
+      end
+
+      @indexes['community-resources'].save_objects(documents)
     end
 
     def generate_blog_posts

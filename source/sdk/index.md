@@ -27,14 +27,14 @@ scripts:
 
 The Pebble SDK requires some dependencies. Run the command below that corresponds to your operating system.
 
-#### Mac OS X
+#### MacOS
 
 ```bash
 brew install glib
 brew install pixman
 ```
 
-#### Linux (Ubuntu)
+#### Ubuntu
 
 ```bash
 sudo apt install libsdl1.2debian libfdt1

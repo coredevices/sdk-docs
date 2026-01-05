@@ -31,19 +31,23 @@ Otherwise, if you are somewhat command-line knowledgeable, you can follow the in
 
 #### MacOS
 
-You'll need Python 3.10 or above, not the MacOS default installation of 3.9. To install a newer version of Python using [Homebrew](https://brew.sh/), run:
+You will need to install Node.js. The easiest way is with [Homebrew](https://brew.sh/):
 
 ```bash
-brew install python
+brew install node
 ```
+
+When you install the Pebble CLI below using `uv`, it will automatically download and use the correct Python version for you - no need to install it manually!
 
 #### Ubuntu
 
-You will need to install a few dependencies to make the SDK run.
+You will need to install a few dependencies to make the SDK run:
 
 ```bash
-sudo apt install python3-pip python3-venv nodejs npm libsdl1.2debian libfdt1
+sudo apt install nodejs npm libsdl1.2debian libfdt1
 ```
+
+When you install the Pebble CLI below using `uv`, it will automatically download and use the correct Python version for you - no need to install Python manually!
 
 > Note: if you already have `node` installed, you can install only:
 
@@ -63,8 +67,10 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), a fast pa
 Then, run:
 
 ```bash
-uv tool install pebble-tool
+uv tool install pebble-tool --python 3.13
 ```
+
+> Note: pebble-tool requires Python 3.10, 3.11, 3.12, or 3.13 (higher than 3.9 and lower than 3.14).
 
 ## Next Steps
 

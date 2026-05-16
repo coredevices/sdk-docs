@@ -1,4 +1,4 @@
-require_relative '../lib/llms_txt_builder.rb'
+require_relative '../lib/llms_export.rb'
 
 # Build per-page .md siblings and a /llms.txt index after Jekyll has rendered
 # every page. A :site, :post_render hook is the only point in the pipeline

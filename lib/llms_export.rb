@@ -26,6 +26,13 @@ module LlmsExport
 
     UNCATEGORIZED_KEY = '_uncategorized'.freeze
 
+    CHROME_SELECTORS = [
+      '.search', '.quicksearch', '#search__blackout',
+      '.gray-box', '#disqus_thread', '.pagetitle',
+      '.hidden-l', '.visible-m', '.visible-s', '.visible-xs',
+      '[role="navigation"]', 'nav', 'script', 'style', 'noscript',
+    ].join(', ').freeze
+
     def initialize(site)
       @site = site
       @base_url = site.config['url'] || ''
@@ -33,7 +40,7 @@ module LlmsExport
       @pages = []
       @section_order = []
       @section_titles = {}
-      @emitted_urls = Set.new
+      @main_nodes = {}
     end
 
     def run
@@ -63,9 +70,9 @@ module LlmsExport
       return true if EXCLUDED_URL_PATTERNS.any? { |pattern| url.match?(pattern) }
       return true unless url == '/' || url.end_with?('/') || url.end_with?('.html')
 
-      output = page.output.to_s
-      return true if output.strip.empty?
-      return true if extract_main_text(output).length < 100
+      return true if page.output.to_s.strip.empty?
+      node = main_node(page)
+      return true if node.nil? || node.text.strip.length < 100
 
       false
     end
@@ -116,10 +123,13 @@ module LlmsExport
     end
 
     def page_to_markdown(page)
-      main_html = extract_main_html(page.output)
-      return nil if main_html.nil? || main_html.strip.empty?
+      node = main_node(page)
+      return nil if node.nil?
+      rewrite_internal_links(node)
+      html = node.inner_html
+      return nil if html.strip.empty?
 
-      body = ReverseMarkdown.convert(main_html, unknown_tags: :bypass, github_flavored: true)
+      body = ReverseMarkdown.convert(html, unknown_tags: :bypass, github_flavored: true)
       body = body.gsub(/\n{3,}/, "\n\n").strip
       return nil if body.empty?
 
@@ -132,25 +142,25 @@ module LlmsExport
       MARKDOWN
     end
 
-    def extract_main_html(output)
+    # The chrome-stripped main content node for a page, memoized so the
+    # exclude check, MD conversion, and description extraction share one
+    # Nokogiri parse instead of three.
+    def main_node(page)
+      key = page.url
+      return @main_nodes[key] if @main_nodes.key?(key)
+      @main_nodes[key] = build_main_node(page.output)
+    end
+
+    def build_main_node(output)
       return nil if output.nil? || output.empty?
       doc = Nokogiri::HTML(output)
       content_node = doc.at_css('.content')
       return nil unless content_node
 
-      chrome_selectors = [
-        '.search', '.quicksearch', '#search__blackout',
-        '.gray-box', '#disqus_thread', '.pagetitle',
-        '.hidden-l', '.visible-m', '.visible-s', '.visible-xs',
-        '[role="navigation"]', 'nav', 'script', 'style', 'noscript',
-      ].join(', ')
-      content_node.css(chrome_selectors).each(&:remove)
-
-      main = content_node.at_css('.col-l-8') ||
-             content_node.at_css('.container') ||
-             content_node
-      rewrite_internal_links(main)
-      main.inner_html
+      content_node.css(CHROME_SELECTORS).each(&:remove)
+      content_node.at_css('.col-l-8') ||
+        content_node.at_css('.container') ||
+        content_node
     end
 
     # Rewrite <a href> values that point to an emitted page so the .md
@@ -221,19 +231,6 @@ module LlmsExport
       end
     end
 
-    def extract_main_text(output)
-      html = extract_main_html(output)
-      return '' if html.nil?
-      Nokogiri::HTML.fragment(html).text.strip
-    end
-
-    def extract_first_paragraph(output)
-      html = extract_main_html(output)
-      return '' if html.nil? || html.empty?
-      paragraph = Nokogiri::HTML.fragment(html).at_css('p')
-      paragraph ? paragraph.text.gsub(/\s+/, ' ').strip : ''
-    end
-
     def extract_title(page)
       explicit = page.data['title'] || page.data['name']
       return explicit if explicit && !explicit.to_s.strip.empty?
@@ -255,8 +252,6 @@ module LlmsExport
       dir = '' if dir == '.'
       @site.static_files << Jekyll::StaticFile.new(@site, @tmp_root, dir, File.basename(rel_path))
     end
-
-    # --- Index assembly (everything below is inferred from page metadata) ---
 
     def emit_index
       buckets = bucket_pages_by_section
@@ -316,8 +311,6 @@ module LlmsExport
       return value if value && value.to_s != '' && value.to_s != 'none'
       section_from_layout_chain(layout.data['layout'], seen)
     end
-
-    # --- Section rendering with inferred sub-grouping ---
 
     def render_section(lines, title, pages)
       lines << ''
@@ -505,7 +498,8 @@ module LlmsExport
       explicit = page.data['description'].to_s.gsub(/\s+/, ' ').strip
       return explicit unless explicit.empty?
 
-      paragraph = extract_first_paragraph(page.output.to_s)
+      node = main_node(page)
+      paragraph = node&.at_css('p')&.text&.gsub(/\s+/, ' ')&.strip.to_s
       return '' if paragraph.empty?
 
       first_sentence = paragraph.split(/(?<=[.!?])\s/).first.to_s.strip

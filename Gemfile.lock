@@ -157,6 +157,8 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.6.1)
     regexp_parser (2.10.0)
+    reverse_markdown (2.1.1)
+      nokogiri
     rexml (3.4.1)
     rouge (4.5.2)
     rspec (3.13.1)
@@ -269,6 +271,7 @@ DEPENDENCIES
   nokogiri (>= 1.6.3.1)
   pygments.rb
   redcarpet
+  reverse_markdown (~> 2.1)
   rspec (>= 3.1.0)
   rubocop (>= 0.28.0)
   rubyzip (>= 1.1.6)

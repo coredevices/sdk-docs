@@ -30,6 +30,7 @@ gem 'uglifier', '>= 2.7.0'
 gem 'googlestaticmap', '>= 1.2.2'
 gem 'pygments.rb'
 gem 'redcarpet'
+gem 'reverse_markdown', '~> 2.1'
 
 group :development, :test do
   gem 'rspec', '>= 3.1.0'

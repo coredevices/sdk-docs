@@ -69,10 +69,10 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/), a fast pa
 Then, run:
 
 ```bash
-uv tool install pebble-tool --python 3.13
+uv tool install pebble-tool
 ```
 
-> Note: pebble-tool requires Python 3.10, 3.11, 3.12, or 3.13 (higher than 3.9 and lower than 3.14).
+> Note: pebble-tool requires Python 3.10 or later.
 
 ## Next Steps
 

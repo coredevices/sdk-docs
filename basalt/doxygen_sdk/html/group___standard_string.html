@@ -151,11 +151,12 @@ $(function(){initNavTree('group___standard_string.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p>Concatenates the string in src to the end of the string pointed by dest and null terminates dest. </p>
-<p>There should be no overlap of dest and src. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Concatenates the string in src to the end of the string pointed by dest, including the null terminator. </p>
+<p>There must be no overlap of dest and src, and dest must have enough space to append src.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dest</td><td>The destination buffer with enough space for src beyond the null character </td></tr>
-    <tr><td class="paramname">src</td><td>The source C string </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination buffer containing a null-terminated string with enough space for src beyond its current null terminator </td></tr>
+    <tr><td class="paramname">src</td><td>The source null-terminated C string </td></tr>
   </table>
   </dd>
 </dl>
@@ -213,11 +214,12 @@ $(function(){initNavTree('group___standard_string.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p>Copies the string in src into dest and null terminates dest. </p>
-<p>There should be no overlap of dest and src in memory. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Copies the string in src into dest, including the null terminator. </p>
+<p>There must be no overlap of dest and src in memory, and dest must have enough space to fit src. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dest</td><td>The destination buffer with enough space for src </td></tr>
-    <tr><td class="paramname">src</td><td>The source C string </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination buffer with enough space for src (including the null terminator) </td></tr>
+    <tr><td class="paramname">src</td><td>The source null-terminated C string </td></tr>
   </table>
   </dd>
 </dl>
@@ -275,11 +277,12 @@ $(function(){initNavTree('group___standard_string.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p>Concatenates up to n bytes from the string in src to the end of the string pointed by dest and null terminates dest. </p>
-<p>There should be no overlap of dest and src in memeory. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Concatenates up to n bytes from the string in src to the end of the string pointed by dest, plus a null terminator. </p>
+<p>There must be no overlap of dest and src in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dest</td><td>The destination buffer with enough space for src beyond the null character </td></tr>
-    <tr><td class="paramname">src</td><td>The source string </td></tr>
+    <tr><td class="paramname">dest</td><td>The destination buffer containing a null-terminated string and with enough space for n + 1 characters beyond its current null terminator </td></tr>
+    <tr><td class="paramname">src</td><td>The source null-terminated string </td></tr>
     <tr><td class="paramname">n</td><td>The maximum number of bytes to copy </td></tr>
   </table>
   </dd>
@@ -349,11 +352,14 @@ $(function(){initNavTree('group___standard_string.html','',''); });
       </table>
 </div><div class="memdoc">
 
-<p>Copies up to n bytes from the string in src into dest and null terminates dest. </p>
-<p>If dest is null terminated before n bytes have been written, null bytes will continue to be written until n bytes total were written. There should be no overlap of dest and src in memory. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Copies up to n bytes from the null-terminated string in src into dest. </p>
+<p>Does not guarantee null termination of dest. </p>
+<p>If src is null terminated before n bytes have been written, null bytes will continue to be written until n bytes total were written. </p>
+<p>There must be no overlap of dest and src in memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dest</td><td>The destination buffer with enough space for n bytes </td></tr>
-    <tr><td class="paramname">src</td><td>The source string </td></tr>
+    <tr><td class="paramname">src</td><td>The source null-terminated string </td></tr>
     <tr><td class="paramname">n</td><td>The number of bytes to copy </td></tr>
   </table>
   </dd>

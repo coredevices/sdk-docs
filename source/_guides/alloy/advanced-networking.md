@@ -42,8 +42,8 @@ Then add the proxy to your `src/pkjs/index.js`:
 
 ```js
 const moddableProxy = require("@moddable/pebbleproxy");
-Pebble.addEventListener('ready', moddableProxy.readyReceived)
-Pebble.addEventListener('appmessage', moddableProxy.appMessageReceived(e));
+Pebble.addEventListener('ready', moddableProxy.readyReceived);
+Pebble.addEventListener('appmessage', moddableProxy.appMessageReceived);
 ```
 
 If your app also needs to handle its own `ready` or `appmessage` events, you can call the proxy functions from your own event handlers:

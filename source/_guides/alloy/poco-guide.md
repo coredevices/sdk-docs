@@ -94,7 +94,7 @@ render.drawRoundRect(10, 10, 100, 50, black, 8);
 render.drawRoundRect(10, 10, 100, 50, black, 8, 0b0011);
 
 // Frame (outline) of rounded rectangle
-render.frameRoundRect(color, x, y, width, height, fillColor);
+render.frameRoundRect(x, y, width, height, color, radius);
 ```
 
 ### Lines

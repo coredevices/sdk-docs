@@ -58,7 +58,7 @@ new Button({
 
 The `onPush` callback receives two parameters:
 
-- `down` - Boolean: `true` when pressed, `false` when released
+- `down` - `1` when pressed, `0` when released (use it as a truthy/falsy value)
 - `type` - String: which button was pressed
 
 ## Accelerometer

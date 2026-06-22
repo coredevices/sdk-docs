@@ -153,7 +153,7 @@ includes `main.js`:
 
 ```json
 "modules": {
-    "*": "./main.js"
+    "*": "./main"
 }
 ```
 

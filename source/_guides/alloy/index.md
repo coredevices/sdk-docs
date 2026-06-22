@@ -174,6 +174,23 @@ development. Here's a categorized overview:
 | [gravity](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/piu/apps/gravity) | Accelerometer visualization (Emery only) |
 | [tic-tac-toe](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/piu/apps/tic-tac-toe) | Touch game using Piu Behavior touch events |
 
+### Device, Events & Feedback
+
+| Example | Description |
+|---------|-------------|
+| [helloinfo](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/helloinfo) | Watch, screen, and device information |
+| [helloappevents](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/helloappevents) | App focus and display resize events |
+| [hellowakeup](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/hellowakeup) | Scheduling the app to launch later with wakeups |
+| [hellodictation](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/hellodictation) | Capturing speech as text with dictation |
+| [hellovibes](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/hellovibes) | Haptic feedback with the vibration motor |
+| [hellolight](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/hellolight) | Controlling the backlight |
+
+### Native Code
+
+| Example | Description |
+|---------|-------------|
+| [helloffi](https://github.com/Moddable-OpenSource/pebble-examples/tree/main/helloffi) | Calling native C functions from JavaScript (FFI) |
+
 ## Additional Resources
 
 - [Moddable SDK Documentation](https://www.moddable.com/documentation/readme) -

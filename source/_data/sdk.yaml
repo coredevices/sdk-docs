@@ -13,7 +13,7 @@
 # limitations under the License.
 
 c:
-  version: "4.9.169"
+  version: "4.17"
 pebblekit-android:
   version: 4.0.1
 pebblekit-ios:

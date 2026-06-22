@@ -29,6 +29,13 @@ finger across the display. This is the same low-level event stream the system
 itself uses, so apps can build their own gesture recognizers, draggable UI, or
 free-form input on top of it.
 
+{% alert important %}
+Touch input is currently **not supported in watchfaces**. While we work out how
+we want to expose it, touch is intentionally restricted to watchapps - it is
+easier to allow it later than to take it away once apps depend on it. For now,
+only use the `TouchService` from a watchapp.
+{% endalert %}
+
 
 ## Detecting Touch Support
 

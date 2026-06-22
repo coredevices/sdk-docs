@@ -33,7 +33,7 @@ jobs:
 
       - name: Build emery SDK
         run: |
-          ./waf configure --board snowy_emery --js-engine none
+          ./waf configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
           ./waf build --onlysdk
 
       - name: Generate SDK documentation

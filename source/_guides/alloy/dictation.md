@@ -25,7 +25,7 @@ receive it as text. It drives the system dictation UI and delivers the
 transcription to your code through callbacks.
 
 > **Platform Support**: Dictation is available on Emery (Pebble Time 2) and
-> Gabbro (Pebble Time 2 round), and requires a connected phone with a working
+> Gabbro (Pebble Round 2), and requires a connected phone with a working
 > internet connection.
 
 ## Basic Usage

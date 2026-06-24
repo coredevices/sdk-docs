@@ -25,7 +25,7 @@ provide haptic feedback. It offers a set of standard pulses as well as
 custom vibration patterns.
 
 > **Platform Support**: Vibration is available on Emery (Pebble Time 2) and
-> Gabbro (Pebble Time 2 round).
+> Gabbro (Pebble Round 2).
 
 ## Standard Pulses
 

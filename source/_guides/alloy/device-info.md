@@ -26,7 +26,7 @@ Alloy exposes information about the watch and screen through the `watch`,
 and lets you control the backlight with `watch.light()`.
 
 > **Platform Support**: These APIs are available on Emery (Pebble Time 2) and
-> Gabbro (Pebble Time 2 round).
+> Gabbro (Pebble Round 2).
 
 ## Watch Information
 

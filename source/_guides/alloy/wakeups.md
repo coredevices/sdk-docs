@@ -25,7 +25,7 @@ it isn't running. When the wakeup fires, the system launches your app and you
 can read the wakeup details to know why it was started.
 
 > **Platform Support**: Wakeups are available on Emery (Pebble Time 2) and
-> Gabbro (Pebble Time 2 round).
+> Gabbro (Pebble Round 2).
 
 ## Scheduling a Wakeup
 

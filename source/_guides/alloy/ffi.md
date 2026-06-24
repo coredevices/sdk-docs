@@ -27,7 +27,7 @@ code, for reusing existing C libraries, or for reaching low-level
 functionality that isn't exposed through a JavaScript API.
 
 > **Platform Support**: Like the rest of Alloy, FFI is available on Emery
-> (Pebble Time 2) and Gabbro (Pebble Time 2 round).
+> (Pebble Time 2) and Gabbro (Pebble Round 2).
 
 An FFI binding has three parts:
 

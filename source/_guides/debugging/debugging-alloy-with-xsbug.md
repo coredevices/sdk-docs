@@ -27,7 +27,7 @@ through JavaScript, inspect variables, and watch `console.log` / `trace` output
 while your app runs on a watch or in the emulator.
 
 > **Platform Support**: Alloy and xsbug debugging are available on Emery
-> (Pebble Time 2) and Gabbro (Pebble Time 2 round). This requires
+> (Pebble Time 2) and Gabbro (Pebble Round 2). This requires
 > `pebble-tool` 5.0.38 or later.
 
 ## Building a Debug Build

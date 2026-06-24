@@ -39,8 +39,8 @@ An FFI binding has three parts:
 
 ## 1. Write the native C functions
 
-Add one or more C files alongside your `main.js` (for example
-`src/embeddedjs/add.c`). The C function names must match the names you declare
+Add one or more C files alongside your `mdbl.c` (for example
+`src/c/add.c`). The C function names must match the names you declare
 in the manifest:
 
 ```c

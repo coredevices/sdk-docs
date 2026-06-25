@@ -92,6 +92,7 @@ better used to select an entire block of code.
 | `PBL_HEALTH` | `PBL_IF_HEALTH_ELSE()` | Running on hardware that supports Pebble Health and the `HealthService` API. |
 | `PBL_RECT` | `PBL_IF_RECT_ELSE()` | Running on hardware with a rectangular display. |
 | `PBL_ROUND` | `PBL_IF_ROUND_ELSE()` | Running on hardware with a round display. |
+| `PBL_RGB_BACKLIGHT` | None | Running on hardware with an RGB backlight. |
 | `PBL_DISPLAY_WIDTH` | None | Determine the screen width in pixels. |
 | `PBL_DISPLAY_HEIGHT` | None | Determine the screen height in pixels. |
 | `PBL_PLATFORM_APLITE` | None | Built for Pebble/Pebble Steel. |

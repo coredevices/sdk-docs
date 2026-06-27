@@ -31,10 +31,10 @@ Otherwise, if you are somewhat command-line knowledgeable, you can follow the in
 
 #### MacOS
 
-You will need to install Node.js. The easiest way is with [Homebrew](https://brew.sh/):
+You will need to install Node.js and libpng. The easiest way is with [Homebrew](https://brew.sh/):
 
 ```bash
-brew install node
+brew install node libpng
 ```
 
 #### Ubuntu
@@ -59,7 +59,7 @@ sudo dnf install nodejs SDL2 glib2 pixman zlib
 
 #### Windows
 
-The Pebble SDK does not run on Windows, but you can use WSL.  Install Ubuntu
+The Pebble SDK does not run on Windows, but you can use WSL. Install Ubuntu
 in WSL, and then use the instructions above to install dependencies.
 
 ## Download the Pebble CLI

@@ -27,11 +27,7 @@ related_examples:
     url: https://github.com/pebble-examples/feature-content-size
 ---
 
-{% alert notice %}
-The ContentSize API is currently only available in SDK 4.2-BETA.
-{% endalert %}
-
-The [ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+The [ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API, added in SDK 4.2, allows developers to dynamically
 adapt their watchface and watchapp design based upon the system `Text Size`
 preference (*Settings > Notifications > Text Size*).
@@ -49,7 +45,7 @@ The `Text Size` setting displays the following options on all platforms:
 * Large
 
 Whereas, the
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API will return different content sizes based on
 the `Text Size` setting, varying by platform. The list of content sizes is:
 
@@ -77,17 +73,17 @@ ContentSize in future versions.*
 
 We highly recommend that developers begin to build and update their applications
 with consideration for
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
  to provide the best experience to users.
 
 ## Detecting ContentSize
 
 In order to detect the current
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
  developers can use the
 ``preferred_content_size()`` function.
 
-The [ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+The [ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 will never change during runtime, so it's perfectly
 acceptable to check this once during `init()`.
 
@@ -107,7 +103,7 @@ upon content size. You could change font sizes, show or hide design elements, or
 even present an entirely different UI.
 
 In the following example, we will change font sizes based on the
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 
 
 ```c
@@ -140,9 +136,9 @@ void init() {
 ## Additional Considerations
 
 When developing an application which dynamically adjusts based on the
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 setting, try to avoid using fixed widths and heights. Calculate
 coordinates and dimensions based upon the size of the root layer,
 ``UnobstructedArea`` and
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 

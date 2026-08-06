@@ -26,8 +26,12 @@ related_examples:
 On hardware platforms with a touchscreen, the `TouchService` lets an app
 receive touchdown, lift-off, and position updates as the user moves their
 finger across the display. This is the same low-level event stream the system
-itself uses, so apps can build their own gesture recognizers, draggable UI, or
-free-form input on top of it.
+itself uses, so apps can build draggable UI or free-form input on top of it.
+Apps that want gestures rather than raw touches can use the built-in
+[gesture recognizers](#gesture-recognizers), and apps that just want their
+menus to scroll by touch can opt in to
+[touch navigation](#touch-navigation) without handling any touch events at
+all.
 
 {% alert important %}
 Touch input is currently **not supported in watchfaces**. While we work out how
@@ -131,8 +135,129 @@ against ``Layer`` bounds.
 A typical touch interaction starts with a single `TouchEvent_Touchdown`,
 followed by zero or more `TouchEvent_PositionUpdate` events as the finger
 moves, and ends with a single `TouchEvent_Liftoff`. Apps that want to track
-gestures (taps, drags, swipes) generally store the touchdown position, watch
-the position updates, and decide what happened on lift-off.
+gestures (taps, drags, swipes) can do this by hand - store the touchdown
+position, watch the position updates, and decide what happened on lift-off -
+but in most cases the built-in [gesture recognizers](#gesture-recognizers)
+below do that work already.
+
+Each ``TouchEvent`` also carries a `non_navigational` flag. It is set on
+touches that arrive while no *interaction session* is active (see
+[Touch Navigation](#touch-navigation) below) — the user is touching the
+screen without having woken the watch first. Raw subscribers still receive
+these events and can decide for themselves whether to honor them.
+
+
+## Touch Navigation
+
+Since firmware 4.32, the system can translate touches into the button-based
+navigation model: tapping and swiping in a ``MenuLayer`` scrolls it and
+activates rows, taps on an ``ActionBarLayer`` are zoned into up/select/down
+button events, and ``ActionMenu`` items activate on tap. As of firmware 4.33
+this *touch navigation* is enabled by default, and it is gated on an
+**interaction session**: the user must press a button or wake the watch with
+a gesture before touches navigate. This prevents accidental navigation from
+brushing against an idle watchface.
+
+Watchapps are **opted out** of touch navigation by default, so existing apps
+behave exactly as before. To let the system drive your menus and scroll views
+by touch, opt in once at startup:
+
+```c
+app_touch_navigation_enable(true);
+```
+
+With touch navigation enabled for the app, taps and swipes that don't hit a
+touch-aware widget are bridged to button click events, so a plain
+`click_config_provider` keeps working without any touch-specific code.
+
+If one particular ``Window`` handles its own touch input - with a raw
+subscription or with recognizers - take it out of the touch bridge so the
+system doesn't consume its touches:
+
+```c
+window_set_touch_bridge_disabled(window, true);
+```
+
+
+## Gesture Recognizers
+
+Rather than tracking touchdown/move/lift-off sequences by hand, apps can
+create *recognizers* that watch the touch stream for one specific gesture and
+report progress through a callback. Three recognizers are available:
+
+| Recognizer | Constructor | Recognizes |
+|------------|-------------|------------|
+| Tap | ``tap_recognizer_create()`` | A single tap. Read the location with ``tap_recognizer_get_tap_point()``. |
+| Pan | ``pan_recognizer_create()`` | A drag locked to one axis (``PanAxis_Horizontal`` or ``PanAxis_Vertical``). Read movement with ``pan_recognizer_get_total_delta()``, ``pan_recognizer_get_delta_since_start()``, ``pan_recognizer_get_delta_since_prev()`` and ``pan_recognizer_get_velocity()``. |
+| Swipe | ``swipe_recognizer_create()`` | A fast, straight flick in one of the directions in the given ``SwipeDirection`` mask. Read the result with ``swipe_recognizer_get_direction()`` and ``swipe_recognizer_get_velocity()``. |
+
+Each recognizer reports ``RecognizerEvent_Started``,
+``RecognizerEvent_Updated``, ``RecognizerEvent_Completed`` and
+``RecognizerEvent_Cancelled`` events to its ``RecognizerEventCb``.
+
+Recognizers are attached to a window with ``window_attach_recognizer()``. The
+window takes ownership and destroys attached recognizers when it unloads, so
+in the common case there is nothing to clean up manually
+(``recognizer_destroy()`` exists for recognizers that were never attached).
+Remember to also disable the window's touch bridge, or the system will
+consume the touches before your recognizers see them.
+
+This example scrolls a custom ``ScrollLayer`` by finger — something a bare
+`ScrollLayer` does not do on its own:
+
+```c
+static ScrollLayer *s_scroll;
+static int16_t s_base;  // content offset committed on Complete
+
+static void pan_handler(const Recognizer *recognizer, RecognizerEvent event) {
+  switch (event) {
+    case RecognizerEvent_Updated: {
+      // delta_since_start is (0, 0) at Start, so the content does not jump
+      GPoint d = pan_recognizer_get_delta_since_start(recognizer);
+      scroll_layer_set_content_offset(s_scroll, GPoint(0, s_base + d.y), false);
+      break;
+    }
+    case RecognizerEvent_Completed:
+      // Commit the new offset
+      s_base = scroll_layer_get_content_offset(s_scroll).y;
+      break;
+    case RecognizerEvent_Cancelled:
+      // Roll back to the last committed offset
+      scroll_layer_set_content_offset(s_scroll, GPoint(0, s_base), true);
+      break;
+    default:
+      break;
+  }
+}
+
+static void main_window_load(Window *window) {
+  Layer *root = window_get_root_layer(window);
+  s_scroll = scroll_layer_create(layer_get_bounds(root));
+  scroll_layer_set_content_size(s_scroll,
+      GSize(layer_get_bounds(root).size.w, total_content_height));
+  // Add custom row layers as children of s_scroll here
+  layer_add_child(root, scroll_layer_get_layer(s_scroll));
+
+  // Handle this window's touches ourselves instead of the system bridge
+  window_set_touch_bridge_disabled(window, true);
+
+  // The window owns the recognizer and destroys it when the window unloads
+  Recognizer *pan = pan_recognizer_create(pan_handler, NULL, PanAxis_Vertical);
+  window_attach_recognizer(window, pan);
+}
+```
+
+When several recognizers watch the same window, they are evaluated
+exclusively by default: the first one to recognize its gesture wins. Use
+``recognizer_set_simultaneous_with()`` to allow two recognizers to evaluate
+at the same time, or ``recognizer_set_fail_after()`` to hold one back until
+another has failed (e.g. only treat a touch as a tap once the swipe
+recognizer has given up).
+
+Note that on touch hardware a ``MenuLayer`` already scrolls and activates by
+touch when the app has opted in to touch navigation. Recognizers are for
+interactions the built-in widgets don't provide, such as custom menus, drags,
+or acting on raw taps and swipes.
 
 
 ## Backlight Behavior

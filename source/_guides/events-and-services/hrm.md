@@ -179,6 +179,51 @@ health_service_set_heart_rate_sample_period(0);
 ```
 
 
+## Heart Rate Variability
+
+Since firmware 4.32, watches whose heart rate sensor supports it (currently
+the Pebble Time 2) can also report heart rate variability (HRV) as
+peak-to-peak intervals (PPI). Unlike the BPM metrics, HRV data is only
+collected while an app explicitly requests it.
+
+To start collecting HRV readings, request an HRV sample period with
+``health_service_set_hrv_sample_period``. While any app holds an HRV sample
+period, the sensor collects HRV alongside heart rate, and a
+``HealthEventHRVUpdate`` event is delivered to health service subscribers
+each time a new reading is available. Read the most recent interval with
+``health_service_peek_hrv_ppi_ms``, which returns the PPI in milliseconds,
+or `0` if no reading is available yet:
+
+```c
+static void prv_on_health_data(HealthEventType type, void *context) {
+  if (type == HealthEventHRVUpdate) {
+    uint16_t ppi = health_service_peek_hrv_ppi_ms();
+    if (ppi > 0) {
+      // Display the peak-to-peak interval
+    }
+  }
+}
+
+static void prv_init(void) {
+  // Subscribe to health event handler
+  health_service_events_subscribe(prv_on_health_data, NULL);
+  // Collect an HRV reading every 10 seconds
+  health_service_set_hrv_sample_period(10);
+}
+```
+
+The HRV and heart rate sample periods are independent requests that share the
+app's single sensor subscription: both may be active at once, the sensor is
+driven at the shorter of the two periods, and setting one period to `0`
+clears only that request. As with the heart rate sample period, reset the
+HRV sample period when your application no longer needs it:
+
+```c
+// Stop requesting HRV sampling
+health_service_set_hrv_sample_period(0);
+```
+
+
 ## Obtaining Historical Data
 
 If your application is using heart rate information, it may also want to obtain

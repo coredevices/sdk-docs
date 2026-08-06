@@ -96,6 +96,11 @@ watch.addEventListener("resize", progress => {
 | `"didFocus"` | The app has gained or lost focus. The handler receives `inFocus`. |
 | `"resize"` | The drawable area is changing size (for example during an animation). The handler receives the animation `progress`. |
 
+The `watch` global also delivers `"secondchange"`/`"minutechange"` time
+events (see {% guide_link alloy/watchfaces %}), a `"wakeup"` event (see
+{% guide_link alloy/wakeups %}), and `"health"` events when new health data
+arrives (see {% guide_link alloy/health %}).
+
 ## Controlling the Backlight
 
 Use `watch.light()` to control the backlight:

@@ -213,6 +213,30 @@ Pebble.timelineUnsubscribe = function(topic, onSuccess, onFailure) { };
  */
 Pebble.timelineSubscriptions = function(onSuccess, onFailure) { };
 
+/**
+ * @desc Insert a pin into the user's timeline. The pin is created by the new
+ *     Pebble app and synced to the watch, so no timeline token, API key or
+ *     appstore listing is required and sideloaded apps can use it. The pin is
+ *     associated with your app, and its `id` only needs to be unique within
+ *     your app - inserting a pin with an existing `id` updates that pin. The
+ *     new Pebble app does not support the timeline web API, so this is how new
+ *     apps should create pins. Read more in the
+ *     {@link /guides/pebble-timeline/timeline-local-pins/ local pins guide}.
+ *
+ * @param {Object} pin - The pin to insert, in the format described in
+ *     {@link /guides/pebble-timeline/pin-structure/ Creating Pins}. A JSON
+ *     string of the same object is also accepted.
+ */
+Pebble.insertTimelinePin = function(pin) { };
+
+/**
+ * @desc Remove a pin previously added with
+ *     {@link #insertTimelinePin insertTimelinePin} from the user's timeline.
+ *
+ * @param {String} id - The `id` of the pin to delete.
+ */
+Pebble.deleteTimelinePin = function(id) { };
+
 
 /**
  * @desc Obtain an object containing information on the currently connected 

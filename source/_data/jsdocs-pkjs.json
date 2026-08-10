@@ -5936,6 +5936,284 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Insert a pin into the user's timeline. The pin is created by the new\nPebble app and synced to the watch, so no timeline token, API key or\nappstore listing is required and sideloaded apps can use it. The pin is\nassociated with your app, and its "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "id"
+                  },
+                  {
+                    "type": "text",
+                    "value": " only needs to be unique within\nyour app - inserting a pin with an existing "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "id"
+                  },
+                  {
+                    "type": "text",
+                    "value": " updates that pin. The\nnew Pebble app does not support the timeline web API, so this is how new\napps should create pins. Read more in the\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/pebble-timeline/timeline-local-pins/",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "local pins guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Insert a pin into the user's timeline. The pin is created by the new\n    Pebble app and synced to the watch, so no timeline token, API key or\n    appstore listing is required and sideloaded apps can use it. The pin is\n    associated with your app, and its `id` only needs to be unique within\n    your app - inserting a pin with an existing `id` updates that pin. The\n    new Pebble app does not support the timeline web API, so this is how new\n    apps should create pins. Read more in the\n    {@link /guides/pebble-timeline/timeline-local-pins/ local pins guide}.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "description": "The pin to insert, in the format described in\n    {@link /guides/pebble-timeline/pin-structure/ Creating Pins}. A JSON\n    string of the same object is also accepted.",
+              "lineNumber": 10,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "pin"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 216,
+              "column": 0,
+              "index": 10880
+            },
+            "end": {
+              "line": 229,
+              "column": 3,
+              "index": 11683
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 230,
+                "column": 0,
+                "index": 11684
+              },
+              "end": {
+                "line": 230,
+                "column": 45,
+                "index": 11729
+              }
+            },
+            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
+          },
+          "params": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The pin to insert, in the format described in\n"
+                      },
+                      {
+                        "type": "link",
+                        "url": "/guides/pebble-timeline/pin-structure/",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Creating Pins"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": ". A JSON\nstring of the same object is also accepted."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "lineNumber": 10,
+              "name": "pin",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "name": "insertTimelinePin",
+          "kind": "function",
+          "memberof": "Pebble",
+          "scope": "static",
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble"
+            },
+            {
+              "name": "insertTimelinePin",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.insertTimelinePin"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Remove a pin previously added with\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " from the user's timeline."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Remove a pin previously added with\n    {@link #insertTimelinePin insertTimelinePin} from the user's timeline.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "description": "The `id` of the pin to delete.",
+              "lineNumber": 4,
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "id"
+            }
+          ],
+          "loc": {
+            "start": {
+              "line": 232,
+              "column": 0,
+              "index": 11731
+            },
+            "end": {
+              "line": 237,
+              "column": 3,
+              "index": 11918
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 238,
+                "column": 0,
+                "index": 11919
+              },
+              "end": {
+                "line": 238,
+                "column": 44,
+                "index": 11963
+              }
+            },
+            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
+          },
+          "params": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "id"
+                      },
+                      {
+                        "type": "text",
+                        "value": " of the pin to delete."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "lineNumber": 4,
+              "name": "id",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "name": "deleteTimelinePin",
+          "kind": "function",
+          "memberof": "Pebble",
+          "scope": "static",
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble"
+            },
+            {
+              "name": "deleteTimelinePin",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.deleteTimelinePin"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Obtain an object containing information on the currently connected \n    Pebble smartwatch.",
                     "position": {
                       "start": {

@@ -87,11 +87,16 @@ better used to select an entire block of code.
 |--------|-------|----------|
 | `PBL_BW` | `PBL_IF_BW_ELSE()` | Running on hardware that supports only black and white. |
 | `PBL_COLOR` | `PBL_IF_COLOR_ELSE()` | Running on hardware that supports 64 colors. |
-| `PBL_MICROPHONE` | `PBL_IF_MICROPHONE_ELSE()` | Running on hardware that includes a microphone. |
 | `PBL_COMPASS` | None | Running on hardware that includes a compass. |
+| `PBL_MICROPHONE` | `PBL_IF_MICROPHONE_ELSE()` | Running on hardware that includes a microphone. |
 | `PBL_HEALTH` | `PBL_IF_HEALTH_ELSE()` | Running on hardware that supports Pebble Health and the `HealthService` API. |
+| `PBL_RGB_BACKLIGHT` | None | Running on hardware that has includes a RGB backlight |
 | `PBL_RECT` | `PBL_IF_RECT_ELSE()` | Running on hardware with a rectangular display. |
 | `PBL_ROUND` | `PBL_IF_ROUND_ELSE()` | Running on hardware with a round display. |
+| `PBL_SMARTSTRAP` | `PBL_IF_SMARTSTRAP_ELSE` | Running on hardware with smartstrap support. |
+| `PBL_SMARTSTRAP_POWER` | None | Running on hardware that includes a smartstrap connector capable of supplying power. |
+| `PBL_SPEAKER` | None | Running on hardware that includes a speaker. |
+| `PBL_TOUCH` | None | Running on hardware that includes a touch screen. |
 | `PBL_DISPLAY_WIDTH` | None | Determine the screen width in pixels. |
 | `PBL_DISPLAY_HEIGHT` | None | Determine the screen height in pixels. |
 | `PBL_PLATFORM_APLITE` | None | Built for Pebble/Pebble Steel. |
@@ -100,6 +105,7 @@ better used to select an entire block of code.
 | `PBL_PLATFORM_DIORITE` | None | Built for Pebble 2. |
 | `PBL_PLATFORM_EMERY` | None | Built for Pebble Time 2. |
 | `PBL_PLATFORM_FLINT` | None | Built for Pebble 2 Duo. |
+| `PBL_PLATFORM_GABBRO` | None | Built for Pebble Round 2. |
 | `PBL_SDK_2` | None | Compiling with SDK 2.x (deprecated). |
 | `PBL_SDK_3` | None | Compiling with SDK 3.x. or 4.x. |
 

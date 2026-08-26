@@ -44,7 +44,7 @@ watchface, and are added to a ``Window`` to construct the UI's design. Each
   with additional data to achieve their specialization.
 
 
-## Layer Heirachy
+## Layer Hierarchy
 
 Every app must consist of at least one ``Window`` in order to successfully
 launch. Mutiple ``Layer`` objects are added as children of the ``Window``, which
@@ -73,7 +73,7 @@ layer_add_child(root_layer, text_layer_get_layer(s_time_layer));
 ```
 
 Once added to a ``Window``, the ordering of each ``Layer`` cannot be modified,
-but one can be placed at the front by removing and re-adding it to the heirachy:
+but one can be placed at the front by removing and re-adding it to the hierarchy:
 
 ```c
 // Bring a layer to the front
@@ -107,7 +107,7 @@ layer_set_update_proc(s_some_layer, layer_update_proc);
 
 The update procedure will be called every time the ``Layer`` must be redrawn.
 This is typically when any other ``Layer`` requests a redraw, the ``Window`` is
-shown/hidden, the heirarchy changes, or a modal (such as a notification) appears.
+shown/hidden, the hierarchy changes, or a modal (such as a notification) appears.
 The ``Layer`` can also be manually marked as 'dirty', and will be redrawn at the
 next opportunity (usually immediately):
 
@@ -122,7 +122,7 @@ layer_mark_dirty(s_some_layer);
 For convenience, there are multiple subclasses of ``Layer`` included in the
 Pebble SDK to allow developers to easily construct their app's UI. Each should
 be created when the ``Window`` is loading (using the `.load` ``WindowHandler``)
-and destroyed when it is unloading (using `.the unload` ``WindowHandler``).
+and destroyed when it is unloading (using the `.unload` ``WindowHandler``).
 
 These are briefly outlined below, alongside a simple usage example split into
 three code snippets - the element declarations, the setup procedure, and the

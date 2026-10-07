@@ -314,9 +314,8 @@ This adds `@rebble/clay` to the `dependencies` in `package.json`.
 
 ## Enabling Configuration
 
-^CP^ In CloudPebble, go to **Settings** and add `configurable` to the
-**Capabilities** list so the gear icon appears next to your watchface in the
-phone app.
+^CP^ In CloudPebble, go to **Settings** and tick the **Configurable** checkbox
+so the gear icon appears next to your watchface in the phone app.
 
 ^LC^ For the gear icon to appear next to your watchface in the phone app, add
 `configurable` to the `capabilities` array in `package.json`:

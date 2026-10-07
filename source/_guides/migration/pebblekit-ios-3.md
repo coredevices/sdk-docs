@@ -291,9 +291,8 @@ out to all Pebble watches. However, this will not happen overnight. Therefore,
 both *LE* and *Classic* PebbleKit connections have to be supported for some
 period of time. This has several implications for apps:
 
-* Apps still need to be whitelisted. Read
-  {% guide_link appstore-publishing/whitelisting %} for more information and to
-  whitelist a new app.
+* iOS apps no longer need to be whitelisted. The MFi whitelisting program for
+  *Classic* connections has ended.
 
 * Because the *Classic* communication channel is shared on older Pebble firmware
   versions, iOS apps still need to provide a UI to let the user connect to/disconnect

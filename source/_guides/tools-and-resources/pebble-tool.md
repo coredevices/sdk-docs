@@ -186,7 +186,7 @@ interact with a watch with `--phone` or the emulator with `--emulator`.
 #### new-project
 
 ```nc|text
-$ pebble new-project [--simple] [--javascript] [--worker] [--rocky] NAME
+$ pebble new-project [--simple] [--javascript] [--worker] NAME
 ```
 
 Create a new project called `NAME`. This will create a directory in the
@@ -205,10 +205,6 @@ features of the generated project to be created automatically:
   ./worker_src/NAME_worker.c` file to quickly start an app with a background
   worker. Read {% guide_link events-and-services/background-worker %} for more
   information.
-
-* `--rocky` - Creates a new Rocky.js application. Do not use any other optional
-  parameters with this command.  Read
-  [Rocky.js documentation](/docs/rockyjs/) for more information.
 
 
 #### build

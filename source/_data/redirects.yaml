@@ -2796,3 +2796,60 @@
 -
   - /xda-challenge/official-rules.html
   - /community/
+-
+  - /guides/rocky-js/index.html
+  - /guides/alloy/
+-
+  - /guides/rocky-js/rocky-js-overview/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/CanvasRenderingContext2D/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/console/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/Date/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/rocky/index.html
+  - /guides/alloy/
+-
+  - /tutorials/rocky-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/

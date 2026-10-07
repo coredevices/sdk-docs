@@ -43,18 +43,14 @@ To start the Jekyll web server, run `bundle exec jekyll serve`.
 
 ## JS Documentation
 
-The PebbleKit JS and Rocky documentation is generated with the
-[documentation.js](documentation.js.org) framework. The documentation tool can
-create a JSON file from the JSDocs contained in the [js-docs](/js-docs)
-folder.
+The PebbleKit JS documentation is generated with the
+[documentation.js](documentation.js.org) framework. The documentation tool
+creates `source/_data/jsdocs-pkjs.json` from the JSDoc comments in the
+[js-docs](/js-docs) folder.
 
 To install documentation.js, run `npm install -g documentation`
 
-To regenerate the `/source/_data/rocky-js.json` file, run `./scripts/generate-rocky-docs.sh`
-
-> **NOTE**: This is intended to be a temporary hack. Ideally the rocky-js.json
-> file is generated as part of the release generator (and built using the actual
-> Rocky.js source, or stubs in the Tintin repository.
+To regenerate the JSON file, run `./scripts/generate-js-docs.sh`
 
 ## Blog Posts
 

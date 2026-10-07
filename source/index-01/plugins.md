@@ -33,5 +33,5 @@ written with this in mind.
 
 This is not available yet. The assistant cannot see or call plugins. Plugins
 themselves are a preview that is off by default; see
-{% guide_link communication/plugins %} for what they are, how to turn them
+{% guide_link plugins %} for what they are, how to turn them
 on, and how to write one.

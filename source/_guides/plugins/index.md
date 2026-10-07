@@ -17,8 +17,8 @@ description: |
   How a .pbw's JavaScript can provide data sources and actions to other apps
   through the Pebble mobile app, and how a watchapp reads them from PebbleKit
   JS. Preview: off by default and subject to change.
-guide_group: communication
-order: 8
+guide_group: plugins
+permalink: /guides/plugins/
 menu: false
 ---
 

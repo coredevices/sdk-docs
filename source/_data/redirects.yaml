@@ -2778,3 +2778,6 @@
 -
  - /sdk/install/windows/
  - /sdk/#windows
+-
+  - /guides/communication/plugins/index.html
+  - /guides/plugins/

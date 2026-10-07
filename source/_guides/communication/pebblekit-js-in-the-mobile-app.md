@@ -178,7 +178,7 @@ Read {% guide_link user-interfaces/app-configuration %} for the full flow.
 The `Pebble` object has four functions for the plugins preview. They do
 nothing useful until the preview is turned on in the Pebble mobile app, which
 is off by default, and the API will change; read
-{% guide_link communication/plugins %} before using them.
+{% guide_link plugins %} before using them.
 
 * `Pebble.enumeratePlugins()` returns an array of the installed plugins with
   their sources and actions.

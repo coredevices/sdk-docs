@@ -231,7 +231,8 @@ module Jekyll
 
       gs_pages.flat_map do |page|
         page_sections(page).map do |section|
-          url = section[:title].nil? ? page.url : "#{page.url}##{section[:title].slugize}"
+          anchor = section[:id] || section[:title]&.slugize
+          url = anchor.nil? ? page.url : "#{page.url}##{anchor}"
 
           Algolia::Search::MultipleBatchRequest.new(
             action: 'addObject',
@@ -260,16 +261,18 @@ module Jekyll
 
       sections = []
       current = { title: nil, contents: [] }
-      Nokogiri::HTML(page.content).xpath('//h2|//h3|//h4|//p|//li[not(p)]|//td|//dt|//dd').each do |node|
+      selector = '//h2|//h3|//h4|//p|//li[not(p)]|//td[not(p)]|//dt|//dd[not(p)]'
+      Nokogiri::HTML(page.content).xpath(selector).each do |node|
         if node.name.start_with?('h')
           sections << current
-          current = { title: node.text.sub('¶', '').strip, contents: [] }
+          # Sphinx puts the anchor on the <section> around the heading.
+          current = { title: node.text.sub('¶', '').strip, id: node.parent['id'], contents: [] }
         else
           current[:contents] << node.text.strip
         end
       end
       sections << current
-      sections.map { |section| { title: section[:title], contents: section[:contents].join("\n") } }
+      sections.map { |section| section.merge(contents: section[:contents].join("\n")) }
     end
 
     def generate_other

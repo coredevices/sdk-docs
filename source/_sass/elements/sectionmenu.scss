@@ -241,6 +241,9 @@ $section-menu-width: 240px;
 
   .section-menu__header {
     background-color: $color-pebbleos;
+  }
+}
+
 .section-menu--index-01 {
   background-color: $color-index-01;
   border-right-color: color.adjust($color-index-01, $lightness: -10%, $space: hsl);

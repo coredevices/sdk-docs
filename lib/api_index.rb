@@ -14,17 +14,18 @@ module ApiIndex
   module_function
 
   # Records for every C documentation page (Pebble::PageDocC) in `pages`.
-  def c_records(pages, site_url)
+  # `md_url_for` maps a page URL to its .md twin, or nil when there is none.
+  def c_records(pages, site_url, md_url_for)
     pages.select { |page| page.respond_to?(:group) }.flat_map do |page|
-      group_records(page.group, page.url, site_url)
+      group_records(page.group, page.url, site_url, md_url_for)
     end
   end
 
-  def group_records(group, page_url, site_url)
+  def group_records(group, page_url, site_url, md_url_for)
     liquid = group.to_liquid
     group_name = Array(liquid['path']).join(' / ')
     url = "#{site_url}#{LlmsExport.normalize_path(page_url)}/"
-    url_md = "#{site_url}#{LlmsExport.md_path_for(page_url)}"
+    url_md = md_url_for.call(page_url)
     records = []
 
     records << record(group.name, 'group', group.name, liquid['summary'], liquid['platforms'], group_name, url, url_md)
@@ -57,7 +58,8 @@ module ApiIndex
     case kind
     when 'function' then "#{type} #{name}(#{params.join(', ')})".strip
     when 'define'
-      arglist = platform_data(data, 'params') ? "(#{params.join(', ')})" : ''
+      # Doxygen emits <param> elements for function-like macros only.
+      arglist = params.empty? ? '' : "(#{params.join(', ')})"
       initializer = text(platform_data(data, 'initializer'))
       "#define #{name}#{arglist}#{initializer.empty? ? '' : " #{initializer}"}"
     when 'typedef' then "typedef #{type} #{name}#{text(platform_data(data, 'argsstring'))}".squeeze(' ')
@@ -78,18 +80,19 @@ module ApiIndex
 
   # Records for a documentation.js JSON dump (source/_data/jsdocs-pkjs.json),
   # one module per array entry; `root` is the URL prefix of its pages.
-  def js_records(modules, root, site_url)
+  def js_records(modules, root, site_url, md_url_for)
     Array(modules).flat_map do |mod|
       page_url = "#{root}#{mod['name']}/"
       url = "#{site_url}#{page_url}"
-      url_md = "#{site_url}#{LlmsExport.md_path_for(page_url)}"
+      url_md = md_url_for.call(page_url)
       records = [record(mod['name'], mod['kind'] || 'namespace', mod['name'], mdast_text(mod['description']),
                         LlmsExport::PLATFORMS, mod['name'], url, url_md)]
       (mod['members'] || {}).each do |scope, members|
         members.each do |member|
           kind = scope == 'events' ? 'event' : (member['kind'] || 'member')
           records << record(member['name'], kind, js_signature(mod['name'], kind, member), mdast_text(member['description']),
-                            LlmsExport::PLATFORMS, mod['name'], "#{url}##{member['name']}", "#{url_md}##{member['name']}")
+                            LlmsExport::PLATFORMS, mod['name'], "#{url}##{member['name']}",
+                            url_md && "#{url_md}##{member['name']}")
         end
       end
       records
@@ -133,6 +136,23 @@ module ApiIndex
       'url' => url,
       'url_md' => url_md,
     }
+  end
+
+  # Write /api-index.json once the Markdown twins are known. Skipped when the
+  # docs generator is off (SKIP_DOCS), since the pages it would link do not exist.
+  def write(site, builder)
+    return if site.config['skip_docs'].to_s == 'true'
+    site_url = site.config['url'].to_s
+    md_url_for = builder.method(:md_url_for)
+    records = c_records(site.pages, site_url, md_url_for)
+    records += js_records(site.data['jsdocs-pkjs'], '/docs/pebblekit-js/', site_url, md_url_for)
+    Jekyll.logger.info('API Index:', "#{records.size} symbols")
+    return if records.empty?
+
+    tmp_root = File.join(site.source, '../tmp/api-index/')
+    FileUtils.mkdir_p(tmp_root)
+    File.write(File.join(tmp_root, 'api-index.json'), JSON.pretty_generate(document(records, LlmsExport.sdk_version(site))))
+    site.static_files << Jekyll::StaticFile.new(site, tmp_root, '', 'api-index.json')
   end
 
   def document(records, sdk_version)

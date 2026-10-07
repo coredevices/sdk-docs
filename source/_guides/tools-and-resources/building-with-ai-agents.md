@@ -29,8 +29,9 @@ site and the `pebble` tool provide for each of these.
 
 ## Documentation for Agents
 
-Every page on this site has a Markdown version at the same URL with `.md`
-appended. For example, the Markdown version of
+Most guide and reference pages on this site have a Markdown version. Replace
+the trailing `/` or `/index.html` of the page URL with `.md`. For example, the
+Markdown version of
 `https://developer.repebble.com/guides/events-and-services/buttons/` is
 `https://developer.repebble.com/guides/events-and-services/buttons.md`. The
 Markdown version has no navigation or scripts, and its links point to the
@@ -57,7 +58,8 @@ with its kind, signature, brief description, the platforms it is available on
 and the page that documents it. Agents can look up a function there instead
 of searching the reference pages.
 
-A line like the following in a prompt or an instruction file is enough:
+Add a line like the following to a prompt or an instruction file. For
+example:
 
 ```text
 Pebble SDK docs: https://developer.repebble.com/llms.txt. Fetch the .md version of any page before using an API.
@@ -100,7 +102,8 @@ images, and can publish the app with `pebble publish`.
 The skill targets emery (Pebble Time 2) by default and supports the other
 platforms as a second pass. Alloy projects are limited to emery and gabbro.
 
-To install it, clone the repository and follow its README.
+To install it, clone the repository and follow its README, which lists the
+agents it supports.
 
 
 ## Working with the Emulator
@@ -133,8 +136,8 @@ has stale state. Run `pebble kill` and `pebble wipe`, then install again.
 
 ## Target Platforms and the SDK Version
 
-Agents trained on older material assume Pebble APIs and watches that no
-longer exist. State the following in the instruction file or the prompt:
+State the SDK version and the target platforms in the instruction file or the
+prompt, together with the following:
 
 * The target platforms, as listed in `targetPlatforms` in `package.json`. The
   current platforms are aplite, basalt, chalk, diorite, emery, flint and

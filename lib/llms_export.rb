@@ -19,6 +19,12 @@ module LlmsExport
     path + '.md'
   end
 
+  # Earlier exports wrote the twin of /foo/index.html at /foo/index.md and
+  # links to that form exist elsewhere; keep writing it as an alias.
+  def self.md_alias_for(url)
+    url.to_s.end_with?('/index.html') ? url.to_s.sub(/\.html\z/, '.md') : nil
+  end
+
   # Key under which /foo, /foo/ and /foo/index.html are the same page.
   def self.normalize_path(path)
     key = path.to_s.sub(%r{/index\.html\z}, '/').chomp('/')
@@ -98,6 +104,13 @@ module LlmsExport
       false
     end
 
+    # Absolute URL of the .md twin for an internal page URL, or nil when the
+    # page has none. Used by the API index so it never advertises a dead link.
+    def md_url_for(url)
+      target = @emitted && @emitted[LlmsExport.normalize_path(url)]
+      target && absolute_url(LlmsExport.md_path_for(target))
+    end
+
     def run
       collect_pages
       Jekyll.logger.info('LLMS Export:', "#{@pages.size} pages eligible")
@@ -173,7 +186,10 @@ module LlmsExport
       @pages.each do |page|
         markdown = page_to_markdown(page)
         next if markdown.nil?
-        write_static_file(LlmsExport.md_path_for(page.url), front_matter(page) + markdown)
+        content = front_matter(page) + markdown
+        write_static_file(LlmsExport.md_path_for(page.url), content)
+        alias_path = LlmsExport.md_alias_for(page.url)
+        write_static_file(alias_path, content) if alias_path
       end
     end
 
@@ -383,7 +399,7 @@ module LlmsExport
     def instructions
       version = LlmsExport.sdk_version(@site)
       <<~TEXT.strip
-        Every page on this site has a Markdown version at the same URL with `.md` appended (for example `#{@base_url}/guides/events-and-services/buttons.md`). Fetch the `.md` version when reading a page; the links below already point to it. `#{@base_url}/llms-full.txt` holds every page in one file, and `/guides/llms-full.txt`, `/guides/alloy/llms-full.txt`, `/docs/c/llms-full.txt` and `/docs/pebblekit-js/llms-full.txt` hold one section each. `#{@base_url}/api-index.json` lists every C and PebbleKit JS symbol with its platforms and page.
+        Most guide and reference pages on this site have a Markdown version: replace the trailing `/` or `/index.html` of the page URL with `.md` (for example `#{@base_url}/guides/events-and-services/buttons.md`). Fetch the `.md` version when reading a page; the links below already point to it. `#{@base_url}/llms-full.txt` holds every page in one file, and `/guides/llms-full.txt`, `/guides/alloy/llms-full.txt`, `/docs/c/llms-full.txt` and `/docs/pebblekit-js/llms-full.txt` hold one section each. `#{@base_url}/api-index.json` lists every C and PebbleKit JS symbol with its platforms and page.
 
         The current SDK version is #{version}. The target platforms are #{PLATFORMS.join(', ')}. Alloy (JavaScript on the watch) runs on #{ALLOY_PLATFORMS.join(' and ')} only. Rocky.js has been removed from the SDK. The timeline web API is no longer available: the Pebble mobile app does not sync pins from a server, so use local pins instead.
       TEXT

@@ -1,9 +1,14 @@
 name: Build static site
 
+# Pushes to main build and deploy the site. Pull requests build it the same
+# way (C, PebbleKit Android and iOS references included) and check every
+# internal link in the result; they never deploy and never touch the
+# production search index.
 on:
   workflow_dispatch:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
   gendocs-c:
@@ -134,10 +139,27 @@ jobs:
           HTTPS_URL: https://developer.repebble.com
           JEKYLL_ENV: production
           DOCS_URL: /tmp/docs/
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-          ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+          ALGOLIA_APP_ID: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_APP_ID || '' }}
+          ALGOLIA_API_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_API_KEY || '' }}
+          ALGOLIA_SEARCH_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_SEARCH_KEY || '' }}
           ALGOLIA_PREFIX: developer-repebble-com-prod-
+
+      # Offline: internal links and anchors only. Known legacy patterns are
+      # listed in .lycheeignore.
+      - name: Check internal links
+        if: github.event_name == 'pull_request'
+        uses: lycheeverse/lychee-action@v2
+        with:
+          lycheeVersion: v0.24.2
+          fail: true
+          args: >-
+            --offline
+            --root-dir ${{ github.workspace }}/__public__
+            --index-files index.html
+            --include-fragments
+            --preprocess ${{ github.workspace }}/scripts/lychee-preprocess.sh
+            --no-progress
+            '__public__/**/*.html'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

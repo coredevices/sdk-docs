@@ -46,7 +46,7 @@ and finally create an analog clock which looks just like this:
 
 ## First Steps
 
-If you haven't already, head over the [SDK Page](/sdk/install/) to learn how to
+If you haven't already, head over the [SDK Page](/sdk/) to learn how to
 download and install the latest version of the Pebble Tool, and the latest SDK.
 
 Once you've installed the Pebble Tool and SDK 4.0, you can create a new Rocky.js

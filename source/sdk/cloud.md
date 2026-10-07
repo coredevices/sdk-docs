@@ -1,7 +1,7 @@
 ---
 layout: sdk/markdown
 title: Use CloudPebble
-permalink: /sdk/cloud
+permalink: /sdk/cloud/
 menu_section: sdk
 menu_subsection: cloud
 generate_toc: true

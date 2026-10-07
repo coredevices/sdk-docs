@@ -84,7 +84,7 @@ beforehand will not be transmitted to/from Pebble.
 Keys are declared in the project's `package.json` file in the `messageKeys`
 object, which is inside the `pebble` object. Example keys are shown as equivalents
 to the ones used in the hypothetical weather app example in
-{% guide_link communication/sending-and-receiving-data#choosing-key-values %}.
+{% guide_link communication/sending-and-receiving-data#choosing-keys %}.
 
 ```json
 "messageKeys": [

@@ -35,7 +35,7 @@ To help you get started, we have built a simple [Pebble.js][pebblejs] applicatio
 
 This is what it looks like:
 
-![](/events/aahackathon/screenshot.jpg)
+![](/images/community/events/aahackathon/screenshot.jpg)
 
 And this is the source code:
 

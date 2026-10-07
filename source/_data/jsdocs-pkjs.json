@@ -7754,7 +7754,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " Available when the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
                   },
                   {
                     "type": "link",
@@ -7889,7 +7889,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " is missing; every other failure is reported to "
+                    "value": " is missing. Failures the Pebble mobile app detects, such as no plugin for the item or a missing permission, are reported to "
                   },
                   {
                     "type": "inlineCode",
@@ -7923,7 +7923,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " Available when the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
                   },
                   {
                     "type": "link",
@@ -8147,7 +8147,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " on failure. Throws when "
+                    "value": ", with text, refreshed and message omitted when the plugin did not set them. Throws when "
                   },
                   {
                     "type": "inlineCode",
@@ -8181,7 +8181,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " Available when the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
                   },
                   {
                     "type": "link",
@@ -8391,7 +8391,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " Available when the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
                   },
                   {
                     "type": "link",

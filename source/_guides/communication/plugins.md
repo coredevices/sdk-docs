@@ -19,6 +19,7 @@ description: |
   JS. Preview: off by default and subject to change.
 guide_group: communication
 order: 8
+menu: false
 ---
 
 {% alert important %}
@@ -57,7 +58,9 @@ To turn them on in the Pebble mobile app, version 1.14.0 or later:
 While the setting is on, the demo apps and plugins listed below are installed
 into the locker automatically and a *Plugins* tab appears on the *Apps* screen
 listing the installed plugins and their settings pages. Turning the setting
-off removes the demo apps and stops every plugin.
+off removes the demo apps and hides every plugin from new requests;
+subscriptions that are already running continue until the app's JavaScript
+stops.
 
 > Note: The setting's own description says that plugins can expose private
 > data until the permission system is finished. See
@@ -72,7 +75,7 @@ The source for each demo is in `test-apps/` of the mobile app repository.
 |---------|--------------------|---------------|
 | `weather-face` | Plugin Demo: Weather Face | A watchface built entirely from the built-in weather plugin. |
 | `plugin-test` | Plugin Demo: Dashboard | A watchapp with eight tiles, each set from its settings page to any reading from any installed plugin. Taps can trigger actions. |
-| `stocks` | Stocks | A plugin-only `.pbw`: share prices for tickers chosen on its settings page. The smallest example to copy. |
+| `stocks` | Stocks | A plugin-only `.pbw`: share prices for tickers chosen on its settings page. |
 | `hue` | Hue | Controls Philips Hue lights on the local bridge. Shows `LocalNetwork` and actions with `targets`. |
 | `notion`, `ticktick`, `todoist` | Notion, TickTick, Todoist | Plugins that sign in with OAuth. |
 
@@ -156,8 +159,10 @@ battery, UV index, a light's brightness. A small text slot can show any
 Permissions run in two directions.
 
 A plugin declares what it needs in `usesPermissions` in its manifest. Network
-access is enforced: a plugin can only reach the hosts it declares under
-`Internet`, and needs `LocalNetwork` to reach devices on the local network.
+access is enforced. `Internet` with a `domains` list lets the plugin reach
+those hosts and their subdomains only; `Internet` with no parameters lets it
+reach any public host. `LocalNetwork` is needed to reach devices on the
+local network.
 
 ```json
 "usesPermissions": [
@@ -184,8 +189,10 @@ time and on request is planned before plugins are released.
 ## Using Plugins from PebbleKit JS
 
 A watchapp or watchface uses plugins from its PebbleKit JS code. The four
-functions below are added to the `Pebble` object when the preview is on. On
-both Android and iOS they are implemented by the Pebble mobile app; the
+functions below exist on the `Pebble` object whether or not the preview is
+on. With it off, `enumeratePlugins()` returns an empty array and
+subscriptions and actions fail with `PLUGIN_UNAVAILABLE`. On both Android
+and iOS they are implemented by the Pebble mobile app; the
 source is `libpebble3/src/androidMain/assets/startup.js` and
 `libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/js/PrivatePKJSInterface.kt`.
 
@@ -249,8 +256,11 @@ Subscribes to one item and returns an object with an `unsubscribe()` method.
 | `onData` | No | Called with an envelope on every update. |
 | `onError` | No | Called with `{ code, message }`. |
 
-The call throws if `config` is missing `category` or `item`. All other
-failures arrive through `onError`.
+The call throws if `config` is missing `category` or `item`. Failures the
+Pebble mobile app detects itself, such as no plugin for the item, a missing
+permission or a malformed request, arrive through `onError`. A JavaScript
+plugin that answers with an error, or does not answer within its refresh
+interval, produces no update and no callback for that round.
 
 ```js
 var subscription = Pebble.subscribeToSource({
@@ -324,8 +334,8 @@ Pebble.invokeAction({
   args: { item: 'light', instanceId: '3', on: false }
 }).then(function (result) {
   if (result.ok) {
-    console.log(result.text);         // "Kitchen off."
-    console.log(result.refreshed);    // ["home/light"]
+    console.log(result.text);         // "Turned off."
+    console.log(result.refreshed);    // ["home/light", "home/room_lights", "home/home_lights"]
   } else {
     console.log(result.code + ': ' + result.message);
   }
@@ -335,6 +345,8 @@ Pebble.invokeAction({
 A successful result is `{ ok: true, text, refreshed }`, where `text` is a
 short string to show the user and `refreshed` lists the `category/item`
 sources the action changed. A failed result is `{ ok: false, code, message }`.
+`text`, `refreshed` and `message` are omitted when the plugin did not set
+them, so check for them before use.
 
 ### Pebble.sendConfigMessage(message)
 
@@ -367,7 +379,7 @@ Pebble.sendConfigMessage({ type: 'values', values: values });
 
 A plugin ships in a `.pbw`, either alongside a watchapp or watchface or on
 its own as a plugin-only `.pbw` with no watch binary. It takes the UUID and
-name of the `.pbw`. The simplest example to copy is `test-apps/stocks/`.
+name of the `.pbw`. `test-apps/stocks/` is a plugin-only example.
 
 An app that fetches data from a service and displays it can be split into a
 plugin and the app, in one `.pbw`. The app reads from its own plugin by
@@ -421,7 +433,7 @@ Add a `plugin` block to the `pebble` section of `package.json`:
 | Field | Meaning |
 |-------|---------|
 | `description` | What the plugin does. Shown to users and intended for Index. |
-| `script` | The plugin's JavaScript file. Defaults to `plugin.js`. |
+| `script` | The plugin's JavaScript file. The Pebble mobile app defaults to `plugin.js`, but `pack-plugin-pbw.py` only bundles the file this field names, so set it. |
 | `usesPermissions` | What the plugin itself may do. See [Permissions](#permissions). |
 | `oauth` | Hosted OAuth connectors the plugin may use, keyed by slug, for example `{ "todoist": {} }`. |
 | `sources` | Blocks of items that share a category, properties and refresh interval. `callerPermissions` lists what a reader must hold. |
@@ -476,12 +488,13 @@ Pebble.registerActionHandler(function (request, respond) {
 The handlers can return a Promise; a rejection is reported as `UNKNOWN`. A
 request with no handler registered fails with `PLUGIN_UNAVAILABLE`.
 
-The script has these APIs and no others. Unlike PebbleKit JS, a plugin does
-not run in a WebView and cannot use browser APIs beyond this list.
+Unlike PebbleKit JS, a plugin does not run in a WebView. It has the APIs
+below, the configuration APIs described under
+[Settings Pages](#settings-pages), and nothing else from a browser.
 
-* `fetch()` for HTTP, to the hosts in `usesPermissions` only. A request to
-  any other host fails like a network error. Plain HTTP to devices on the
-  local network needs `LocalNetwork`.
+* `fetch()` for HTTP, to the hosts allowed by `usesPermissions` only. A
+  request to any other host fails like a network error. Plain HTTP to devices
+  on the local network needs `LocalNetwork`.
 
 * `WebSocket`, under the same host rules. A blocked host fires `error` then
   `close`. Binary frames arrive as `ArrayBuffer`. Sockets are closed when the
@@ -498,6 +511,8 @@ not run in a WebView and cannot use browser APIs beyond this list.
   `oauth`, then call `Pebble.oauth.authorize("todoist")` for a token and
   `Pebble.oauth.refresh("todoist", refreshToken)` to renew it. The connector
   has to be registered with the Pebble appstore; see `test-apps/todoist/`.
+
+* `atob()` and `btoa()`.
 
 * `console.log()`, `info()`, `warn()` and `error()`.
 
@@ -546,7 +561,7 @@ In PebbleKit JS the `configmessage` event has `e.data` and `e.respond()`.
 Call `e.respond()` exactly once; a message with no `configmessage` listener
 is answered with `{ error: "no configmessage listener registered" }`, and a
 reply that does not arrive within 30 seconds resolves the page's Promise with
-`null`.
+`{ error: "<app name> did not answer" }`.
 
 The `plugin-test` dashboard uses this to fill its settings page from
 `Pebble.enumeratePlugins()`, send each change straight to PebbleKit JS so the

@@ -88,9 +88,11 @@ the Pebble mobile app.
 * Click *Create Release*.
 
 Each release in the app's release list has a *Publish* or *Mark Draft* toggle,
-so a release can be withdrawn without hiding the whole app. The Pebble mobile
-app installs the newest published release whose target platforms include the
-connected watch.
+so a release can be withdrawn without hiding the whole app. The appstore
+offers only the newest published release, and uses its binaries to decide
+which watches the app is compatible with. Older releases are not served, so
+dropping a platform from a new release makes the app unavailable on that
+hardware.
 
 ### Editing a Listing
 

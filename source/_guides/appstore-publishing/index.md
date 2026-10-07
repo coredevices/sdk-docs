@@ -32,8 +32,7 @@ CloudPebble can also upload apps and new releases directly.
 
 To be listed in the Pebble appstore an app must:
 
-* Be built with a released SDK and include `targetPlatforms` in its
-  `package.json`.
+* Be built with a released SDK.
 
 * Use a UUID that is not already in use by another app in the appstore.
 

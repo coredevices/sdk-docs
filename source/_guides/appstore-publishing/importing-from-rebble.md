@@ -51,8 +51,9 @@ Dashboard.
 The import checks the developer ID that Rebble has for each app against the
 ID of the signed-in account. Since the Pebble developer account is new, they
 never match on a first import, and the dashboard opens the
-*Verify App Ownership* page. Until verification is complete the imported apps
-are visible in the dashboard but cannot be edited.
+*Verify App Ownership* page. Until verification is approved the imported apps
+keep their original developer ID. They are listed on the verification page,
+not in the account's app list, and cannot be edited.
 
 * Check the list of apps submitted for verification.
 

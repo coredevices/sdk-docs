@@ -53,10 +53,11 @@ action should use the ``ActionBarLayer`` or ``ActionMenu`` to give hints about
 what each button will do.
 
 
-> Note: Watchfaces do not receive button clicks. On a watchface the system
-> uses Up and Down for the timeline, Select for the launcher and Back for
-> Quick Launch, so a ``ClickConfigProvider`` set on a watchface ``Window`` is
-> never called. Build a watchapp instead, or read
+> Note: Watchfaces do not receive button clicks. A ``ClickConfigProvider``
+> set on a watchface ``Window`` is still called, but the system handles the
+> button events itself: Up and Down open the timeline, Select opens the
+> launcher and Back is used for Quick Launch, so the subscribed handlers
+> never run. Build a watchapp instead, or read
 > {% guide_link user-interfaces/app-exit-reason %} and the launch reasons in
 > {% guide_link design-and-interaction/one-click-actions %} for ways to open an
 > app from the watchface.

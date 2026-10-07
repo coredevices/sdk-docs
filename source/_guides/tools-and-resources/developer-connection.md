@@ -59,9 +59,11 @@ In the Pebble mobile app:
 While the Developer Connection is enabled, a small developer icon is shown next
 to the watch's model name in the *Devices* tab.
 
-> Note: The *Dev Connection* option is only shown while the watch is connected
-> and its screen is awake. If it is missing from the menu, press a button on
-> the watch and open the menu again. It cannot be enabled while signed out,
+> Note: The *Dev Connection* option is only shown while the watch is
+> connected. A watch that is out of range, in a low-power state or still
+> reconnecting does not show it; wait for the *Devices* tab to report the
+> watch as connected and open the menu again. It cannot be enabled while
+> signed out,
 > unless the LAN connection is turned on (see
 > [below](#using-a-lan-connection)).
 

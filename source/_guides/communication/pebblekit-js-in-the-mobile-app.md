@@ -184,6 +184,7 @@ Read {% guide_link user-interfaces/app-configuration %} for the full flow.
   back. Server-pushed pins and glances are not supported.
 
 * `console.log()` output appears in `pebble logs` prefixed with the app's
-  name and the line number. When the privacy setting that obfuscates log
-  content is on, lines containing words such as "token" or "location" are
-  replaced with `<REDACTED>`.
+  name and the line number. The Pebble mobile app's own log, the one
+  included in bug reports, replaces lines containing words such as "token"
+  or "location" with `<REDACTED>` when the setting that obfuscates log
+  content is on; the Developer Connection log is not redacted.

@@ -94,7 +94,7 @@ Not every language and feature is available on every platform:
 | Feature | Platforms | Notes |
 |---------|-----------|-------|
 | C SDK | All | |
-| Alloy (JavaScript on the watch) | `emery`, `gabbro` | `flint` is not supported yet. `aplite`, `basalt`, `chalk` and `diorite` are not supported. See {% guide_link alloy %}. |
+| Alloy (JavaScript on the watch) | `emery`, `gabbro` | The firmware includes the Alloy runtime on `emery` and `gabbro` only, and the `pebble` tool templates target those two. CloudPebble also lists `flint`, but Alloy apps do not run on `flint` yet. `aplite`, `basalt`, `chalk` and `diorite` are not supported. See {% guide_link alloy %}. |
 | PebbleKit JS | All | Runs on the phone, in the Pebble mobile app. |
 | Rocky.js | None | Removed from the firmware. Use Alloy instead. |
 | Touch | `emery`, `gabbro` | Watchapps only. Watchfaces cannot receive touch events. See {% guide_link events-and-services/touch %}. |

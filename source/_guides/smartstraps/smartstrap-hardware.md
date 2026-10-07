@@ -60,7 +60,7 @@ on the back of Pebble Time.
 
 ## Battery Smartstraps and Chargers
 
-If a smartstrap is designed to charge a Pebble smartwatch, simply apply +5V to
+If a smartstrap is designed to charge a Pebble smartwatch, apply +5V to
 the power pin and make sure that it can provide up to 500mA of current. This is
 the maximum power draw of Pebble Time when the screen is on, the battery
 charging, the radios are on, etc.
@@ -101,7 +101,7 @@ micro-controller:
   [ArduinoPebbleSerial](https://github.com/pebble/arduinopebbleserial) project
   when running in 'software serial' mode.
 
-* If using two pins, simply connect the data line to both the TX and RX pins.
+* If using two pins, connect the data line to both the TX and RX pins.
   The designer should make sure that the TX pin is in high-impedance mode when
   not talking on the bus and that the serial receiver is not active when sending
   (otherwise it will receive everything sent). This is demonstrated in the

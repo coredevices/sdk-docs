@@ -435,13 +435,15 @@ running emulator.
 #### send-app-message
 
 ```nc|text
-$ pebble send-app-message [--int KEY=VALUE ...] [--uint KEY=VALUE ...] [--string KEY=VALUE ...] [--bytes KEY=HEX ...] [--bytes-file KEY=FILE ...] [--uuid UUID]
+$ pebble send-app-message [--int KEY=VALUE ...] [--uint KEY=VALUE ...] [--string KEY=VALUE ...] [--bytes KEY=HEX ...] [--bytes-file KEY=FILE ...] [--app-uuid UUID]
 ```
 
 Send an ``AppMessage`` dictionary to the running watchapp, to test its inbox
 handler without a PebbleKit JS or companion app. Keys are integers. Each
-option can be repeated to add more entries, for example `--int 1=42 --string
-2=hello`. `--uuid` selects the target app when it is not the current project.
+option takes one or more `KEY=VALUE` entries, for example `--int 1=42 2=43
+--string 3=hello`. Give each option once; a repeated option replaces the
+earlier entries. `--app-uuid` selects the target app when it is not the
+current project.
 
 
 #### fw
@@ -643,14 +645,14 @@ between `0` and `100` to represent the new battery level. The presence of
 #### emu-accel
 
 ```nc|text
-$ pebble emu-accel DIRECTION [--file FILE]
+$ pebble emu-accel DIRECTION [FILE]
 ```
 
 Send accelerometer data events to any running emulator. `DIRECTION` can be any
-of `tilt_left`, `tilt_right`, `tilt_forward`, `tilt_back`, `gravity+x`,
-`gravity-x`, `gravity+y`, `gravity-y`, `gravity+z`, `gravity-z` , and `custom`.
-If `custom` is selected, specify a `FILE` of comma-separated x, y, and z
-readings.
+of `tilt-left`, `tilt-right`, `tilt-forward`, `tilt-back`, `gravity+x`,
+`gravity-x`, `gravity+y`, `gravity-y`, `gravity+z`, `gravity-z`, `none` and
+`custom`. If `custom` is selected, give a `FILE` with one line per reading of
+comma-separated x, y and z values.
 
 
 #### transcribe
@@ -663,7 +665,7 @@ Run a server that will act as a transcription service. Run it before
 invoking the ``Dictation`` service in an app. If `message` is provided,
 the dictation will be successful and that message will be provided.
 If `--error` is provided, the dictation will fail with the given error.
-`--error` and `message` are mutually exclusive.
+Exactly one of `message` and `--error` is required.
 
 ```nc|text
 $ pebble transcribe "Hello, Pebble!"
@@ -754,8 +756,8 @@ $ pebble login [--status] [--no-open-browser]
 
 Sign in to your Pebble account. The command opens a browser window to complete
 the sign in; `--no-open-browser` prints the URL instead, for use over SSH.
-Signing in is required for the CloudPebble connection (`--cloudpebble`), for
-`pebble publish` and for the timeline commands. `--status` prints whether you
+Signing in is required for the CloudPebble connection (`--cloudpebble`) and
+for `pebble publish`. `--status` prints whether you
 are signed in and whether the account is linked to a Developer Dashboard
 account, then exits.
 
@@ -779,9 +781,9 @@ $ pebble insert-pin FILE [--id ID] [--app-uuid UUID]
 ```
 
 Insert a JSON pin from `FILE` into the timeline of the connected watch or
-emulator. `-` reads the pin from standard input. `--id` overrides the `id` in
-the file, and `--app-uuid` sets the pin's parent app when it is not the
-current project.
+emulator. `-` reads the pin from standard input. `--id` supplies the pin `id`
+when the file has none; if both are given they must match. `--app-uuid` sets
+the pin's parent app when it is not the current project.
 
 
 #### delete-pin

@@ -31,6 +31,10 @@ Before starting, read {% guide_link appstore-publishing/preparing-a-submission %
 for the fields and image sizes that are required. Apps go live as soon as
 they are submitted. There is no review queue.
 
+Published listings can be browsed at
+[apps.repebble.com](https://apps.repebble.com) to see how other developers
+present their apps.
+
 
 ## Signing In
 

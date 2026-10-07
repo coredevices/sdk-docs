@@ -372,6 +372,11 @@ state with `enable-sends` and `disable-sends`.
 
 ### Emulator Interaction
 
+> Note: If the emulator does not boot, keeps apps that were uninstalled or
+> stays on one screen, run `pebble kill` to stop it and then `pebble wipe` to
+> delete its stored data. The next `pebble install` starts the emulator with a
+> fresh flash image.
+
 
 #### gdb
 
@@ -561,8 +566,12 @@ Show or hide the Timeline Quick View system overlay. STATE can be `on` or `off`.
 $ pebble wipe
 ```
 
-Wipe data stored for the Pebble emulator, but not the logged in Pebble account.
-To wipe **all** data, specify `--everything` when running this command.
+Delete the data stored for the emulator of every platform in the current SDK,
+including the flash image that holds installed apps and settings and the
+phone simulator's PebbleKit JS storage, but not the logged in Pebble account.
+Run `pebble kill` first so that a running emulator does not keep the old
+data. To wipe **all** data for every SDK version and log out, specify
+`--everything`.
 
 
 ### Pebble Account Management

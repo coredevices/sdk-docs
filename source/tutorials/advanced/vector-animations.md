@@ -22,12 +22,6 @@ description: |
   How to use vector images in icons and animations.
 permalink: /tutorials/advanced/vector-animations/
 generate_toc: true
-platforms:
-  - basalt
-  - chalk
-  - diorite
-  - emery
-  - flint
 ---
 
 Some of the best Pebble apps make good use of the ``Animation`` and the

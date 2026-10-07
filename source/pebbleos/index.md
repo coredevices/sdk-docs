@@ -78,6 +78,49 @@ the instructions themselves come from the pebbleos repository.
 Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
 
 
+## Installing a Custom Build
+
+{% alert important %}
+A custom build can leave the watch unable to boot. The causes seen most often:
+
+* Flashing a build configured for a different board. `pbl flash` writes
+  whatever the build directory was configured for and does not check the
+  board it is connected to. Over Bluetooth, the Pebble mobile app refuses a
+  `.pbz` whose `hwrev` does not match the watch. `pebble fw install` prints
+  the `hwrev` but does not check it.
+* Erasing the bootloader or PRF. `pbl flash` writes only the firmware image,
+  but `pbl erase` erases the start of the bootloader with the openocd runner
+  and the whole flash with the sftool runner. PRF can also be replaced over
+  Bluetooth with a bundle built with `--variant prf`; a PRF that does not run
+  removes the fallback.
+* Firmware and system resources from different builds. On a firmware
+  development kit the resources are flashed separately, with
+  `pbl flash --resources` or `pbl image_resources`. Firmware that finds its
+  resources missing or corrupt reboots into PRF.
+* A build that crashes or hangs before Bluetooth is up, so the phone cannot
+  send a new firmware to it.
+* Interrupting `pbl flash`, which leaves a partial image in the firmware
+  slot. An interrupted Bluetooth update does not: the image is staged in a
+  separate slot and is only marked for installation once both the firmware
+  and the resources have arrived.
+{% endalert %}
+
+When a firmware fails to start, the bootloader records the attempt in the
+boot bits and after repeated failures boots PRF instead. From PRF the Pebble
+mobile app installs a firmware again. To get to PRF by hand, hold *Back*,
+*Up* and *Select* together for five seconds, or run `pebble fw enter-prf`.
+[Recovery Firmware](/pebbleos/contributing/#recovery-firmware) has the
+details.
+
+If the bootloader or PRF has been erased, the watch can only be programmed
+through its debug connector: over SWD with openocd on Pebble 2 Duo, and over
+the serial adapter with sftool, which does not depend on the bootloader, on
+Pebble Time 2 and Pebble Round 2. A sealed watch has no accessible debug
+connector; a
+[firmware development kit](/pebbleos/contributing/#the-firmware-development-kit)
+does.
+
+
 ## Boards
 
 The firmware is configured for one board at a time with

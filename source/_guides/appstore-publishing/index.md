@@ -30,6 +30,13 @@ Pebble mobile app. Listings are managed in the
 [Developer Dashboard]({{ site.links.devportal }}). The `pebble` tool and
 CloudPebble can also upload apps and new releases directly.
 
+Published apps and watchfaces can be browsed at
+[apps.repebble.com](https://apps.repebble.com). Look at a few listings there
+to see how the icon, screenshots and description appear before preparing a
+submission.
+
+![](/images/guides/appstore-publishing/apps-repebble-com.png =600x)
+
 To be listed in the Pebble appstore an app must:
 
 * Be built with a released SDK.

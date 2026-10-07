@@ -87,6 +87,12 @@ pebble-timeline:
   category: interactive-apps
   sort_by: title
 
+plugins:
+  title: Plugins (Preview)
+  description: How a .pbw's JavaScript can provide data sources and actions to other apps through the Pebble mobile app, and how a watchapp reads them from PebbleKit JS.
+  category: interactive-apps
+  sort_by: title
+
 tools-and-resources:
   title: Tools and Resources
   description: Information on all the software tools available when writing Pebble apps, as well as other resources.

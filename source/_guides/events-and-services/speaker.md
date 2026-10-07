@@ -30,10 +30,10 @@ related_examples:
     url: https://github.com/coredevices/example-apps/tree/main/speaker/pcm-resource-thing
 ---
 
-On hardware platforms with a built-in speaker, Pebble 2 Duo (flint) and
-Pebble Time 2 (emery) (see the
-[platform support table](/sdk/#platform-support)), the Speaker API gives apps
-four different ways to make sound:
+On hardware platforms with a built-in speaker, the Speaker API gives apps four
+different ways to make sound (see the platform support table in
+{% guide_link tools-and-resources/hardware-information#platform-support %} for which watches
+have a speaker):
 
 * A **one-shot tone**, for short beeps and confirmation sounds.
 * A **note sequence**, for monophonic melodies that the system synthesizes
@@ -105,8 +105,7 @@ speaker_play_notes(s_arpeggio, ARRAY_LENGTH(s_arpeggio), 80);
 ```
 
 A `midi_note` of `0` is treated as a rest of the given duration. MIDI note
-`60` is middle C (C4), and the standard MIDI note numbering applies. A single
-call accepts at most ``SPEAKER_MAX_NOTES`` (256) notes.
+`60` is middle C (C4), and the standard MIDI note numbering applies.
 
 
 ## Playing Polyphonic Tracks
@@ -159,9 +158,8 @@ static const SpeakerTrack s_drum_track = {
 };
 ```
 
-Pass between 1 and ``SPEAKER_MAX_TRACKS`` (4) tracks to
-`speaker_play_tracks()`. The PCM samples referenced by all tracks in one call
-may total at most ``SPEAKER_MAX_SAMPLE_BYTES_TOTAL`` (16 kB).
+Pass between 1 and 4 tracks to `speaker_play_tracks()`. Tracks beyond the
+fourth are not supported.
 
 
 ## Streaming PCM
@@ -269,27 +267,9 @@ which returns one of:
 | ``SpeakerStatusDraining`` | Playback has stopped accepting new input and is finishing the buffered audio. |
 
 
-## Respecting Mute
-
-The user can mute the speaker in *Settings* > *Sounds & Haptics*, and can
-choose to have Quiet Time mute it as well, in which case it is muted for the
-duration of Quiet Time. Apps cannot override this. Use
-``speaker_is_muted()`` to adapt the UI or skip a long sound that would not be
-heard:
-
-```c
-if (speaker_is_muted()) {
-  vibes_short_pulse();
-} else {
-  speaker_play_tone(440, 250, 80, SpeakerWaveformSine);
-}
-```
-
-
 ## Detecting Speaker Support
 
-Not every platform has a built-in speaker. Pebble Round 2 (gabbro) and the
-earlier watches do not. There are two ways to handle this:
+Not every platform has a built-in speaker. There are two ways to handle this:
 
 At compile time, the `PBL_SPEAKER` preprocessor define is present on platforms
 that have a speaker, so speaker-specific code can be excluded entirely from

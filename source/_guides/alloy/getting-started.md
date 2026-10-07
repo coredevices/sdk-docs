@@ -22,11 +22,9 @@ order: 1
 
 This guide walks you through creating your first Alloy app for Pebble.
 
-> Note: Alloy runs on `emery` (Pebble Time 2) and `gabbro` (Pebble Round 2),
-> the platforms whose firmware includes the Alloy runtime. CloudPebble also
-> lists `flint` (Pebble 2 Duo), but Alloy apps do not run on `flint` yet. The
-> older platforms are not supported. See the
-> [platform support table](/sdk/#platform-support).
+> **Platform Support**: Alloy currently supports Emery (Pebble Time 2) and
+> Gabbro (Pebble Round 2). See the platform support table in
+> {% guide_link tools-and-resources/hardware-information#platform-support %}.
 
 ## Creating a New Project
 
@@ -241,13 +239,6 @@ To install on a physical watch:
 ```text
 $ pebble install --phone YOUR_PHONE_IP
 ```
-
-## Rocky.js
-
-Rocky.js, the earlier JavaScript runtime for watchfaces, is no longer part of
-the firmware or the SDK. Alloy replaces it. Rocky.js projects need to be
-rewritten as Alloy apps, since the two APIs are different.
-
 
 ## Next Steps
 

@@ -81,12 +81,6 @@ pebble-timeline:
   category: interactive-apps
   sort_by: title
 
-smartstraps:
-  title: Smartstraps
-  description: Historical record of the smartstrap accessory port on Pebble Time, Pebble Time Round and Pebble 2. Not supported on current watches.
-  category: interactive-apps
-  sort_by: title
-
 tools-and-resources:
   title: Tools and Resources
   description: Information on all the software tools available when writing Pebble apps, as well as other resources.

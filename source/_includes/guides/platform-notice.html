@@ -14,15 +14,18 @@
  limitations under the License.
 {% endcomment %}
 {% if page.platforms %}
+{% assign names = "" | split: "" %}
 {% assign watches = "" | split: "" %}
-{% for id in page.platforms %}{% assign watches = watches | concat: site.data.platforms[id].watches %}{% endfor %}
+{% for entry in site.data.platforms %}{% assign id = entry[0] %}{% assign platform = entry[1] %}{% unless page.platforms contains id %}{% assign names = names | push: platform.name %}{% assign watches = watches | concat: platform.watches %}{% endunless %}{% endfor %}
+{% if names.size > 0 %}
 <div class="alert alert--fg-white alert--bg-purple alert--medium">
   <p>
     <strong>PLATFORM NOTICE</strong><br>
-    This guide applies to apps built for the
-    {%- for id in page.platforms %}{% if forloop.first %} {% elsif forloop.last %} and {% else %}, {% endif %}{{ site.data.platforms[id].name }}{% endfor %}
-    platform{% if page.platforms.size > 1 %}s{% endif %}
+    This guide does not apply to apps built to run on the
+    {%- for name in names %}{% if forloop.first %} {% elsif forloop.last %} or {% else %}, {% endif %}{{ name }}{% endfor %}
+    platform{% if names.size > 1 %}s{% endif %}
     ({% for watch in watches %}{% if forloop.first %}{% elsif forloop.last %} and {% else %}, {% endif %}{{ watch }}{% endfor %}).
   </p>
 </div>
+{% endif %}
 {% endif %}

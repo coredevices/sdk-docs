@@ -23,11 +23,11 @@ related_examples:
     url: https://github.com/coredevices/example-apps/tree/main/touch-thing
 ---
 
-On hardware platforms with a touchscreen, Pebble Time 2 (emery) and Pebble
-Round 2 (gabbro) (see the
-[platform support table](/sdk/#platform-support)), the `TouchService` lets an
-app receive touchdown, lift-off, and position updates as the user moves their
-finger across the display. This is the same low-level event stream the system
+On hardware platforms with a touchscreen, the `TouchService` lets an app
+receive touchdown, lift-off, and position updates as the user moves their
+finger across the display. See the platform support table in
+{% guide_link tools-and-resources/hardware-information#platform-support %} for which watches
+have a touchscreen. This is the same low-level event stream the system
 itself uses, so apps can build draggable UI or free-form input on top of it.
 Apps that want gestures rather than raw touches can use the built-in
 [gesture recognizers](#gesture-recognizers), and apps that just want their
@@ -45,8 +45,7 @@ only use the `TouchService` from a watchapp.
 
 ## Detecting Touch Support
 
-A touchscreen is not present on every platform (Pebble 2 Duo has none), and
-even when it is the user
+A touchscreen is not present on every platform, and even when it is the user
 can disable touch input from *Settings → Display → Touch*. Apps should call
 ``touch_service_is_enabled()`` before relying on touch input - typically from
 the window's `appear` handler - and gracefully degrade if it returns `false`:
@@ -153,10 +152,9 @@ these events and can decide for themselves whether to honor them.
 ## Touch Navigation
 
 Since firmware 4.32, the system can translate touches into the button-based
-navigation model: swiping in a ``MenuLayer`` or ``ScrollLayer`` scrolls it and
-tapping a ``MenuLayer`` row activates it, taps on an ``ActionBarLayer`` are
-zoned into up/select/down button events, and ``ActionMenu`` items activate on
-tap. As of firmware 4.33
+navigation model: tapping and swiping in a ``MenuLayer`` scrolls it and
+activates rows, taps on an ``ActionBarLayer`` are zoned into up/select/down
+button events, and ``ActionMenu`` items activate on tap. As of firmware 4.33
 this *touch navigation* is enabled by default, and it is gated on an
 **interaction session**: the user must press a button or wake the watch with
 a gesture before touches navigate. This prevents accidental navigation from

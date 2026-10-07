@@ -79,8 +79,8 @@ graphics_draw_text(ctx, text, fonts_get_system_font(FONT_KEY_GOTHIC_24), bounds,
 After placing the font file in the project's `resources` directory, the custom
 font can be added to a project as `font` `type` item in the `media` array in
 `package.json`. The `name` field's contents will be made available at compile
-time with `RESOURCE_ID_` at the front, and must end with the desired font size.
-For example:
+time with `RESOURCE_ID_` at the front, and must end with the desired font size,
+after an underscore. For example:
 
 ```js
 "resources": {
@@ -91,6 +91,20 @@ For example:
       "file": "example_font.ttf"
     }
   ]
+}
+```
+
+SDK 4.33 and earlier read the first number anywhere in the name as the size, so
+keep other numbers out of it. If the name needs another number, add
+`pixelHeight` to set the size directly. SDK 4.17 and up read it, and SDKs
+before 4.17 ignore it, so there the example below builds at 2 pixels:
+
+```js
+{
+  "type": "font",
+  "name": "RETRO_2_FONT_20",
+  "file": "retro_2.ttf",
+  "pixelHeight": 20
 }
 ```
 
@@ -173,7 +187,7 @@ Add the `characterRegex` key to any font objects in `package.json`'s
   {
     "characterRegex": "[:0-9]",
     "type": "font",
-    "name": "EXAMPLE_FONT",
+    "name": "EXAMPLE_FONT_20",
     "file": "example_font.ttf"
   }
 ]

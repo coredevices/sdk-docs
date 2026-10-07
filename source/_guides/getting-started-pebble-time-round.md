@@ -19,6 +19,7 @@ description: |
   Pebble Time Round.
 guide_group: tools-and-resources
 order: 99
+published: false
 ---
 
 With the addition of Pebble Time Round to the Pebble hardware family, the Pebble

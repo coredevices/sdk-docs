@@ -1,0 +1,28 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+{% if page.platforms %}
+{% assign watches = "" | split: "" %}
+{% for id in page.platforms %}{% assign watches = watches | concat: site.data.platforms[id].watches %}{% endfor %}
+<div class="alert alert--fg-white alert--bg-purple alert--medium">
+  <p>
+    <strong>PLATFORM NOTICE</strong><br>
+    This guide applies to apps built for the
+    {%- for id in page.platforms %}{% if forloop.first %} {% elsif forloop.last %} and {% else %}, {% endif %}{{ site.data.platforms[id].name }}{% endfor %}
+    platform{% if page.platforms.size > 1 %}s{% endif %}
+    ({% for watch in watches %}{% if forloop.first %}{% elsif forloop.last %} and {% else %}, {% endif %}{{ watch }}{% endfor %}).
+  </p>
+</div>
+{% endif %}

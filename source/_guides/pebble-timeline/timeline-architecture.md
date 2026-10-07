@@ -33,110 +33,56 @@ the information provided about the immediate past and future to make decisions
 about how they plan the rest of their day and how to respond to any missed
 notifications or events.
 
-While the system and mobile application populate the user's timeline
-automatically with items such as calendar appointments and weather details, the
-real value of the timeline is realized by third party apps. For example, a
-sports app could show a pin representing an upcoming match and the user could
-tell how much time remained until they needed to be home to watch it.
+The system and the Pebble mobile app populate the user's timeline with items
+such as calendar appointments, missed calls and weather. Apps add their own pins
+from PebbleKit JS. For example, a sports app could show a pin representing an
+upcoming match so the user can see how long remains until it starts.
 
-Developers can use a watchapp to subscribe their users to one of two types pin:
-
-* Personal pins pushed to a user's timeline token. These pins are only delivered
-  to the user the token belongs to, allows a high degree of personalization in
-  the pin's contents.
-
-* Channels called 'topics' (one more more, depending on their preferences),
-  allow an app to push pins to a large number of users at once. Topics are
-  created on a per-app basis, meaning a user receiving pins for a 'football'
-  topic from one app will not receive pins from another app using the same topic
-  name.
-
-Developers can use the PebbleKit JS API to combine the user's preferences with
-their location and data from other web-connected sources to make pin updates
-more personal, or more intelligently delivered.
-
-The public timeline web API is used to push data from a own backend server to
-app users according to the topics they have subscribed to, or to individual
-users. Methods for doing this are discussed below under 
-[Three Ways to Use Pins](#three-ways-to-use-pins).
+Pins are created on the phone and sent to the watch. There is no server in the
+path, so no timeline token, API key or appstore listing is needed. The pin
+format is described in {% guide_link pebble-timeline/pin-structure %} and the
+PebbleKit JS API in {% guide_link pebble-timeline/timeline-local-pins %}.
 
 
 ## Architecture Overview
 
 ![diagram](/images/guides/3.0/timeline-architecture.png)
 
-The timeline architecture consists of multiple components that work together to
-bring timely and relevant data, events, and notifications to the user without
-their intervention. These components are discussed in more detail below.
+The diagram shows the original timeline service. The 'Pebble Timeline API'
+cloud service and the developer's server no longer exist; today pins travel
+only between the phone and the watch.
 
 
-### Public Web API
+### Watch Timeline
 
-The Pebble timeline web API manages the currently
-available topics, published pins, and timeline-enabled apps' data. All pins that
-are delivered to users pass through this service. When a developer pushes a pin
-it is sent to this service for distribution to the applicable users.
+The watch stores the pins and shows them when the user presses Up for the past
+or Down for the future from the watchface. Alarm pins are inserted directly on
+the watch. Pins carry their own layout, reminders and actions, so the watch does
+not need to contact the phone to display them.
 
 
 ### Pebble Mobile App
 
-The Pebble mobile app is responsible for synchronizing the pins visible on the
-watch with those that are currently available in the cloud. The PebbleKit JS
-APIs allow a developer to use a configuration page (detailed in 
-{% guide_link user-interfaces/app-configuration %}) or onboard menu to give
-users the choice of which pins they receive via the topics they are subscribed
-to. Developers can also send the user's token to their own server to maintain a
-custom list of users, and provide a more personal service.
-
-The Pebble mobile app is also responsible for inserting pins directly into the
-user's timeline for their upcoming calendar events and missed calls. These pins
-originate on the phone and are sent straight to the watch, not via the public
-web API. Alarm pin are also inserted directly from the watch itself.
+The Pebble mobile app inserts system pins for the user's upcoming calendar
+events, missed calls and weather, and syncs them to the watch. It also runs the
+PebbleKit JS component of each installed app and forwards the pins that
+component inserts.
 
 
-### Developer's App Server/Service
+## Sources of Pins
 
-When a developer wants to push pins, they can do so from their own third-party
-server. Such a server will generate pins using topics that the watchapp
-subscribes to (either for all users or just those that elect to be subscribed)
-or user tokens received from PebbleKit JS to target individual users.
+### System Pins
 
-
-## Three Ways to Use Pins
-
-The timeline API is flexible enough to enable apps to use it to send data to
-users in three distinct ways.
+Calendar, missed call and weather pins are created by the Pebble mobile app.
+Alarm pins are created by the watch. Apps cannot change these pins.
 
 
-### Push to All Users
+### Local Pins
 
-![all-users](/images/guides/timeline/all-users.png)
-
-The most basic subscription method involves subscribing a user to a topic that
-is global to the app. This means all users of the app will receive the pins
-pushed to that topic. To do this, a developer can choose a single topic name
-such as 'all-users' and subscribe all users to that topic when the app is first
-installed, or the user opts in to receive pins.
-
-
-### Let Users Choose Their Pins
-
-![some-users](/images/guides/timeline/some-users.png)
-
-Developers can also use a configuration page in their app to allow users to
-subscribe to different topics, leeting them customize their experience and only
-receive pins they want to see. In the image above, the pin broadcast with the
-topic 'baseball' is received by users 1 and 3, but not User 2 who has only
-subscribed to the 'golf' topic.
-
-
-### Target Individual Users
-
-![individual](/images/guides/timeline/individual.png)
-
-Lastly, developers can use the timeline token to target individual users. This
-adds another dimension to how personal an app can become, allowing apps to be
-customized to the user in more ways than just their topic preferences. The image
-above shows a pin pushed from an app's pin server to just the user with the
-matching `X-User-Token`. For example, an app tracking the delivery of a user's
-packages will only be applicable to that user.
+Apps insert pins from PebbleKit JS with `Pebble.insertTimelinePin()` and remove
+them with `Pebble.deleteTimelinePin()`. Each pin is created on the phone that
+runs the app's JavaScript, so pins are not shared with the user's other phones
+and are only inserted while the app's JavaScript is running. Developers can use
+PebbleKit JS to combine the user's preferences from a configuration page
+(detailed in {% guide_link user-interfaces/app-configuration %}) with their
+location and data from web services to decide which pins to insert.

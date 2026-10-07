@@ -26,15 +26,7 @@ menu_section: tutorials
       {% if page.platform_choice %}
       {% include platform-choice.html %}
       {% endif %}
-      {% if page.platforms contains 'basalt' %}
-      <div class="alert alert--fg-white alert--bg-purple alert--medium">
-        <p>
-          <strong>PLATFORM NOTICE</strong><br>
-          This guide only applies for apps built to run on the Basalt platform
-          (Pebble Time watches).
-        </p>
-      </div>
-      {% endif %}
+      {% include guides/platform-notice.html %}
       <div class="markdown markdown--staff">
       {{ content }}
       </div>

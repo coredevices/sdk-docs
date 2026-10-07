@@ -28,8 +28,6 @@ related_examples:
 
 ---
 
-## Overview
-
 An app's "glance" is the visual representation of a watchapp in the launcher and
 provides glanceable information to the user. The ``App Glance`` API, added in SDK
 4.0, enables developers to programmatically set the icon and subtitle that

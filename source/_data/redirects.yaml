@@ -2778,3 +2778,6 @@
 -
  - /sdk/install/windows/
  - /sdk/#windows
+-
+  - /pebbleos/exposing-apis/index.html
+  - /pebbleos/

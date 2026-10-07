@@ -75,9 +75,9 @@ Watchapps do not link against the firmware. The firmware build generates the
 app SDK from its own sources: `pebble.h` with the exported declarations, and
 `libpebble.a` with trampolines that call into the firmware through a function
 table compiled into the firmware image. Apps run as unprivileged processes
-and reach OS state through syscalls. The
-[Exposing APIs to the SDK](/pebbleos/exposing-apis/) page summarises how a
-firmware function becomes an SDK API.
+and reach OS state through syscalls. The imported
+[Exposing functions to the SDK](/pebbleos/docs/development/sdk_export/) page
+describes how a firmware function becomes an SDK API.
 
 The SDK that developers install with `pebble sdk install` is built from a
 firmware release. The C API reference on this site at [/docs/c/](/docs/c/) is

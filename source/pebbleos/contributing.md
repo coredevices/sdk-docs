@@ -64,7 +64,7 @@ the rules the repository enforces. In short:
   `area: description`, for example `applib: add touch service`.
 * C code is formatted with clang-format and Python with ruff.
 * A change that adds a function apps can call also needs the steps on
-  [Exposing APIs to the SDK](/pebbleos/exposing-apis/).
+  [Exposing functions to the SDK](/pebbleos/docs/development/sdk_export/).
 
 Changes to the firmware documentation go in the `docs/` directory of the
 pebbleos repository, not on this site. The imported pages are regenerated

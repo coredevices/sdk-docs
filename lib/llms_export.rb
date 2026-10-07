@@ -403,7 +403,7 @@ module LlmsExport
       <<~TEXT.strip
         Most guide and reference pages on this site have a Markdown version: replace the trailing `/` or `/index.html` of the page URL with `.md` (for example `#{@base_url}/guides/events-and-services/buttons.md`). Fetch the `.md` version when reading a page; the links below already point to it. `#{@base_url}/llms-full.txt` holds every page in one file, and `/guides/llms-full.txt`, `/guides/alloy/llms-full.txt`, `/docs/c/llms-full.txt` and `/docs/pebblekit-js/llms-full.txt` hold one section each. `#{@base_url}/api-index.json` lists every C and PebbleKit JS symbol with its platforms and page.
 
-        The current SDK version is #{version}. The target platforms are #{PLATFORMS.join(', ')}. Alloy (JavaScript on the watch) runs on #{ALLOY_PLATFORMS.join(' and ')} only. Rocky.js has been removed from the SDK. The timeline web API is no longer available: the Pebble mobile app does not sync pins from a server, so use local pins instead.
+        The current SDK version is #{version}. The target platforms are #{PLATFORMS.join(', ')}. Alloy (JavaScript on the watch) runs on #{ALLOY_PLATFORMS.join(' and ')} only. The timeline web API is no longer available: the Pebble mobile app does not sync pins from a server, so use local pins instead.
       TEXT
     end
 

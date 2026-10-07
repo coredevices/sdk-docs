@@ -53,6 +53,11 @@ describe LlmsExport do
       expect(LlmsExport.md_path_for('/docs/c/Foo/index.html')).to eq('/docs/c/Foo.md')
       expect(LlmsExport.md_path_for('/docs/c/Foo.html')).to eq('/docs/c/Foo.md')
     end
+
+    it 'keeps the old /foo/index.md form as an alias for index.html pages' do
+      expect(LlmsExport.md_alias_for('/docs/c/Foo/index.html')).to eq('/docs/c/Foo/index.md')
+      expect(LlmsExport.md_alias_for('/guides/foo/')).to be_nil
+    end
   end
 
   describe 'exclusions' do
@@ -67,6 +72,14 @@ describe LlmsExport do
       LlmsExport::Builder.mark_pages(site)
       expect(pages[2].data['llms_md_path']).to eq('/docs/c/User_Interface/Window.md')
       expect(pages[6].data).not_to have_key('llms_md_path')
+    end
+  end
+
+  describe '#md_url_for' do
+    it 'returns the twin URL only for emitted pages' do
+      expect(builder.md_url_for('/docs/c/User_Interface/Window/index.html'))
+        .to eq('https://developer.repebble.com/docs/c/User_Interface/Window.md')
+      expect(builder.md_url_for('/blog/tags/freshly-baked/index.html')).to be_nil
     end
   end
 

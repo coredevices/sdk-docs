@@ -52,7 +52,6 @@ sass:
 # Helpful and easily changeable external links.
 links:
   pebble: https://rePebble.com
-  jobs: https://www.pebble.com/jobs/
   twitter: https://twitter.com/pebble/
   devportal: https://developer.rePebble.com/dashboard
   site_repo: https://github.com/coredevices/sdk-docs

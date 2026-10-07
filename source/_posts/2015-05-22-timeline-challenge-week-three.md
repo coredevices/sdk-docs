@@ -4,7 +4,6 @@ author: niharika
 tags: 
 - Timeline
 banner: /images/blog/leafbanner.png
-image: https://assets.getpebble.com/api/file/egpXpvfS3KyYHmEDJxbr/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 With the rise of the Internet of Things (IoT), the number IoT products has 

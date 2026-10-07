@@ -3,7 +3,6 @@ title: Pebble Timeline Challenge Week 6 Winner - Meetup!
 author: niharika
 tags: 
 - Timeline
-image: https://assets.getpebble.com/api/file/0hhl54GbT8OIbcVxf6m1/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 We've recently formed our 21st [Meetup group](http://pebble.meetup.com/), 

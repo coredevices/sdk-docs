@@ -13,11 +13,12 @@
 # limitations under the License.
 
 # SDK platform names and the watches that run them. Used by the platform
-# notice shown on guides that set `platforms:` in their front matter.
+# notice shown on guides that set `platforms:` in their front matter, which
+# lists the platforms a guide does not apply to.
 
 aplite:
   name: Aplite
-  watches: [Pebble, Pebble Steel]
+  watches: [Pebble Classic, Pebble Steel]
 basalt:
   name: Basalt
   watches: [Pebble Time, Pebble Time Steel]

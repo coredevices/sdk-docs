@@ -27,9 +27,8 @@ search_group: PebbleOS
 PebbleOS is developed at
 [github.com/coredevices/pebbleos](https://github.com/coredevices/pebbleos).
 Changes arrive as pull requests, bugs are tracked in the repository's issues,
-and discussion happens in the repository's Discussions, on the
-[forum](https://forum.repebble.com) and on
-[Discord]({{ site.links.discord_invite }}). This page points to the imported
+and discussion happens in the repository's Discussions and on the
+[forum](https://forum.repebble.com). This page points to the imported
 documentation for each step and answers the questions that come up most often.
 
 

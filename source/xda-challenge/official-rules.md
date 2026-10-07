@@ -1,6 +1,7 @@
 ---
 layout: community/markdown
 title: XDA FORUMS - PEBBLE DEVELOPER CHALLENGE
+published: false
 ---
 
 ###OFFICIAL RULES

@@ -301,8 +301,8 @@ console.log('Pebble model: ' + info.model);
 
 ## Detecting Platform-specific JS Features
 
-A number of features in PebbleKit JS (such as ``Pebble.timelineSubscribe()`` and
-``Pebble.getActiveWatchInfo()``) exist on SDK 3.x. If an app tries to use any of
+A number of features in PebbleKit JS (such as ``Pebble.getActiveWatchInfo()``)
+exist on SDK 3.x. If an app tries to use any of
 these on an older Pebble mobile app version where they are not available, the JS
 app will crash.
 

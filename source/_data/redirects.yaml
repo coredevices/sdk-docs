@@ -2435,7 +2435,7 @@
   - /guides/communication/using-pebblekit-ios/
 -
   - /smartstraps/index.html
-  - /guides/
+  - /guides/smartstraps/
 -
   - /tools/color-picker/index.html
   - /more/color-picker/
@@ -2636,34 +2636,19 @@
  - /guides/events-and-services/compass/
 -
  - /guides/hardware/index.html
- - /guides/
+ - /guides/smartstraps/
 -
  - /guides/hardware/smartstrap-hardware/index.html
- - /guides/
+ - /guides/smartstraps/smartstrap-hardware/
 -
  - /guides/hardware/smartstrap-protocol/index.html
- - /guides/
+ - /guides/smartstraps/smartstrap-protocol/
 -
  - /guides/hardware/talking-to-pebble/index.html
- - /guides/
+ - /guides/smartstraps/talking-to-pebble/
 -
  - /guides/hardware/talking-to-smartstraps/index.html
- - /guides/
--
- - /guides/smartstraps/index.html
- - /guides/
--
- - /guides/smartstraps/smartstrap-hardware/index.html
- - /guides/
--
- - /guides/smartstraps/smartstrap-protocol/index.html
- - /guides/
--
- - /guides/smartstraps/talking-to-pebble/index.html
- - /guides/
--
- - /guides/smartstraps/talking-to-smartstraps/index.html
- - /guides/
+ - /guides/smartstraps/talking-to-smartstraps/
 -
  - /guides/timeline/index.html
  - /guides/pebble-timeline/
@@ -2766,3 +2751,78 @@
 -
  - /sdk/install/windows/
  - /sdk/#windows
+-
+  - /guides/pebble-timeline/timeline-public/index.html
+  - /guides/pebble-timeline/timeline-local-pins/
+-
+  - /guides/user-interfaces/appglance-rest/index.html
+  - /guides/user-interfaces/appglance-c/
+-
+  - /sdk4/index.html
+  - /sdk/
+-
+  - /sdk4/getting-started/index.html
+  - /sdk/
+-
+  - /inspiration/index.html
+  - /community/
+-
+  - /xda-challenge/official-rules.html
+  - /community/
+-
+  - /guides/rocky-js/index.html
+  - /guides/alloy/
+-
+  - /guides/rocky-js/rocky-js-overview/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/CanvasRenderingContext2D/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/console/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/Date/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/rocky/index.html
+  - /guides/alloy/
+-
+  - /tutorials/rocky-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/

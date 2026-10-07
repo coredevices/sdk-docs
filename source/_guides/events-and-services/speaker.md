@@ -30,8 +30,9 @@ related_examples:
     url: https://github.com/coredevices/example-apps/tree/main/speaker/pcm-resource-thing
 ---
 
-On hardware platforms with a built-in speaker, the Speaker API gives apps four
-different ways to make sound:
+On hardware platforms with a built-in speaker (`flint` and `emery`, see the
+[platform support table](/sdk/#platform-support)), the Speaker API gives apps
+four different ways to make sound:
 
 * A **one-shot tone**, for short beeps and confirmation sounds.
 * A **note sequence**, for monophonic melodies that the system synthesizes

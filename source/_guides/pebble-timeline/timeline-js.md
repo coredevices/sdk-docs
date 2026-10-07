@@ -28,6 +28,11 @@ related_examples:
    url: https://github.com/pebble-examples/timeline-tv-tracker
 ---
 
+> Note: The timeline web API is no longer available. The Pebble mobile app
+> does not sync pins from a server. Use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
+> instead.
+
 The following PebbleKit JS APIs allow developers to intereact with the timeline
 API, such as adding and removing the user's subscribed topics. By combining
 these with user preferences from a configuration page (detailed in 
@@ -36,9 +41,6 @@ users to choose which pin sources they receive updates and events from.
 
 > The timeline APIs to subscribe users to topics and retrieve user tokens are
 > only available in PebbleKit JS.
->
-> If you wish to use the timeline APIs with a Pebble app that uses PebbleKit iOS
-> or Android please [contact us](/contact) to discuss your specific use-case.
 
 
 ## Requirements

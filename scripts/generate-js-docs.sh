@@ -14,5 +14,4 @@
 # limitations under the License.
 
 
-documentation build ./js-docs/rocky -f json > source/_data/jsdocs-rocky.json
 documentation build ./js-docs/pkjs -f json > source/_data/jsdocs-pkjs.json

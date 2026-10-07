@@ -12,80 +12,60 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Pebble SDK
-  slug: pebble-sdk
+- name: Firmware and SDK
+  slug: firmware-and-sdk
   projects:
-    - name: libpebble3
-      github: coredevices/libpebble3
-      summary: "**New for 2025!** Kotlin multiplatform library for interacting with Pebble devices. This is the modern replacement for libpebble2."
-      license: GPL-3.0 / Commercial
-    - name: libpebble2
-      github: pebble/libpebble2
-      summary: Library for communication with Pebble devices and emulators
-      license: MIT
-    - name: pebble-tool
-      github: pebble/pebble-tool
-      summary: The Pebble tool, as distributed in the Pebble SDK
-      license: MIT
-    - name: pypkjs
-      github: pebble/pypkjs
-      summary: Python implementation of PebbleKit JS
-      license: MIT
-    - name: PyV8
-      github: pebble/pyv8
-      summary: Pebble fork of PyV8
+    - name: PebbleOS
+      github: coredevices/pebbleos
+      summary: The watch firmware. The Pebble SDK is built from this source tree.
       license: Apache License 2.0
+    - name: pebble-tool
+      github: coredevices/pebble-tool
+      summary: The `pebble` command line tool, which builds, installs and debugs apps and manages SDKs.
+      license: MIT
+    - name: SDK documentation
+      github: coredevices/sdk-docs
+      summary: The source of this developer site.
+      license: Apache License 2.0
+    - name: Pebble examples
+      github: pebble-examples
+      summary: Example apps and watchfaces in C and PebbleKit JS, one repository per example.
+      license: Varies per repository
+    - name: Alloy examples
+      github: Moddable-OpenSource/pebble-examples
+      summary: Example apps and watchfaces written in JavaScript with Alloy.
+      license: See repository
+    - name: Pebble watchface agent skill
+      github: coredevices/pebble-watchface-agent-skill
+      summary: A skill for AI coding agents that builds and tests Pebble watchfaces with the SDK and the emulator.
+      license: See repository
+- name: Mobile App and Tools
+  slug: mobile-app-and-tools
+  projects:
+    - name: Pebble mobile app
+      github: coredevices/mobileapp
+      summary: The Pebble mobile app for Android and iOS, including libpebble3, the Kotlin multiplatform library for talking to Pebble watches.
+      license: GPL-3.0
+    - name: CloudPebble
+      github: coredevices/cloudpebble
+      summary: The web IDE for building Pebble apps in the browser.
+      license: MIT
     - name: QEMU
-      github: pebble/qemu
-      summary: Pebble's fork of QEMU, with support for Pebble and Pebble Time
+      github: coredevices/qemu
+      summary: Fork of QEMU with Pebble machine types, used by the SDK emulator.
       license: GPLv2
-- name: Node.js
-  slug: node
+    - name: pypkjs
+      github: coredevices/pypkjs
+      summary: Python implementation of PebbleKit JS, used by the SDK emulator.
+      license: MIT
+- name: Community SDKs
+  slug: community-sdks
   projects:
-    - name: pebble-api
-      github: pebble/pebble-api-node
-      summary: Node.js client for the Pebble timeline APIs
+    - name: zig-pebble-sdk
+      github: vsergeev/zig-pebble-sdk
+      summary: Build Pebble watchapps and watchfaces in Zig, with access to the Pebble C API.
       license: MIT
-    - name: koa-bunyan-logger
-      github: pebble/koa-bunyan-logger
-      summary: Koa middleware for bunyan request logging
-      license: MIT
-    - name: yieldb
-      github: pebble/yieldb
-      summary: Simple, expressive and yieldable MongoDB
-      license: MIT
-    - name: event-loop-lag
-      github: pebble/event-loop-lag
-      summary: Measures Node.js event loop lag
-      license: MIT
-    - name: joi-objectid
-      github: pebble/joi-objectid
-      summary: A MongoDB ObjectId validator for Joi
-      license: MIT
-    - name: koa-joi-router
-      github: pebble/koa-joi-router
-      summary: Easy, rich and fully validated koa routing.
-      license: MIT
-    - name: koa-resourcer
-      github: pebble/koa-resourcer
-      summary: A simple resource directory mounter for koa
-      license: MIT
-    - name: has-own
-      github: pebble/has-own
-      summary: "A safer .hasOwnProperty() where property name comes first: `hasOwn(name, obj)`"
-      license: MIT
-    - name: qdog
-      github: pebble/qdog
-      summary: Module used for adding and reading from SQS and eventually Redis
-      license: MIT
-- name: Other
-  slug: other
-  projects:
-    - name: Pebble.js
-      github: pebble/pebblejs
-      summary: Program the Pebble with simply JavaScript
-      license: MIT
-    - name: git-deploy
-      github: pebble/git-deploy
-      summary: Git driven deployment strategy using git-hooks. 
-      license: MIT
+    - name: rust4pebble
+      github: jbellerb/rust4pebble
+      summary: Rust bindings for the Pebble SDK.
+      license: LGPL-3.0

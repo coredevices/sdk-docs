@@ -271,7 +271,6 @@ module Jekyll
     def doc_language_rank
       {
         'c' => 10,
-        'rockyjs' => 9,
         'pebblekit_js' => 8,
         'pebblekit_android' => 6,
         'pebblekit_ios' => 4

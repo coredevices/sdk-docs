@@ -73,7 +73,6 @@ module Jekyll
       # when looking up symbols e.g. double backticks
       # DO NOT CHANGE THE ORDER UNLESS YOU KNOW WHAT YOU ARE DOING
       generate_docs_c
-      generate_docs_rocky_js
       generate_docs_pebblekit_js
       if @site.config['docs_url'] && !@site.config['docs_url'].empty?
         generate_docs_pebblekit_android
@@ -103,17 +102,6 @@ module Jekyll
         '/docs/c/'
       )
       load_data(docs, :c)
-    end
-
-    def generate_docs_rocky_js
-      docs = Pebble::DocumentationJs.new(
-        @site,
-        @site.data['docs']['rocky_js'],
-        '/docs/rockyjs/',
-        'rockyjs',
-        true
-      )
-      load_data(docs, :rockyjs)
     end
 
     def generate_docs_pebblekit_js

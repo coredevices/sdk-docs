@@ -1,7 +1,7 @@
 ---
 layout: legal
 title: Pebble Developer Distribution Agreement
-last_updated: 2016-01-07
+last_updated: 2026-10-06
 permalink: /legal/distribution/
 generate_toc: true
 menu_subsection: legal
@@ -28,9 +28,7 @@ CONDITIONS CAREFULLY.**
    App(s).
 1. **1.6.** **"Devices"** means an authorized Pebble smartwatch or other device
    made, distributed or licensed by Pebble to use the Pebble Platform.
-1. **1.7.** **"Pebble"** means Pebble Technology Corp., a Delaware corporation
-   having its principal place of business at 900 Middlefield Road, 5th Floor 
-   Redwood City, CA 94063.
+1. **1.7.** **"Pebble"** means Core Devices LLC.
 1. **1.8.** **"Pebble Mobile App(s)"** means the mobile applications made
    available by Pebble for use with Android or iOS mobile devices that provide a
    marketplace that enables users to search for Products to download to use with
@@ -347,7 +345,7 @@ costs, claims or other liabilities arising out of your breach of this Section
 ## 14. Dispute Resolution and Binding Arbitration Provision.
 
 **Definitions.** As used in this Arbitration Provision, the terms **" Pebble ,"
-"we," "us,"** and **"our"** refer to **Pebble Technology Corp.**, including its
+"we," "us,"** and **"our"** refer to **Core Devices LLC**, including its
 subsidiaries and agents; the terms **" you"** and **" your"** refer to you as an
 individual as well as other individuals you allow to access or use the Products,
 and any legal entity you control, work for, or represent when you access or use
@@ -360,10 +358,9 @@ is not limited to disagreements about the validity, enforceability, or scope of
 this Arbitration Provision.
 
 Informal Efforts to Resolve Dispute.  If a dispute arises between you and
-Pebble, you should first attempt to resolve it by sending an email to
-[legal@getpebble.com](mailto:legal@getpebble.com) or by sending the details of
-your complaint, including your contact information for a response, to the
-address or fax number listed below. We will attempt in good faith to resolve all
+Pebble, you should first attempt to resolve it by sending the details of your
+complaint, including your contact information for a response, through the
+[contact page](/contact/). We will attempt in good faith to resolve all
 Claims submitted this way within fifteen (15) days of receipt.
 
 Agreement to Arbitrate; Right to Opt Out. If informal efforts to resolve Claims
@@ -384,8 +381,8 @@ actions and private attorney general actions are not permitted.
 
 **IF YOU DO NOT WISH TO BE BOUND BY THIS ARBITRATION PROVISION, YOU MUST NOTIFY
 PEBBLE IN WRITING WITHIN 30 DAYS FROM THE DATE THAT YOU FIRST ACCEPT OR HAVE
-ACCESS TO THIS AGREEMENT BY MAILING OR FAXING AN OPT-OUT REQUEST TO OUR CUSTOMER
-SERVICE CENTER LISTED BELOW. YOUR WRITTEN NOTIFICATION MUST INCLUDE YOUR NAME,
+ACCESS TO THIS AGREEMENT BY SUBMITTING AN OPT-OUT REQUEST THROUGH THE
+[CONTACT PAGE](/contact/). YOUR WRITTEN NOTIFICATION MUST INCLUDE YOUR NAME,
 ADDRESS, the email address you used to register with PEBBLE, AND A clear
 STATEMENT THAT YOU DO NOT WISH TO RESOLVE DISPUTES WITH us THROUGH ARBITRATION.
 YOUR DECISION TO OPT OUT OF THIS ARBITRATION PROVISION WILL HAVE NO ADVERSE
@@ -497,17 +494,10 @@ interpreted, construed or reformed to the extent required to make it valid and
 enforceable, and this shall not invalidate the remaining portions of this
 Arbitration Provision.
 
-**Pebble Customer Service Center Address:**
+**Contact:**
 
-Pebble Technology Corp.
-
-ATTN: **LEGAL/ARBITRATION**
-
-900 Middlefield Road, 5th Floor 
-
-Redwood City, CA 94063
-
-Fax Number: (650) 618-1683
+Core Devices LLC, ATTN: **LEGAL/ARBITRATION**, through the
+[contact page](/contact/).
 
 ## 15. Changes to the Agreement.
 

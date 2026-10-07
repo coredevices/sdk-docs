@@ -71,7 +71,13 @@ pebble-packages:
 
 pebble-timeline:
   title: Pebble Timeline
-  description: How to use Pebble timeline to bring timely information to app users outside the app itself via web services.
+  description: How to use Pebble timeline to bring timely information to app users outside the app itself.
+  category: interactive-apps
+  sort_by: title
+
+smartstraps:
+  title: Smartstraps
+  description: Information on creating and talking to smartstraps. Supported on Pebble Time, Pebble Time Round and Pebble 2 only.
   category: interactive-apps
   sort_by: title
 

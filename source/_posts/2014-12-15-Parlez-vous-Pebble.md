@@ -98,4 +98,4 @@ you would like to see more of this type of give-away.
 As a rapidly growing company, we're always on the lookout for new talent to grow
 our various teams. If you or anyone you know has the technical skills, wearable
 enthusiasm and a taste for the Valley lifestyle, have a look at our
-[jobs page]({{ site.links.jobs }}) to see a list of open positions.
+[jobs page](https://www.pebble.com/jobs/) to see a list of open positions.

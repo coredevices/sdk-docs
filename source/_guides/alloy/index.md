@@ -30,8 +30,11 @@ and dedicated Pebble OS APIs. It allows you to write apps using
 modern JavaScript (ES2025, ES6++) with powerful UI frameworks and access 
 to Pebble hardware features.
 
-> **Platform Support**: Alloy currently supports Emery (Pebble Time 2) and
-> Gabbro (Pebble Round 2).
+> Note: Alloy runs on `emery` (Pebble Time 2) and `gabbro` (Pebble Round 2),
+> the platforms whose firmware includes the Alloy runtime. CloudPebble also
+> lists `flint` (Pebble 2 Duo), but Alloy apps do not run on `flint` yet. The
+> older platforms are not supported. See the
+> [platform support table](/sdk/#platform-support).
 
 ## Key Features
 
@@ -79,6 +82,14 @@ The simplest Alloy app:
 ```javascript
 console.log("Hello, Pebble!");
 ```
+
+
+## Rocky.js
+
+Rocky.js, the earlier JavaScript runtime for watchfaces, is no longer part of
+the firmware or the SDK. Alloy replaces it. Rocky.js projects need to be
+rewritten as Alloy apps; see
+{% guide_link alloy/getting-started "Getting Started with Alloy" %}.
 
 ## Guides
 

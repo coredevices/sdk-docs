@@ -26,8 +26,6 @@ search_primary: docs
       <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
       {% when 'c_preview' %}
       <h3><a href="/docs/c/preview/">Pebble C API (SDK 4 Preview)</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
-      {% when 'rockyjs' %}
-      <h3><a href="/docs/rockyjs/">RockyJS API (deprecated)</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
       {% when 'pebblekit_js' %}
       <h3><a href="/docs/pebblekit-js/">PebbleKit JS</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
       {% when 'pebblekit_ios' %}
@@ -53,8 +51,6 @@ search_primary: docs
     {% include docs/menu.html tree=site.data.docs_tree.c group=page.group %}
     {% when 'c_preview' %}
     {% include docs/menu.html tree=site.data.docs_tree.c_preview group=page.group %}
-    {% when 'rockyjs' %}
-    {% include docs/menu.html tree=site.data.docs_tree.rockyjs group=page.js_module %}
     {% when 'pebblekit_js' %}
     {% include docs/menu.html tree=site.data.docs_tree.pebblekit_js group=page.js_module %}
     {% when 'pebblekit_ios' %}

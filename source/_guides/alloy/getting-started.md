@@ -250,3 +250,10 @@ Now that you have a basic app running, explore the following guides:
 - [Storage](/guides/alloy/storage/): Persist data between app launches
 - [Networking](/guides/alloy/networking/): Make HTTP requests and use WebSockets
 - [App Messages](/guides/alloy/app-messages/): Send and receive messages between watch and phone
+
+
+## Rocky.js
+
+Rocky.js, the earlier JavaScript runtime for watchfaces, is no longer part of
+the firmware or the SDK. Alloy replaces it. Rocky.js projects need to be
+rewritten as Alloy apps, since the two APIs are different.

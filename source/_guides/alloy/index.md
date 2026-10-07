@@ -81,6 +81,14 @@ The simplest Alloy app:
 console.log("Hello, Pebble!");
 ```
 
+
+## Rocky.js
+
+Rocky.js, the earlier JavaScript runtime for watchfaces, is no longer part of
+the firmware or the SDK. Alloy replaces it. Rocky.js projects need to be
+rewritten as Alloy apps; see
+{% guide_link alloy/getting-started "Getting Started with Alloy" %}.
+
 ## Guides
 
 {% include guides/contents-group.md group=site.data.guides.alloy %}

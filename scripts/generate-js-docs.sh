@@ -1,4 +1,4 @@
----
+#!/bin/bash
 # Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-layout: utils/redirect_permanent
-redirect_to: /tutorials/rocky-watchface-tutorial/part2/
----
+
+documentation build ./js-docs/pkjs -f json > source/_data/jsdocs-pkjs.json

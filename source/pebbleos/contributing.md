@@ -27,9 +27,8 @@ search_group: PebbleOS
 PebbleOS is developed at
 [github.com/coredevices/pebbleos](https://github.com/coredevices/pebbleos).
 Changes arrive as pull requests, bugs are tracked in the repository's issues,
-and discussion happens in the repository's Discussions, on the
-[forum](https://forum.repebble.com) and on
-[Discord]({{ site.links.discord_invite }}). This page points to the imported
+and discussion happens in the repository's Discussions and on the
+[forum](https://forum.repebble.com). This page points to the imported
 documentation for each step and answers the questions that come up most often.
 
 
@@ -64,7 +63,7 @@ the rules the repository enforces. In short:
   `area: description`, for example `applib: add touch service`.
 * C code is formatted with clang-format and Python with ruff.
 * A change that adds a function apps can call also needs the steps on
-  [Exposing APIs to the SDK](/pebbleos/exposing-apis/).
+  [Exposing functions to the SDK](/pebbleos/docs/development/sdk_export/).
 
 Changes to the firmware documentation go in the `docs/` directory of the
 pebbleos repository, not on this site. The imported pages are regenerated

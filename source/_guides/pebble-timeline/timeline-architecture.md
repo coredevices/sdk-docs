@@ -19,6 +19,7 @@ description: |
   advantage of it in their apps.
 guide_group: pebble-timeline
 order: 4
+menu: false
 ---
 
 > Note: The timeline web API is no longer available. The Pebble mobile app

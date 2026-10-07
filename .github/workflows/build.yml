@@ -93,6 +93,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Full history: the Markdown export dates each page from git.
+          fetch-depth: 0
 
       - name: Download docs artifacts
         uses: actions/download-artifact@v7

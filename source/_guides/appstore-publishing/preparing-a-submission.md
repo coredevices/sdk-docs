@@ -15,97 +15,114 @@
 
 title: Preparing a Submission
 description: |
-  How to prepare an app submission for the Pebble appstore.
+  What a Pebble appstore listing is made of, and the sizes and formats
+  required for screenshots, icons and banners.
 guide_group: appstore-publishing
 order: 0
-published: false
 ---
 
-Once a new Pebble watchface or watchapp has been created, the
-[Pebble Developer Dashboard]({{ site.links.devportal }}) allows the
-developer to publish their creation to the appstore either publicly, or
-privately. The appstore is built into the official mobile apps and means that
-every new app can be found and also featured for increased exposure and
-publicity.
-
-> Note: An app can only be published privately while it is not already published
-> publicly. If an app is already public, it must be unpublished before it can be
-> made private.
-
-To build the appstore listing for a new app, the following resources are
-required from the developer. Some may not be required, depending on the type of
-app being listed. Read
-{% guide_link appstore-publishing/publishing-an-app#listing-resources "Listing Resources" %}
-for a comparison.
+An appstore listing is built from the `.pbw` file, some text fields and a set
+of images. This guide lists what is required so that everything is ready
+before the submission starts. All three publishing routes described in
+{% guide_link appstore-publishing/publishing-an-app %} use the same listing
+fields and the same image sizes.
 
 
-## Basic Info
+## The `.pbw` File
 
-| Resource | Details |
-|----------|---------|
-| App title | Title of the app. |
-| Website URL | Link to the brand or other website related to the app. |
-| Source code URL | Link to the source code of the app (such as GitHub or BitBucket). |
-| Support email address | An email address for support issues. If left blank, the developer's account email address will be used. |
-| Category | A watchapp may be categorized depending on the kind of functionality it offers. Users can browse the appstore by these categories. |
-| Icons | A large and small icons representing the app. |
+The appstore reads the app's type (watchface or watchapp), UUID, version and
+target platforms from the `.pbw` file. These values come from
+`package.json`, so check them before building the release:
 
+* `watchapp.watchface` decides whether the listing is a watchface or a
+  watchapp. This cannot be changed in the Developer Dashboard.
 
-## Asset Collections
+* `uuid` must be unique across the whole appstore. If another app already uses
+  it, the submission is rejected. Each app keeps its UUID for all later
+  releases, since the UUID is how a new release is matched to the existing
+  listing.
 
-An asset collection must be created for each of the platforms that the app
-supports. These are used to tailor the description and screenshots shown to
-users browing with a specific platform connected.
+* `version` must contain only numbers and dots, and each segment must be 255 or
+  less. Each release of an app must have a version that has not been used
+  before.
 
-| Resource | Details |
-|----------|---------|
-| Description | The details and features of the app. Maximum 1600 characters. |
-| Screenshots | Screenshots showing off the design and features of the app. Maximum 5 per platform in PNG, GIF, or Animated GIF format. |
-| Marketing banner | Large image used at the top of a listing in some places, as well as if an app is featured on one of the main pages. |
+* `targetPlatforms` decides which platforms the `.pbw` contains binaries
+  for. The appstore reads the platform list from `targetPlatforms` when it
+  is present and otherwise from the binaries in the `.pbw`, and offers each
+  binary to the watches that can run it: an aplite binary also serves
+  basalt, diorite, flint and emery, a basalt binary also serves emery, a
+  diorite binary also serves flint and emery, and a chalk binary also serves
+  gabbro. Build for the newer platforms directly to use their full display.
+  Read {% guide_link tools-and-resources/app-metadata %} for details.
 
-
-## Releases
-
-In addition to the visual assets in an appstore listing, the developer must
-upload at least one valid release build in the form of a `.pbw` file generated
-by the Pebble SDK. This is the file that will be distributed to users if they
-choose to install your app.
-
-The appstore will automatically select the appropriate version to download based
-on the SDK version. This is normally the latest release, with the one exception
-of the latest release built for SDK 2.x (deprecated) distributed to users
-running a watch firmware less than 3.0. A release is considered valid if the
-UUID is not in use and the version is greater than all previously published
-releases.
+The `.pbw` file can be at most 4.4 MB.
 
 
-## Companion Apps
+## Listing Fields
 
-If your app requires an Android or iOS companion app to function, it can be
-listed here by providing the name, icon, and URL that users can use to obtain
-the companion app. When a user install the watchapp, they will be prompted to
-also download the companion app automatically.
+| Field | Watchface | Watchapp | Notes |
+|-------|-----------|----------|-------|
+| App name | Required | Required | Defaults to the name in the `.pbw`. |
+| Description | Required | Required | Plain text. |
+| Category | - | Required | One of Daily, Tools & Utilities, Notifications, Remotes, Health & Fitness, Games. Watchfaces are listed under Faces automatically. |
+| Website URL | Optional | Optional | |
+| Source code URL | Optional | Optional | |
+| Release notes | Optional | Optional | Per release. |
+| Companion app | - | Optional | Name, Play Store URL and a 144×144 icon for an Android companion app. |
 
-
-## Timeline
-
-Developers that require the user of the timeline API will need to click 'Enable
-timeline' to obtain API keys used for pushing pins. See the
-{% guide_link pebble-timeline %} guides for more information.
-
-
-## Promotion
-
-Once published, the key to growth in an app is through promotion. Aside from
-users recommending the app to each other, posting on websites such as the
-[Pebble Forums](https://forum.repebble.com/c/pebble-watchface-discussion),
-[Reddit](https://www.reddit.com/r/pebble), and [Twitter](https://twitter.com)
-can help increase exposure.
+> Note: The appstore does not support the timeline web API. Apps that use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %} work
+> as normal.
 
 
-## Developer Retreat Video
+## Images
 
-Watch the presentation given by Aaron Cannon at the 2016 Developer Retreat to
-learn more about preparing asset collections for the appstore.
+All images are PNG, JPEG or GIF, at most 4.4 MB each. GIFs keep their
+animation. Screenshots must have exactly the dimensions of the platform's
+display and must not be framed in a watch outline.
 
-[EMBED](//www.youtube.com/watch?v=qXmz3eINObU&index=10&list=PLDPHNsf1sb48bgS5oNr8hgFz0pL92XqtO)
+| Image | Size | Notes |
+|-------|------|-------|
+| Screenshots for aplite, basalt, diorite, flint | 144×168 | Up to 5 per platform. |
+| Screenshots for chalk | 180×180 | Up to 5. |
+| Screenshots for emery | 200×228 | Up to 5. |
+| Screenshots for gabbro | 260×260 | Up to 5. |
+| Banner | 720×320 | Optional. One per platform. Shown at the top of the listing. |
+| Small icon | 80×80 | Watchapps only. |
+| Large icon | 144×144 | Watchapps only. |
+
+Icons are optional. When one or both icons are missing, the appstore generates
+them from the app name.
+
+Screenshots can be taken from the emulator with the `pebble` tool. The
+`--all-platforms` and `--gif-all-platforms` flags of `pebble screenshot`
+save one image per target platform under `screenshots/` in the project
+directory, already at the correct size:
+
+```nc|text
+$ pebble screenshot --all-platforms
+```
+
+Read {% guide_link tools-and-resources/pebble-tool#screenshot "pebble screenshot" %}
+for the other options.
+
+
+## Visibility
+
+Every app has one of three visibility settings. It is chosen when the app is
+submitted and can be changed at any time from the Developer Dashboard.
+
+| Setting | Search and browsing | Direct link and install |
+|---------|---------------------|-------------------------|
+| Listed | Yes | Yes |
+| Unlisted | No | Yes |
+| Hidden | No | No |
+
+Apps submitted from the Developer Dashboard, the `pebble` tool or CloudPebble
+start as Listed. Use Unlisted for a beta that is shared by link only, and
+Hidden to take an app offline. Hiding an app does not remove it from watches
+where it is already installed, and cached appstore pages can take up to ten
+minutes to disappear.
+
+Visibility applies to the app as a whole. Each release also has its own
+published or draft state, and only published releases can be installed.

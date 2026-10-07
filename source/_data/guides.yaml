@@ -27,6 +27,12 @@ app-resources:
   category: beautiful-apps
   sort_by: title
 
+appstore-publishing:
+  title: Appstore Publishing
+  description: How to publish apps in the Pebble appstore from the Developer Dashboard, the pebble tool or CloudPebble.
+  category: building-apps
+  sort_by: order
+
 best-practices:
   title: Best Practices
   description: Information to help optimize apps and ensure a good user experience.

@@ -65,11 +65,13 @@ representation of a single pixel, shown in the table below.
 | Diorite | ``GBitmapFormat1Bit`` | One bit (black or white) |
 | Flint | ``GBitmapFormat1Bit`` | One bit (black or white) |
 | Emery | ``GBitmapFormat8Bit`` | One byte (two bits per color) |
-| Gabbro | ``GBitmapFormat8Bit`` | One byte (two bits per color) |
+| Gabbro | ``GBitmapFormat8BitCircular`` | One byte (two bits per color) |
 
-Note that although Gabbro has a round display, its framebuffer is a regular
-rectangular ``GBitmapFormat8Bit`` rather than the packed
-``GBitmapFormat8BitCircular`` used on Chalk.
+Gabbro reports ``GBitmapFormat8BitCircular`` like Chalk, but its rows are not
+packed: every row starts 260 bytes after the previous one, and only the
+`min_x` to `max_x` range of each row is inside the circle. On both platforms
+``gbitmap_get_bytes_per_row()`` returns 0 for this format, so always use
+``gbitmap_get_data_row_info()`` to address pixels rather than a fixed stride.
 
 
 ## Modifying the Framebuffer Data

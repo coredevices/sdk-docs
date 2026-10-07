@@ -1373,7 +1373,7 @@
   - /guides/publishing-tools/publish-to-pebble-appstore/
 -
   - /2/distribute/whitelisting.html
-  - /guides/publishing-tools/whitelisting/
+  - /guides/appstore-publishing/
 -
   - /2/getting-started/developer-connection/index.html
   - /guides/publishing-tools/developer-connection/
@@ -2693,6 +2693,9 @@
  - /guides/appstore-publishing/
 -
  - /guides/publishing-tools/screenshots/index.html
+ - /guides/appstore-publishing/
+-
+ - /guides/publishing-tools/whitelisting/index.html
  - /guides/appstore-publishing/
 -
  - /more/color-picker/index.html

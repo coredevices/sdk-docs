@@ -113,6 +113,28 @@ better used to select an entire block of code.
 > applicable feature defines instead of `PBL_PLATFORM` defines to be as specific
 > as possible.
 
+## Selecting Values at Runtime
+
+Some values are better chosen at runtime than at compile time, for example
+when a layout is calculated for a ``WatchInfoModel`` other than the one the
+app is running on, or when one function serves several platforms. The
+``PlatformType`` enum names every platform, ``PBL_PLATFORM_TYPE_CURRENT`` is
+the platform of the current build, and ``PBL_PLATFORM_SWITCH()`` picks one of
+seven values by platform:
+
+```c
+// Width of the action bar on each platform
+int width = PBL_PLATFORM_SWITCH(PBL_PLATFORM_TYPE_CURRENT,
+    /*aplite*/ 30, /*basalt*/ 30, /*chalk*/ 40, /*diorite*/ 30,
+    /*emery*/ 34, /*flint*/ 30, /*gabbro*/ 40);
+```
+
+The SDK defines ``ACTION_BAR_WIDTH`` in exactly this way. The first argument is
+evaluated once per comparison, so pass a variable rather than a function call.
+``PBL_PLATFORM_SWITCH_DEFAULT()`` takes an extra default value that is
+returned for a platform the app does not know about.
+
+
 ## API Detection
 
 In addition to platform and capabilities detection, we now provide API
@@ -188,6 +210,13 @@ share the same screen width and height.
   uint8_t offset_y = 60;
 #endif
 ```
+
+| Platform | Display | Shape |
+|----------|---------|-------|
+| aplite, basalt, diorite, flint | 144 × 168 | Rectangular |
+| chalk | 180 × 180 | Round |
+| emery | 200 × 228 | Rectangular |
+| gabbro | 260 × 260 | Round |
 
 > Note: Although this method is preferable to platform detection, it is better
 to dynamically calculate the display width and height based on the unobstructed

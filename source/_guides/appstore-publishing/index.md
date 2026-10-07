@@ -15,35 +15,33 @@
 
 title: Appstore Publishing
 description: |
-  How to get your app ready for going live in the Pebble appstore.
+  How to publish an app in the Pebble appstore from the Developer Dashboard,
+  the `pebble` tool or CloudPebble.
 guide_group: appstore-publishing
 menu: false
 permalink: /guides/appstore-publishing/
 generate_toc: false
 hide_comments: true
-published: false
 ---
 
-When a developer is happy that their app is feature-complete and stable, they
-can upload the compiled `.pbw` file to the
-[Developer Dashboard]({{ site.links.devportal }}) to make it available on the
-Pebble appstore for all users with compatible watches to share and enjoy.
+When an app is feature-complete and stable, the compiled `.pbw` file can be
+uploaded to the Pebble appstore so that users can find and install it from the
+Pebble mobile app. Listings are managed in the
+[Developer Dashboard]({{ site.links.devportal }}). The `pebble` tool and
+CloudPebble can also upload apps and new releases directly.
 
-In order to be successfully listed in the Pebble appstore the developer must:
+To be listed in the Pebble appstore an app must:
 
-* Provide all required assets and marketing material.
+* Be built with a released SDK.
 
-* Provide at least one `.pbw` release.
+* Use a UUID that is not already in use by another app in the appstore.
 
-* Use a unique and valid UUID.
+* Have a title and a description, and a category if it is a watchapp.
 
-* Build their app with a non-beta SDK.
+* Comply with the [legal agreements](/legal/).
 
-* Ensure their app complies with the various [legal agreements](/legal/).
-
-Information on how to meet these requirements is given in this group of guides,
-as well as details about available analytical data for published apps and
-example asset material templates.
+Apps that were published in the Rebble appstore can be imported into the
+Developer Dashboard so that the same developer keeps managing them.
 
 
 ## Contents

@@ -59,9 +59,16 @@ In the Pebble mobile app:
 While the Developer Connection is enabled, a small developer icon is shown next
 to the watch's model name in the *Devices* tab.
 
-> Note: The *Dev Connection* option is only shown while the watch is connected.
-> It cannot be enabled while signed out, unless the LAN connection is turned on
-> (see [below](#using-a-lan-connection)).
+> Note: The *Dev Connection* option is only shown while the watch is
+> connected. A watch that is out of range, in a low-power state or still
+> reconnecting does not show it; wait for the *Devices* tab to report the
+> watch as connected and open the menu again. It cannot be enabled while
+> signed out,
+> unless the LAN connection is turned on (see
+> [below](#using-a-lan-connection)).
+
+The Developer Connection always goes through the phone. The watch's charging
+cable does not carry data, so apps cannot be installed or debugged over it.
 
 
 ## Using with CloudPebble
@@ -76,6 +83,18 @@ to the watch's model name in the *Devices* tab.
 
 * Click *Install and Run*. Use *View app logs* to see the logs from your app,
   and *Screenshot* to take a screenshot of the watch.
+
+The *Phone* tab offers three connection types. All three reach the phone
+through the CloudPebble proxy; they differ in how CloudPebble signs in to it.
+
+| Option | Signs in with | Use it when |
+|--------|---------------|-------------|
+| *New Cloud Dev Connection* | Your Pebble account, the one CloudPebble is signed in with | Always, with the current Pebble mobile app. |
+| *Cloud Dev Connection* | A GitHub account linked under *Settings* > *GitHub Integrations* | Only with earlier versions of the Pebble mobile app, which signed in to the Developer Connection with GitHub. |
+| *Local Dev Connection* | The token of a legacy Pebble account sign-in | Not with the current Pebble mobile app. |
+
+CloudPebble cannot connect to the phone's IP address directly, so the LAN
+connection described below is for the `pebble` tool only.
 
 
 ## Using with the `pebble` Tool
@@ -110,8 +129,9 @@ $ export PEBBLE_CLOUDPEBBLE=1
 The LAN connection lets the `pebble` tool connect to the phone directly over
 your local network, without signing in.
 
-CloudPebble does not support the LAN connection. Use the CloudPebble
-connection described above.
+CloudPebble does not offer a way to enter the phone's IP address. Its
+*Local Dev Connection* option still goes through the cloud proxy, so use the
+`pebble` tool for the LAN connection.
 
 > Note: The LAN connection is not authenticated. Anyone on the same network can
 > install apps on your watch while it is enabled, so only use it on trusted
@@ -167,6 +187,20 @@ $ adb shell am broadcast -a coredevices.coreapp.DEV_CONNECTION \
 $ adb forward tcp:9000 tcp:9000
 $ pebble install --phone 127.0.0.1
 ```
+
+
+## Working Without Internet Access
+
+The CloudPebble connection needs the phone and the computer to reach the
+proxy on the internet. Without internet access, use the LAN connection with
+`--phone` and the phone's IP address. The phone and computer only need to be
+on the same Wi-Fi network, for example a hotspot started on the phone. On
+Android, the USB method above works with no network at all.
+
+The `--serial` argument of the `pebble` tool connects to a watch over a
+Bluetooth serial port on the computer. It only works with watches that
+support Bluetooth Classic. Pebble 2 Duo, Pebble Time 2 and Pebble Round 2
+use Bluetooth LE only, so `--serial` cannot be used with them.
 
 
 ## Limitations

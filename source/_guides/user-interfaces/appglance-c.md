@@ -126,6 +126,12 @@ static void prv_update_app_glance(AppGlanceReloadSession *session,
 }
 ```
 
+The `layout` member is an ``AppGlanceSliceLayout``. Its `icon` is the
+published resource ID of the bitmap to show, or
+``APP_GLANCE_SLICE_DEFAULT_ICON`` for the app's own icon, and its
+`subtitle_template_string` is the text shown under the app name, or `NULL`
+for no text.
+
 > **NOTE:** When an ``AppGlanceSlice`` is loaded with the
 > ``app_glance_add_slice()`` method, the slice's
 > `layout.subtitle_template_string` is copied to the app's glance, meaning the

@@ -27,7 +27,7 @@ which is enough for most development. Some things only the Pebble mobile app
 does: the phone-side settings screen that opens configuration pages, the
 appstore locker, timeline pins created by PebbleKit JS and the real
 JavaScript runtimes described in
-{% guide_link communication/pebblekit-js-in-the-mobile-app %}. To test those
+{% guide_link communication/using-pebblekit-js#differences-in-the-pebble-mobile-app "PebbleKit JS" %}. To test those
 without a watch, the Pebble mobile app can connect to a PebbleOS emulator over
 TCP in place of a Bluetooth watch.
 
@@ -129,7 +129,7 @@ and it is installed from there like an appstore app.
 Sideloaded apps have no appstore listing, so `Pebble.getTimelineToken()`
 returns nothing, and `Pebble.getAccountToken()` and `Pebble.getWatchToken()`
 return different values from the ones the same app gets once it is published.
-Read {% guide_link communication/pebblekit-js-in-the-mobile-app#tokens "Tokens" %}
+Read {% guide_link communication/using-pebblekit-js#tokens "Tokens" %}
 for details.
 
 The simplest way to get a `.pbw` onto a phone during development is still the

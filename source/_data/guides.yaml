@@ -75,6 +75,12 @@ pebble-timeline:
   category: interactive-apps
   sort_by: title
 
+smartstraps:
+  title: Smartstraps
+  description: Information on creating and talking to smartstraps. Supported on Pebble Time, Pebble Time Round and Pebble 2 only.
+  category: interactive-apps
+  sort_by: title
+
 tools-and-resources:
   title: Tools and Resources
   description: Information on all the software tools available when writing Pebble apps, as well as other resources.

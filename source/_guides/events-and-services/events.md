@@ -26,6 +26,8 @@ related_docs:
   - HealthService
   - AppFocusService
   - CompassService
+  - BacklightService
+  - AlarmService
 ---
 
 All Pebble apps are executed in three phases, which are summarized below:

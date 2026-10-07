@@ -70,8 +70,8 @@ The emulator can run in two places. The **Emulator** option in your account
 settings chooses between **In browser (fast, no server)** and **Cloud (server
 QEMU)**. The in-browser emulator starts faster and supports all platforms,
 screenshots, app logs and the sensor controls. It always uses your computer's
-clock, so the time cannot be changed, and audio only plays for emery, flint
-and gabbro. The cloud emulator is the default.
+clock, so the time cannot be changed, and audio only plays for emery and
+flint. The cloud emulator is the default.
 
 ## Timeline
 

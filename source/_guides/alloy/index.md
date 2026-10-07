@@ -30,11 +30,9 @@ and dedicated Pebble OS APIs. It allows you to write apps using
 modern JavaScript (ES2025, ES6++) with powerful UI frameworks and access 
 to Pebble hardware features.
 
-> Note: Alloy runs on `emery` (Pebble Time 2) and `gabbro` (Pebble Round 2),
-> the platforms whose firmware includes the Alloy runtime. CloudPebble also
-> lists `flint` (Pebble 2 Duo), but Alloy apps do not run on `flint` yet. The
-> older platforms are not supported. See the
-> {% guide_link tools-and-resources/hardware-information#platform-support "platform support table" %}.
+> **Platform Support**: Alloy currently supports Emery (Pebble Time 2) and
+> Gabbro (Pebble Round 2). See the platform support table in
+> {% guide_link tools-and-resources/hardware-information#platform-support %}.
 
 ## Key Features
 

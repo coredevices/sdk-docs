@@ -16,7 +16,7 @@
 title: Pebble Timeline
 description: |
   How to use Pebble timeline to bring timely information to app users outside
-  the app itself via web services.
+  the app itself.
 guide_group: pebble-timeline
 permalink: /guides/pebble-timeline/
 generate_toc: false
@@ -48,38 +48,19 @@ and notifications from any web-based external service.
 {% include guides/contents-group.md group=page.group_data %}
 
 
-## Enabling a New App
+## Adding Pins
 
-To push pins via the Pebble timeline API, a first version of a new app must be
-uploaded to the [Developer Dashboard]({{ site.links.devportal }}). This is
-required so that the appstore can identify the app's UUID, and so generate
-sandbox and production API keys for the developer to push pins to. It is then
-possible to use the timeline web API in sandbox mode for development or in
-production mode for published apps.
+Apps add pins from PebbleKit JS with `Pebble.insertTimelinePin()` and remove
+them with `Pebble.deleteTimelinePin()`. The Pebble mobile app creates the pin
+and syncs it to the watch. No timeline token, API key or appstore listing is
+needed, so sideloaded apps can add pins. See
+{% guide_link pebble-timeline/timeline-local-pins "Local Pins" %} for the API
+and {% guide_link pebble-timeline/pin-structure "Creating Pins" %} for the pin
+format.
 
-1. In the Developer Dashboard, go to the watchapp's details page in the 'Dashboard'
-   view and click the 'Enable timeline' button.
-
-2. To obtain API keys, click the 'Manage Timeline Settings' button at the
-   top-right of the page. New API keys can also be generated from this page. If
-   required, users with sandbox mode access can also be whitelisted here.
-
-
-## About Sandbox Mode
-
-The sandbox mode is automatically used when the app is sideloaded using the SDK.
-By default, sandbox pins will be delivered to all users who sideload a PBW.
-
-The production mode is used when a user installs the app from the Pebble
-appstore. Use the two respective API key types for these purposes. If
-whitelisting is enabled in sandbox mode, the developer's account is
-automatically included, and they can add more Pebble users by adding the users'
-email addresses in the [Developer Dashboard]({{ site.links.devportal }}).
-
-If preferred, it is possible to enable whitelisting to limit this access to only
-users involved in development and testing of the app. Enter the email addresses
-of users to be authorized to use the app's timeline in sandbox mode on the
-'Manage Timeline Settings' page of an app listing.
-
-> When whitelisting is enabled, the `Pebble.getTimelineToken()` will return an
-> error for users who are not in the whitelist.
+> Note: The timeline web API is no longer available. The Pebble mobile app
+> does not sync pins from a server, and `Pebble.timelineSubscribe()`,
+> `Pebble.timelineUnsubscribe()` and `Pebble.timelineSubscriptions()` do not
+> work. Use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
+> instead.

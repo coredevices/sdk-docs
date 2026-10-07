@@ -38,7 +38,7 @@ HTTPS requests to the timeline endpoint.
 ![HRM >{pebble-screenshot,pebble-screenshot--pebble2-white-teal}](/images/blog/2016-05-24-kickstarter-3/launcher.gif)
 
 Find out more about ``App Glance`` in the SDK documentation, or read the
-{% guide_link user-interfaces/appglance-rest "AppGlance REST API guide" %}.
+[AppGlance REST API guide](/guides/user-interfaces/appglance-rest/).
 
 
 ## What's Next

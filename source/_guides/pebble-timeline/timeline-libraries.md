@@ -27,6 +27,11 @@ related_examples:
    url: https://github.com/pebble-examples/timeline-push-pin
 ---
 
+> Note: The timeline web API is no longer available. The Pebble mobile app
+> does not sync pins from a server. Use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
+> instead.
+
 This page contains libraries that are currently available to interact with
 the timeline. You can use these to build apps and services that push pins to
 your users.

@@ -86,8 +86,7 @@ console.log("Hello, Pebble!");
 
 ## Rocky.js
 
-Rocky.js is no longer part of the firmware or the SDK. See
-{% guide_link alloy/getting-started#rocky-js "Getting Started with Alloy" %}.
+Rocky.js is no longer part of the firmware or the SDK. Alloy replaces it.
 
 ## Guides
 

@@ -124,7 +124,7 @@ to write a simple C Pebble application.
 `pebble new-project --ai myproject` also writes instruction files for Claude
 Code and Cursor, and every page of this site has a Markdown version for
 agents to read. See
-{% guide_link tools-and-resources/building-with-ai-agents %} for the files,
+{% guide_link ai-agents %} for the files,
 the documentation index at `/llms.txt` and the emulator commands an agent can
 use to check its work.
 

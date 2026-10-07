@@ -21,6 +21,12 @@ alloy:
   category: interactive-apps
   sort_by: order
 
+ai-agents:
+  title: Building with AI Agents
+  description: How to give an AI coding agent the documentation, project instructions and emulator commands it needs to build a Pebble app.
+  category: building-apps
+  sort_by: order
+
 app-resources:
   title: App Resources
   description: Information on the many kinds of files that can be used inside Pebble apps.

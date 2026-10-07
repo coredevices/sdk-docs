@@ -17,8 +17,10 @@ title: Building with AI Coding Agents
 description: |
   How to give an AI coding agent the Pebble documentation, project
   instructions and emulator commands it needs to build and check a Pebble app.
-guide_group: tools-and-resources
-order: 6
+guide_group: ai-agents
+menu: false
+permalink: /guides/ai-agents/
+hide_comments: true
 ---
 
 AI coding agents such as Claude Code, Cursor and Codex can write Pebble apps

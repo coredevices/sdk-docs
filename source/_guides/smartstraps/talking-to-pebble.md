@@ -191,13 +191,13 @@ if(ArduinoPebbleSerial::feed(&service_id, &attribute_id, &length, &type)) {
   if((service_id == 0) && (attribute_id == 0)) {
     // This is a raw data service frame
     // Null-terminate and display what was received in the Arduino terminal
-    s_data_buffer[min(length_read, sizeof(s_data_buffer))] = `\0`;
+    s_data_buffer[min(length_read, sizeof(s_data_buffer))] = '\0';
     Serial.println(s_data_buffer);
   } else {
     // This may be one of our service IDs, check it.
     if(service_id == s_service_ids[0] && attribute_id == s_attr_ids[0]) {
       // This frame is for our supported service!
-      s_data_buffer[min(length_read, sizeof(s_data_buffer))] = `\0`;
+      s_data_buffer[min(length_read, sizeof(s_data_buffer))] = '\0';
       Serial.print("Write to service ID: ");
       Serial.print(service_id);
       Serial.print(" Attribute ID: ");

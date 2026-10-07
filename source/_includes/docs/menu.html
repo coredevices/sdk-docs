@@ -42,6 +42,10 @@
     {% endfor %}
     </ul>
   </li>
+  {% else %}
+  <li class="section-menu__item{% if include.group.path.last == group.name %} open active{% endif %}">
+    <a href="{{ group.url }}">{{ group.name }}</a>
+  </li>
   {% endif %}
   {% endfor %}
 </ul>

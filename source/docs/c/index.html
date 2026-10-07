@@ -42,6 +42,8 @@ docs_language: c
           <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
           {% if module.summary.size > 0 %}
           {{ module.summary }}
+          {% elsif module.name == 'Worker' %}
+          <p>Run a background worker alongside the foreground app to collect data or respond to events while the app is not running. See the <a href="/guides/events-and-services/background-worker/">Background Worker</a> guide.</p>
           {% else %}
           <p>&nbsp;</p>
           {% endif %}

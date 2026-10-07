@@ -61,6 +61,8 @@ module LlmsExport
     ].freeze
 
     UNCATEGORIZED_KEY = '_uncategorized'.freeze
+    # Tutorials listed in llms.txt in this order; any others follow by name.
+    TUTORIAL_ORDER = %w(watchface alloy-watchface advanced).freeze
 
     CHROME_SELECTORS = [
       '.search', '.quicksearch', '#search__blackout',
@@ -497,11 +499,24 @@ module LlmsExport
     # menu_subsection so a single tagged page doesn't override a large
     # collection-vs-loose split (e.g. SDK pages + changelogs collection).
     def sub_group(pages)
+      return tutorials_sub_group(pages)        if pages.any? { |page| page.data['tutorial'] }
       return guides_sub_group(pages)           if pages.any? { |page| page.data['guide_group'] }
       return docs_language_sub_group(pages)    if pages.any? { |page| page.data['docs_language'] }
       return mixed_collection_sub_group(pages) if mixed_collections?(pages)
       return menu_subsection_sub_group(pages)  if pages.any? { |page| page.data['menu_subsection'] }
       [['', sort_default(pages)]]
+    end
+
+    # Tutorials: the section index first, then one tutorial at a time in
+    # TUTORIAL_ORDER with parts in order, so parts of different tutorials
+    # that share a title do not interleave.
+    def tutorials_sub_group(pages)
+      sorted = pages.sort_by do |page|
+        tutorial = page.data['tutorial'].to_s
+        rank = tutorial.empty? ? -1 : (TUTORIAL_ORDER.index(tutorial) || TUTORIAL_ORDER.size)
+        [rank, tutorial, page.data['tutorial_part'].to_i, extract_title(page).to_s.downcase]
+      end
+      [['', sorted]]
     end
 
     # Guides: categories from _data/guide-categories.yaml, then groups from

@@ -83,6 +83,35 @@ describe LlmsExport do
     end
   end
 
+  describe '#sub_group' do
+    it 'orders tutorials by tutorial then part, not by title' do
+      tutorial = lambda do |name, part, title|
+        page("/tutorials/#{name}-tutorial/part#{part}/",
+             'tutorial' => name, 'tutorial_part' => part, 'title' => title)
+      end
+      tutorials = [
+        tutorial.call('watchface', 6, 'Adding a settings page'),
+        tutorial.call('alloy-watchface', 1, 'Your First Watchface'),
+        tutorial.call('rocky-watchface', 1, 'Build a Watchface in JavaScript'),
+        tutorial.call('advanced', 1, 'Vector Animations'),
+        tutorial.call('watchface', 1, 'Your First Watchface'),
+        tutorial.call('alloy-watchface', 2, 'Customizing Your Watchface'),
+        page('/tutorials/', 'title' => 'Tutorials'),
+      ]
+      groups = builder.send(:sub_group, tutorials)
+      expect(groups.map(&:first)).to eq([''])
+      expect(groups.first.last.map(&:url)).to eq([
+        '/tutorials/',
+        '/tutorials/watchface-tutorial/part1/',
+        '/tutorials/watchface-tutorial/part6/',
+        '/tutorials/alloy-watchface-tutorial/part1/',
+        '/tutorials/alloy-watchface-tutorial/part2/',
+        '/tutorials/advanced-tutorial/part1/',
+        '/tutorials/rocky-watchface-tutorial/part1/',
+      ])
+    end
+  end
+
   describe '#rewrite_href' do
     def rewrite(href)
       builder.send(:rewrite_href, href)

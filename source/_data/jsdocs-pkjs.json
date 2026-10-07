@@ -5459,6 +5459,783 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Returns the installed plugins. Each entry has "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "uuid"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "sources"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "actions"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", copied from the plugin's manifest. Returns an empty array when the call fails."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/communication/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Returns the installed plugins, with their sources and actions.",
+              "lineNumber": 1
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "description": "An array of plugin descriptions."
+            }
+          ],
+          "kind": "function",
+          "name": "enumeratePlugins",
+          "memberof": "Pebble",
+          "scope": "static",
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An array of plugin descriptions."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "enumeratePlugins",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.enumeratePlugins"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Subscribes to one item of one category and delivers every update to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "config.onData"
+                  },
+                  {
+                    "type": "text",
+                    "value": " as an envelope with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "pluginUuid"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "validUntilMs"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "instances"
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Throws when "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "category"
+                  },
+                  {
+                    "type": "text",
+                    "value": " or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "item"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is missing. Failures the Pebble mobile app detects, such as no plugin for the item or a missing permission, are reported to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "config.onError"
+                  },
+                  {
+                    "type": "text",
+                    "value": " as "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ code, message }"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/communication/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Subscribes to a plugin source and delivers updates to config.onData.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "config",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "An object with category, item, and optional properties, plugin, iconPixelSize, onData and onError."
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "A subscription with an unsubscribe() method."
+            }
+          ],
+          "kind": "function",
+          "name": "subscribeToSource",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "config",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An object with "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "category"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "item"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (required), and optional "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "properties"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (array of property names), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "plugin"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (UUID of a preferred plugin), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "iconPixelSize"
+                      },
+                      {
+                        "type": "text",
+                        "value": " ("
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "{ w, h }"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", needed for "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "icon"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "image"
+                      },
+                      {
+                        "type": "text",
+                        "value": " shapes), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "onData"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "onError"
+                      },
+                      {
+                        "type": "text",
+                        "value": " callbacks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A subscription object with an "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "unsubscribe()"
+                      },
+                      {
+                        "type": "text",
+                        "value": " method. The subscription also ends when the app's JavaScript stops."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "subscribeToSource",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.subscribeToSource"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Invokes one action on one plugin. The returned Promise always resolves: with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ ok: true, text, refreshed }"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on success, or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ ok: false, code, message }"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", with text, refreshed and message omitted when the plugin did not set them. Throws when "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "plugin"
+                  },
+                  {
+                    "type": "text",
+                    "value": " or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "action"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is missing. Actions never fall back to another plugin."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/communication/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Invokes a plugin action and resolves with its result.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "config",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "An object with plugin, action, and optional args and timeoutMs."
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              },
+              "description": "A Promise that resolves with the action result."
+            }
+          ],
+          "kind": "function",
+          "name": "invokeAction",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "config",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An object with "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "plugin"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (the plugin's UUID) and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "action"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (required), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "args"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (an object matching the action's parameters schema, default "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "{}"
+                      },
+                      {
+                        "type": "text",
+                        "value": ") and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "timeoutMs"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (1 to 60000, default 15000)."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A Promise that resolves with the action result."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "invokeAction",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.invokeAction"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Pushes a message to the app's own settings page while that page is open. The page receives it as a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "message"
+                  },
+                  {
+                    "type": "text",
+                    "value": " event with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "e.target"
+                  },
+                  {
+                    "type": "text",
+                    "value": " set to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "\"pkjs\""
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "e.data"
+                  },
+                  {
+                    "type": "text",
+                    "value": " set to the message. There is no reply, and nothing happens when no page is open."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/communication/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Pushes a message to the app's open settings page.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "message",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "Any JSON value to deliver to the page."
+            }
+          ],
+          "kind": "function",
+          "name": "sendConfigMessage",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "message",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Any JSON value to deliver to the page."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "sendConfigMessage",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.sendConfigMessage"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Called when AppGlanceReload has failed.",
                     "position": {
                       "start": {

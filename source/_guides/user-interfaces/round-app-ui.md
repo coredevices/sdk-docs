@@ -29,6 +29,7 @@ related_examples:
     url: https://github.com/pebble-examples/text-flow-techniques
 platforms:
   - chalk
+  - gabbro
 ---
 
 > This guide is about creating round apps in code. For advice on designing a

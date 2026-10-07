@@ -28,6 +28,7 @@ platforms:
   - diorite
   - emery
   - flint
+  - gabbro
 ---
 
 Some of the best Pebble apps make good use of the ``Animation`` and the

@@ -24,6 +24,7 @@ platforms:
   - diorite
   - emery
   - flint
+  - gabbro
 related_docs:
   - Dictation
 related_examples:

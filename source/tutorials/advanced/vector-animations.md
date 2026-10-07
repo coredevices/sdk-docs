@@ -140,14 +140,6 @@ For simplicity, compatible image and sequence files will be provided for you to
 use in your own project.
 
 
-### PDC icons
-
-Example PDC image files are shown with the icons listed in
-[*App Assets*](/guides/app-resources/app-assets/).
-These are ideal for use in many common types of apps, such as notification or
-weather apps.
-
-
 ## Getting Started
 
 Begin a new project using `pebble new-project` and create a simple app that

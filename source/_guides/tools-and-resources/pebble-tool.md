@@ -32,21 +32,31 @@ Most `pebble` commands allow interaction with a Pebble watch. This relies on a
 communication channel opened between the `pebble` tool on a computer and the
 Pebble mobile application on the phone.
 
-The `pebble` tool requires two configuration steps:
-
-1. Enable the {% guide_link tools-and-resources/developer-connection %} in the
-   Pebble mobile application.
-2. Give the phone IP address to the `pebble` tool as shown below to communicate
-   with a watch. This is not required when using the emulator.
+To use a physical watch, enable the
+{% guide_link tools-and-resources/developer-connection %} in the Pebble mobile
+application. This is not required when using the emulator.
 
 
 ## Connecting to a Pebble
 
-There are four connection types possible with the command line tool. These can
-be used with any command that involves a watch, for example `install`.
+There are several connection types possible with the command line tool. These
+can be used with any command that involves a watch, for example `install`.
 
-Connect to a physical watch connected to a phone on the same Wi-Fi network with
-`IP` [IP address](#enabling-the-developer-connection):
+Connect to a physical watch through the CloudPebble connection. This works from
+any network, and requires signing in with the same Pebble account used in the
+Pebble mobile application (see [`login`](#login)):
+
+```nc|text
+$ pebble login
+$ pebble install --cloudpebble
+```
+
+Using `--phone` without an IP address also uses the CloudPebble connection.
+
+Connect to a physical watch connected to a phone on the same Wi-Fi network,
+where `IP` is the address shown in the Pebble mobile application when the
+[LAN connection](/guides/tools-and-resources/developer-connection/#using-a-lan-connection)
+is enabled:
 
 ```nc|text
 $ pebble install --phone IP
@@ -72,11 +82,22 @@ $ pebble install --serial SERIAL
 
 ## Configure the Pebble Tool
 
-Save the IP address of the phone in an environment variable:
+Use the CloudPebble connection by default:
+
+```text
+$ export PEBBLE_CLOUDPEBBLE=1
+```
+
+Or save the IP address of the phone for the LAN connection in an environment
+variable:
 
 ```text
 $ export PEBBLE_PHONE=192.168.1.42
 ```
+
+> Note: Only set one of `PEBBLE_CLOUDPEBBLE` or `PEBBLE_PHONE`. When switching
+> between the CloudPebble and LAN connections, `unset` the other variable, as it
+> can take priority over the `--phone` or `--cloudpebble` argument.
 
 Save the default choice of emulator platform:
 
@@ -552,8 +573,8 @@ To wipe **all** data, specify `--everything` when running this command.
 $ pebble login
 ```
 
-Launces a browser to log into a Pebble account, enabling use of `pebble` tool
-features such as pushing timeline pins.
+Launches a browser to log into a Pebble account, enabling use of `pebble` tool
+features such as the CloudPebble connection and pushing timeline pins.
 
 
 #### logout

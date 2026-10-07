@@ -173,6 +173,25 @@ or the user leaves it with the back button, `webviewclosed` does not fire.
 Read {% guide_link user-interfaces/app-configuration %} for the full flow.
 
 
+## Plugins (Preview)
+
+When the plugins preview is turned on in the Pebble mobile app, four more
+functions exist on the `Pebble` object. They are off by default and the API
+will change; read {% guide_link communication/plugins %} before using them.
+
+* `Pebble.enumeratePlugins()` returns an array of the installed plugins with
+  their sources and actions.
+
+* `Pebble.subscribeToSource(config)` subscribes to a category and item and
+  delivers updates to `config.onData`.
+
+* `Pebble.invokeAction(config)` runs one action on one plugin and returns a
+  Promise that resolves with the result.
+
+* `Pebble.sendConfigMessage(message)` pushes a message to the app's own
+  settings page while it is open.
+
+
 ## Other Differences
 
 * `Pebble.showToast()` shows a toast on Android and does nothing on iOS.

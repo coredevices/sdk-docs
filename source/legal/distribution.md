@@ -20,7 +20,7 @@ CONDITIONS CAREFULLY.**
 1. **1.3.** **"Companion Apps"** means software applications for Companion
    Devices that connect to and communicate with Devices through the Pebble
    Mobile App(s).
-1. **1.4.** **"Companion Devices"** meansAndroid and iOS mobile devices that can
+1. **1.4.** **"Companion Devices"** means Android and iOS mobile devices that can
    connect to and communicate with Devices via the Pebble Mobile App(s) and/or
    Companion Apps.
 1. **1.5.** **"Developer Account"** means your registered developer account that
@@ -200,7 +200,7 @@ CONDITIONS CAREFULLY.**
    uploaded will not be published in the Pebble Mobile App(s).
 1. **5.9.** **Restricted Content.** Any Product you distribute on the Pebble
    Mobile App(s) must adhere to the Developer Program Policies, which can be
-   found at http://www.android.com/market/terms/developer-content-policy.html.
+   found at https://play.google/developer-content-policy/.
 
 ## 6. Product Takedowns.
 
@@ -448,7 +448,7 @@ and other confidential or proprietary information.
 
 In conducting the arbitration proceeding, the arbitrator will apply the law of
 the State of California (without regard to its conflicts of law provisions)
-including U.S. federal law for matters covered by federal law (_e.g. _the
+including U.S. federal law for matters covered by federal law (*e.g.* the
 Federal Arbitration Act). The confidentiality provisions of this Agreement will
 be enforceable under the provisions of the California Uniform Trade Secrets Act,
 California Civil Code Section 3426, as amended. At the request of any party, the

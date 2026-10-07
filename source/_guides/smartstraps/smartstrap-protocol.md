@@ -17,6 +17,7 @@ title: Protocol Specification
 description: |
   Reference information on the Pebble smartstrap protocol.
 guide_group: smartstraps
+published: false
 order: 1
 ---
 

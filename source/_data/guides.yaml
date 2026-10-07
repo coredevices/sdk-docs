@@ -77,7 +77,7 @@ pebble-timeline:
 
 smartstraps:
   title: Smartstraps
-  description: Information on creating and talking to smartstraps. Supported on Pebble Time, Pebble Time Round and Pebble 2 only.
+  description: Historical record of the smartstrap accessory port on Pebble Time, Pebble Time Round and Pebble 2. Not supported on current watches.
   category: interactive-apps
   sort_by: title
 

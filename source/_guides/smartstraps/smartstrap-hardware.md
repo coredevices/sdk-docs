@@ -18,6 +18,7 @@ description: |
   Details of how to build smartstrap hardware, including 3D printing
   instructions and electrical characteristics.
 guide_group: smartstraps
+published: false
 order: 0
 ---
 

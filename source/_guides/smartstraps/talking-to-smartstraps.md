@@ -17,13 +17,12 @@ title: Talking To Smartstraps
 description: |
   Information on how to use the Pebble C API to talk to a connected smartstrap.
 guide_group: smartstraps
+published: false
 order: 3
 platforms:
   - basalt
   - chalk
   - diorite
-related_docs:
-  - Smartstrap
 ---
 
 > Note: Smartstraps are supported on Pebble Time, Pebble Time Steel, Pebble

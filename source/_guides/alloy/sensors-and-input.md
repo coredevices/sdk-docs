@@ -54,12 +54,56 @@ new Button({
 | `"down"` | Bottom button |
 | `"back"` | Back button (left side) |
 
+### Click Recognizers
+
+By default a `Button` reports *raw* presses and releases, as above. Since SDK
+4.33, buttons can instead (or additionally) use the system's click
+recognizers, which take care of repeat-while-held, long presses and
+multi-clicks for you. Enable them with extra options in the constructor:
+
+```js
+import Button from "pebble/button";
+
+new Button({
+    types: ["select", "up", "down"],
+    single: { repeat: 200 },  // clicks, repeating every 200ms while held
+    long: { delay: 700 },     // long presses after 700ms
+    onPush(down, type, recognizer, count, repeat) {
+        if (recognizer === "long") {
+            console.log(down ? ("long press " + type) : "long release");
+        } else if (down) {
+            console.log("click " + type + (repeat ? " (held)" : ""));
+        }
+    }
+});
+```
+
+| Option | Value | Behavior |
+|--------|-------|----------|
+| `single` | `true` or `{ repeat }` | Fires once per click with `down = 1`. With a `repeat` interval (ms), the click fires repeatedly while the button is held, with `repeat = true` on repeats. |
+| `long` | `true` or `{ delay }` | Fires with `down = 1` once the button has been held for `delay` ms (default is the system delay), and again with `down = 0` on release. |
+| `multi` | `true` or `{ min, max, lastOnly, timeout }` | Recognizes sequences of `min` to `max` clicks arriving within `timeout` ms of each other. Fires with `down = 1` and `count` set to the number of clicks; with `lastOnly` it fires only for the final count. |
+| `raw` | `true` | Plain press (`down = 1`) and release (`down = 0`) events. This is the default when no recognizer option is given. |
+
+Recognizer options apply to all buttons in the `types` array, and multiple
+recognizers can be combined on the same button. Two restrictions apply to the
+back button: it does not support `long` (the system reserves press-and-hold
+back for exiting the app), and its `raw` events are emulated, delivering the
+press and release back-to-back on click.
+
 ### Button Events
 
-The `onPush` callback receives two parameters:
+The `onPush` callback receives five parameters:
 
 - `down` - `1` when pressed, `0` when released (use it as a truthy/falsy value)
 - `type` - String: which button was pressed
+- `recognizer` - String: which recognizer fired (`"single"`, `"long"`,
+  `"multi"` or `"raw"`)
+- `count` - Number of clicks counted (e.g. for `multi` sequences)
+- `repeat` - `true` when this is a repeating `single` click from holding the
+  button
+
+Callbacks that only declare `(down, type)` keep working unchanged.
 
 ## Accelerometer
 

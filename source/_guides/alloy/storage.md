@@ -212,6 +212,15 @@ device.files.delete(path);
 | `close()` | Close the file |
 | `device.files.delete(path)` | Delete a file |
 
+Files are disposable, so instead of calling `close()` manually you can open
+them with a `using` declaration (SDK 4.33 and later) and they close
+automatically at the end of the scope:
+
+```js
+using file = device.files.openFile({ path });
+const loaded = file.read(file.status().size, 0);
+```
+
 ## Choosing Between APIs
 
 | Feature | localStorage | Key-Value Storage | Files |

@@ -92,6 +92,7 @@ and is one of the following from the ``HealthEventType`` `enum`:
 | `HealthEventMovementUpdate` | `1` | Recent values around `HealthMetricStepCount`, `HealthMetricActiveSeconds`, `HealthMetricWalkedDistanceMeters`, and `HealthActivityMask` changed. |
 | `HealthEventSleepUpdate` | `2` | Recent values around `HealthMetricSleepSeconds`, `HealthMetricSleepRestfulSeconds`, `HealthActivitySleep`, and `HealthActivityRestfulSleep` changed. |
 | `HealthEventHeartRateUpdate` | `4` | The value of `HealthMetricHeartRateBPM` has changed. |
+| `HealthEventHRVUpdate` | `5` | A new heart rate variability peak-to-peak interval reading is available. See the {% guide_link events-and-services/hrm#heart-rate-variability "Heart Rate Monitor guide" %}. |
 
 A simple example handler is shown below, which outputs to app logs the type of
 event that fired the callback:

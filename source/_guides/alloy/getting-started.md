@@ -191,6 +191,23 @@ Array.prototype.myMethod = function() {};
 ### No eval()
 Evaluation of JavaScript source code by eval, Function and friends is not supported to keep minimize the code footprint of the JavaScript engine.
 
+### Explicit Resource Management
+Since SDK 4.33, Alloy supports Explicit Resource Management:
+`using` declarations, `Symbol.dispose`, `DisposableStack` and
+`SuppressedError`. Alloy classes with a `close()` method (buttons, sensors,
+messages, files, network clients and more) are disposable, so they can be
+released automatically at the end of a scope:
+
+```javascript
+function readScore(path) {
+    using file = device.files.openFile({ path });
+    const data = file.read(file.status().size, 0);
+    return JSON.parse(String.fromArrayBuffer(data)).score;
+    // file.close() runs automatically when the scope exits,
+    // even if read() or JSON.parse() throws
+}
+```
+
 ## Debugging Output
 
 Use `console.log()` for debug output:

@@ -17,8 +17,10 @@ title: Building with AI Coding Agents
 description: |
   How to give an AI coding agent the Pebble documentation, project
   instructions and emulator commands it needs to build and check a Pebble app.
-guide_group: tools-and-resources
-order: 6
+guide_group: ai-agents
+menu: false
+permalink: /guides/ai-agents/
+hide_comments: true
 ---
 
 AI coding agents such as Claude Code, Cursor and Codex can write Pebble apps
@@ -127,8 +129,9 @@ so the agent can read the file. `pebble emu-button` presses `back`, `up`,
 In an environment without a display, such as a container or CI, add `--vnc`
 to every command that uses `--emulator`.
 
-If a screenshot shows a different app or the install times out, the emulator
-has stale state. Run `pebble kill` and `pebble wipe`, then install again.
+If the emulator gets into a strange state, such as a screenshot that shows a
+different app or an install that times out, `pebble kill` stops it and
+`pebble wipe` resets its storage; then install again.
 
 > Note: `pebble screenshot` does not create directories. Create the output
 > directory before taking a screenshot into it.

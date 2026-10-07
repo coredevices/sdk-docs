@@ -52,13 +52,6 @@ instructions for each app. Watchapps that wish to use each button for a specific
 action should use the ``ActionBarLayer`` or ``ActionMenu`` to give hints about
 what each button will do.
 
-{% alert important %}
-Watchfaces cannot receive button clicks. The system uses the buttons to open
-the timeline and the app launcher while a watchface is shown, so a
-``ClickConfigProvider`` set by a watchface is ignored. Only subscribe to button
-clicks from a watchapp.
-{% endalert %}
-
 
 ## Listening for Button Clicks
 

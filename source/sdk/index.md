@@ -146,6 +146,10 @@ On Linux, check the following first:
   so use Ubuntu 24.04 or newer.
 * On Fedora, the emulator needs `libsndio`: `sudo dnf install sndio`.
 
+If the emulator gets into a strange state, for example it will not boot, keeps
+an app you have removed, or an install times out, run `pebble kill` to stop it
+and `pebble wipe` to reset its stored data, then install again.
+
 Check the [FAQ](/faqs/) next - common install, emulator, and `pebble` tool errors are answered there.
 
 If you're still stuck, ask on the [Pebble Developer Forum][dev-forum]. Please

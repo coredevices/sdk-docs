@@ -100,9 +100,7 @@ There are two extension points.
 Everything in this section is implemented in the Pebble mobile app at
 [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp):
 
-| Area | Path |
-|------|------|
-| Webhook request format and signing | `experimental/src/commonMain/kotlin/coredevices/ring/external/indexwebhook/` |
-| Gesture routing | `experimental/src/commonMain/kotlin/coredevices/ring/service/button/` |
-| MCP settings screens | `experimental/src/commonMain/kotlin/coredevices/ring/ui/screens/settings/mcp/` |
-| MCP client | `mcp/src/commonMain/kotlin/coredevices/mcp/client/` |
+* Webhook request format and signing: [`external/indexwebhook/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/external/indexwebhook/)
+* Gesture routing: [`service/button/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/service/button/)
+* MCP settings screens: [`settings/mcp/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/ui/screens/settings/mcp/)
+* MCP client: [`mcp/client/`](https://github.com/coredevices/mobileapp/tree/main/mcp/src/commonMain/kotlin/coredevices/mcp/client/)

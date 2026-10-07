@@ -15,62 +15,27 @@
 
 title: Smartstraps
 description: |
-  Information on creating and talking to smartstraps.
+  Historical record of the smartstrap accessory port on Pebble Time, Pebble
+  Time Round and Pebble 2.
 guide_group: smartstraps
 menu: false
 permalink: /guides/smartstraps/
 generate_toc: false
 hide_comments: true
-related_docs:
-  - Smartstrap
-related_examples:
-  - title: Smartstrap Button Counter
-    url: https://github.com/pebble-examples/smartstrap-button-counter
-  - title: Smartstrap Library Test
-    url: https://github.com/pebble-examples/smartstrap-library-test
 ---
 
-> Note: Smartstraps are supported on Pebble Time, Pebble Time Steel, Pebble
-> Time Round and Pebble 2. They are not supported on Pebble 2 Duo, Pebble Time
-> 2, Pebble Round 2 or newer watches.
+> Note: Smartstraps are not supported on Pebble 2 Duo, Pebble Time 2, Pebble
+> Round 2 or newer watches, and support will not be added.
 
-The smart accessory port on the back of Pebble Time, Pebble Time Steel, and
-Pebble Time Round makes it possible to create accessories with electronics
-built-in to improve the capabilities of the watch itself. Wrist-mounted pieces
-of hardware that interface with a Pebble watch are called smartstraps and can
-potentially host many electronic components from LEDs, to temperature sensors,
-or even external batteries to boost battery life.
+Smartstraps were accessories that connected to the smart accessory port on the
+back of Pebble Time, Pebble Time Steel, Pebble Time Round and Pebble 2. The
+port carried power and a one-wire serial bus, and the `Smartstrap` C API let an
+app exchange data with the strap.
 
-This section of the developer guides details everything a developer
-should need to produce a smartstrap for Pebble; from 3D CAD diagrams, to
-electrical characteristics, to software API and protocol specification details.
+Pebble 2 Duo, Pebble Time 2, Pebble Round 2 and newer watches do not have the
+accessory port, and the `Smartstrap` API is not part of the current SDK
+reference. This page is kept as a historical record.
 
-
-## Contents
-
-{% include guides/contents-group.md group=page.group_data %}
-
-
-## Availability
-
-The ``Smartstrap`` API is available on the following platforms and firmwares.
-
-| Platform | Model | Firmware |
-|----------|-------|----------|
-| Basalt | Pebble Time/Pebble Time Steel | 3.4+ |
-| Chalk | Pebble Time Round | 3.6+ |
-| Diorite | Pebble 2 | 4.0+ |
-
-Apps that use smartstraps but run on incompatible platforms can use compile-time
-defines to provide alternative behavior in this case. Read
-{% guide_link best-practices/building-for-every-pebble %} for more information
-on supporting multiple platforms with differing capabilities.
-
-
-## Video Introduction
-
-Watch the video below for a detailed introduction to the Smartstrap API by Brian
-Gomberg (Firmware team), given at the 
-[PebbleSF Meetup](http://www.meetup.com/PebbleSF/).
-
-[EMBED](//www.youtube.com/watch?v=uB9r2lw7Bt8)
+The original guides on smartstrap hardware, the serial protocol and the C API
+remain in the
+[repository history](https://github.com/coredevices/sdk-docs/tree/c4ef713%5E/source/_guides/smartstraps).

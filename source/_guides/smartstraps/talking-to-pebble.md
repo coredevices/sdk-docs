@@ -18,9 +18,8 @@ description: |
   Information on how to implement the smartstrap protocol to talk to the Pebble
   accessory port.
 guide_group: smartstraps
+published: false
 order: 2
-related_docs:
-  - Smartstrap
 related_examples:
   - title: Smartstrap Button Counter
     url: https://github.com/pebble-examples/smartstrap-button-counter

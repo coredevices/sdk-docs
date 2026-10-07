@@ -2642,16 +2642,28 @@
  - /guides/smartstraps/
 -
  - /guides/hardware/smartstrap-hardware/index.html
- - /guides/smartstraps/smartstrap-hardware/
+ - /guides/smartstraps/
+-
+ - /guides/smartstraps/smartstrap-hardware/index.html
+ - /guides/smartstraps/
 -
  - /guides/hardware/smartstrap-protocol/index.html
- - /guides/smartstraps/smartstrap-protocol/
+ - /guides/smartstraps/
+-
+ - /guides/smartstraps/smartstrap-protocol/index.html
+ - /guides/smartstraps/
 -
  - /guides/hardware/talking-to-pebble/index.html
- - /guides/smartstraps/talking-to-pebble/
+ - /guides/smartstraps/
+-
+ - /guides/smartstraps/talking-to-pebble/index.html
+ - /guides/smartstraps/
 -
  - /guides/hardware/talking-to-smartstraps/index.html
- - /guides/smartstraps/talking-to-smartstraps/
+ - /guides/smartstraps/
+-
+ - /guides/smartstraps/talking-to-smartstraps/index.html
+ - /guides/smartstraps/
 -
  - /guides/timeline/index.html
  - /guides/pebble-timeline/

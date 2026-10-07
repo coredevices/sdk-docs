@@ -21,7 +21,7 @@ module Pebble
   # Pebble C documentation processing class.
   # Reads doxygen XML from local platform directories.
   class DocumentationC < Documentation
-    MASTER_GROUP_IDS = %w(foundation graphics u_i smartstrap worker standard_c)
+    MASTER_GROUP_IDS = %w(foundation graphics u_i worker standard_c)
     PLATFORMS = %w(aplite basalt emery)
 
     def initialize(site, source_dir, root, language='c')

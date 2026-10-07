@@ -129,8 +129,9 @@ so the agent can read the file. `pebble emu-button` presses `back`, `up`,
 In an environment without a display, such as a container or CI, add `--vnc`
 to every command that uses `--emulator`.
 
-If a screenshot shows a different app or the install times out, the emulator
-has stale state. Run `pebble kill` and `pebble wipe`, then install again.
+If the emulator gets into a strange state, such as a screenshot that shows a
+different app or an install that times out, `pebble kill` stops it and
+`pebble wipe` resets its storage; then install again.
 
 > Note: `pebble screenshot` does not create directories. Create the output
 > directory before taking a screenshot into it.

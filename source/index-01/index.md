@@ -17,19 +17,26 @@ layout: index-01
 title: Index 01
 description: |
   What the Index 01 ring does, how the ring and the Pebble mobile app split
-  the work, and the two ways to build on it.
+  the work, and the three ways to build on it.
 permalink: /index-01/
 generate_toc: true
 search_index: true
 search_group: Index 01
 ---
 
-Index 01 is a ring with one button and a microphone. Press the button to
-record a voice note. The ring sends the recording to the Pebble mobile app over
-Bluetooth, and the app transcribes it, acts on it, and keeps it in the Index
-feed. Developers can receive each recording at their own HTTP endpoint with a
-[webhook](/index-01/webhooks/), or give the assistant new tools by connecting
-an [MCP server](/index-01/mcp/).
+Index 01 is a small ring with a button and a microphone, sold at
+[repebble.com/index](https://repebble.com/index). Press the button, say the
+thought you want to keep, and the recording is sent to your phone, where it is
+added to your notes, set as a reminder, or kept in the Index feed for later.
+The ring records only while the button is pressed. Speech recognition and the
+assistant can run on the phone with no internet connection, or in the cloud.
+
+The ring sends each recording to the Pebble mobile app over Bluetooth, and the
+app transcribes it, acts on it, and keeps it in the Index feed. Developers can
+receive each recording at their own HTTP endpoint with a
+[webhook](/index-01/webhooks/), give the assistant new tools by connecting an
+[MCP server](/index-01/mcp/), or, once plugin support ships, publish a
+[plugin](/guides/plugins/) in the Pebble appstore.
 
 ## How the Ring and the App Split the Work
 
@@ -85,24 +92,35 @@ the transcript is whatever the selected speech recognition produced.
 
 ## Building on Index 01
 
-There are two extension points.
+There are three extension points.
 
+* [Plugins](/guides/plugins/) (coming soon) are `.pbw` packages whose
+  `appinfo.json` carries a `plugin` block. A plugin runs inside the Pebble
+  mobile app and declares actions and data sources. The Index agent calls the
+  plugin's actions as tools, reads its sources, and can offer a plugin that
+  declares `create_note` or `create_reminder` as a destination for notes and
+  reminders. Plugins are published in the Pebble appstore under their own
+  type and categories and are installed from the phone, so a user needs
+  nothing else to use yours. Use a plugin unless your integration has to run
+  outside the phone.
 * [Webhooks](/index-01/webhooks/) send each recording as a multipart HTTP
   POST to a URL you configure, with the audio, the transcript, or both, and an
   optional HMAC-SHA256 signature. Use this to feed recordings into your own
-  service, an automation tool, or a note-taking app.
+  service, an automation tool, or a note-taking app. You run the endpoint.
 * [MCP servers](/index-01/mcp/) add tools to the assistant. The app connects
   to any MCP server over HTTP, lists its tools, and lets the Cloud LLM call
-  them when it processes a recording.
+  them when it processes a recording. You run the server.
+
+Plugin support in the Pebble mobile app is in
+[coredevices/mobileapp#291](https://github.com/coredevices/mobileapp/pull/291).
+Until it ships, webhooks and MCP servers are the two ways to extend Index 01.
 
 ## Where the Code Lives
 
 Everything in this section is implemented in the Pebble mobile app at
 [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp):
 
-| Area | Path |
-|------|------|
-| Webhook request format and signing | `experimental/src/commonMain/kotlin/coredevices/ring/external/indexwebhook/` |
-| Gesture routing | `experimental/src/commonMain/kotlin/coredevices/ring/service/button/` |
-| MCP settings screens | `experimental/src/commonMain/kotlin/coredevices/ring/ui/screens/settings/mcp/` |
-| MCP client | `mcp/src/commonMain/kotlin/coredevices/mcp/client/` |
+* Webhook request format and signing: [`external/indexwebhook/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/external/indexwebhook/)
+* Gesture routing: [`service/button/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/service/button/)
+* MCP settings screens: [`settings/mcp/`](https://github.com/coredevices/mobileapp/tree/main/experimental/src/commonMain/kotlin/coredevices/ring/ui/screens/settings/mcp/)
+* MCP client: [`mcp/client/`](https://github.com/coredevices/mobileapp/tree/main/mcp/src/commonMain/kotlin/coredevices/mcp/client/)

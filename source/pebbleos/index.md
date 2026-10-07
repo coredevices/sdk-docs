@@ -39,6 +39,45 @@ imported page ends with the PebbleOS commit it was generated from and a link to
 its source file.
 
 
+## Start Here
+
+The steps below take a build from nothing to running in the emulator and
+installed on a watch. Each step links to the imported page that covers it, so
+the instructions themselves come from the pebbleos repository.
+
+<!-- A pebbleos pull request adds a single quickstart page under
+     docs/development/. Once that page is imported, this list can collapse
+     to one link to it. -->
+
+1. Set up the build environment.
+   [Prerequisites](/pebbleos/docs/development/getting_started/#prerequisites)
+   installs the
+   [PebbleOS SDK](/pebbleos/docs/development/getting_started/#pebbleos-sdk)
+   toolchain bundle and the
+   [system packages](/pebbleos/docs/development/getting_started/#system-level-dependencies),
+   then [gets the source](/pebbleos/docs/development/getting_started/#get-the-source-code)
+   with its submodules and installs the
+   [Python dependencies](/pebbleos/docs/development/getting_started/#python-dependencies).
+2. Configure and build for an emulator board.
+   [Build](/pebbleos/docs/development/qemu/#build) on the QEMU page runs
+   `pbl configure --board qemu_flint` and `pbl build`.
+   [Choosing your target](/pebbleos/docs/development/options/#choosing-your-target)
+   lists the boards and revisions `pbl configure` accepts.
+3. Run the build. [Run](/pebbleos/docs/development/qemu/#run) starts the
+   emulator with `pbl qemu`, and
+   [Install PBW applications](/pebbleos/docs/development/qemu/#install-pbw-applications)
+   installs an app into it with the `pebble` tool.
+4. Configure and build again for the board of your watch, from the table
+   under [Boards](#boards), and install it.
+   [Loading firmware via Bluetooth](/pebbleos/docs/development/building_fw/#loading-firmware-via-bluetooth)
+   bundles a `.pbz` with `pbl bundle` and sideloads it from the Pebble mobile
+   app. This is the route for a sealed watch.
+   [Loading firmware with a firmware development kit](/pebbleos/docs/development/building_fw/#loading-firmware-with-a-firmware-development-kit)
+   flashes a board with its debug connector exposed using `pbl flash`.
+
+Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
+
+
 ## Boards
 
 The firmware is configured for one board at a time with

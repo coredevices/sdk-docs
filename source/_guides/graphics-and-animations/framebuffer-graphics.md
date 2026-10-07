@@ -68,8 +68,10 @@ representation of a single pixel, shown in the table below.
 | Gabbro | ``GBitmapFormat8BitCircular`` | One byte (two bits per color) |
 
 Gabbro reports ``GBitmapFormat8BitCircular`` like Chalk, but its rows are not
-packed: every row starts 260 bytes after the previous one, and only the
-`min_x` to `max_x` range of each row is inside the circle. On both platforms
+packed: the framebuffer is a full 260 x 260 byte rectangle, every row starts
+260 bytes after the previous one, and only the `min_x` to `max_x` range of
+each row is inside the circle. Apps built for Chalk and run on Gabbro get the
+packed 180 x 180 Chalk layout instead. On both platforms
 ``gbitmap_get_bytes_per_row()`` returns 0 for this format, so always use
 ``gbitmap_get_data_row_info()`` to address pixels rather than a fixed stride.
 

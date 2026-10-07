@@ -50,9 +50,11 @@ size_t max_bytes = persist_get_max_size();
 ```
 
 On Pebble 2 Duo, Pebble Time 2 and Pebble Round 2 the limit is 1 MB per app.
-On aplite, basalt, chalk and diorite the SDK compiles
-``persist_get_max_size()`` to the constant 4096, which is the 4 kB limit those
-platforms have always had.
+The storage file starts at 4 kB and grows as values are written. On aplite,
+basalt, chalk and diorite the SDK compiles ``persist_get_max_size()`` to the
+constant 4096, the 4 kB limit documented for those platforms.
+``persist_get_max_size()`` was added in SDK 4.9.172; with an older SDK, assume
+4 kB.
 
 When an app is updated the values saved using the ``Storage`` API will be
 persisted, but if it is uninstalled they will be removed.

@@ -1,12 +1,46 @@
 require 'fileutils'
-require 'set'
+require 'json'
+require 'shellwords'
 require 'nokogiri'
 require 'reverse_markdown'
 
 module LlmsExport
+  SITE_URL = 'https://developer.repebble.com'.freeze
+  PLATFORMS = %w(aplite basalt chalk diorite emery flint gabbro).freeze
+  ALLOY_PLATFORMS = %w(emery gabbro).freeze
+
+  # The .md twin of a rendered page. /foo/, /foo/index.html and /foo.html
+  # all map to /foo.md so "append .md to the URL" works for every page.
+  def self.md_path_for(url)
+    path = url.to_s.sub(%r{/index\.html\z}, '/')
+    return '/index.md' if path == '/'
+    return path.chomp('/') + '.md' if path.end_with?('/')
+    return path.sub(/\.html\z/, '.md') if path.end_with?('.html')
+    path + '.md'
+  end
+
+  # Earlier exports wrote the twin of /foo/index.html at /foo/index.md and
+  # links to that form exist elsewhere; keep writing it as an alias.
+  def self.md_alias_for(url)
+    url.to_s.end_with?('/index.html') ? url.to_s.sub(/\.html\z/, '.md') : nil
+  end
+
+  # Key under which /foo, /foo/ and /foo/index.html are the same page.
+  def self.normalize_path(path)
+    key = path.to_s.sub(%r{/index\.html\z}, '/').chomp('/')
+    key.empty? ? '/' : key
+  end
+
+  def self.sdk_version(site)
+    site.data.dig('sdk', 'c', 'version').to_s
+  end
+
   class Builder
     SITE_TITLE = 'Pebble Developer Documentation'.freeze
     SITE_DESCRIPTION = 'Official documentation for building apps for Pebble smartwatches.'.freeze
+
+    # Prefixes that get a concatenated llms-full.txt of every page below them.
+    FULL_FILE_PREFIXES = ['/', '/guides/', '/guides/alloy/', '/docs/c/', '/docs/pebblekit-js/'].freeze
 
     EXCLUDED_URL_PATTERNS = [
       %r{\A/assets/},
@@ -14,6 +48,8 @@ module LlmsExport
       %r{\A/css/},
       %r{\A/js/},
       %r{\A/blog/\d+/?\z},
+      %r{\A/blog/?\z},
+      %r{\A/blog/(tags|authors)/},
       %r{\A/search/?\z},
       %r{sitemap\.xml\z},
       %r{robots\.txt\z},
@@ -43,24 +79,19 @@ module LlmsExport
       @main_nodes = {}
     end
 
-    def run
-      collect_pages
-      Jekyll.logger.info('LLMS Export:', "#{@pages.size} pages eligible")
-      @emitted_urls = @pages.map(&:url).to_set
-      discover_sections
-      emit_per_page_markdown
-      emit_index
+    # Before rendering: tell the layout which pages will get a .md twin so it
+    # can emit <link rel="alternate" type="text/markdown">. Content-based
+    # exclusions are only known after rendering; see strip_alternate_link.
+    def self.mark_pages(site)
+      candidates = site.pages.dup
+      site.collections.each_value { |collection| candidates.concat(collection.docs) }
+      candidates.each do |page|
+        next if static_exclude?(page)
+        page.data['llms_md_path'] = LlmsExport.md_path_for(page.url)
+      end
     end
 
-    private
-
-    def collect_pages
-      candidates = @site.pages.dup
-      @site.collections.each_value { |collection| candidates.concat(collection.docs) }
-      @pages = candidates.reject { |page| exclude?(page) }
-    end
-
-    def exclude?(page)
+    def self.static_exclude?(page)
       return true if page.data['llms_exclude'] == true
       return true if page.data['layout'] == 'redirect'
       return true if page.data['sitemap'] == false
@@ -70,11 +101,55 @@ module LlmsExport
       return true if EXCLUDED_URL_PATTERNS.any? { |pattern| url.match?(pattern) }
       return true unless url == '/' || url.end_with?('/') || url.end_with?('.html')
 
+      false
+    end
+
+    # Absolute URL of the .md twin for an internal page URL, or nil when the
+    # page has none. Used by the API index so it never advertises a dead link.
+    def md_url_for(url)
+      target = @emitted && @emitted[LlmsExport.normalize_path(url)]
+      target && absolute_url(LlmsExport.md_path_for(target))
+    end
+
+    def run
+      collect_pages
+      Jekyll.logger.info('LLMS Export:', "#{@pages.size} pages eligible")
+      discover_sections
+      emit_per_page_markdown
+      emit_index
+      emit_full_files
+    end
+
+    private
+
+    def collect_pages
+      candidates = @site.pages.dup
+      @site.collections.each_value { |collection| candidates.concat(collection.docs) }
+      @pages = candidates.reject { |page| exclude?(page) }
+      register_emitted(@pages)
+    end
+
+    def register_emitted(pages)
+      @emitted = pages.each_with_object({}) do |page, map|
+        map[LlmsExport.normalize_path(page.url)] = page.url
+      end
+    end
+
+    def exclude?(page)
+      return true if self.class.static_exclude?(page)
       return true if page.output.to_s.strip.empty?
       node = main_node(page)
-      return true if node.nil? || node.text.strip.length < 100
+      if node.nil? || node.text.strip.length < 100
+        strip_alternate_link(page)
+        return true
+      end
 
       false
+    end
+
+    def strip_alternate_link(page)
+      return unless page.output.is_a?(String)
+      page.output = page.output.sub(%r{\s*<link rel="alternate" type="text/markdown"[^>]*>}, '')
     end
 
     # Parse the rendered mainmenu HTML on a sample page to learn the canonical
@@ -110,22 +185,69 @@ module LlmsExport
     def emit_per_page_markdown
       @pages.each do |page|
         markdown = page_to_markdown(page)
-        next if markdown.nil? || markdown.empty?
-        write_static_file(md_path_for(page.url), markdown)
+        next if markdown.nil?
+        content = front_matter(page) + markdown
+        write_static_file(LlmsExport.md_path_for(page.url), content)
+        alias_path = LlmsExport.md_alias_for(page.url)
+        write_static_file(alias_path, content) if alias_path
       end
     end
 
-    def md_path_for(url)
-      return '/index.md' if url == '/'
-      return url.chomp('/') + '.md' if url.end_with?('/')
-      return url.sub(/\.html\z/, '.md') if url.end_with?('.html')
-      url + '.md'
+    def front_matter(page)
+      <<~YAML
+        ---
+        title: #{extract_title(page).to_s.to_json}
+        canonical_url: #{canonical_url(page)}
+        last_updated: #{last_updated(page)}
+        sdk_version: #{LlmsExport.sdk_version(@site)}
+        ---
+      YAML
     end
 
+    # Date of the last commit touching the page's source file, or the build
+    # date for generated pages and when git history is unavailable.
+    def last_updated(page)
+      path = page.respond_to?(:relative_path) ? File.join('source', page.relative_path.to_s) : nil
+      (path && git_dates[path]) || @site.time.strftime('%Y-%m-%d')
+    end
+
+    def git_dates
+      @git_dates ||= begin
+        root = File.expand_path('..', @site.source)
+        log = `git -C #{Shellwords.escape(root)} log --format=%x01%cs --name-only -- source 2>/dev/null`
+        dates = {}
+        current = nil
+        log.each_line do |line|
+          line = line.strip
+          next if line.empty?
+          if line.start_with?("\x01")
+            current = line[1..]
+          else
+            dates[line] ||= current
+          end
+        end
+        dates
+      end
+    end
+
+    # Body markdown for a page: title, source URL and converted content.
+    # Memoized because the .md twin and the llms-full.txt files share it.
     def page_to_markdown(page)
+      @markdowns ||= {}
+      return @markdowns[page.url] if @markdowns.key?(page.url)
+      @markdowns[page.url] = build_page_markdown(page)
+    end
+
+    def build_page_markdown(page)
       node = main_node(page)
       return nil if node.nil?
       rewrite_internal_links(node)
+      # Newlines inside running text are spaces in HTML; ReverseMarkdown drops
+      # them, which glues words to the links that follow ("enable the[link]").
+      node.xpath('.//text()[not(ancestor::pre)]').each do |text|
+        next unless text.content.include?("\n") && text.content.match?(/\S/)
+        text.content = text.content.gsub(/\s*\n\s*/, ' ')
+      end
       html = node.inner_html
       return nil if html.strip.empty?
 
@@ -136,7 +258,7 @@ module LlmsExport
       <<~MARKDOWN
         # #{extract_title(page)}
 
-        Source: #{absolute_url(page.url)}
+        Source: #{canonical_url(page)}
 
         #{body}
       MARKDOWN
@@ -163,27 +285,29 @@ module LlmsExport
         content_node
     end
 
-    # Rewrite <a href> values that point to an emitted page so the .md
-    # version links to other .md versions. Preserves fragments and the
-    # original absolute/relative form.
+    # Make every internal link and image absolute so the .md file reads the
+    # same from anywhere; links to pages with a .md twin point to the twin.
     def rewrite_internal_links(node)
       node.css('a[href]').each do |anchor|
         rewritten = rewrite_href(anchor['href'])
         anchor['href'] = rewritten if rewritten
       end
+      node.css('img[src]').each do |img|
+        rewritten = rewrite_href(img['src'])
+        img['src'] = rewritten if rewritten
+      end
     end
 
+    # Internal /foo, /foo/ and /foo/index.html all resolve to the same page.
     def rewrite_href(href)
       return nil if href.nil? || href.empty?
 
-      path, fragment, had_absolute_prefix = extract_internal_path(href)
+      path, fragment, = extract_internal_path(href)
       return nil if path.nil?
 
-      target = @emitted_urls.include?(path) ? path : "#{path}/"
-      return nil unless @emitted_urls.include?(target)
-
-      md_path = md_path_for(target)
-      had_absolute_prefix ? "#{@base_url}#{md_path}#{fragment}" : "#{md_path}#{fragment}"
+      target = @emitted[LlmsExport.normalize_path(path)]
+      path = LlmsExport.md_path_for(target) if target
+      "#{@base_url}#{path}#{fragment}"
     end
 
     # Returns [path, fragment, had_absolute_prefix] for an internal URL, or
@@ -243,6 +367,10 @@ module LlmsExport
       "#{@base_url}#{path}"
     end
 
+    def canonical_url(page)
+      absolute_url(page.url.to_s.sub(%r{/index\.html\z}, '/'))
+    end
+
     def write_static_file(rel_path, content)
       dest_path = File.join(@tmp_root, rel_path)
       FileUtils.mkdir_p(File.dirname(dest_path))
@@ -254,19 +382,40 @@ module LlmsExport
     end
 
     def emit_index
-      buckets = bucket_pages_by_section
       lines = []
       lines << "# #{SITE_TITLE}"
       lines << ''
       lines << "> #{SITE_DESCRIPTION}"
+      lines << ''
+      lines << instructions
 
-      section_render_order.each do |section_key|
-        pages = buckets[section_key]
-        next if pages.nil? || pages.empty?
-        render_section(lines, @section_titles[section_key] || humanize(section_key), pages)
+      sections.each do |title, sub_groups|
+        render_section(lines, title, sub_groups)
       end
 
       write_static_file('/llms.txt', lines.join("\n") + "\n")
+    end
+
+    def instructions
+      version = LlmsExport.sdk_version(@site)
+      <<~TEXT.strip
+        Most guide and reference pages on this site have a Markdown version: replace the trailing `/` or `/index.html` of the page URL with `.md` (for example `#{@base_url}/guides/events-and-services/buttons.md`). Fetch the `.md` version when reading a page; the links below already point to it. `#{@base_url}/llms-full.txt` holds every page in one file, and `/guides/llms-full.txt`, `/guides/alloy/llms-full.txt`, `/docs/c/llms-full.txt` and `/docs/pebblekit-js/llms-full.txt` hold one section each. `#{@base_url}/api-index.json` lists every C and PebbleKit JS symbol with its platforms and page.
+
+        The current SDK version is #{version}. The target platforms are #{PLATFORMS.join(', ')}. Alloy (JavaScript on the watch) runs on #{ALLOY_PLATFORMS.join(' and ')} only. Rocky.js has been removed from the SDK. The timeline web API is no longer available: the Pebble mobile app does not sync pins from a server, so use local pins instead.
+      TEXT
+    end
+
+    # [[section title, [[sub title, pages]]]] in index order. Blog goes last
+    # so posts do not sit between the reference sections and the rest.
+    def sections
+      @sections ||= begin
+        buckets = bucket_pages_by_section
+        section_render_order.filter_map do |key|
+          pages = buckets[key]
+          next if pages.nil? || pages.empty?
+          [@section_titles[key] || humanize(key), sub_group(pages)]
+        end
+      end
     end
 
     def section_render_order
@@ -278,7 +427,21 @@ module LlmsExport
         extra << key
       end
       extra.delete(UNCATEGORIZED_KEY)
-      known + extra.sort + [UNCATEGORIZED_KEY]
+      (known + extra.sort + [UNCATEGORIZED_KEY]).partition { |key| key != 'blog' }.flatten
+    end
+
+    # One llms-full.txt per prefix: every page below it, in index order.
+    def emit_full_files
+      ordered = sections.flat_map { |_, subs| subs.flat_map { |_, pages| pages } }
+      FULL_FILE_PREFIXES.each do |prefix|
+        pages = ordered.select { |page| page.url.start_with?(prefix) }
+        bodies = pages.filter_map { |page| page_to_markdown(page) }
+        next if bodies.empty?
+        header = "# #{SITE_TITLE}#{prefix == '/' ? '' : ": #{prefix}"}\n\n" \
+                 "SDK #{LlmsExport.sdk_version(@site)}. #{bodies.size} pages. " \
+                 "Index: #{@base_url}/llms.txt\n\n"
+        write_static_file("#{prefix}llms-full.txt", header + bodies.join("\n\n---\n\n"))
+      end
     end
 
     def bucket_pages_by_section
@@ -312,11 +475,10 @@ module LlmsExport
       section_from_layout_chain(layout.data['layout'], seen)
     end
 
-    def render_section(lines, title, pages)
+    def render_section(lines, title, sub_groups)
       lines << ''
       lines << "## #{title}"
 
-      sub_groups = sub_group(pages)
       sub_groups.each do |sub_title, sub_pages|
         next if sub_pages.empty?
         if sub_title.empty?
@@ -483,7 +645,7 @@ module LlmsExport
 
     def format_entry(page, with_date: false)
       title = extract_title(page)
-      url = absolute_url(md_path_for(page.url))
+      url = absolute_url(LlmsExport.md_path_for(page.url))
       description = entry_description(page)
       date_suffix = with_date && page.data['date'] ? " — #{page.data['date'].strftime('%Y-%m-%d')}" : ''
 
@@ -494,9 +656,17 @@ module LlmsExport
       end
     end
 
+    # Front matter description first; for C API pages the doxygen group
+    # brief; otherwise the first sentence of the first paragraph.
     def entry_description(page)
       explicit = page.data['description'].to_s.gsub(/\s+/, ' ').strip
       return explicit unless explicit.empty?
+
+      # C API pages: the doxygen group brief, or nothing. The first paragraph
+      # of a group page is a member's docstring, not a description.
+      if page.respond_to?(:group) && page.group.respond_to?(:to_liquid)
+        return Nokogiri::HTML.fragment(page.group.to_liquid['summary'].to_s).text.gsub(/\s+/, ' ').strip
+      end
 
       node = main_node(page)
       paragraph = node&.at_css('p')&.text&.gsub(/\s+/, ' ')&.strip.to_s

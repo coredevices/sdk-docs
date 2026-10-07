@@ -119,6 +119,15 @@ pebble install --cloudpebble
 The best way to learn is by checking out our examples apps: [weather](https://github.com/pebble-examples/pebblekit-js-weather/), [simple game](https://github.com/pebble-hacks/pandas-and-bananas/), [concentricity watchface](https://github.com/pebble-examples/concentricity/), and [many more](/examples)! Or try [tutorials](/tutorials/) for a step-by-step guide on how
 to write a simple C Pebble application.
 
+#### Using an AI coding agent
+
+`pebble new-project --ai myproject` also writes instruction files for Claude
+Code and Cursor, and every page of this site has a Markdown version for
+agents to read. See
+{% guide_link tools-and-resources/building-with-ai-agents %} for the files,
+the documentation index at `/llms.txt` and the emulator commands an agent can
+use to check its work.
+
 ### Installation Problems?
 
 Check the [FAQ](/faqs/) first - common install, emulator, and `pebble` tool errors are answered there.

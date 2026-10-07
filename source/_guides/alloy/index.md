@@ -34,7 +34,7 @@ to Pebble hardware features.
 > the platforms whose firmware includes the Alloy runtime. CloudPebble also
 > lists `flint` (Pebble 2 Duo), but Alloy apps do not run on `flint` yet. The
 > older platforms are not supported. See the
-> [platform support table](/sdk/#platform-support).
+> {% guide_link tools-and-resources/hardware-information#platform-support "platform support table" %}.
 
 ## Key Features
 

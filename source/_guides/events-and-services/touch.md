@@ -24,7 +24,7 @@ related_examples:
 ---
 
 On hardware platforms with a touchscreen (`emery` and `gabbro`, see the
-[platform support table](/sdk/#platform-support)), the `TouchService` lets an
+{% guide_link tools-and-resources/hardware-information#platform-support "platform support table" %}), the `TouchService` lets an
 app receive touchdown, lift-off, and position updates as the user moves their
 finger across the display. This is the same low-level event stream the system
 itself uses, so apps can build draggable UI or free-form input on top of it.

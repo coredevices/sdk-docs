@@ -31,7 +31,7 @@ related_examples:
 ---
 
 On hardware platforms with a built-in speaker (`flint` and `emery`, see the
-[platform support table](/sdk/#platform-support)), the Speaker API gives apps
+{% guide_link tools-and-resources/hardware-information#platform-support "platform support table" %}), the Speaker API gives apps
 four different ways to make sound:
 
 * A **one-shot tone**, for short beeps and confirmation sounds.

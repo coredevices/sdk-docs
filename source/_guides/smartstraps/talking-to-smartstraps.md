@@ -287,7 +287,7 @@ To save as much power as possible, the notification mechanism can be used by the
 smartstrap to alert the watch when there is data that requires processing. When
 this happens, the ``SmartstrapNotifyHandler`` handler is called with the
 appropriate attribute provided. Developers can use this mechanism to allow the
-watch to sleep until it is time to read data from the smartstrap, or simply as a
+watch to sleep until it is time to read data from the smartstrap, or as a
 messsaging mechanism.
 
 ```c

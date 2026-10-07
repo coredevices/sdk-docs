@@ -44,7 +44,7 @@ For developers prototyping with some of the most common Arduino boards
 doing this is to use the
 [ArduinoPebbleSerial](https://github.com/pebble/arduinopebbleserial) library.
 This open-source reference implementation takes care of the smartstrap protocol
-and allows easy communication with the Pebble accessory port.
+and handles communication with the Pebble accessory port.
 
 Download the library as a .zip file. In the Arduino IDE, go to 'Sketch' ->
 'Include Library' -> 'Add .ZIP LIbrary...'. Choose the library .zip file. This

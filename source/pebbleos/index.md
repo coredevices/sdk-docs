@@ -174,6 +174,15 @@ it also carries the
 that the `pebble` tool uses to install and debug apps on a watch. Its source
 is at [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp).
 
+Changes to the firmware are often paired with changes to the Pebble mobile
+app, for example a new Pebble Protocol endpoint or a change to how firmware
+is installed. The mobile app can connect to a PebbleOS emulator over TCP in
+place of a watch, so both sides of a change can be tested without hardware.
+[Testing with the Pebble Mobile App](/guides/tools-and-resources/testing-with-the-mobile-app/)
+covers running the phone app against the emulator.
+<!-- Plain link: the guide lives on the guides-refresh branch, so
+     guide_link does not resolve on this branch yet. -->
+
 > Note: Two different things are called an SDK. The Pebble SDK builds
 > watchapps. The PebbleOS SDK at
 > [github.com/coredevices/PebbleOS-SDK](https://github.com/coredevices/PebbleOS-SDK)

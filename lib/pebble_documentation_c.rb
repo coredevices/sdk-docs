@@ -21,7 +21,7 @@ module Pebble
   # Pebble C documentation processing class.
   # Reads doxygen XML from local platform directories.
   class DocumentationC < Documentation
-    MASTER_GROUP_IDS = %w(foundation graphics u_i worker standard_c)
+    MASTER_GROUP_IDS = %w(foundation graphics u_i smartstrap worker standard_c)
     PLATFORMS = %w(aplite basalt emery)
 
     def initialize(site, source_dir, root, language='c')
@@ -64,8 +64,17 @@ module Pebble
       end
     end
 
+    # A group is only documented if every platform's Doxygen output has it.
+    def group_available?(id)
+      PLATFORMS.all? { |p| File.exist?("#{@tmp_dir}/#{p}/xml/group___#{id}.xml") }
+    end
+
     def process
       DocumentationC::MASTER_GROUP_IDS.each do |id|
+        unless group_available?(id)
+          Jekyll.logger.warn('Docs Generation:', "Skipping C group '#{id}': missing from a platform's Doxygen XML")
+          next
+        end
         @groups << DocGroup.new(@url_root, @tmp_dir, 'aplite', id)
       end
       @groups.each { |group| group.load_xml('basalt') }

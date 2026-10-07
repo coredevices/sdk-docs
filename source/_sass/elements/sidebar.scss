@@ -258,6 +258,10 @@ $sidebar-hide-at: xs;
   .mainmenu__item--more a {
     background-image: url('../images/menu/more.svg');
   }
+
+  .mainmenu__item--index-01 a {
+    background-image: url('../images/menu/appstore.svg');
+  }
 }
 
 .sidebar--wide .mainmenu__item a {

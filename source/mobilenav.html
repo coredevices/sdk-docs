@@ -106,6 +106,25 @@
         </li>
       </ul>
     </li>
+    <li class="mobile-nav--pebbleos"><a href="/pebbleos/">PebbleOS</a>
+      <!-- layouts/pebbleos/master -->
+      <ul>
+        <li><a href="/pebbleos/contributing/">Contributing</a></li>
+        <li><a href="/pebbleos/exposing-apis/">Exposing APIs to the SDK</a></li>
+        {% for group in site.data.pebbleos.groups %}
+          <li><a href="{{ group.url }}">{{ group.title }}</a>
+            <ul>
+              {% for doc in group.pages %}
+                <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+        {% if site.data.pebbleos %}
+          <li><a href="/pebbleos/apidoc/index.html">Firmware API Reference</a></li>
+        {% endif %}
+      </ul>
+    </li>
     <li class="mobile-nav--examples"><a href="/examples/">Examples</a></li>
     <li class="mobile-nav--community"><a href="/community/">Community</a>
       <!-- layouts/community -->

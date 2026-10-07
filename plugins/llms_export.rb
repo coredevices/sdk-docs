@@ -1,8 +1,14 @@
 require_relative '../lib/llms_export.rb'
 
-# Build per-page .md siblings and a /llms.txt index after Jekyll has rendered
-# every page. A :site, :post_render hook is the only point in the pipeline
-# where page.output is populated — generators run before render.
+# Before rendering, mark the pages that will get a .md twin so master.html can
+# link to it with <link rel="alternate" type="text/markdown">.
+Jekyll::Hooks.register :site, :pre_render do |site, _payload|
+  LlmsExport::Builder.mark_pages(site)
+end
+
+# Build per-page .md siblings, /llms.txt and the llms-full.txt files after
+# Jekyll has rendered every page. A :site, :post_render hook is the only point
+# in the pipeline where page.output is populated — generators run before render.
 Jekyll::Hooks.register :site, :post_render do |site|
   Jekyll.logger.info('LLMS Export:', 'Building per-page .md and llms.txt...')
   begin

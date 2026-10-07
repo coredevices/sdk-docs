@@ -30,7 +30,8 @@ related_examples:
 
 The Pebble Time 2 and Pebble 2 (excluding SE model)
 {% guide_link tools-and-resources/hardware-information "devices" %} include a
-heart rate monitor. This guide will demonstrate how to use the ``HealthService``
+heart rate monitor (see the
+[platform support table](/sdk/#platform-support)). This guide will demonstrate how to use the ``HealthService``
 API to retrieve information about the user's current, and historical heart
 rates.
 

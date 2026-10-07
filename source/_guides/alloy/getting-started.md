@@ -22,8 +22,9 @@ order: 1
 
 This guide walks you through creating your first Alloy app for Pebble.
 
-> **Platform Support**: Alloy currently supports Emery (Pebble Time 2) and
-> Gabbro (Pebble Round 2).
+> Note: Alloy runs on `emery` (Pebble Time 2) and `gabbro` (Pebble Round 2).
+> `flint` (Pebble 2 Duo) is not supported yet, and the older platforms are not
+> supported. See the [platform support table](/sdk/#platform-support).
 
 ## Creating a New Project
 

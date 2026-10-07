@@ -75,6 +75,42 @@ uv tool install pebble-tool
 > Note: The `pebble` tool requires Python 3.10 to 3.13. Python 3.14 is not
 > supported yet.
 
+## Platform Support
+
+Each Pebble watch is identified by a platform name in the SDK:
+
+| Platform | Watches |
+|----------|---------|
+| `aplite` | Pebble, Pebble Steel |
+| `basalt` | Pebble Time, Pebble Time Steel |
+| `chalk` | Pebble Time Round |
+| `diorite` | Pebble 2 |
+| `flint` | Pebble 2 Duo |
+| `emery` | Pebble Time 2 |
+| `gabbro` | Pebble Round 2 |
+
+Not every language and feature is available on every platform:
+
+| Feature | Platforms | Notes |
+|---------|-----------|-------|
+| C SDK | All | |
+| Alloy (JavaScript on the watch) | `emery`, `gabbro` | `flint` is not supported yet. `aplite`, `basalt`, `chalk` and `diorite` are not supported. See {% guide_link alloy %}. |
+| PebbleKit JS | All | Runs on the phone, in the Pebble mobile app. |
+| Rocky.js | None | Removed from the firmware. Use Alloy instead. |
+| Touch | `emery`, `gabbro` | Watchapps only. Watchfaces cannot receive touch events. See {% guide_link events-and-services/touch %}. |
+| Heart rate monitor | `diorite` (except Pebble 2 SE), `emery` | See {% guide_link events-and-services/hrm %}. |
+| Speaker | `flint`, `emery` | See {% guide_link events-and-services/speaker %}. |
+| Microphone | All except `aplite` | See {% guide_link events-and-services/dictation %}. |
+
+Watchfaces cannot receive button or touch events on any platform. See
+{% guide_link tools-and-resources/hardware-information %} for the full
+hardware comparison.
+
+The `sdkVersion` field in `package.json` stays `"3"` for every app, including
+apps built with SDK 4.x. The version of the `pebble` tool (5.x) is not the
+version of the SDK (4.x); run `pebble sdk list` to see which SDKs are
+installed.
+
 ## Next Steps
 
 Now that you have the Pebble SDK downloaded and installed on your computer,

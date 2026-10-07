@@ -19,13 +19,6 @@ description: |
 guide_group: pebble-timeline
 order: 3
 published: false
-related_examples:
- - title: Hello Timeline
-   url: https://github.com/pebble-examples/hello-timeline
- - title: Timeline TV Tracker
-   url: https://github.com/pebble-examples/timeline-tv-tracker
- - title: Timeline Push Pin
-   url: https://github.com/pebble-examples/timeline-push-pin
 ---
 
 While users can register subscriptions and receive data from the timeline using

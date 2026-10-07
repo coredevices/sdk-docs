@@ -21,13 +21,6 @@ guide_group: pebble-timeline
 permalink: /guides/pebble-timeline/
 generate_toc: false
 menu: false
-related_examples:
- - title: Timeline Push Pin
-   url: https://github.com/pebble-examples/timeline-push-pin
- - title: Hello Timeline
-   url: https://github.com/pebble-examples/hello-timeline
- - title: Timeline TV Tracker
-   url: https://github.com/pebble-examples/timeline-tv-tracker
 hide_comments: true
 ---
 
@@ -38,9 +31,9 @@ app, but are deeply associated with an app the user has installed on their
 watch.
 
 Every user can view their personal list of pins from the main watchface by
-pressing Up for the past and Down for the future. Examples of events the user
-may see include weather information, calendar events, sports scores, news items,
-and notifications from any web-based external service.
+pressing Up for the past and Down for the future. The Pebble mobile app inserts
+pins for weather, calendar events and missed calls, and apps insert their own
+pins, such as sports scores or news items, from PebbleKit JS.
 
 
 ## Contents

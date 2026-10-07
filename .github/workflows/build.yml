@@ -9,9 +9,12 @@ jobs:
   gendocs-c:
     runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/pebble-dev/pebbleos-docker:main
+      image: ghcr.io/coredevices/pebbleos-docker:v8
 
     steps:
+      - name: Mark Github workspace as safe
+        run: git config --system --add safe.directory "${GITHUB_WORKSPACE}"
+
       - name: Checkout sdk-docs
         uses: actions/checkout@v6
 
@@ -31,14 +34,19 @@ jobs:
           pip install -U pip
           pip install -r requirements.txt
 
-      - name: Build emery SDK
+      # Tags up to v4.36.x build with waf; v4.37.0 and later build with
+      # CMake through the pbl tool, and nothing there runs doxygen anymore.
+      - name: Build emery SDK and generate SDK documentation
         run: |
-          ./waf configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
-          ./waf build --onlysdk
-
-      - name: Generate SDK documentation
-        run: |
-          ./waf docs_sdk
+          if [ -f wscript ]; then
+            ./waf configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
+            ./waf build --onlysdk
+            ./waf docs_sdk
+          else
+            pbl -b build configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
+            pbl -b build build sdk
+            doxygen build/sdk/emery/Doxyfile-SDK.auto
+          fi
 
       - name: Publish docs artifact
         uses: actions/upload-artifact@v6

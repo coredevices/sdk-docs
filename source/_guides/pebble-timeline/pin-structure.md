@@ -232,10 +232,6 @@ can be used when pushing a pin in the following manner:
 }
 ```
 
-> For general use in watchapps, PDC files are available for these icons in 
-> {% guide_link app-resources/app-assets#pebble-timeline-pin-icons %}.
-
-
 ### Notifications
 
 | Preview | Name | Description |

@@ -142,12 +142,10 @@ use in your own project.
 
 ### PDC icons
 
-Example PDC image files are available for the icons listed in
+Example PDC image files are shown with the icons listed in
 [*App Assets*](/guides/app-resources/app-assets/).
 These are ideal for use in many common types of apps, such as notification or
 weather apps.
-
-[Download PDC icon files >{center,bg-lightblue,fg-white}]({{ site.links.s3_assets }}/assets/other/pebble-timeline-icons-pdc.zip)
 
 
 ## Getting Started

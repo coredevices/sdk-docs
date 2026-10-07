@@ -24,9 +24,8 @@ Pebble has made a few minor changes to FreeRTOS to enable its new sandboxed
 application environment for PebbleOS 2.0 as well as to make Pebble easier to
 monitor and debug.
 
-The changes are available 
-[as a tarball](http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/dev-portal/FreeRTOS-8.0.0-Pebble.tar.gz)
-.
+The modified sources are in the
+[PebbleOS repository](https://github.com/coredevices/pebbleos/tree/v4.33.0/third_party/freertos).
 
 Read on to learn more about the changes and why they were made.
 

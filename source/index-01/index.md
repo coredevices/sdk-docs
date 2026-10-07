@@ -34,9 +34,10 @@ an [MCP server](/index-01/mcp/).
 ## How the Ring and the App Split the Work
 
 The ring firmware is a small fixed loop: it detects button presses, records
-audio while the button is held, and transfers the audio to the phone. It does
-not transcribe, store, or interpret anything. All of the logic lives in the
-Pebble mobile app, which is open source at
+audio while the button is held, holds recordings until the phone collects
+them, and transfers them over Bluetooth. It does not transcribe or interpret
+anything. All of the logic lives in the Pebble mobile app, which is open
+source at
 [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp).
 The ring code is in the `experimental` module of that repository. This section
 documents the app side only; there is no ring firmware SDK.
@@ -44,7 +45,8 @@ documents the app side only; there is no ring firmware SDK.
 ## Gestures
 
 The button recognises five gestures. Each one is routed from the *Ring Button*
-screen in the Index 01 settings of the Pebble mobile app.
+screen in the Index 01 settings of the Pebble mobile app. The three music
+gestures can be configured on Android only; on iOS they are shown disabled.
 
 | Gesture | Options |
 |---------|---------|
@@ -57,8 +59,9 @@ and takes actions such as creating a note, a reminder, a timer, or a calendar
 event. *Web search* answers a question and puts the answer in the feed. *MCP
 sandbox* runs the recording through a sandbox group of MCP servers that you
 choose. *Webhook only* sends the recording to your endpoint and does nothing
-else. A gesture routed to any destination other than *Nothing* can also send a
-copy to its webhook with the *Also send to webhook* switch.
+else. A recording gesture routed to *Index agent*, *Web search* or *MCP
+sandbox* can also send a copy to its webhook with the *Also send to webhook*
+switch; the switch is not shown for *Webhook only* or *Nothing*.
 
 ## Local and Cloud Processing
 

@@ -51,8 +51,9 @@ In the Pebble mobile app:
 * Add any request *Headers* your endpoint needs, such as an `Authorization`
   header. They are sent as entered on every request.
 * To sign requests, turn on *Sign requests* and paste a *Signing secret*. Use
-  at least 32 random bytes encoded as hex or base64url. The secret is stored
-  in the Android Keystore or the iOS Keychain, not in the app's settings file.
+  at least 32 random bytes encoded as hex or base64url. The secret is kept in
+  Keystore-backed encrypted storage on Android and in the Keychain on iOS,
+  not in the app's settings file.
 * Tap *Send test event* to POST a test payload to the URL, then tap *Save*.
 
 A gesture sends only after its configuration is saved with a URL. The switch
@@ -72,7 +73,9 @@ fails it.
 
 A gesture routed to *Webhook only* sends the request and does nothing else
 with the recording. A gesture routed to *Nothing* never sends. Notes recorded
-or typed in the app without a ring gesture use the *Hold & Talk* webhook.
+or typed in the app without a ring gesture use the *Hold & Talk* webhook. A
+typed note has no audio, so it sends only in the *Transcription* and *Both*
+modes and never carries an `audio` part.
 
 Each recording is delivered at most once while the app is running. A failed
 delivery is recorded under *Recent runs* with the HTTP status or the error and
@@ -113,13 +116,13 @@ this table; the comparison is case-insensitive.
 
 ### Multipart Fields
 
-| Field | Present | Value |
-|-------|---------|-------|
-| `audio` | *Recording* and *Both* | `Content-Type: audio/mp4`, filename `<deliveryId>.m4a`. AAC-LC in an M4A container, mono, 16 kHz. This is the same resampled audio the app transcribes. |
-| `transcription` | *Transcription* and *Both* | The transcript as plain text. |
-| `test` | Test events | `true`. |
-| `recordedAt` | Always | Unix time in milliseconds when the recording was made. |
-| `client` | Always | `ring`. |
+| Field | Recording | Typed note | Test event | Value |
+|-------|-----------|------------|------------|-------|
+| `audio` | *Recording* and *Both* | Never | Never | `Content-Type: audio/mp4`, filename `<deliveryId>.m4a`. AAC-LC in an M4A container, mono, 16 kHz. This is the same resampled audio the app transcribes. |
+| `transcription` | *Transcription* and *Both* | Always | Always | The transcript, or the typed text, as plain text. |
+| `test` | Never | Never | Always | `true`. |
+| `recordedAt` | Always | Always | Always | Unix time in milliseconds when the recording or note was made. |
+| `client` | Always | Always | Always | `ring`. |
 
 Fields appear in this order. Each part is separated by `--<boundary>` and
 CRLF line endings, and the body ends with `--<boundary>--`.
@@ -187,12 +190,16 @@ A receiver should:
 * Rebuild the signed bytes and compare the signatures with a constant-time
   comparison.
 * Reject timestamps outside a short window. The app sets the timestamp when
-  it sends the request, so five minutes allows for a slow upload and clock
+  it sends the request and does not enforce any window itself; the window is
+  the receiver's choice. Five minutes allows for a slow upload and clock
   drift.
-* Remember accepted `X-Index-Delivery` values for at least that window and
-  reject a repeat. A retried recording reuses its delivery ID, so a repeat
-  within the window is either a replay or a duplicate you have already
-  stored.
+* Remember accepted `X-Index-Delivery` values until the later of the request
+  timestamp and the time of receipt, plus the window, and reject a repeat
+  before then. Keeping them only for the window after receipt leaves a gap: a
+  request with a timestamp near the future edge of the window could be
+  replayed after its ID has expired but while its timestamp is still
+  accepted. A retried recording reuses its delivery ID, so a repeat within
+  the window is either a replay or a duplicate you have already stored.
 
 The signature authenticates the request and detects changes to it. It does not
 encrypt the audio or the transcript.
@@ -201,7 +208,11 @@ encrypt the audio or the transcript.
 
 This is a complete test event, as sent by *Send test event*, signed with the
 secret `0123456789abcdef0123456789abcdef`. Use it to check a verifier before
-pointing the app at it.
+pointing the app at it. Its timestamp is fixed, so a receiver that checks
+freshness rejects it as stale. For the test, either set the receiver's clock
+(or its `now` value) to `1791244800`, or replace the timestamp with the
+current time and recompute the signature over the new prefix and the same
+body.
 
 Headers:
 
@@ -266,9 +277,11 @@ did not complete. Timeouts are two minutes.
 
 ## Receiver Examples
 
-Both examples verify the signature and the timestamp and reject repeated
-delivery IDs, then hand the raw body to whatever multipart parser you use. Run
-one with the secret from the worked example and send the request above to it.
+Both examples verify the signature and the timestamp, keep accepted delivery
+IDs until the later of the timestamp and receipt time plus five minutes, and
+then hand the raw body to whatever multipart parser you use. Run one with the
+secret from the worked example and send the request above to it, with the
+clock adjustment described under the worked example.
 
 ### Node
 
@@ -277,7 +290,7 @@ const http = require('http');
 const crypto = require('crypto');
 
 const secret = process.env.INDEX_WEBHOOK_SECRET;
-const seen = new Map();   // deliveryId -> expiry (ms)
+const seen = new Map();   // deliveryId -> expiry (Unix seconds)
 
 http.createServer((req, res) => {
   const chunks = [];
@@ -303,9 +316,9 @@ http.createServer((req, res) => {
     }
 
     const id = h['x-index-delivery'];
-    for (const [k, exp] of seen) if (exp < Date.now()) seen.delete(k);
+    for (const [k, exp] of seen) if (exp < now) seen.delete(k);
     if (seen.has(id)) { res.writeHead(409); return res.end(); }
-    seen.set(id, Date.now() + 300_000);
+    seen.set(id, Math.max(now, ts) + 300);
 
     // body is the raw multipart payload; parse it with the library of your choice.
     res.writeHead(200); res.end();
@@ -323,7 +336,7 @@ import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 SECRET = os.environ["INDEX_WEBHOOK_SECRET"].encode()
-seen = {}  # delivery id -> expiry
+seen = {}  # delivery id -> expiry (Unix seconds)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -352,7 +365,7 @@ class Handler(BaseHTTPRequestHandler):
             del seen[k]
         if delivery in seen:
             return self.reply(409)
-        seen[delivery] = now + 300
+        seen[delivery] = max(now, ts) + 300
 
         # body is the raw multipart payload; parse it with the library of your choice.
         self.reply(200)

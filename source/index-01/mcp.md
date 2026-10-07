@@ -47,7 +47,7 @@ of [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp).
   `nextCursor`.
 * Prompts are optional. Only prompts without arguments are offered, and only
   the text of the first message of a prompt is used.
-* The assistant model is the Cloud LLM. See
+* Servers are called by a cloud model. See
   [Cloud LLM Only](#cloud-llm-only).
 
 ## Adding a Server
@@ -100,11 +100,11 @@ notification. Otherwise it lasts five minutes.
 ## Sandbox Groups
 
 A sandbox group is a set of MCP servers and the model that runs them. The
-*Groups* tab in *MCP & Tool Settings* lists them. Every phone has a *Default
-Group* that runs the Index agent with the built-in actions; servers you add to
-it are available to *Hold & Talk* when it is routed to *Index agent*. You can
-also create your own groups and route a recording gesture to one by choosing
-*MCP sandbox* on the *Ring Button* screen.
+*Groups* tab in *MCP & Tool Settings* lists them. Every phone has a group
+named *Default MCP Sandbox* that runs the Index agent with the built-in
+actions; servers you add to it are available to a gesture routed to *Index
+agent*. You can also create your own groups and route a recording gesture to
+one by choosing *MCP sandbox* on the *Ring Button* screen.
 
 Each group has a *Model Type*:
 
@@ -119,9 +119,20 @@ groups.
 
 ## Cloud LLM Only
 
-Remote MCP servers work only when *Agent Model* in the Index 01 settings is
-*Cloud LLM* or *Cloud LLM (with Local fallback)*. With *Local LLM*, HTTP
-servers are shown as disabled with the reason "Remote MCP servers need the
-Cloud LLM", and a gesture cannot be routed to an MCP sandbox. Switching the
-agent model back to the Cloud LLM re-enables them. The on-device model also
-does not support every built-in action.
+Remote MCP servers are always called by a cloud model. The *Agent Model*
+setting in the Index 01 settings applies to the Index agent, which is what
+runs the *Default MCP Sandbox* group and any group whose model type is *Index
+Agent*:
+
+* With *Cloud LLM* or *Cloud LLM (with Local fallback)*, HTTP servers in the
+  default group are available to the Index agent.
+* With *Local LLM*, HTTP servers in the default group are shown as disabled
+  with the reason "Remote MCP servers need the Cloud LLM". The on-device
+  model also does not support every built-in action.
+* The *Local LLM* options cannot be selected while the default group's model
+  type is *Default* or *High Capability*. Changing the default group to one of
+  those model types switches *Agent Model* back to *Cloud LLM*.
+
+Groups with the *Default* or *High Capability* model type run in the cloud
+whatever *Agent Model* is set to, and a gesture can be routed to them under
+any setting. They need a signed-in Pebble account.

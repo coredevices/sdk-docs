@@ -192,7 +192,7 @@ text_layer_enable_screen_text_flow_and_paging(s_text_layer, 5);
 ```
 
 > Note: The ``text_layer_enable_screen_text_flow_and_paging()`` function must be
-> called **after** the ``TextLayer`` is added to the view heirachy (i.e.: after
+> called **after** the ``TextLayer`` is added to the view hierarchy (i.e.: after
 > using ``layer_add_child()``), or else it will have no effect.
 
 An example of two ``TextLayer`` elements flowing their text within the
@@ -220,7 +220,7 @@ be set up to handle the reflowing of text to follow the display shape, and the
 ``ScrollLayer`` handles the paginated scrolling.
 
 ```c
-// Add the TextLayer and ScrollLayer to the view heirachy
+// Add the TextLayer and ScrollLayer to the view hierarchy
 scroll_layer_add_child(s_scroll_layer, text_layer_get_layer(s_text_layer));
 layer_add_child(window_layer, scroll_layer_get_layer(s_scroll_layer));
 

@@ -235,6 +235,15 @@ $section-menu-width: 240px;
   }
 }
 
+.section-menu--pebbleos {
+  background-color: $color-pebbleos;
+  border-right-color: color.adjust($color-pebbleos, $lightness: -10%, $space: hsl);
+
+  .section-menu__header {
+    background-color: $color-pebbleos;
+  }
+}
+
 .section-menu--getting-started {
   background-color: $color-getting-started;
   border-right-color: color.adjust($color-getting-started, $lightness: -10%, $space: hsl);

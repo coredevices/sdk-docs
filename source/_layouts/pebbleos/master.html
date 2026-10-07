@@ -1,0 +1,64 @@
+---
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+layout: sidebar_narrow
+menu_section: pebbleos
+menu_section_color: '#35a2b2'
+menu_section_icon: /images/menu/pebbleos.png
+sidebar_only: false
+---
+  <div class="section-menu section-menu--pebbleos section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/pebbleos/">PebbleOS</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item{% if page.url == '/pebbleos/' %} active{% endif %}">
+        <a href="/pebbleos/">Overview</a>
+      </li>
+      <li class="section-menu__item{% if page.url == '/pebbleos/contributing/' %} active{% endif %}">
+        <a href="/pebbleos/contributing/">Contributing</a>
+      </li>
+      <li class="section-menu__item{% if page.url == '/pebbleos/exposing-apis/' %} active{% endif %}">
+        <a href="/pebbleos/exposing-apis/">Exposing APIs to the SDK</a>
+      </li>
+      {% for group in site.data.pebbleos.groups %}
+        <li class="section-menu__item{% if page.pebbleos_group == group.slug %} open{% if page.url == group.url %} active{% endif %}{% endif %}">
+          <a href="{{ group.url }}">{{ group.title }}</a>
+          {% if page.pebbleos_group == group.slug %}
+            <ul>
+            {% for doc in group.pages %}
+              <li class="section-menu__subitem{% if page.url == doc.url %} active{% endif %}">
+                <a href="{{ doc.url }}"><span>{{ doc.title }}</span></a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+      {% if site.data.pebbleos %}
+      <li class="section-menu__item">
+        <a href="/pebbleos/apidoc/index.html">Firmware API Reference</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  {% include search.html %}
+  <div class="container">
+    {{ content }}
+  </div>
+</div>

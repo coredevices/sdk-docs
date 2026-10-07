@@ -258,6 +258,10 @@ $sidebar-hide-at: xs;
   .mainmenu__item--more a {
     background-image: url('../images/menu/more.svg');
   }
+
+  .mainmenu__item--pebbleos a {
+    background-image: url('../images/menu/pebbleos.svg');
+  }
 }
 
 .sidebar--wide .mainmenu__item a {

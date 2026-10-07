@@ -17,7 +17,7 @@
   projects:
     - name: PebbleOS
       github: coredevices/pebbleos
-      summary: The watch firmware. The Pebble SDK is built from this source tree.
+      summary: The watch firmware. The Pebble SDK is built from this source tree. See the [PebbleOS section](/pebbleos/) of this site to build it, run it in the emulator and contribute.
       license: Apache License 2.0
     - name: pebble-tool
       github: coredevices/pebble-tool

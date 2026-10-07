@@ -64,7 +64,7 @@ feel smaller on the Pebble Time 2.
 
 We've now seen that the increased amount of pixels doesn't necessarily equate to
 bigger text on our devices, due to the change in PPI, that's why we've created
-the new [ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+the new [ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API.
 
 
@@ -75,7 +75,7 @@ size of text for notifications and some system UI components using *Settings >
 Notifications > Text Size*.
 
 The new
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API now exposes this setting to developers, in order for
 them to adapt their application design and layout based on this user preference.
 
@@ -88,7 +88,7 @@ text sizes are affected by the PPI change.
 
 To negate the effects of this reduced font size, the Emery platform uses larger
 fonts by default. Developers can use the
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API to match this
 behaviour within their own applications.
 
@@ -102,7 +102,7 @@ Emery | ContentSize: Medium | ContentSize: Large | ContentSize: Extra Large
 
 Developers should aim to implement designs which adapt to the capabilities of
 the device, but also the accessibility requirements of the user. The
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API satisfies both of these goals.
 
 For more information, read the
@@ -136,7 +136,7 @@ pressure [example application](https://github.com/pebble-examples/rocky-memorypr
 
 The first watchface setting exposed in the new `UserPreferences` object is
 `contentSize`. This exposes the new
-[ContentSize](/docs/c/preview/User_Interface/Preferences/#preferred_content_size)
+[ContentSize](/docs/c/User_Interface/Preferences/#preferred_content_size)
 API to Rocky.js watchface
 developers. Find out more in the Rocky.js
 [UserPreferences documentation](/docs/rockyjs/rocky/#userPreferences).

@@ -65,7 +65,7 @@
   - /faqs/
 -
   - /1/04_MoreResources/015_libpebble/index.html
-  - /community/libraries/libpebble/
+  - /community/libraries/
 -
   - /1/04_MoreResources/02_Support/index.html
   - /contact/
@@ -83,16 +83,16 @@
   - /getting-started/watchface-tutorial/
 -
   - /1/GettingStarted/Linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /1/GettingStarted/MacOS/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /1/GettingStarted/UsingExamples/index.html
   - /examples/
 -
   - /1/GettingStarted/Windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /1/index.html
   - /
@@ -1382,16 +1382,16 @@
   - /getting-started/watchface-tutorial/
 -
   - /2/getting-started/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/getting-started/install-pebble-sdk/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/getting-started/linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /2/getting-started/macosx/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /2/getting-started/pb-sdk/index.html
   - /guides/publishing-tools/pebble-tool/
@@ -1403,7 +1403,7 @@
   - /examples/
 -
   - /2/getting-started/windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /2/guides/about-pebble-apps.html
   - /guides/
@@ -1484,7 +1484,7 @@
   - /guides/pebble-apps/app-events/wakeup/
 -
   - /2/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/ios-reference/Categories/NSDataPebble.html
   - /docs/pebblekit-ios/Categories/NSData+Pebble/
@@ -1628,13 +1628,13 @@
   - /sdk/
 -
   - /download-sdk/linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /download-sdk/macosx/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /download-sdk/windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /events/aahackathon/index.html
   - /community/events/aahackathon/
@@ -1676,7 +1676,7 @@
   - /community/events/
 -
   - /help/index.html
-  - /community/#stackoverflow
+  - /community/
 -
   - /iossdkref/Categories/NSDataPebble.html
   - /docs/pebblekit-ios/Categories/NSData+Pebble/
@@ -2357,13 +2357,13 @@
  - /guides/js-apps/
 -
  - /guides/js-apps/pebble-js/js-ui/index.html
- - /guides/js-apps/js-ui/
+ - /docs/pebblejs/
 -
  - /guides/js-apps/pebble-js/js-ajax/index.html
- - /guides/js-apps/js-ajax/
+ - /docs/pebblejs/
 -
  - /guides/js-apps/pebble-js/js-other/index.html
- - /guides/js-apps/js-other/
+ - /docs/pebblejs/
 -
   - /getting-started/index.html
   - /tutorials/
@@ -2381,16 +2381,16 @@
   - /tutorials/watchface-tutorial/part3/
 -
   - /getting-started/pebble-js-tutorial/index.html
-  - /tutorials/pebble-js-tutorial/part1/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part1/index.html
-  - /tutorials/pebble-js-tutorial/part1/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part2/index.html
-  - /tutorials/pebble-js-tutorial/part2/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part3/index.html
-  - /tutorials/pebble-js-tutorial/part3/
+  - /docs/pebblejs/
 -
   - /getting-started/android-tutorial/index.html
   - /guides/communication/using-pebblekit-android/
@@ -2443,12 +2443,6 @@
   - /color-picker/index.html
   - /more/color-picker/
 -
-  - /sdk/migration-guide/index.html
-  - /guides/migration/migration-guide-3/
--
-  - /sdk/migration-guide-2/index.html
-  - /guides/migration/migration-guide/
--
   - /sdk/whats-new/index.html
   - /sdk/changelogs/
 -
@@ -2465,7 +2459,7 @@
  - /guides/design-and-interaction/
 -
  - /sdk/beta/index.html
- - /sdk/download/
+ - /sdk/
 -
  - /guides/pebble-apps/sensors/health/index.html
  - /guides/events-and-services/health/
@@ -2477,7 +2471,7 @@
  - /guides/
 -
  - /guides/mobile-apps/index.html
- - /guides/communication/about-pebble-communication/
+ - /guides/communication/
 -
  - /guides/mobile-apps/android/index.html
  - /guides/communication/
@@ -2507,7 +2501,7 @@
  - /guides/communication/datalogging/
 -
  - /guides/mobile-apps/ios/ios-install/index.html
- - /guides/communication/using-pebblekit-android-or-ios/
+ - /guides/communication/using-pebblekit-ios/
 -
  - /guides/mobile-apps/ios/ios-sports/index.html
  - /guides/communication/
@@ -2540,13 +2534,13 @@
  - /guides/events-and-services/buttons/
 -
  - /guides/pebble-apps/app-structure/persistent-storage/index.html
- - /guides/user-interfaces/persistent-storage/
+ - /guides/events-and-services/persistent-storage/
 -
  - /guides/pebble-apps/app-structure/windows/index.html
  - /guides/user-interfaces/layers/
 -
  - /guides/pebble-apps/background/index.html
- - /guides/user-interfaces/background-worker/
+ - /guides/events-and-services/background-worker/
 -
  - /guides/pebble-apps/communications/index.html
  - /guides/communication/
@@ -2579,7 +2573,7 @@
  - /guides/user-interfaces/
 -
  - /guides/pebble-apps/display-and-animations/circular-graphics/index.html
- - /guides/user-interfaces/creating-round-apps/
+ - /guides/user-interfaces/round-app-ui/
 -
  - /guides/pebble-apps/display-and-animations/composite-animations/index.html
  - /guides/graphics-and-animations/animations/
@@ -2696,7 +2690,7 @@
  - /guides/
 -
  - /guides/publishing-tools/cloudpebble-ui-editor/index.html
- - /guides/tools-and-resources/cloudpebble/
+ - /guides/tools-and-resources/
 -
  - /guides/publishing-tools/developer-connection/index.html
  - /guides/tools-and-resources/developer-connection/
@@ -2715,9 +2709,6 @@
 -
  - /guides/publishing-tools/screenshots/index.html
  - /guides/appstore-publishing/
--
- - /guides/publishing-tools/whitelisting/index.html
- - /guides/appstore-publishing/whitelisting/
 -
  - /more/color-picker/index.html
  - /guides/tools-and-resources/color-picker/
@@ -2760,9 +2751,6 @@
 -
  - /docs/pebblekit-ios/Classes/Classes/PBPebbleCentral.html
  - /docs/pebblekit-ios/Classes/PBPebbleCentral/
--
- - /sdk/migration/migration-guide-3
- - /guides/migration/migration-guide-3/
 -
  - /guides/pebble-imeline/pin-structure
  - /guides/pebble-timeline/pin-structure/

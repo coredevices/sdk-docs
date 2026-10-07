@@ -13,7 +13,7 @@ I love working on the plane. It is one of those rare place where I can spend 8 h
 
 [CloudPebble]({{ site.links.cloudpebble }}) is awesome but unfortunately it will not work when you are not connected (and if you are using in-flight wifi, you will likely be disturbed by the usual suspects mentioned above).
 
-Installing the Pebble SDK on a Mac or a Linux computer is very easy and should only take you a few minutes [following our instructions](/sdk/install). Make sure you do this before you get on the plane as some commands require Internet access.
+Installing the Pebble SDK on a Mac or a Linux computer is very easy and should only take you a few minutes [following our instructions](/sdk/). Make sure you do this before you get on the plane as some commands require Internet access.
 
 ## 2. Use the documentation packaged in the SDK
 

@@ -270,8 +270,9 @@ which returns one of:
 
 ## Respecting Mute
 
-The user can mute the speaker in *Settings* > *Sounds & Haptics*, and Quiet
-Time mutes it for its duration. Apps cannot override this. Use
+The user can mute the speaker in *Settings* > *Sounds & Haptics*, and can
+choose to have Quiet Time mute it as well, in which case it is muted for the
+duration of Quiet Time. Apps cannot override this. Use
 ``speaker_is_muted()`` to adapt the UI or skip a long sound that would not be
 heard:
 

@@ -46,9 +46,14 @@ target platforms from the `.pbw` file. These values come from
   less. Each release of an app must have a version that has not been used
   before.
 
-* `targetPlatforms` must be present. The appstore only offers the app to
-  watches whose platform is in this list. Read
-  {% guide_link tools-and-resources/app-metadata %} for details.
+* `targetPlatforms` decides which platforms the `.pbw` contains binaries
+  for. The appstore reads the platform list from `targetPlatforms` when it
+  is present and otherwise from the binaries in the `.pbw`, and offers each
+  binary to the watches that can run it: an aplite binary also serves
+  basalt, diorite, flint and emery, a basalt binary also serves emery, a
+  diorite binary also serves flint and emery, and a chalk binary also serves
+  gabbro. Build for the newer platforms directly to use their full display.
+  Read {% guide_link tools-and-resources/app-metadata %} for details.
 
 The `.pbw` file can be at most 4.4 MB.
 

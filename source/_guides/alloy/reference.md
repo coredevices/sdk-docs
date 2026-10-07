@@ -26,8 +26,7 @@ Alloy is built from three layers: the XS JavaScript engine and the Moddable SDK
 modules (Piu, Poco, the ECMA-419 sensor and network classes), the Pebble
 modules that expose the watch (`pebble/button`, `pebble/message`,
 `pebble/vibes` and so on), and the Pebble firmware underneath. Documentation is
-spread across the same three places. This page says where to look, and
-collects the facts that come up most often in questions from developers.
+spread across the same three places.
 
 
 ## Where the Documentation Is
@@ -101,8 +100,10 @@ name, with the same constructor: `new render.Font(3)`.
 ## Resource IDs
 
 `Poco.PebbleBitmap(id)`, `Poco.PebbleDrawCommandImage(id)` and
-`Poco.PebbleDrawCommandSequence(id)` take a number. It is the 1-based
-position of the resource in the `resources.media` array of `package.json`:
+`Poco.PebbleDrawCommandSequence(id)` take a number: the resource ID the
+build assigned. IDs start at 1 and follow the order of the `resources.media`
+array in `package.json`, counting only the resources built for the current
+platform:
 
 ```json
 "resources": {
@@ -114,10 +115,21 @@ position of the resource in the `resources.media` array of `package.json`:
 ```
 
 With this manifest `new Poco.PebbleBitmap(1)` loads `background.png` and
-`new Poco.PebbleDrawCommandImage(2)` loads `hours.pdc`. The build appends the
-compiled JavaScript as one more resource after the ones listed, so the app's
-own code is always the last ID. Inserting a resource in the middle of the list
-shifts every ID after it.
+`new Poco.PebbleDrawCommandImage(2)` loads `hours.pdc`. Inserting a resource
+in the middle of the list shifts every ID after it, and so do these cases:
+
+* A resource with `targetPlatforms` that excludes the current platform is
+  skipped on that platform, so the IDs after it differ between platforms.
+
+* When `publishedMedia` is present, the build reserves ID 1 for the timeline
+  lookup table and the first media resource becomes ID 2.
+
+* The compiled JavaScript is added as a resource named `MOD` after the
+  project's media, and resources from Pebble Packages come after it.
+
+The build writes the final assignment to
+`build/<platform>/src/resource_ids.auto.h` as `RESOURCE_ID_<name>` defines.
+Check that file after changing `package.json` rather than counting by hand.
 
 The names in `package.json` are not available to the JavaScript at runtime.
 To avoid hard-coded numbers, keep one module that defines the IDs in the same
@@ -239,8 +251,7 @@ example is the smallest working project.
 
 ## Examples and SDK Versions
 
-All examples in pebble-examples build with SDK 4.33.1. Some depend on
-firmware behaviour that the released firmware does not have yet:
+The examples in pebble-examples target SDK 4.33.1, with these exceptions:
 
 * `piu/apps/words` and `piu/watchfaces/wallpaper` import
   `embedded:storage/key-value` as a module. The released firmware rejects

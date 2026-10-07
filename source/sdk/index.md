@@ -148,11 +148,9 @@ On Linux, check the following first:
 
 Check the [FAQ](/faqs/) next - common install, emulator, and `pebble` tool errors are answered there.
 
-If you're still stuck, ask on the [Pebble Developer Forum][dev-forum] or in `#sdk-dev` on the
-[Rebble Discord][rebble-discord]. Please provide as many details as you can about the issues
-you may have encountered.
+If you're still stuck, ask on the [Pebble Developer Forum][dev-forum]. Please
+provide as many details as you can about the issues you may have encountered.
 
 **Tip:** Copying and pasting commands from your Terminal output will help a great deal.
 
 [dev-forum]: https://forum.repebble.com/c/developers-ask-questions-and-get-help/7
-[rebble-discord]: https://discord.com/invite/aRUAYFN

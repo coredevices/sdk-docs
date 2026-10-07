@@ -25,7 +25,7 @@ this one!
 To get you started, we have updated many sections of the Pebble
 Developer site with new content and information on designing and developing
 for the new Pebble hardware platform, code-named Chalk. Read more on the 
-[*Getting Started with Pebble Time Round*](/sdk/round-getting-started) page.
+[*Getting Started with Pebble Time Round*](/guides/user-interfaces/round-app-ui/) page.
 
 
 ## Virtual Lab

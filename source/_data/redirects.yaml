@@ -1637,7 +1637,10 @@
   - /sdk/install/windows/
 -
   - /events/aahackathon/index.html
-  - /community/events/aahackathon/
+  - /community/
+-
+  - /community/events/aahackathon/index.html
+  - /community/
 -
   - /events/developer-retreat-2013/index.html
   - /community/events/developer-retreat-2013/
@@ -2720,10 +2723,16 @@
  - http://pebble.github.io/pebblejs/
 -
  - /sdk/round-getting-started/index.html
- - /guides/getting-started-pebble-time-round/
+ - /guides/user-interfaces/round-app-ui/
 -
  - /round/getting-started/index.html
- - /guides/getting-started-pebble-time-round/
+ - /guides/user-interfaces/round-app-ui/
+-
+ - /round/index.html
+ - /guides/user-interfaces/round-app-ui/
+-
+ - /guides/getting-started-pebble-time-round/index.html
+ - /guides/user-interfaces/round-app-ui/
 -
  - /docs/c/preview/User_Interface/Layer
  - /docs/c/User_Interface/Layer

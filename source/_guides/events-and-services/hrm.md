@@ -28,9 +28,9 @@ related_examples:
     url: https://github.com/pebble-examples/hrm-activity-example
 ---
 
-The Pebble Time 2 and Pebble 2 (excluding SE model)
+The Pebble Time 2 (emery) and Pebble 2 HR (diorite)
 {% guide_link tools-and-resources/hardware-information "devices" %} include a
-heart rate monitor. This guide will demonstrate how to use the ``HealthService``
+heart rate monitor. Pebble 2 Duo (flint) and Pebble Round 2 (gabbro) do not. This guide will demonstrate how to use the ``HealthService``
 API to retrieve information about the user's current, and historical heart
 rates.
 

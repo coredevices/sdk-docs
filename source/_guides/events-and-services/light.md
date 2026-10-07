@@ -84,6 +84,37 @@ if (light_is_on()) {
 ```
 
 
+## Reacting to Backlight Changes
+
+The ``BacklightService`` tells an app when the backlight turns on or off,
+whether the user flicked their wrist, pressed a button or the auto-off timer
+ran out. A watchface can use it to switch to a brighter color scheme while the
+light is on, or to pause an animation when the display is no longer being
+looked at:
+
+```c
+static void backlight_handler(bool on) {
+  // on is true when the backlight has just turned on,
+  // false when it has turned fully off
+  layer_mark_dirty(s_canvas_layer);
+}
+
+// Subscribe
+backlight_service_subscribe(backlight_handler);
+
+// Later, stop receiving events
+backlight_service_unsubscribe();
+```
+
+The handler is called once per transition. Any state other than fully off,
+including the fade-out, counts as on. Use ``light_is_on()`` to read the
+current state without subscribing.
+
+``backlight_service_subscribe()`` is available on Pebble 2 Duo (flint),
+Pebble Time 2 (emery) and Pebble Round 2 (gabbro). On aplite, basalt, chalk
+and diorite the SDK compiles it to a no-op, so the handler is never called.
+
+
 ## Tinting the Backlight (RGB Hardware Only)
 
 On hardware with an RGB backlight, the backlight color can be set to any

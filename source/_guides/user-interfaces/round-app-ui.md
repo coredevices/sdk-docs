@@ -29,6 +29,7 @@ related_examples:
     url: https://github.com/pebble-examples/text-flow-techniques
 platforms:
   - chalk
+  - gabbro
 ---
 
 > This guide is about creating round apps in code. For advice on designing a
@@ -40,6 +41,12 @@ shape, traditional layouts will not display properly due to the obscuring of the
 corners. Another potential issue is the increased display resolution. Any UI
 elements that were not previously centered correctly (or drawn with hardcoded
 coordinates) will also display incorrectly.
+
+Pebble Round 2 (the Gabbro platform) is also round, with a 260 x 260 display
+instead of Chalk's 180 x 180. Everything in this guide applies to both. Use
+the ``PBL_ROUND`` define and the bounds of the root layer rather than the
+Chalk dimensions, so that one layout serves both round watches. The
+``ACTION_BAR_WIDTH`` constant is 40 pixels on both round platforms.
 
 However, the Pebble SDK provides additions and functionality to help developers
 cope with this way of thinking. In many cases, a round display can be an
@@ -141,10 +148,10 @@ Layer *layer = layer_create(bounds);
 Using this style, the child layer will always fill the parent layer, regardless
 of its actual dimensions.
 
-In a similar vein, when working with the Pebble Time Round display it can be
-important that the layout is centered correctly. A set of layout values that are
-in the center of the classic 144 x 168 pixel display will not be centered when
-displayed on a 180 x 180 display. The undesirable effect of this can be seen in
+In a similar vein, when working with a round display it can be important that
+the layout is centered correctly. A set of layout values that are in the center
+of the classic 144 x 168 pixel display will not be centered when displayed on a
+180 x 180 or 260 x 260 display. The undesirable effect of this can be seen in
 the example shown below:
 
 ![cut-corners >{pebble-screenshot,pebble-screenshot--time-round-silver-20}](/images/guides/pebble-apps/display-animations/cut-corners.png)
@@ -318,7 +325,11 @@ pattern looks like this:
 
 This has an important implication - the memory segment of the framebuffer can no
 longer be accessed using classic `y * row_width + x` formulae. Instead,
-developers should use the ``gbitmap_get_data_row_info()`` API. When used with a
+developers should use the ``gbitmap_get_data_row_info()`` API. Gabbro stores
+its framebuffer with a fixed row stride but reports the same
+``GBitmapFormat8BitCircular`` format, so the same code works on both round
+platforms. Read {% guide_link graphics-and-animations/framebuffer-graphics %}
+for details. When used with a
 given y coordinate, this will return a ``GBitmapDataRowInfo`` object containing
 a pointer to the row's data, as well as values for the minumum and maximum
 visible values of x coordinate on that row. For example:

@@ -29,9 +29,8 @@ pins are created by the new Pebble app and synced to the watch, which means:
 * Pins only exist on the phone that created them - they are not shared with the
   user's other phones, and cannot be created while your app's JS is not running.
 
-> The new Pebble app does not support the
-> {% guide_link pebble-timeline/timeline-public "timeline web API" %}, so pins
-> can no longer be pushed to users from a web server. Local pins are the only
+> The Pebble mobile app does not support the timeline web API, so pins can no
+> longer be pushed to users from a web server. Local pins are the only
 > way to add pins to the timeline.
 
 

@@ -4612,6 +4612,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "The Pebble mobile app returns a token only for apps installed from the appstore. Sideloaded apps receive the failure callback. The timeline web API is no longer available, so the token cannot be used to push pins. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Get the user's timeline token for this app. This is a string and is \n    unique per user per app. Note: In order for timeline tokens to be \n    available, the app must be submitted to the Pebble appstore, but does not \n    need to be public. Read more in the \n    ",
                     "position": {
                       "start": {
@@ -4960,6 +4985,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Subscribe the user to a timeline topic for your app. This can be used \n    to filter the different pins a user could receive according to their \n    preferences, as well as maintain groups of users.",
                     "position": {
                       "start": {
@@ -5294,6 +5344,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Unsubscribe the user from a timeline topic for your app. Once \n    unsubscribed, the user will no longer receive any pins pushed to this \n    topic.",
                     "position": {
                       "start": {
@@ -5619,6 +5694,31 @@
           "description": {
             "type": "root",
             "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
               {
                 "type": "paragraph",
                 "children": [
@@ -6842,6 +6942,31 @@
           "description": {
             "type": "root",
             "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The callbacks never fire. Use the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/user-interfaces/appglance-c/",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "C AppGlance API"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " from the watchapp instead."
+                  }
+                ]
+              },
               {
                 "type": "paragraph",
                 "children": [

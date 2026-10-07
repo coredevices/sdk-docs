@@ -21,6 +21,11 @@ guide_group: pebble-timeline
 order: 4
 ---
 
+> Note: The timeline web API is no longer available. The Pebble mobile app
+> does not sync pins from a server. Use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
+> instead.
+
 Every item on the timeline is called a 'pin'. A pin can have information
 attached to it which is used to show it to the user, such as layout, title,
 start time and actions. When the user is viewing their timeline, they can use
@@ -67,8 +72,7 @@ their intervention. These components are discussed in more detail below.
 
 ### Public Web API
 
-The Pebble timeline web API (detailed in 
-{% guide_link pebble-timeline/timeline-public %}) manages the currently
+The Pebble timeline web API manages the currently
 available topics, published pins, and timeline-enabled apps' data. All pins that
 are delivered to users pass through this service. When a developer pushes a pin
 it is sent to this service for distribution to the applicable users.
@@ -95,9 +99,7 @@ web API. Alarm pin are also inserted directly from the watch itself.
 When a developer wants to push pins, they can do so from their own third-party
 server. Such a server will generate pins using topics that the watchapp
 subscribes to (either for all users or just those that elect to be subscribed)
-or user tokens received from PebbleKit JS to target individual users. See
-{% guide_link pebble-timeline/timeline-public %} for information on
-how to do this.
+or user tokens received from PebbleKit JS to target individual users.
 
 
 ## Three Ways to Use Pins
@@ -115,9 +117,6 @@ is global to the app. This means all users of the app will receive the pins
 pushed to that topic. To do this, a developer can choose a single topic name
 such as 'all-users' and subscribe all users to that topic when the app is first
 installed, or the user opts in to receive pins.
-
-Read {% guide_link pebble-timeline/timeline-public#shared-pins "Shared Pins" %} 
-to find out how to create topics.
 
 
 ### Let Users Choose Their Pins
@@ -141,6 +140,3 @@ customized to the user in more ways than just their topic preferences. The image
 above shows a pin pushed from an app's pin server to just the user with the
 matching `X-User-Token`. For example, an app tracking the delivery of a user's
 packages will only be applicable to that user.
-
-See {% guide_link pebble-timeline/timeline-public#create-a-pin "Create a Pin" %} 
-to learn how to send a pin to a single user.

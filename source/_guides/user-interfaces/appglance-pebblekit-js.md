@@ -25,6 +25,11 @@ related_examples:
     url: https://github.com/pebble-examples/app-glance-pebblekit-js-example
 ---
 
+> Note: `Pebble.appGlanceReload()` is not supported in the Pebble mobile app
+> and its callbacks never fire. Use the
+> {% guide_link user-interfaces/appglance-c "C AppGlance API" %} from the
+> watchapp instead.
+
 ## Overview
 
 This guide explains how to manage your app's glances via PebbleKit JS. The

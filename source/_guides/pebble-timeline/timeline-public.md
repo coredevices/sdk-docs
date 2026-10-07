@@ -18,6 +18,7 @@ description: |
   How to push Pebble timeline data to an app's users using the public web API.
 guide_group: pebble-timeline
 order: 3
+published: false
 related_examples:
  - title: Hello Timeline
    url: https://github.com/pebble-examples/hello-timeline

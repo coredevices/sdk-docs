@@ -593,5 +593,5 @@ In this final part we learned how to:
 Check your code against
 [the source for this part](https://github.com/coredevices/alloy-watchface-tutorial/tree/main/part6).
 Now it is time to
-[publish your watchface](https://developer.repebble.com/dashboard)
-and share it with the world!
+{% guide_link appstore-publishing "publish your watchface" %} in the Pebble
+appstore.

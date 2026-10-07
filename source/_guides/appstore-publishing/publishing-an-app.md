@@ -12,182 +12,172 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 title: Publishing an App
 description: |
-  How to upload and publish an app in the Pebble appstore.
+  How to submit an app and later releases from the Developer Dashboard, the
+  `pebble` tool or CloudPebble.
 guide_group: appstore-publishing
 order: 1
-published: false
 ---
 
-When an app is ready for publishing, the `.pbw` file needs to be uploaded to the
-Pebble [Developer Dashboard]({{ site.links.devportal }}), where a listing is
-created. Depending on the type of app, different sets of additional resources
-are required. These resources are then used to generate the listing pages
-visible to potential users in the Pebble appstore, which is embedded within the Pebble mobile app.
+There are three ways to put an app in the Pebble appstore. The
+[Developer Dashboard]({{ site.links.devportal }}) is a web form and is the
+only place where a listing can be edited after it is created. The `pebble`
+tool and CloudPebble build the app, capture screenshots and upload the result
+in one step. All three create the same listing, and an app submitted from one
+can be updated from another.
 
-You can also view the [watchfaces](http://apps.repebble.com/en_US/watchfaces)
-and [watchapps](http://apps.repebble.com/en_US/watchapps) from a desktop
-computer, as well as perform searches and get shareable links.
-
-
-## Listing Resources
-
-The table below gives a summary of which types of resources required by
-different types of app. Use this to quickly assess how complete assets and
-resources are before creating the listing.
-
-| Resource | Watchface | Watchapp | Companion |
-|----------|-----------|----------|-----------|
-| Title | Yes | Yes | Yes |
-| `.pbw` release build | Yes | Yes | - |
-| Asset collections | Yes | Yes | Yes |
-| Category | - | Yes | Yes |
-| Large and small icons | - | Yes | Yes |
-| Compatible platforms | - | - | Yes |
-| Android or iOS companion appstore listing | - | - | Yes |
+Before starting, read {% guide_link appstore-publishing/preparing-a-submission %}
+for the fields and image sizes that are required. Apps go live as soon as
+they are submitted. There is no review queue.
 
 
-## Publishing a Watchface
+## Signing In
 
-1. After logging in, click 'Add a Watchface'.
+The Developer Dashboard, the `pebble` tool and CloudPebble all use the same
+Pebble account. Sign in with Google, GitHub or Apple. A developer account is
+created on first sign-in.
 
-2. Enter the basic details of the watchface, such as the title, source code URL,
-   and support email (if different from the one associated with this developer
-   account):
+![](/images/guides/appstore-publishing/dashboard-signin.png =800x)
 
-    ![face-title](/images/guides/appstore-publishing/face-title.png)
-
-3. Click 'Create' to be taken to the listing page. This page details the status
-   of the listing, including links to subpages, a preview of the public page,
-   and any missing information preventing release.
-
-    ![face-listing](/images/guides/appstore-publishing/face-listing.png)
-
-4. The status now says 'Missing: At least one published release'. Click 'Add a
-   release' to upload the `.pbw`, optionally adding release notes:
-
-    ![face-release](/images/guides/appstore-publishing/face-release.png)
-
-5. Click 'Save'. After reloading the page, make the release public by clicking
-   'Publish' next to the release:
-
-    ![face-release-publish](/images/guides/appstore-publishing/face-release-publish.png)
-
-6. The status now says 'Missing: A complete X asset collection' for
-   each X supported platform. Click 'Manage Asset Collections', then click
-   'Create' for a supported platform.
-
-7. Add a description, up to 5 screenshots, and optionally a marketing banner
-   before clicking 'Create Asset Collection'.
-
-    ![face-assets](/images/guides/appstore-publishing/face-assets.png)
-
-8. Once all asset collections required have been created, click 'Publish' or
-   'Publish Privately' to make the app available only to those viewing it
-   through the direct link. Note that once made public, an app cannot then be
-   made private.
-
-9. After publishing, reload the page to get the public appstore link for social
-   sharing, as well as a deep link that can be used to directly open the
-   appstore in the mobile app.
+Use the same sign-in method each time. If the same email address was already
+used with a different method, the dashboard asks for a sign-in with the
+original method and then links the new one to the account.
 
 
-## Publishing a Watchapp
+## Using the Developer Dashboard
 
-1. After logging in, click 'Add a Watchapp'.
+### Submitting a New App
 
-2. Enter the basic details of the watchapp, such as the title, source code URL,
-   and support email (if different from the one associated with this developer
-   account):
+* Open the [Developer Dashboard]({{ site.links.devportal }}) and click *New*.
 
-    ![app-title](/images/guides/appstore-publishing/app-title.png)
+* Upload the `.pbw` file. The dashboard reads the app type, UUID, version
+  and target platforms from it. Check the *Version Number* and add
+  *Release Notes* if wanted.
 
-3. Select the most appropriate category for the app, depending on the features
-   it provides:
+* Enter the *App Name* and *Description*. For a watchapp, choose a
+  *Category*.
 
-    ![app-category](/images/guides/appstore-publishing/app-category.png)
+* For a watchapp, upload the *Small Icon* and *Large Icon*, or leave them
+  empty to have them generated.
 
-4. Upload the large and small icons representing the app:
+* Upload up to five screenshots for each target platform, and optionally a
+  *Banner Image* per platform. Screenshots are optional in the dashboard, but
+  listings without them show nothing in the appstore apart from the icon and
+  the text.
 
-    ![app-icons](/images/guides/appstore-publishing/app-icons.png)
+* Add the *Website URL*, *Source Code URL* and an Android companion app if
+  there is one.
 
-5. Click 'Create' to be taken to the listing page. This page details the status
-   of the listing, including links to subpages, a preview of the public page,
-   and any missing information preventing release.
+* Choose the *App visibility* and click *Submit App*.
 
-    ![app-listing](/images/guides/appstore-publishing/app-listing.png)
+The app appears in the dashboard's app list with a public link of the form
+`https://apps.repebble.com/<id>`. Share this link, or search for the app in
+the Pebble mobile app.
 
-6. The status now says 'Missing: At least one published release'. Click 'Add a
-   release' to upload the `.pbw`, optionally adding release notes:
+### Adding a New Release
 
-    ![app-release](/images/guides/appstore-publishing/app-release.png)
+* Open the app in the dashboard and click *New Release*.
 
-7. Click 'Save'. After reloading the page, make the release public by clicking
-   'Publish' next to the release:
+* Upload the new `.pbw`. Its UUID must match the app, and its version must
+  be one that has not been used before.
 
-    ![face-release-publish](/images/guides/appstore-publishing/face-release-publish.png)
+* Add *Release Notes*. Leave *Publish immediately* checked unless the release
+  should stay as a draft.
 
-8. The status now says 'Missing: A complete X asset collection' for
-   each X supported platform. Click 'Manage Asset Collections', then click
-   'Create' for a supported platform.
+* Click *Create Release*.
 
-9. Add a description, up to 5 screenshots, optionally up to three header images,
-   and a marketing banner before clicking 'Create Asset Collection'.
+Each release in the app's release list has a *Publish* or *Mark Draft* toggle,
+so a release can be withdrawn without hiding the whole app. The Pebble mobile
+app installs the newest published release whose target platforms include the
+connected watch.
 
-    ![app-assets](/images/guides/appstore-publishing/app-assets.png)
+### Editing a Listing
 
-10. Once all asset collections required have been created, click 'Publish' or
-    'Publish Privately' to make the app available only to those viewing it
-    through the direct link.
-
-11. After publishing, reload the page to get the public appstore link for social
-    sharing, as well as a deep link that can be used to directly open the
-    appstore in the mobile app.
+Click *Edit* on the app's page to change the name, description, URLs,
+companion app, screenshots, banner and icons, and to change the
+*App visibility* between Listed, Unlisted and Hidden. Changes are live after
+saving, apart from appstore pages that are cached for up to ten minutes.
 
 
-## Publishing a Companion App
+## Using the `pebble` Tool
 
-> A companion app is one that is written for Pebble, but exists on the Google
-> Play store, or the Appstore. Adding it to the Pebble appstore allows users to
-> discover it from the mobile app.
+The `publish` command builds the project, captures screenshots from the
+emulator and uploads everything. Run it from the project directory:
 
-1. After logging in, click 'Add a Companion App'.
+```nc|text
+$ pebble login
+$ pebble publish
+```
 
-2. Enter the basic details of the companion app, such as the title, source code
-   URL, and support email (if different from the one associated with this
-   developer account):
+If the project's UUID is not in the appstore yet, the tool asks for the app
+name, version, description, source URL and, for a watchapp, the category and
+icons. If the UUID already belongs to one of the developer's apps, the tool
+uploads a new release of that app and only asks for screenshots.
 
-    ![companion-title](/images/guides/appstore-publishing/companion-title.png)
+Screenshots are captured for every target platform with a rollover GIF by
+default. Pass `--no-gif-all-platforms` to skip the GIF and `--all-platforms`
+to capture static images instead, or choose *Select local screenshot/GIF
+files* at the prompt to upload existing files. Local filenames must start with
+the platform name followed by an underscore, for example
+`emery_main.png` or `gabbro_menu.gif`. The files written by
+`pebble screenshot --all-platforms` already follow this pattern.
 
-3. Select the most appropriate category for the app, depending on the features
-   it provides:
+Use `--release-notes` to set the release notes without being prompted:
 
-    ![companion-category](/images/guides/appstore-publishing/companion-category.png)
+```nc|text
+$ pebble publish --release-notes "Fix the date on the first of the month"
+```
 
-4. Check a box beside each hardware platform that the companion app supports.
-   For example, it may be a photo viewer app that does not support Aplite.
+### Publishing from CI
 
-5. Upload the large and small icons representing the app:
+With `--non-interactive` the tool does not prompt. Everything a new app needs
+is passed as flags, and the sign-in token comes from the
+`PEBBLE_FIREBASE_ID_TOKEN` environment variable or the `--firebase-id-token`
+flag instead of a stored `pebble login` session:
 
-    ![companion-icons](/images/guides/appstore-publishing/companion-icons.png)
+```nc|text
+$ export PEBBLE_FIREBASE_ID_TOKEN=...
+$ pebble publish --non-interactive \
+    --name "My Watchface" --description "A clean analog face." \
+    --source https://github.com/example/my-watchface \
+    --screenshots screenshots/emery_1.png screenshots/gabbro_1.png
+```
 
-6. Click 'Create' to be taken to the listing page. The status will now read
-   'Missing: At least one iOS or Android application'. Add the companion app
-   with eithr the 'Add Android Companion' or 'Add iOS Companion' buttons (or
-   both!).
+For a watchapp add `--category` and, if generated icons are not wanted,
+`--icon-small` and `--icon-large`. For an existing app only
+`--release-notes`, `--version` and `--screenshots` are used. Without
+`--screenshots` the tool captures from the emulator, which needs a working
+emulator on the CI machine. A new app must have at least one screenshot.
 
-7. Add the companion app's small icon, the name of the other appstore app's
-   name, as well as the direct link to it's location in the appropriate
-   appstore. If it has been compiled with a PebbleKit 3.0, check that box:
+Releases made with `pebble publish` are published immediately and new apps
+are Listed. Change the visibility afterwards in the Developer Dashboard if
+needed.
 
-    ![companion-link](/images/guides/appstore-publishing/companion-link.png)
 
-8. Once the companion appstore link has been added, click 'Publish' or 'Publish
-   Privately' to make the app available only to those viewing it through the
-   direct link.
+## Using CloudPebble
 
-9. After publishing, reload the page to get the public appstore link for social
-   sharing, as well as a deep link that can be used to directly open the
-   appstore in the mobile app.
+CloudPebble has a *Publish* entry in the project sidebar for C and
+JavaScript SDK projects. It uses the account that is signed in to CloudPebble,
+so no extra sign-in is needed.
+
+* Build the project. Publishing uses the most recent successful build.
+
+* Open *Publish*. For a new app, fill in *App name*, *Version*,
+  *Description* and optionally *Source URL*. For a watchapp choose a
+  *Category*, and either upload icons or leave *Auto-generate icons*
+  selected.
+
+* Under *Screenshots*, click *Auto-generate* next to each platform to capture
+  a screenshot and a short GIF from the emulator, click *Upload* to use your
+  own files, or *Auto-generate All* to do every platform at once.
+
+* Click *Publish to App Store*.
+
+When the project's UUID is already in the appstore, the pane shows
+*Publish Update* instead. Only the version, release notes and new screenshots
+are needed. If the version has already been used, CloudPebble reports
+*Version x.y already exists* with a link to the project settings to change it.
+
+The success page links to the public appstore listing and to the Developer
+Dashboard for further edits.

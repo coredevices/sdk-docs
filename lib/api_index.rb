@@ -16,7 +16,7 @@ module ApiIndex
   # Records for every C documentation page (Pebble::PageDocC) in `pages`.
   # `md_url_for` maps a page URL to its .md twin, or nil when there is none.
   def c_records(pages, site_url, md_url_for)
-    pages.select { |page| page.respond_to?(:group) }.flat_map do |page|
+    pages.select { |page| page.respond_to?(:group) && page.group.respond_to?(:members) }.flat_map do |page|
       group_records(page.group, page.url, site_url, md_url_for)
     end
   end

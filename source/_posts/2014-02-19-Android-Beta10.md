@@ -4,7 +4,7 @@ tags:
 - Freshly Baked
 ---
 
-**Update:** [A new version is available](/blog/2014/03/03/android-beta11/).
+**Update:** [A new version is available](/blog/2014/03/03/Android-Beta11/).
 
 Dear Developers,
 

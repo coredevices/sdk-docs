@@ -25,7 +25,7 @@ your project.
 
 
 <strike>SDK 3.9 is available now in beta! Check out our
-[beta instructions](/sdk/download/#testing-beta-sdks) to try it out.</strike>
+[beta instructions](/sdk/) to try it out.</strike>
 
 **EDIT:** SDK 3.9 is now [publicly available](/sdk/) - to update your SDK, run: ```pebble sdk install latest```
 

@@ -326,9 +326,9 @@ $ pebble package publish
 ```
 
 Manage the {% guide_link pebble-packages %} a project depends on. `install`
-adds an npm package to `package.json` and installs it (or installs all
-dependencies when `PACKAGE` is omitted), `uninstall` removes one, `login` signs
-in to npm and `publish` publishes the current package to npm.
+adds an npm package to `package.json` and installs it, `uninstall` removes
+one, `login` signs in to npm and `publish` publishes the current package to
+npm.
 
 
 #### publish
@@ -345,8 +345,9 @@ create one. `--non-interactive` uses flags (`--name`, `--version`,
 `--screenshots FILE...`) instead of prompts, for CI. By default the command
 captures a rollover GIF on the emulator for each platform the app supports
 before uploading; `--no-gif-all-platforms` skips this and `--all-platforms`
-captures static screenshots as well. `--is-published` makes the release
-visible as soon as it is uploaded.
+captures static screenshots as well. Uploaded releases are published
+immediately; `--is-published` is accepted but has no effect in the current
+version.
 
 
 ### SDK Management
@@ -404,8 +405,9 @@ address, or from any running emulator. If provided, the output is saved to
 Color correction may be disabled by specifying `--no-correction`. The
 auto-opening of screenshots may also be disabled by specifying `--no-open`.
 
-`--all-platforms` builds the current project and takes a screenshot on the
-emulator for each platform it supports. `--gif-all-platforms` does the same
+`--all-platforms` takes a screenshot on the emulator for each platform the
+current project supports, building the project first only if `build/` has no
+`.pbw` yet; run `pebble build` before it to capture current code. `--gif-all-platforms` does the same
 but records a rollover GIF of the app on each platform, capped at `--gif-fps`
 frames per second (default 30). These are the images `pebble publish`
 uploads.

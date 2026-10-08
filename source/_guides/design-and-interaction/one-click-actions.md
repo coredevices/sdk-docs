@@ -250,11 +250,12 @@ the user, from either the launcher, or quick launch.
 ```
 
 When the launch reason is ``APP_LAUNCH_USER`` or ``APP_LAUNCH_QUICK_LAUNCH``,
-``launch_button()`` returns the ``ButtonId`` that launched the app, and
-``launch_get_quick_launch_action()`` tells whether the user held a single
-button (``APP_QUICK_LAUNCH_ACTION_HOLD``), tapped one
-(``APP_QUICK_LAUNCH_ACTION_TAP``) or held a button combination
-(``APP_QUICK_LAUNCH_ACTION_COMBO``). An app assigned to more than one Quick
+``launch_button()`` returns the ``ButtonId`` that launched the app. When it is
+``APP_LAUNCH_QUICK_LAUNCH``, ``launch_get_quick_launch_action()`` tells
+whether the user held a single button (``APP_QUICK_LAUNCH_ACTION_HOLD``),
+tapped one (``APP_QUICK_LAUNCH_ACTION_TAP``) or held a button combination
+(``APP_QUICK_LAUNCH_ACTION_COMBO``); for any other launch reason it returns
+``APP_QUICK_LAUNCH_ACTION_NONE``. An app assigned to more than one Quick
 Launch slot can use this to perform a different action for each button:
 
 ```c

@@ -206,6 +206,7 @@ jobs:
             --index-files index.html
             --include-fragments
             --preprocess ${{ github.workspace }}/scripts/lychee-preprocess.sh
+            --exclude-path __public__/pebbleos/apidoc
             --no-progress
             '__public__/**/*.html'
 

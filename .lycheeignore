@@ -10,11 +10,6 @@
 # no matching element id.
 /examples/index\.html#
 
-# The App Store publishing guides are published: false and their group is
-# not in _data/guides.yaml. Drop this line once the publishing guide PR
-# registers the group.
-/guides/appstore-publishing
-
 # The event submission form posts to site.data_server, which is not set
 # anywhere since the move to repebble; the backend behind it is gone.
 /events/submit$

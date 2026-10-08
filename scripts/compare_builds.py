@@ -433,8 +433,8 @@ def load_pages(args):
         else:
             status = 'NEW' if n else 'REMOVED'
         pages.append({'path': p, 'status': status})
-    # order: changed/new first, removed at end, home page last
-    pages.sort(key=lambda x: (x['status'] == 'REMOVED', x['path'] == '/'))
+    # order: changed/new first, removed next, then blog posts, home page last
+    pages.sort(key=lambda x: (x['path'] == '/', x['path'].startswith('/blog/'), x['status'] == 'REMOVED', x['path']))
     return pages
 
 
@@ -492,7 +492,14 @@ def write_static(args, pages):
             f.write(SHELL.format(path=html.escape(page['path']), pages_json=pages_json, path_json=json.dumps(page['path'])))
     first = pages[0]['path'] if pages else '/'
     with open(os.path.join(out, 'index.html'), 'w') as f:
-        f.write('<!doctype html><meta http-equiv="refresh" content="0; url=compare%s">' % first)
+        f.write('<!doctype html><meta http-equiv="refresh" content="0; url=/compare%s">' % first)
+    # Static hosts such as Cloudflare Pages serve index.html for unknown
+    # paths unless a 404 page exists; a relative redirect there would loop.
+    with open(os.path.join(out, '404.html'), 'w') as f:
+        f.write('<!doctype html><html><head><meta charset="utf-8"><title>Not found</title>'
+                '<style>body{font:16px -apple-system,Helvetica,sans-serif;color:#555;padding:40px}</style></head>'
+                '<body><h2>Not found</h2><p>This path is not part of the comparison. '
+                '<a href="/">Back to the first changed page.</a></p></body></html>')
     print('wrote', out)
 
 

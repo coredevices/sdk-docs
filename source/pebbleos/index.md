@@ -81,28 +81,11 @@ Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
 ## Installing a Custom Build
 
 {% alert important %}
-A custom build can leave the watch unable to boot. The causes seen most often:
-
-* Flashing a build configured for a different board. `pbl flash` writes
-  whatever the build directory was configured for and does not check the
-  board it is connected to. Over Bluetooth, the Pebble mobile app refuses a
-  `.pbz` whose `hwrev` does not match the watch. `pebble fw install` prints
-  the `hwrev` but does not check it.
-* Erasing the bootloader or PRF. `pbl flash` writes only the firmware image,
-  but `pbl erase` erases the start of the bootloader with the openocd runner
-  and the whole flash with the sftool runner. PRF can also be replaced over
-  Bluetooth with a bundle built with `--variant prf`; a PRF that does not run
-  removes the fallback.
-* Firmware and system resources from different builds. On a firmware
-  development kit the resources are flashed separately, with
-  `pbl flash --resources` or `pbl image_resources`. Firmware that finds its
-  resources missing or corrupt reboots into PRF.
-* A build that crashes or hangs before Bluetooth is up, so the phone cannot
-  send a new firmware to it.
-* Interrupting `pbl flash`, which leaves a partial image in the firmware
-  slot. An interrupted Bluetooth update does not: the image is staged in a
-  separate slot and is only marked for installation once both the firmware
-  and the resources have arrived.
+A firmware change can modify or overwrite the bootloader or the recovery
+firmware (PRF). If either stops working, the watch can no longer take an
+update over Bluetooth and can only be reprogrammed through its debug
+connector. Keep changes away from the bootloader and PRF, and test in the
+emulator before flashing a watch.
 {% endalert %}
 
 When a firmware fails to start, the bootloader records the attempt in the

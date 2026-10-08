@@ -24,8 +24,7 @@ recent modifications to the FreeRTOS project. Pebble has made a few minor
 changes to FreeRTOS to enable Background Workers for PebbleOS 2.6 as well as to
 make Pebble easier to monitor and debug.
 
-The modified sources are in the
-[PebbleOS repository](https://github.com/coredevices/pebbleos/tree/v4.33.0/third_party/freertos).
+The changes are available [as a tarball](http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/dev-portal/FreeRTOS-8.0.0-Pebble.2.tar.gz).
 
 Below is a changelog of the modifications since the last time we released our
 fork of the FreeRTOS code back in May.

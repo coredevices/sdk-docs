@@ -68,12 +68,16 @@ the instructions themselves come from the pebbleos repository.
    [Install PBW applications](/pebbleos/docs/development/qemu/#install-pbw-applications)
    installs an app into it with the `pebble` tool.
 4. Configure and build again for the board of your watch, from the table
-   under [Boards](#boards), and install it.
-   [Loading firmware via Bluetooth](/pebbleos/docs/development/building_fw/#loading-firmware-via-bluetooth)
-   bundles a `.pbz` with `pbl bundle` and sideloads it from the Pebble mobile
-   app. This is the route for a sealed watch.
-   [Loading firmware with a firmware development kit](/pebbleos/docs/development/building_fw/#loading-firmware-with-a-firmware-development-kit)
-   flashes a board with its debug connector exposed using `pbl flash`.
+   under [Boards](#boards), bundle a `.pbz` with `pbl bundle`, and install
+   it in one of three ways: sideload the file from the Pebble mobile app
+   (*Firmware Update Debug* > *Sideload FW*, with debug options shown), as
+   described in
+   [Loading firmware via Bluetooth](/pebbleos/docs/development/building_fw/#loading-firmware-via-bluetooth);
+   send it through the
+   {% guide_link tools-and-resources/developer-connection %} with
+   `pebble fw install <file>.pbz --phone <ip>`; or, on a board with its
+   debug connector exposed, flash it with `pbl flash` as described in
+   [Loading firmware with a firmware development kit](/pebbleos/docs/development/building_fw/#loading-firmware-with-a-firmware-development-kit).
 
 Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
 

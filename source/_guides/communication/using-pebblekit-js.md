@@ -400,8 +400,10 @@ device. It works in a similar way to `Pebble.getAccountToken()`:
 console.log('Pebble Watch Token: ' + Pebble.getWatchToken());
 ```
 
-The token is a string that is unique to the app and cannot be used to track
-Pebble devices across applications.
+The token is a string derived from the watch and the developer ID of an
+appstore app, or the UUID of a sideloaded app, so apps from the same
+developer see the same watch token and apps from different developers do
+not.
 
 <div class="alert alert--fg-white alert--bg-dark-red">
 {% markdown %}
@@ -573,9 +575,11 @@ is installed from the appstore. Treat data stored against a token from a
 sideloaded build as test data.
 
 `Pebble.getTimelineToken()` returns the token the appstore issued for the
-app. Sideloaded apps have none. The Pebble mobile app does not sync pins from
-a server, so use {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
-instead of the timeline token.
+app. A sideloaded app gets a placeholder token while the *Emulate Timeline
+Webservice* setting is on, which it is by default, and the failure callback
+when it is off. Neither token can be used with a server: the Pebble mobile
+app does not sync pins, so use
+{% guide_link pebble-timeline/timeline-local-pins "local pins" %} instead.
 
 
 ### Watch Information

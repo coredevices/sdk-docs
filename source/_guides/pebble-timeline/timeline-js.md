@@ -28,9 +28,10 @@ order: 2
 > {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
 > instead.
 
-`Pebble.getTimelineToken()` still returns a token, but only for apps installed
-from the appstore. Sideloaded apps receive the failure callback. The token
-cannot be used to push pins, since there is no server to push them to. See
+`Pebble.getTimelineToken()` still returns a token: the appstore token for an
+installed app, or a placeholder for a sideloaded app while the *Emulate
+Timeline Webservice* setting is on (the default). The token cannot be used to
+push pins, since there is no server to push them to. See
 {% guide_link communication/using-pebblekit-js#account-token "Using PebbleKit JS" %}
 for the tokens that identify a user or a watch.
 

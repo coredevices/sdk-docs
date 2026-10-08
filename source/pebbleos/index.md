@@ -151,6 +151,32 @@ basalt, chalk and diorite platforms).
 > `defconfig` files in the repository.
 
 
+## Translating PebbleOS
+
+Translations of the firmware's menus, settings and system messages are made
+at [translate.repebble.com](https://translate.repebble.com). The site runs
+[Weblate](https://weblate.org) with a Pebble extension that previews each
+string with the PebbleOS text renderer, checks that the watch fonts cover the
+characters a language needs, and builds draft language packs so a translation
+can be tried on a watch before it is reviewed.
+
+To translate:
+
+* Sign in at [translate.repebble.com](https://translate.repebble.com) with
+  your Pebble account.
+* Pick the language to work on. If it is not listed, start it with the
+  new-language wizard, which checks font coverage and lets you add a font if
+  the built-in fonts do not cover the script.
+* Translate strings. Each language has community reviewers who check new
+  translations before they are included in a language pack.
+
+Language packs are built from the site. The `pblpack` command line tool that
+built language packs from `.po` files is deprecated and no longer the way to
+produce them. See the
+[launch post](/blog/2026/10/07/Take-PebbleOS-To-The-World/) for the
+background.
+
+
 ## How the Firmware, the SDK and the Mobile App Relate
 
 Watchapps do not link against the firmware. The firmware build generates the

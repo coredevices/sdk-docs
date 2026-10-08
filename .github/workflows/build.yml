@@ -256,6 +256,13 @@ jobs:
           name: site-compare
           path: site-compare
           retention-days: 30
+      - name: Deploy the comparison to Cloudflare Pages
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site-compare --project-name=sdk-docs-compare --branch=pr-${{ github.event.pull_request.number }} --commit-dirty=true
       - name: Link the comparison from the pull request
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         env:
@@ -264,13 +271,11 @@ jobs:
           URL: ${{ steps.compare.outputs.artifact-url }}
         run: |
           body="<!-- site-compare -->
-          **Side-by-side comparison of this build against \`main\`:** [download the \`site-compare\` artifact]($URL), unzip it, then run
+          **Side-by-side comparison of this build against \`main\`:** https://pr-$PR.sdk-docs-compare.pages.dev/
 
-          \`\`\`
-          cd site-compare && python3 -m http.server 4001
-          \`\`\`
+          The left side is the current site, the right side is this pull request; added blocks are highlighted on the right and removed ones on the left. Use the arrows or the \`n\`, \`p\` and \`j\` keys to step through changed pages.
 
-          and open http://localhost:4001/. The left side is the current site, the right side is this pull request; added blocks are highlighted on the right and removed ones on the left. Built from $GITHUB_SHA."
+          The same comparison is attached as the [\`site-compare\` artifact]($URL); unzip it and run \`python3 -m http.server\` inside it to view it locally. Built from $GITHUB_SHA."
           existing=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --jq '.[] | select(.body | startswith("<!-- site-compare -->")) | .id' | head -1)
           if [ -n "$existing" ]; then
             gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$existing" -f body="$body" > /dev/null

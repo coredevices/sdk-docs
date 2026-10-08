@@ -31,22 +31,25 @@ site and the `pebble` tool provide for each of these.
 
 ## Building a Watchface with an Agent
 
-The quickest way to see what an agent can do is to install the
+The quickest way to see what an agent can do is to point it at the
 [Pebble agent skill](#the-pebble-agent-skill) and ask for a watchface. With
-the Pebble SDK installed and the skill copied into your project, start Claude
-Code, Codex or Cursor in an empty directory and use a prompt like this:
+the Pebble SDK installed, start Claude Code, Codex or Cursor in an empty
+directory and use a prompt like this:
 
 ```text
-Use the pebble-watchface skill. Build a watchface for Pebble Time 2 that
-shows the time in large digits with the date underneath, build it, install
-it in the emulator and show me a screenshot.
+Install the Pebble agent skill from
+https://github.com/coredevices/pebble-watchface-agent-skill (follow its
+README), then use it to build a watchface for Pebble Time 2 that shows the
+time in large digits with the date underneath. Build it, install it in the
+emulator and show me a screenshot.
 ```
 
-The skill creates the project, runs `pebble build`, installs the result in
-the emulator with `pebble install --emulator emery`, takes a screenshot with
-`pebble screenshot` and compares it with the request before reporting back.
-Ask for changes in the same session ("make the digits bold", "add a battery
-meter") and it repeats the build and screenshot. To install on a watch, see
+The agent clones the skill, copies it into the project, then creates the
+watchface, runs `pebble build`, installs the result in the emulator with
+`pebble install --emulator emery`, takes a screenshot with `pebble screenshot`
+and compares it with the request before reporting back. Ask for changes in the
+same session ("make the digits bold", "add a battery meter") and it repeats the
+build and screenshot. To install on a watch, see
 {% guide_link tools-and-resources/developer-connection %}.
 
 

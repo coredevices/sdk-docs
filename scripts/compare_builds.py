@@ -442,7 +442,7 @@ def load_pages(args):
 
 
 SECTION_ORDER = ['Home', 'New sections', 'New guide groups', 'Guides', 'SDK and tutorials', 'Reference',
-                 'Other pages', 'Blog', 'Removed pages']
+                 'Imported firmware docs', 'Other pages', 'Blog', 'Removed pages']
 
 
 def section_of(page):
@@ -451,6 +451,8 @@ def section_of(page):
         return 'Removed pages'
     if p == '/':
         return 'Home'
+    if p.startswith('/pebbleos/docs/'):
+        return 'Imported firmware docs'
     if p.startswith(('/pebbleos/', '/mobile-app/', '/index-01/')):
         return 'New sections'
     if p.startswith(('/guides/ai-agents/', '/guides/plugins/')):

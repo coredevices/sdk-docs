@@ -75,11 +75,8 @@ uv tool install pebble-tool
 > Note: The `pebble` tool requires Python 3.10 to 3.13. Python 3.14 is not
 > supported yet.
 
-## Platform Support
-
-Each Pebble watch is identified by a platform name in the SDK, and not every
-language and feature is available on every platform. See the platform support
-table in {% guide_link tools-and-resources/hardware-information %}.
+Not every language and feature is available on every watch. See the platform
+support table in {% guide_link tools-and-resources/hardware-information %}.
 
 The `sdkVersion` field in `package.json` stays `"3"` for every app, including
 apps built with SDK 4.x. The version of the `pebble` tool (5.x) is not the

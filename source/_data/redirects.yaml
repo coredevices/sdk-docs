@@ -2407,13 +2407,13 @@
   - /getting-started/android-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part1/
+  - /tutorials/android-tutorial/part1/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part2/
+  - /tutorials/android-tutorial/part2/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part3/
+  - /tutorials/android-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-android/
 -
   - /getting-started/ios-tutorial/index.html
@@ -2428,13 +2428,13 @@
   - /getting-started/ios-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part1/
+  - /tutorials/ios-tutorial/part1/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part2/
+  - /tutorials/ios-tutorial/part2/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part3/
+  - /tutorials/ios-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-ios/
 -
   - /smartstraps/index.html
@@ -2711,7 +2711,10 @@
   - /guides/appstore-publishing/
 -
   - /guides/publishing-tools/whitelisting/index.html
-  - /guides/appstore-publishing/
+  - /guides/
+-
+  - /guides/smartstraps/index.html
+  - /guides/
 -
   - /more/color-picker/index.html
   - /guides/tools-and-resources/color-picker/
@@ -2763,18 +2766,6 @@
 -
   - /guides/pebble-imeline/pin-structure
   - /guides/pebble-timeline/pin-structure/
--
-  - /sdk/download/
-  - /sdk
--
-  - /sdk/install/mac/
-  - /sdk/#macos
--
-  - /sdk/install/linux/
-  - /sdk/#ubuntu
--
-  - /sdk/install/windows/
-  - /sdk/#windows
 -
   - /guides/pebble-timeline/timeline-public/index.html
   - /guides/pebble-timeline/timeline-local-pins/
@@ -2863,5 +2854,14 @@
   - /pebbleos/exposing-apis/index.html
   - /pebbleos/
 -
-  - /guides/tools-and-resources/building-with-ai-agents/index.html
-  - /guides/ai-agents/
+  - /sdk/download/index.html
+  - /sdk
+-
+  - /sdk/install/mac/index.html
+  - /sdk/#macos
+-
+  - /sdk/install/linux/index.html
+  - /sdk/#ubuntu
+-
+  - /sdk/install/windows/index.html
+  - /sdk/#windows

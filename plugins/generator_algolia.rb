@@ -13,6 +13,7 @@
 # limitations under the License.
 
 require 'htmlentities'
+require 'nokogiri'
 require 'algolia'
 require 'slugize'
 require 'dotenv'
@@ -229,8 +230,9 @@ module Jekyll
       gs_pages = @site.pages.select { |page| page.data['search_index'] }
 
       gs_pages.flat_map do |page|
-        page.get_sections.map do |section|
-          url = section[:title].nil? ? page.url : "#{page.url}##{section[:title].slugize}"
+        page_sections(page).map do |section|
+          anchor = section[:id] || section[:title]&.slugize
+          url = anchor.nil? ? page.url : "#{page.url}##{anchor}"
 
           Algolia::Search::MultipleBatchRequest.new(
             action: 'addObject',
@@ -250,6 +252,27 @@ module Jekyll
           )
         end
       end
+    end
+
+    # Pages whose content is already HTML (the imported PebbleOS docs) are
+    # split on headings here; get_sections only understands Markdown.
+    def page_sections(page)
+      return page.get_sections unless page.data['search_html']
+
+      sections = []
+      current = { title: nil, contents: [] }
+      selector = '//h2|//h3|//h4|//p|//li[not(p)]|//td[not(p)]|//dt|//dd[not(p)]'
+      Nokogiri::HTML(page.content).xpath(selector).each do |node|
+        if node.name.start_with?('h')
+          sections << current
+          # Sphinx puts the anchor on the <section> around the heading.
+          current = { title: node.text.sub('¶', '').strip, id: node.parent['id'], contents: [] }
+        else
+          current[:contents] << node.text.strip
+        end
+      end
+      sections << current
+      sections.map { |section| section.merge(contents: section[:contents].join("\n")) }
     end
 
     def generate_other

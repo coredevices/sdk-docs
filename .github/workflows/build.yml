@@ -83,12 +83,54 @@ jobs:
           name: docs-ios
           path: PebbleKit-iOS.docset/Contents/Resources/Documents
 
+  # Firmware documentation: pebbleos docs/ (Sphinx) and its Doxygen reference,
+  # rendered into the site by scripts/import_pebbleos_docs.py. It tracks
+  # pebbleos main, like readthedocs "latest"; the SDK reference above is
+  # pinned to EMERY_SDK_VERSION separately.
+  gendocs-pebbleos:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sdk-docs
+        uses: actions/checkout@v6
+
+      - name: Checkout pebbleos
+        uses: actions/checkout@v6
+        with:
+          repository: coredevices/pebbleos
+          ref: main
+          path: pebbleos
+
+      - name: Record PebbleOS revision
+        run: echo "Generated from PebbleOS $(git -C pebbleos rev-parse HEAD)"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install Doxygen and Sphinx
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
+          pip install -r pebbleos/docs/requirements.txt
+
+      - name: Import PebbleOS documentation
+        run: python3 scripts/import_pebbleos_docs.py pebbleos /tmp/pebbleos-site
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: docs-pebbleos
+          path: /tmp/pebbleos-site
+
   build:
     runs-on: ubuntu-24.04
     needs:
       - gendocs-c
       - gendocs-android
       - gendocs-ios
+      - gendocs-pebbleos
 
     steps:
       - name: Checkout
@@ -104,6 +146,9 @@ jobs:
         run: |
           mkdir -p emery/doxygen_sdk
           cp -r /tmp/docs/docs-c-emery/* emery/doxygen_sdk/
+
+      - name: Prepare PebbleOS docs
+        run: cp -R /tmp/docs/docs-pebbleos/source/. source/
 
       - name: Prepare PebbleKit archives
         working-directory: /tmp/docs

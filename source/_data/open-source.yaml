@@ -12,6 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: Firmware & Devices
+  slug: firmware-devices
+  projects:
+    - name: PebbleOS
+      github: coredevices/pebbleos
+      summary: The watch firmware. Build it, run it in the emulator and contribute to it starting from the [PebbleOS section](/pebbleos/) of this site.
+      license: Apache License 2.0
+    - name: Pebble mobile app
+      github: coredevices/mobileapp
+      summary: The Pebble mobile app for Android and iOS, which pairs with the watch, installs apps and firmware updates, and runs PebbleKit JS.
+      license: GPL-3.0 / Commercial
 - name: Pebble SDK
   slug: pebble-sdk
   projects:

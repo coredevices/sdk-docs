@@ -188,7 +188,9 @@ app, for example a new Pebble Protocol endpoint or a change to how firmware
 is installed. The mobile app can connect to a PebbleOS emulator over TCP in
 place of a watch, so both sides of a change can be tested without hardware.
 [Testing with the Pebble Mobile App](/guides/tools-and-resources/testing-with-the-mobile-app/)
-covers running the phone app against the emulator.
+covers running the phone app against the emulator. The
+[Mobile App](/mobile-app/) section covers building the app and sending
+changes to its repository.
 <!-- Plain link: the guide lives on the guides-refresh branch, so
      guide_link does not resolve on this branch yet. -->
 

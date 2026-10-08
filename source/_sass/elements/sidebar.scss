@@ -266,6 +266,10 @@ $sidebar-hide-at: xs;
   .mainmenu__item--index-01 a {
     background-image: url('../images/menu/index-01.svg');
   }
+
+  .mainmenu__item--mobile-app a {
+    background-image: url('../images/menu/mobile-app.svg');
+  }
 }
 
 .sidebar--wide .mainmenu__item a {

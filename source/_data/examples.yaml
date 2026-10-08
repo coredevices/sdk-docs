@@ -49,7 +49,7 @@
 - title: Alloy Watchface Tutorial
   repo: coredevices/alloy-watchface-tutorial
   languages:
-    - alloy
+    - embeddedjs
   hardware_platforms:
     - emery
     - gabbro

@@ -247,7 +247,7 @@ static void prv_inbox_received_handler(DictionaryIterator *iter, void *context) 
 
 By default, Clay will persist your settings in localStorage within the
 mobile application. It is common practice to also save settings within the
-persistent storage on the watch. This creates a seemless experience for users
+persistent storage on the watch. This creates a seamless experience for users
 launching your application, as their settings can be applied on startup. This
 means there isn't an initial delay while the settings are loaded from the phone.
 

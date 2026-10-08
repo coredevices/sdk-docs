@@ -23,6 +23,47 @@
 # C SDK Examples - Featured
 # -----------------------------------------------------------------------------
 
+- title: C Watchface Tutorial
+  repo: coredevices/c-watchface-tutorial
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+    - chalk
+    - diorite
+    - emery
+    - flint
+    - gabbro
+  screenshot: /images/tutorials/watchface-tutorial/part6~emery.png
+  screenshot_platform: emery
+  description: |
+    The finished code for each part of the C watchface tutorial: time and
+    date, custom fonts, battery and Bluetooth indicators, weather from
+    PebbleKit JS, Timeline Peek and a Clay settings page.
+  featured: true
+  tags:
+    - Tutorial
+    - Watchface
+
+- title: Alloy Watchface Tutorial
+  repo: coredevices/alloy-watchface-tutorial
+  languages:
+    - alloy
+  hardware_platforms:
+    - emery
+    - gabbro
+  screenshot: /images/tutorials/alloy-watchface-tutorial/part6~emery.png
+  screenshot_platform: emery
+  description: |
+    The finished code for each part of the Alloy watchface tutorial, written
+    in JavaScript: time and date, custom fonts, battery and connection
+    indicators, weather with fetch(), Timeline Peek and user settings.
+  featured: true
+  tags:
+    - Tutorial
+    - Watchface
+
 - title: Weather Cards Example
   repo: pebble-examples/cards-example
   languages:

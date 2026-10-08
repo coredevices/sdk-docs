@@ -138,8 +138,10 @@ var PAGES = {pages_json};
 var path = {path_json};
 var fl = document.getElementById('fl'), fr = document.getElementById('fr');
 var sel = document.getElementById('pages');
-PAGES.forEach(function (p, i) {{
-  var o = document.createElement('option'); o.value = p.path; o.textContent = '[' + p.status + '] ' + p.path; sel.appendChild(o);
+var groups = {{}};
+PAGES.forEach(function (p) {{
+  var g = groups[p.section]; if (!g) {{ g = document.createElement('optgroup'); g.label = p.section; groups[p.section] = g; sel.appendChild(g); }}
+  var o = document.createElement('option'); o.value = p.path; o.textContent = '[' + p.status + '] ' + p.path; g.appendChild(o);
 }});
 function cur() {{ return PAGES.findIndex(function (p) {{ return p.path === path; }}); }}
 function go(p, push) {{
@@ -433,9 +435,35 @@ def load_pages(args):
         else:
             status = 'NEW' if n else 'REMOVED'
         pages.append({'path': p, 'status': status})
-    # order: changed/new first, removed next, then blog posts, home page last
-    pages.sort(key=lambda x: (x['path'] == '/', x['path'].startswith('/blog/'), x['status'] == 'REMOVED', x['path']))
+    for page in pages:
+        page['section'] = section_of(page)
+    pages.sort(key=lambda x: (SECTION_ORDER.index(x['section']), x['status'] != 'NEW', x['path']))
     return pages
+
+
+SECTION_ORDER = ['Home', 'New sections', 'New guide groups', 'Guides', 'SDK and tutorials', 'Reference',
+                 'Other pages', 'Blog', 'Removed pages']
+
+
+def section_of(page):
+    p = page['path']
+    if page['status'] == 'REMOVED':
+        return 'Removed pages'
+    if p == '/':
+        return 'Home'
+    if p.startswith(('/pebbleos/', '/mobile-app/', '/index-01/')):
+        return 'New sections'
+    if p.startswith(('/guides/ai-agents/', '/guides/plugins/')):
+        return 'New guide groups'
+    if p.startswith('/guides/'):
+        return 'Guides'
+    if p.startswith(('/sdk/', '/tutorials/')):
+        return 'SDK and tutorials'
+    if p.startswith('/docs/'):
+        return 'Reference'
+    if p.startswith('/blog/'):
+        return 'Blog'
+    return 'Other pages'
 
 
 def write_static(args, pages):

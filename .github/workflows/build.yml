@@ -207,6 +207,8 @@ jobs:
             --include-fragments
             --preprocess ${{ github.workspace }}/scripts/lychee-preprocess.sh
             --exclude-path __public__/pebbleos/apidoc
+            --exclude-path __public__/docs/pebblekit-android
+            --exclude-path __public__/docs/pebblekit-ios
             --no-progress
             '__public__/**/*.html'
 

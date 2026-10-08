@@ -14,3 +14,4 @@ vendor/
 .direnv/
 .DS_Store
 .vscode/settings.json
+.gstack/

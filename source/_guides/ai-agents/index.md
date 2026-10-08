@@ -155,9 +155,6 @@ prompt, together with the following:
 * Alloy runs on emery and gabbro only. A project that targets older watches
   has to be written in C.
 
-* Rocky.js has been removed from the SDK. Use Alloy for JavaScript on the
-  watch, or PebbleKit JS for JavaScript on the phone.
-
 * The timeline web API is no longer available. The Pebble mobile app does not
   sync pins from a server. Use
   {% guide_link pebble-timeline/timeline-local-pins "local pins" %} instead.

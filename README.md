@@ -219,3 +219,17 @@ Trouble building the developer site? Read the [Troubleshooting](/docs/troublesho
 [slick]: http://kenwheeler.github.io/slick/
 [tinypng]: https://tinypng.com/
 [tinyjpg]: https://tinyjpg.com/
+
+## Comparing two builds
+
+`scripts/compare_builds.py` serves two built sites side by side with synced
+scrolling and block-level change highlighting, for reviewing a large set of
+changes against the current site:
+
+```
+python3 scripts/compare_builds.py --old /path/to/main/__public__ --new __public__ --pages pages.txt --port 4001
+```
+
+`pages.txt` lists one URL path per line. Pages present in only one build are
+listed as new or removed. Open http://localhost:4001/ and step through the
+pages with the arrows or the `n`/`p`/`j` keys.

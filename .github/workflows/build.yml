@@ -139,6 +139,9 @@ jobs:
 
   build:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
     needs:
       - gendocs-c
       - gendocs-android
@@ -217,6 +220,63 @@ jobs:
         with:
           name: site-build
           path: __public__
+
+      # Pull requests also build main from the same docs artifacts and
+      # publish a side-by-side comparison (scripts/compare_builds.py) as an
+      # artifact, so reviewers can look at every changed page.
+      - name: Checkout main for comparison
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: baseline
+          fetch-depth: 0
+      - name: Build main for comparison
+        if: github.event_name == 'pull_request'
+        working-directory: baseline
+        run: |
+          mkdir -p emery/doxygen_sdk
+          cp -r /tmp/docs/docs-c-emery/* emery/doxygen_sdk/
+          cp -R /tmp/docs/docs-pebbleos/source/. source/
+          BUNDLE_GEMFILE="$GITHUB_WORKSPACE/Gemfile" bundle exec jekyll build
+        env:
+          URL: https://developer.repebble.com
+          HTTPS_URL: https://developer.repebble.com
+          JEKYLL_ENV: production
+          DOCS_URL: /tmp/docs/
+          ALGOLIA_PREFIX: developer-repebble-com-prod-
+      - name: Build the comparison site
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/compare_builds.py --old baseline/__public__ --new __public__ --static site-compare
+      - name: Upload the comparison site
+        if: github.event_name == 'pull_request'
+        id: compare
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-compare
+          path: site-compare
+          retention-days: 30
+      - name: Link the comparison from the pull request
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          URL: ${{ steps.compare.outputs.artifact-url }}
+        run: |
+          body="<!-- site-compare -->
+          **Side-by-side comparison of this build against \`main\`:** [download the \`site-compare\` artifact]($URL), unzip it, then run
+
+          \`\`\`
+          cd site-compare && python3 -m http.server 4001
+          \`\`\`
+
+          and open http://localhost:4001/. The left side is the current site, the right side is this pull request; added blocks are highlighted on the right and removed ones on the left. Built from $GITHUB_SHA."
+          existing=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --jq '.[] | select(.body | startswith("<!-- site-compare -->")) | .id' | head -1)
+          if [ -n "$existing" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$existing" -f body="$body" > /dev/null
+          else
+            gh pr comment "$PR" --body "$body"
+          fi
 
   deploy:
     runs-on: ubuntu-24.04

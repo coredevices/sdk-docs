@@ -14,6 +14,7 @@ import json
 import mimetypes
 import os
 import re
+import shutil
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote, urlparse
@@ -129,8 +130,8 @@ label{{display:flex;align-items:center;gap:4px}}
   <span class="counts" id="counts"></span>
 </div>
 <div id="frames">
-  <div id="left"><div class="lab">main (current site) &nbsp; <b id="lpath"></b></div><iframe id="fl" name="fl"></iframe></div>
-  <div id="right"><div class="lab">integration (all PRs) &nbsp; <b id="rpath"></b></div><iframe id="fr" name="fr"></iframe></div>
+  <div id="left"><div class="lab">current site (main) &nbsp; <b id="lpath"></b></div><iframe id="fl" name="fl"></iframe></div>
+  <div id="right"><div class="lab">this build &nbsp; <b id="rpath"></b></div><iframe id="fr" name="fr"></iframe></div>
 </div>
 <script>
 var PAGES = {pages_json};
@@ -367,54 +368,151 @@ def page_exists(base, path):
     return resolve_page(base, path) is not None
 
 
-def load_pages(args):
-    paths = []
-    for line in open(args.pages):
-        line = line.strip()
-        if not line:
-            continue
-        line = re.sub(r'^https?://[^/]+', '', line)
-        if not line.startswith('/'):
-            line = '/' + line
-        paths.append(line)
-    # removed pages: html under old but not new, excluding blog/assets
-    for root, dirs, files in os.walk(args.old):
+SKIP_PREFIXES = ('/assets', '/blog/tags', '/blog/authors', '/docs/c/', '/docs/pebblekit', '/build',
+                 '/community/apps', '/community/libraries', '/community/tools', '/developer.',
+                 '/pebbleos/apidoc', '/pebbleos/docs/images')
+TAG_RE = re.compile(r'<(script|style|nav|header|footer)\b.*?</\1>', re.S | re.I)
+STRIP_RE = re.compile(r'<[^>]+>')
+
+
+def page_text(fs):
+    """Normalised visible text of a page, for change detection."""
+    with open(fs, 'r', errors='replace') as f:
+        html_text = f.read()
+    m = re.search(r'<div class="content.*', html_text, re.S) or re.search(r'<body.*', html_text, re.S)
+    body = m.group(0) if m else html_text
+    body = TAG_RE.sub(' ', body)
+    body = re.sub(r'id="disqus_thread".*?</div>', ' ', body, flags=re.S)
+    return re.sub(r'\s+', ' ', html.unescape(STRIP_RE.sub(' ', body))).strip()
+
+
+def all_pages(base):
+    out = []
+    for root, dirs, files in os.walk(base):
         if 'index.html' in files:
-            rel = '/' + os.path.relpath(root, args.old).replace(os.sep, '/') + '/'
+            rel = '/' + os.path.relpath(root, base).replace(os.sep, '/') + '/'
             rel = rel.replace('/./', '/')
-            if rel.startswith(('/blog', '/assets', '/docs/c/', '/docs/pebblekit', '/build', '/community/apps', '/community/libraries', '/community/tools', '/developer.')):
+            if rel.startswith(SKIP_PREFIXES) or re.match(r'^/blog/\d+/$', rel):
                 continue
-            if page_exists(args.old, rel) and not page_exists(args.new, rel) and rel not in paths:
-                paths.append(rel)
+            out.append(rel)
+    return out
+
+
+def load_pages(args):
+    if args.pages:
+        paths = []
+        for line in open(args.pages):
+            line = line.strip()
+            if not line:
+                continue
+            line = re.sub(r'^https?://[^/]+', '', line)
+            if not line.startswith('/'):
+                line = '/' + line
+            paths.append(line)
+        auto = False
+    else:
+        paths = sorted(set(all_pages(args.new)) | set(all_pages(args.old)))
+        auto = True
+    # removed pages: html under old but not new
+    for rel in all_pages(args.old):
+        if page_exists(args.old, rel) and not page_exists(args.new, rel) and rel not in paths:
+            paths.append(rel)
     pages = []
     seen = set()
     for p in paths:
         if p in seen:
             continue
         seen.add(p)
-        o, n = page_exists(args.old, p), page_exists(args.new, p)
+        o, n = resolve_page(args.old, p), resolve_page(args.new, p)
         if not o and not n:
             continue
-        status = 'CHANGED' if (o and n) else 'NEW' if n else 'REMOVED'
+        if o and n:
+            if auto and page_text(o) == page_text(n):
+                continue
+            status = 'CHANGED'
+        else:
+            status = 'NEW' if n else 'REMOVED'
         pages.append({'path': p, 'status': status})
-    # order: changed/new first in given order, removed at end
+    # order: changed/new first, removed at end, home page last
     pages.sort(key=lambda x: (x['status'] == 'REMOVED', x['path'] == '/'))
     return pages
+
+
+def write_static(args, pages):
+    """Write a self-contained compare site: old/, new/, compare/<path>/ and index.html.
+    Serve the output directory at the root of a web server."""
+    out = os.path.abspath(args.static)
+    for side, base in (('old', args.old), ('new', args.new)):
+        for root, dirs, files in os.walk(base):
+            rel_root = os.path.relpath(root, base)
+            # the Doxygen reference is not compared and is large; leave it out
+            if rel_root.startswith('pebbleos/apidoc'):
+                dirs[:] = []
+                continue
+            dest_root = os.path.join(out, side, '' if rel_root == '.' else rel_root)
+            os.makedirs(dest_root, exist_ok=True)
+            for name in files:
+                src = os.path.join(root, name)
+                dst = os.path.join(dest_root, name)
+                if name.endswith('.html'):
+                    with open(src, 'r', errors='replace') as f:
+                        text = f.read()
+                    if is_redirect_stub(src):
+                        title = 'Not on main' if side == 'old' else 'Removed'
+                        msg = ('On the current site this URL only redirects elsewhere; the page on the right is new.'
+                               if side == 'old' else 'In this build the URL redirects elsewhere; the page is removed.')
+                        text = PLACEHOLDER.format(side=side, title=title, msg=msg)
+                    else:
+                        text = rewrite_html(text, side)
+                    with open(dst, 'w') as f:
+                        f.write(text)
+                elif name.endswith('.css'):
+                    with open(src, 'r', errors='replace') as f:
+                        text = f.read()
+                    with open(dst, 'w') as f:
+                        f.write(rewrite_css(text, side))
+                else:
+                    shutil.copyfile(src, dst)
+    # placeholders for pages that exist on one side only
+    for page in pages:
+        for side, base in (('old', args.old), ('new', args.new)):
+            if resolve_page(base, page['path']) is None:
+                d = os.path.join(out, side, page['path'].lstrip('/'))
+                os.makedirs(d, exist_ok=True)
+                title = 'Not on main' if side == 'old' else 'Removed'
+                msg = ('This page does not exist on the current site. Everything on the right is new.'
+                       if side == 'old' else 'This page is removed in this build.')
+                with open(os.path.join(d, 'index.html'), 'w') as f:
+                    f.write(PLACEHOLDER.format(side=side, title=title, msg=msg))
+    pages_json = json.dumps(pages)
+    for page in pages:
+        d = os.path.join(out, 'compare', page['path'].lstrip('/'))
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, 'index.html'), 'w') as f:
+            f.write(SHELL.format(path=html.escape(page['path']), pages_json=pages_json, path_json=json.dumps(page['path'])))
+    first = pages[0]['path'] if pages else '/'
+    with open(os.path.join(out, 'index.html'), 'w') as f:
+        f.write('<!doctype html><meta http-equiv="refresh" content="0; url=compare%s">' % first)
+    print('wrote', out)
 
 
 def main():
     global ARGS, PAGES
     ap = argparse.ArgumentParser()
-    ap.add_argument('--old', required=True)
-    ap.add_argument('--new', required=True)
-    ap.add_argument('--pages', required=True)
+    ap.add_argument('--old', required=True, help='build of the current site')
+    ap.add_argument('--new', required=True, help='build of the proposed site')
+    ap.add_argument('--pages', help='file with one URL path per line; default: every page whose text differs')
     ap.add_argument('--port', type=int, default=4001)
+    ap.add_argument('--static', metavar='DIR', help='write a static compare site to DIR instead of serving')
     ARGS = ap.parse_args()
     ARGS.old = os.path.abspath(ARGS.old)
     ARGS.new = os.path.abspath(ARGS.new)
     PAGES = load_pages(ARGS)
     print('pages:', len(PAGES), 'changed:', sum(p['status'] == 'CHANGED' for p in PAGES),
           'new:', sum(p['status'] == 'NEW' for p in PAGES), 'removed:', sum(p['status'] == 'REMOVED' for p in PAGES))
+    if ARGS.static:
+        write_static(ARGS, PAGES)
+        return
     srv = ThreadingHTTPServer(('127.0.0.1', ARGS.port), Handler)
     print('http://localhost:%d/' % ARGS.port)
     srv.serve_forever()

@@ -230,6 +230,12 @@ changes against the current site:
 python3 scripts/compare_builds.py --old /path/to/main/__public__ --new __public__ --pages pages.txt --port 4001
 ```
 
-`pages.txt` lists one URL path per line. Pages present in only one build are
-listed as new or removed. Open http://localhost:4001/ and step through the
-pages with the arrows or the `n`/`p`/`j` keys.
+Without `--pages`, every page whose text differs between the two builds is
+listed, plus pages present in only one build (new or removed). Open
+http://localhost:4001/ and step through the pages with the arrows or the
+`n`/`p`/`j` keys.
+
+`--static DIR` writes the comparison as a plain directory instead of serving
+it. Pull request builds do this and upload the result as the `site-compare`
+artifact; unzip it and serve the directory at the root of any static server
+(`python3 -m http.server`) to review the pull request page by page.

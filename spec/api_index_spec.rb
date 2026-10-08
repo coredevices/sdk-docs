@@ -82,6 +82,15 @@ describe ApiIndex do
       FakeGroup.new('Window', [function, enum, define, constant], [struct],
                     'path' => ['User Interface', 'Window'], 'summary' => '<p>The basic building block.</p>', 'platforms' => %w(aplite basalt emery))
     end
+    it 'ignores the PebbleKit iOS and Android pages, whose group is a Hash' do
+      ios_page = FakeDocPage.new('/docs/pebblekit-ios/Classes/PBWatch/', { 'name' => 'PBWatch' })
+      android_page = FakeDocPage.new('/docs/pebblekit-android/PebbleKit/', { 'name' => 'PebbleKit' })
+      mixed = ApiIndex.c_records([ios_page, FakeDocPage.new('/docs/c/User_Interface/Window/index.html', group), android_page],
+                                 SITE_URL, MD_URL_FOR)
+      expect(mixed.map { |r| r['name'] }).to include('Window', 'window_create')
+      expect(mixed.map { |r| r['name'] }).not_to include('PBWatch', 'PebbleKit')
+    end
+
     let(:records) do
       ApiIndex.c_records([FakeDocPage.new('/docs/c/User_Interface/Window/index.html', group), Struct.new(:url).new('/other/')],
                          SITE_URL, MD_URL_FOR)

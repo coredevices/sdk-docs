@@ -137,7 +137,7 @@ you can find me along with many other developers in the Slack group!
 
 Itching to become a Pebble developer? It's easy! Fire up 
 [CloudPebble](https://cloudpebble.net/), join our amazing 
-[online community]({{ site.links.discord_invite }}), and #makeawesomehappen. Keep submitting
+online community, and #makeawesomehappen. Keep submitting
 your work to the Pebble Timeline Challenge: we have 6 more weeks of awesome 
 prizes, swag, and opportunities! 
 

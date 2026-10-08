@@ -16,9 +16,19 @@ module ApiIndex
   # Records for every C documentation page (Pebble::PageDocC) in `pages`.
   # `md_url_for` maps a page URL to its .md twin, or nil when there is none.
   def c_records(pages, site_url, md_url_for)
-    pages.select { |page| page.respond_to?(:group) && page.group.respond_to?(:members) }.flat_map do |page|
+    pages.select { |page| c_page?(page) }.flat_map do |page|
       group_records(page.group, page.url, site_url, md_url_for)
     end
+  end
+
+  # Only the C reference pages (Pebble::PageDocC) carry a DocGroup; the
+  # PebbleKit iOS and Android pages have a `group` too, but it is a Hash.
+  def c_page?(page)
+    return true if defined?(Pebble::PageDocC) && page.is_a?(Pebble::PageDocC)
+    return false unless page.respond_to?(:group)
+    group = page.group
+    return true if defined?(Pebble::DocGroup) && group.is_a?(Pebble::DocGroup)
+    %i(members classes to_liquid).all? { |m| group.respond_to?(m) }
   end
 
   def group_records(group, page_url, site_url, md_url_for)

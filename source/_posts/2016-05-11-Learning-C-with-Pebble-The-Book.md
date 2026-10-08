@@ -75,4 +75,4 @@ It's a great way to learn the C programming language on Pebble smartwatches.
 
 We'd appreciate your feedback, be sure to tweet [@PebbleDev]
 (https://twitter.com/PebbleDev) on Twitter or find us on
-[Discord]({{ site.links.discord_invite }}).
+Discord.

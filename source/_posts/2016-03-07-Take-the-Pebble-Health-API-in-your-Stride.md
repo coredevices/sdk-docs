@@ -203,4 +203,4 @@ I’ve really only scratched the surface of the HealthService API, but hopefully
 you’re now sufficiently excited to build something awesome! We’d really love to
 see how you use it, and If you create a health enabled watchapp or watchface,
 don’t forget to let us know on [Twitter](http://twitter.com/pebbledev) or on
-[Discord]({{ site.links.discord_invite }})!
+Discord!

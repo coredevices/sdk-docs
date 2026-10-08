@@ -144,4 +144,4 @@ changes:
 
 That's it! It will be quite straightforward to update most of your apps, but if
 you do have any problems or queries, feel free to
-[contact us](/contact/) or find us on [Discord]({{ site.links.discord_invite }}).
+[contact us](/contact/) or find us on Discord.

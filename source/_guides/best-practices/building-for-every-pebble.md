@@ -97,6 +97,7 @@ better used to select an entire block of code.
 | `PBL_SMARTSTRAP_POWER` | None | Running on hardware that includes a smartstrap connector capable of supplying power. |
 | `PBL_SPEAKER` | None | Running on hardware that includes a speaker. |
 | `PBL_TOUCH` | None | Running on hardware that includes a touch screen. |
+| `PBL_RGB_BACKLIGHT` | None | Running on hardware with an RGB backlight. |
 | `PBL_DISPLAY_WIDTH` | None | Determine the screen width in pixels. |
 | `PBL_DISPLAY_HEIGHT` | None | Determine the screen height in pixels. |
 | `PBL_PLATFORM_APLITE` | None | Built for Pebble/Pebble Steel. |

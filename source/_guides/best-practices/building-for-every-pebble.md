@@ -114,14 +114,11 @@ better used to select an entire block of code.
 > applicable feature defines instead of `PBL_PLATFORM` defines to be as specific
 > as possible.
 
-## Selecting Values at Runtime
+## Selecting Values by Platform
 
-Some values are better chosen at runtime than at compile time, for example
-when a layout is calculated for a ``WatchInfoModel`` other than the one the
-app is running on, or when one function serves several platforms. The
-``PlatformType`` enum names every platform, ``PBL_PLATFORM_TYPE_CURRENT`` is
-the platform of the current build, and ``PBL_PLATFORM_SWITCH()`` picks one of
-seven values by platform:
+``PBL_PLATFORM_SWITCH()`` picks one of seven values by platform. The
+``PlatformType`` enum names every platform and ``PBL_PLATFORM_TYPE_CURRENT``
+is the platform of the current build:
 
 ```c
 // Width of the action bar on each platform
@@ -130,10 +127,15 @@ int width = PBL_PLATFORM_SWITCH(PBL_PLATFORM_TYPE_CURRENT,
     /*emery*/ 34, /*flint*/ 30, /*gabbro*/ 40);
 ```
 
-The SDK defines ``ACTION_BAR_WIDTH`` in exactly this way. The first argument is
-evaluated once per comparison, so pass a variable rather than a function call.
-``PBL_PLATFORM_SWITCH_DEFAULT()`` takes an extra default value that is
-returned for a platform the app does not know about.
+The SDK defines ``ACTION_BAR_WIDTH`` in exactly this way. The macro expands to
+a chain of comparisons, so with ``PBL_PLATFORM_TYPE_CURRENT`` as the first
+argument the compiler resolves it at compile time and the result is the same
+as the `PBL_IF_*` macros above. It only becomes a runtime choice when the
+first argument is a variable, for example a ``PlatformType`` the app has
+derived from a ``WatchInfoModel`` to lay out content for a different watch.
+The first argument is evaluated once per comparison, so pass a variable
+rather than a function call. ``PBL_PLATFORM_SWITCH_DEFAULT()`` takes an extra
+default value that is returned for a platform the app does not know about.
 
 
 ## API Detection

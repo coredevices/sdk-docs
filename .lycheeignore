@@ -25,4 +25,4 @@
 
 # A 2016 post links to the beta-SDK section of the retired download page;
 # the page now redirects to /sdk/ and has no such anchor.
-/sdk/download/#testing-beta-sdks
+/sdk/download/?#testing-beta-sdks

@@ -137,6 +137,32 @@ jobs:
           name: docs-pebbleos
           path: /tmp/pebbleos-site
 
+  # Developer documentation kept next to the code in the Pebble mobile app
+  # (plugins preview, Index 01 webhooks), rendered into the site by
+  # scripts/import_mobileapp_docs.py.
+  gendocs-mobileapp:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sdk-docs
+        uses: actions/checkout@v6
+
+      - name: Checkout mobileapp
+        uses: actions/checkout@v6
+        with:
+          repository: coredevices/mobileapp
+          ref: master
+          path: mobileapp
+
+      - name: Import mobile app documentation
+        run: python3 scripts/import_mobileapp_docs.py mobileapp /tmp/mobileapp-site
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: docs-mobileapp
+          path: /tmp/mobileapp-site
+
   build:
     runs-on: ubuntu-24.04
     permissions:
@@ -147,6 +173,7 @@ jobs:
       - gendocs-android
       - gendocs-ios
       - gendocs-pebbleos
+      - gendocs-mobileapp
 
     steps:
       - name: Checkout
@@ -168,6 +195,9 @@ jobs:
 
       - name: Prepare PebbleOS docs
         run: cp -R /tmp/docs/docs-pebbleos/source/. source/
+
+      - name: Prepare mobile app docs
+        run: cp -R /tmp/docs/docs-mobileapp/source/. source/
 
       - name: Prepare PebbleKit archives
         working-directory: /tmp/docs
@@ -238,6 +268,8 @@ jobs:
           mkdir -p emery/doxygen_sdk
           cp -r /tmp/docs/docs-c-emery/* emery/doxygen_sdk/
           cp -R /tmp/docs/docs-pebbleos/source/. source/
+          # Only once main itself imports these pages.
+          [ -f scripts/import_mobileapp_docs.py ] && cp -R /tmp/docs/docs-mobileapp/source/. source/
           BUNDLE_GEMFILE="$GITHUB_WORKSPACE/Gemfile" bundle exec jekyll build
         env:
           URL: https://developer.repebble.com

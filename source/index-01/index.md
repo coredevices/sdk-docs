@@ -35,8 +35,8 @@ The ring sends each recording to the Pebble mobile app over Bluetooth, and the
 app transcribes it, acts on it, and keeps it in the Index feed. Developers can
 receive each recording at their own HTTP endpoint with a
 [webhook](/index-01/webhooks/), give the assistant new tools by connecting an
-[MCP server](/index-01/mcp/), or, once plugin support ships, publish a
-[plugin](/guides/plugins/) in the Pebble appstore.
+[MCP server](/index-01/mcp/), or write a [plugin](/guides/plugins/) that
+the assistant can use.
 
 ## How the Ring and the App Split the Work
 
@@ -72,37 +72,21 @@ switch; the switch is not shown for *Webhook only* or *Nothing*.
 
 ## Local and Cloud Processing
 
-Where a recording is processed is a per-phone setting. The two steps are
-configured separately in the Index 01 settings.
-
-**Speech Recognition** turns audio into text. *Cloud only* sends the audio to
-Core Devices' transcription service. *Cloud, with local fallback* uses the
-cloud and falls back to an on-device model (a 400 MB download) when the phone
-is offline. *Local only* always uses the on-device model. On iOS, *iOS Speech
-Recognition* uses Apple's on-device recogniser.
-
-**Agent Model** runs the assistant that reads the transcript and takes
-actions. *Cloud LLM* runs in the cloud. *Local LLM* runs on the phone; it is
-experimental, does not support every built-in action, and cannot call remote
-MCP servers. *Cloud LLM (with Local fallback)* uses the Local LLM only when
-the cloud cannot be reached.
-
-Webhooks do not depend on either setting: the audio is sent as recorded, and
-the transcript is whatever the selected speech recognition produced.
+Speech recognition and the assistant model are each set to run in the cloud
+or on the phone in the Index 01 settings. Webhooks do not depend on either
+setting: the audio is sent as recorded, and the transcript is whatever the
+selected speech recognition produced. Remote MCP servers are only called by
+the cloud model.
 
 ## Building on Index 01
 
 There are three extension points.
 
-* [Plugins](/guides/plugins/) (coming soon) are `.pbw` packages whose
-  `appinfo.json` carries a `plugin` block. A plugin runs inside the Pebble
-  mobile app and declares actions and data sources. The Index agent calls the
-  plugin's actions as tools, reads its sources, and can offer a plugin that
-  declares `create_note` or `create_reminder` as a destination for notes and
-  reminders. Plugins are published in the Pebble appstore under their own
-  type and categories and are installed from the phone, so a user needs
-  nothing else to use yours. Use a plugin unless your integration has to run
-  outside the phone.
+* [Plugins](/guides/plugins/) run inside the Pebble mobile app and declare
+  actions and data sources. The assistant will call a plugin's actions as
+  tools, and a plugin that declares `create_note` or `create_reminder` can
+  be offered as a destination for notes and reminders. Plugins are a preview
+  and are off by default.
 * [Webhooks](/index-01/webhooks/) send each recording as a multipart HTTP
   POST to a URL you configure, with the audio, the transcript, or both, and an
   optional HMAC-SHA256 signature. Use this to feed recordings into your own
@@ -110,10 +94,6 @@ There are three extension points.
 * [MCP servers](/index-01/mcp/) add tools to the assistant. The app connects
   to any MCP server over HTTP, lists its tools, and lets the Cloud LLM call
   them when it processes a recording. You run the server.
-
-Plugin support in the Pebble mobile app is in
-[coredevices/mobileapp#291](https://github.com/coredevices/mobileapp/pull/291).
-Until it ships, webhooks and MCP servers are the two ways to extend Index 01.
 
 ## Where the Code Lives
 

@@ -52,7 +52,6 @@ sass:
 # Helpful and easily changeable external links.
 links:
   pebble: https://rePebble.com
-  jobs: https://www.pebble.com/jobs/
   twitter: https://twitter.com/pebble/
   devportal: https://developer.rePebble.com/dashboard
   site_repo: https://github.com/coredevices/sdk-docs
@@ -67,12 +66,9 @@ links:
   legal:
     privacy: https://repebble.com/privacy/
     cookies: https://repebble.com/terms
-  s3_assets: https://developer-assets.getpebble.com
-  pebble_tool_root: https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/
   libpebble: https://github.com/coredevices/libpebble3
   kickstarter3: https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra
   cloudpebble: https://cloudpebble.repebble.com/
-  discord_invite: https://discordapp.com/invite/aRUAYFN
 
 # Jekyll collections.
 collections:

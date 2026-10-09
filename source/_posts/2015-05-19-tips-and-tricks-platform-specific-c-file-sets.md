@@ -38,7 +38,7 @@ projects.
 
 ## The Preprocessor Approach
 
-In the [3.0 Migration Guide](/sdk/migration-guide/#backwards-compatibility) we
+In the 3.0 Migration Guide we
 recommend using preprocessor directives such as `PBL_PLATFORM_APLITE` and
 `PBL_PLATFORM_BASALT` to mark code to be compiled only on that particular
 platform. This helps avoid the need to maintain two separate projects for one

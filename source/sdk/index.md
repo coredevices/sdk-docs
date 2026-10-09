@@ -54,7 +54,7 @@ sudo apt install libsdl2-2.0-0 libglib2.0-0 libpixman-1-0 zlib1g libsndio7.0
 #### Fedora
 
 ```bash
-sudo dnf install nodejs SDL2 glib2 pixman zlib
+sudo dnf install nodejs SDL2 glib2 pixman zlib sndio
 ```
 
 #### Windows
@@ -72,7 +72,16 @@ Then, run:
 uv tool install pebble-tool
 ```
 
-> Note: pebble-tool requires Python 3.10 or later.
+> Note: The `pebble` tool requires Python 3.10 to 3.13. Python 3.14 is not
+> supported yet.
+
+Not every language and feature is available on every watch. See the platform
+support table in {% guide_link tools-and-resources/hardware-information %}.
+
+The `sdkVersion` field in `package.json` stays `"3"` for every app, including
+apps built with SDK 4.x. The version of the `pebble` tool (5.x) is not the
+version of the SDK (4.x); run `pebble sdk list` to see which SDKs are
+installed.
 
 ## Next Steps
 
@@ -105,29 +114,53 @@ Install the app on an emulator for the Pebble Time:
 pebble install --emulator basalt
 ```
 
-Or, install the app/watchface on your phone. 
-
-Requires the new Pebble mobile app (install at [rePebble.com/app](https://repebble.com/app)) -> go to Devices -> tap 3 dots -> Enable Dev Connect -> Sign into GitHub. Then back on your computer, run
+Or, install the app on the watch through the Pebble mobile app (install it
+from [repebble.com/app](https://repebble.com/app)). In the Pebble mobile app,
+sign in with your Pebble account, open the *Devices* tab, tap the three dot icon
+on your watch and enable the *Dev Connection* toggle. Then, on your computer,
+sign in to the same Pebble account and install:
 
 ```bash
-pebble login # Sign into GitHub
+pebble login
 pebble install --cloudpebble
 ```
+
+See {% guide_link tools-and-resources/developer-connection %} for details and
+for the LAN connection, which works without signing in.
 
 #### Learn more
 
 The best way to learn is by checking out our examples apps: [weather](https://github.com/pebble-examples/pebblekit-js-weather/), [simple game](https://github.com/pebble-hacks/pandas-and-bananas/), [concentricity watchface](https://github.com/pebble-examples/concentricity/), and [many more](/examples)! Or try [tutorials](/tutorials/) for a step-by-step guide on how
 to write a simple C Pebble application.
 
+#### Using an AI coding agent
+
+`pebble new-project --ai myproject` also writes instruction files for Claude
+Code and Cursor, and every page of this site has a Markdown version for
+agents to read. See
+{% guide_link ai-agents %} for the files,
+the documentation index at `/llms.txt` and the emulator commands an agent can
+use to check its work.
+
 ### Installation Problems?
 
-Check the [FAQ](/faqs/) first - common install, emulator, and `pebble` tool errors are answered there.
+On Linux, check the following first:
 
-If you're still stuck, ask on the [Pebble Developer Forum][dev-forum] or in `#sdk-dev` on the
-[Rebble Discord][rebble-discord]. Please provide as many details as you can about the issues
-you may have encountered.
+* On WSL2, install `build-essential` before installing the SDK:
+  `sudo apt install build-essential`.
+* The emulator needs glibc 2.38 or newer. Ubuntu 22.04 ships an older glibc,
+  so use Ubuntu 24.04 or newer.
+* On Fedora, the emulator needs `libsndio`: `sudo dnf install sndio`.
+
+If the emulator gets into a strange state, for example it will not boot, keeps
+an app you have removed, or an install times out, run `pebble kill` to stop it
+and `pebble wipe` to reset its stored data, then install again.
+
+Check the [FAQ](/faqs/) next - common install, emulator, and `pebble` tool errors are answered there.
+
+If you're still stuck, ask on the [Pebble Developer Forum][dev-forum]. Please
+provide as many details as you can about the issues you may have encountered.
 
 **Tip:** Copying and pasting commands from your Terminal output will help a great deal.
 
 [dev-forum]: https://forum.repebble.com/c/developers-ask-questions-and-get-help/7
-[rebble-discord]: https://discord.com/invite/aRUAYFN

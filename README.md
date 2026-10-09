@@ -17,9 +17,10 @@ the information in one of the sections below.
 
 ## Getting Started
 
-### Option 1:  Install with Docker
+### Option 1: Build with Docker
 
-Clone repo to your local machine. From the repo root, enter: 
+The repository ships a `Dockerfile` with the pinned Ruby and the gems
+installed. Build the image once, then run Jekyll from it:
 
 ```
 docker build -t rebble-dev .
@@ -27,9 +28,16 @@ docker build -t rebble-dev .
 docker run --rm -it -p 4000:4000 -v "$PWD":/site -w /site rebble-dev \
   bundle exec jekyll serve --host 0.0.0.0 --port 4000
 ```
-Then open http://localhost:4000
 
-### Option 2:  Install natively (without Docker)
+Then open http://localhost:4000. With [just](https://github.com/casey/just)
+installed, `just docker-dev` runs the same command, and `just docker-build`
+writes the static site to `__public__/`.
+
+### Option 2: Install natively (without Docker)
+
+The `Gemfile` pins the Ruby version to the one in `.ruby-version` (3.3.8).
+`bundle install` fails on any other Ruby, so install that version with a
+version manager such as `rbenv` or `mise`, or use Docker.
 
 Once you have cloned the project you will need to run `bundle install` to
 install the Ruby dependencies. If you do not have [bundler](http://bundler.io/)
@@ -41,20 +49,36 @@ with the appropriate values. Take a look at the
 
 To start the Jekyll web server, run `bundle exec jekyll serve`.
 
+## C API Reference
+
+The C API reference under `/docs/c/` is generated from Doxygen XML, not from
+Markdown in this repository. The Docker image sets `SKIP_DOCS=true`, so a local
+build skips the reference and `/docs/c/` is empty. This is expected.
+
+To build the reference locally:
+
+1. Generate the Doxygen output for emery. The `gendocs-c` job in
+   `.github/workflows/build.yml` has the exact commands; it checks out
+   [coredevices/pebbleos](https://github.com/coredevices/pebbleos) at the tag
+   in `EMERY_SDK_VERSION` and produces `build/sdk/emery/doxygen_sdk`.
+2. Copy that directory to `emery/doxygen_sdk/` in the repository root, next to
+   the committed `aplite/doxygen_sdk/` and `basalt/doxygen_sdk/`.
+3. Build with `SKIP_DOCS=false`, for example
+   `docker run --rm -e SKIP_DOCS=false -v "$PWD":/site -w /site rebble-dev bundle exec jekyll build`.
+
+The PebbleKit Android and iOS references are downloaded from `DOCS_URL` at
+build time and are also skipped locally.
+
 ## JS Documentation
 
-The PebbleKit JS and Rocky documentation is generated with the
-[documentation.js](documentation.js.org) framework. The documentation tool can
-create a JSON file from the JSDocs contained in the [js-docs](/js-docs)
-folder.
+The PebbleKit JS documentation is generated with the
+[documentation.js](documentation.js.org) framework. The documentation tool
+creates `source/_data/jsdocs-pkjs.json` from the JSDoc comments in the
+[js-docs](/js-docs) folder.
 
 To install documentation.js, run `npm install -g documentation`
 
-To regenerate the `/source/_data/rocky-js.json` file, run `./scripts/generate-rocky-docs.sh`
-
-> **NOTE**: This is intended to be a temporary hack. Ideally the rocky-js.json
-> file is generated as part of the release generator (and built using the actual
-> Rocky.js source, or stubs in the Tintin repository.
+To regenerate the JSON file, run `./scripts/generate-js-docs.sh`
 
 ## Blog Posts
 
@@ -195,3 +219,23 @@ Trouble building the developer site? Read the [Troubleshooting](/docs/troublesho
 [slick]: http://kenwheeler.github.io/slick/
 [tinypng]: https://tinypng.com/
 [tinyjpg]: https://tinyjpg.com/
+
+## Comparing two builds
+
+`scripts/compare_builds.py` serves two built sites side by side with synced
+scrolling and block-level change highlighting, for reviewing a large set of
+changes against the current site:
+
+```
+python3 scripts/compare_builds.py --old /path/to/main/__public__ --new __public__ --pages pages.txt --port 4001
+```
+
+Without `--pages`, every page whose text differs between the two builds is
+listed, plus pages present in only one build (new or removed). Open
+http://localhost:4001/ and step through the pages with the arrows or the
+`n`/`p`/`j` keys.
+
+`--static DIR` writes the comparison as a plain directory instead of serving
+it. Pull request builds do this and upload the result as the `site-compare`
+artifact; unzip it and serve the directory at the root of any static server
+(`python3 -m http.server`) to review the pull request page by page.

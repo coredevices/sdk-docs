@@ -25,18 +25,13 @@ permalink: /open-source/
     <div class="col-m-8">
       <h1 class="pagetitle">Pebble Open Source</h1>
       <p>
-        Here at Pebble we are big believers in the power of open source. Our
-        firmware is <a href="/blog/2014/10/10/FreeRTOS-Modifications-From-Pebble-v2/">built upon FreeRTOS</a>,
-        and all of our mobile and web applications make use of many different
-        open source libraries.
+        The Pebble firmware, SDK, mobile app and developer tools are open
+        source. This page lists the repositories, along with SDKs written by
+        the community.
       </p>
       <p>
-        Whenever possible, we like to give back to the open source community,
-        so here are just some of our open source projects available for anyone
-        to use in their own work.
-      <p>
-        You can also check out our GitHub profile at
-        <a href="https://github.com/pebble/">https://github.com/pebble/</a>.
+        All Core Devices repositories are on GitHub at
+        <a href="{{ site.links.github }}">{{ site.links.github }}</a>.
       </p>
       {% for group in site.data['open-source'] %}
         <h2 id="{{ group.slug }}" class="anchor">{{ group.name }}</h2>
@@ -56,15 +51,6 @@ permalink: /open-source/
           <li class="toc__item toc__item--level1"><a href="#{{ group.slug }}">{{ group.name }}</a></li>
           {% endfor %}
         </ul>
-        <h3>Work For Us!</h3>
-        <p>
-          As a rapidly growing company, we're always on the lookout for new
-          talent to grow our various teams. If you or anyone you know has the
-          technical skills, wearable enthusiasm and a taste for the Valley
-          lifestyle, have a look at
-          <a href="{{ site.links.jobs }}">our jobs page</a> to see a list
-          of open positions.
-        </p>
       </div>
     </div>
   </div>

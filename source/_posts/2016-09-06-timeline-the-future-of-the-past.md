@@ -47,7 +47,7 @@ We carefully listened to feedback and suggestions from our developer community
 via the [forums](https://forums.pebble.com),
 [Reddit](https://www.reddit.com/r/pebble),
 [Twitter](https://twitter.com/pebbledev) and
-[Discord]({{ site.links.discord_invite }}), and we are happy to announce that timeline past
+Discord, and we are happy to announce that timeline past
 has returned in the v4.0.1 update. Users who need to access the timeline past
 can now assign it to one of their quick launch buttons.
 
@@ -116,4 +116,4 @@ things. We love to receive your product and feature
 We’re particularly interested to hear about your use cases and ideas for
 timeline as we travel further into the future! Let us know via
 [the forums](https://forums.pebble.com),
-[Twitter](https://twitter.com/pebbledev) and [Discord]({{ site.links.discord_invite }})!
+[Twitter](https://twitter.com/pebbledev) and Discord!

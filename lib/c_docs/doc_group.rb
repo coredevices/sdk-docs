@@ -127,7 +127,7 @@ module Pebble
       @groups.sort! { |a, b| a.name <=> b.name }
     end
 
-    HIDDEN_GROUPS = %w(rocky).freeze
+    HIDDEN_GROUPS = %w(rocky smartstrap).freeze
 
     def create_inner_groups(platform)
       @xml[platform].css('innergroup').each do |child|

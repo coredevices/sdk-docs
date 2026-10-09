@@ -24,7 +24,7 @@ docs_language: c
       <h1 class="pagetitle">{{ page.title }}</h1>
       <p>
         This is the contents page for the
-        <a href="/sdk/download/">Pebble C SDK</a>. Here you will find
+        <a href="/sdk/">Pebble C SDK</a>. Here you will find
         information on all the available modules, functions and objects that can
         be used to create watchapps and watchfaces for Pebble.
       </p>
@@ -42,6 +42,8 @@ docs_language: c
           <h4><a href="{{ module.url }}">{{ module.name }}</a></h4>
           {% if module.summary.size > 0 %}
           {{ module.summary }}
+          {% elsif module.name == 'Worker' %}
+          <p>Run a background worker alongside the foreground app to collect data or respond to events while the app is not running. See the <a href="/guides/events-and-services/background-worker/">Background Worker</a> guide.</p>
           {% else %}
           <p>&nbsp;</p>
           {% endif %}

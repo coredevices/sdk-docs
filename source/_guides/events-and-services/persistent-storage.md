@@ -36,11 +36,25 @@ implementing an app configuration page.
 
 ## Persistent Storage Model
 
-Every app is allocated 4 kB of persistent storage space and can write values to
-storage using a key, similar to ``AppMessage`` dictionaries or the web
-`localStorage` API. To recall values, the app simply queries the API using the
-associated key . Keys are specified in the `uint32_t` type, and each value can
-have a size up to ``PERSIST_DATA_MAX_LENGTH`` (currently 256 bytes).
+Every app is allocated a fixed amount of persistent storage space and can write
+values to storage using a key, similar to ``AppMessage`` dictionaries or the
+web `localStorage` API. To recall values, the app simply queries the API using
+the associated key. Keys are specified in the `uint32_t` type, and each value
+can have a size up to ``PERSIST_DATA_MAX_LENGTH`` (currently 256 bytes).
+
+The total space depends on the firmware. Call ``persist_get_max_size()`` to
+read the limit in bytes at runtime rather than assuming a value:
+
+```c
+size_t max_bytes = persist_get_max_size();
+```
+
+On Pebble 2 Duo, Pebble Time 2 and Pebble Round 2 the limit is 1 MB per app.
+The storage file starts at 4 kB and grows as values are written. On aplite,
+basalt, chalk and diorite the SDK compiles ``persist_get_max_size()`` to the
+constant 4096, the 4 kB limit documented for those platforms.
+``persist_get_max_size()`` was added in SDK 4.9.172; with an older SDK, assume
+4 kB.
 
 When an app is updated the values saved using the ``Storage`` API will be
 persisted, but if it is uninstalled they will be removed.

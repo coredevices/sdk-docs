@@ -159,5 +159,5 @@ it will produce two pbis with `GBitmapFormat1Bit`. However, `png-trans` is also
 deprecated and discouraged. As of SDK 3.8, all platforms support transparency
 in images, and so should use `bitmap` instead.
 
-If you have any questions, you can [find us on Discord]({{ site.links.discord_invite }})
+If you have any questions, you can find us on Discord
 or [contact us](/contact/).

@@ -39,6 +39,75 @@ imported page ends with the PebbleOS commit it was generated from and a link to
 its source file.
 
 
+## Start Here
+
+The steps below take a build from nothing to running in the emulator and
+installed on a watch. Each step links to the imported page that covers it, so
+the instructions themselves come from the pebbleos repository.
+
+<!-- A pebbleos pull request adds a single quickstart page under
+     docs/development/. Once that page is imported, this list can collapse
+     to one link to it. -->
+
+1. Set up the build environment.
+   [Prerequisites](/pebbleos/docs/development/getting_started/#prerequisites)
+   installs the
+   [PebbleOS SDK](/pebbleos/docs/development/getting_started/#pebbleos-sdk)
+   toolchain bundle and the
+   [system packages](/pebbleos/docs/development/getting_started/#system-level-dependencies),
+   then [gets the source](/pebbleos/docs/development/getting_started/#get-the-source-code)
+   with its submodules and installs the
+   [Python dependencies](/pebbleos/docs/development/getting_started/#python-dependencies).
+2. Configure and build for an emulator board.
+   [Build](/pebbleos/docs/development/qemu/#build) on the QEMU page runs
+   `pbl configure --board qemu_flint` and `pbl build`.
+   [Choosing your target](/pebbleos/docs/development/options/#choosing-your-target)
+   lists the boards and revisions `pbl configure` accepts.
+3. Run the build. [Run](/pebbleos/docs/development/qemu/#run) starts the
+   emulator with `pbl qemu`, and
+   [Install PBW applications](/pebbleos/docs/development/qemu/#install-pbw-applications)
+   installs an app into it with the `pebble` tool.
+4. Configure and build again for the board of your watch, from the table
+   under [Boards](#boards), bundle a `.pbz` with `pbl bundle`, and install
+   it in one of three ways: sideload the file from the Pebble mobile app
+   (*Firmware Update Debug* > *Sideload FW*, with debug options shown), as
+   described in
+   [Loading firmware via Bluetooth](/pebbleos/docs/development/building_fw/#loading-firmware-via-bluetooth);
+   send it through the
+   {% guide_link tools-and-resources/developer-connection %} with
+   `pebble fw install <file>.pbz --phone <ip>`; or, on a board with its
+   debug connector exposed, flash it with `pbl flash` as described in
+   [Loading firmware with a firmware development kit](/pebbleos/docs/development/building_fw/#loading-firmware-with-a-firmware-development-kit).
+
+Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
+
+
+## Installing a Custom Build
+
+{% alert important %}
+A firmware change can modify or overwrite the bootloader or the recovery
+firmware (PRF). If either stops working, the watch can no longer take an
+update over Bluetooth and can only be reprogrammed through its debug
+connector. Keep changes away from the bootloader and PRF, and test in the
+emulator before flashing a watch.
+{% endalert %}
+
+When a firmware fails to start, the bootloader records the attempt in the
+boot bits and after repeated failures boots PRF instead. From PRF the Pebble
+mobile app installs a firmware again. To get to PRF by hand, hold *Back*,
+*Up* and *Select* together for five seconds, or run `pebble fw enter-prf`.
+[Recovery Firmware](/pebbleos/contributing/#recovery-firmware) has the
+details.
+
+If the bootloader or PRF has been erased, the watch can only be programmed
+through its debug connector: over SWD with openocd on Pebble 2 Duo, and over
+the serial adapter with sftool, which does not depend on the bootloader, on
+Pebble Time 2 and Pebble Round 2. A sealed watch has no accessible debug
+connector; a
+[firmware development kit](/pebbleos/contributing/#the-firmware-development-kit)
+does.
+
+
 ## Boards
 
 The firmware is configured for one board at a time with
@@ -69,15 +138,41 @@ basalt, chalk and diorite platforms).
 > `defconfig` files in the repository.
 
 
+## Translating PebbleOS
+
+Translations of the firmware's menus, settings and system messages are made
+at [translate.repebble.com](https://translate.repebble.com). The site runs
+[Weblate](https://weblate.org) with a Pebble extension that previews each
+string with the PebbleOS text renderer, checks that the watch fonts cover the
+characters a language needs, and builds draft language packs so a translation
+can be tried on a watch before it is reviewed.
+
+To translate:
+
+* Sign in at [translate.repebble.com](https://translate.repebble.com) with
+  your Pebble account.
+* Pick the language to work on. If it is not listed, start it with the
+  new-language wizard, which checks font coverage and lets you add a font if
+  the built-in fonts do not cover the script.
+* Translate strings. Each language has community reviewers who check new
+  translations before they are included in a language pack.
+
+Language packs are built from the site. The `pblpack` command line tool that
+built language packs from `.po` files is deprecated and no longer the way to
+produce them. See the
+[launch post](/blog/2026/10/07/Take-PebbleOS-To-The-World/) for the
+background.
+
+
 ## How the Firmware, the SDK and the Mobile App Relate
 
 Watchapps do not link against the firmware. The firmware build generates the
 app SDK from its own sources: `pebble.h` with the exported declarations, and
 `libpebble.a` with trampolines that call into the firmware through a function
 table compiled into the firmware image. Apps run as unprivileged processes
-and reach OS state through syscalls. The
-[Exposing APIs to the SDK](/pebbleos/exposing-apis/) page summarises how a
-firmware function becomes an SDK API.
+and reach OS state through syscalls. The imported
+[Exposing functions to the SDK](/pebbleos/docs/development/sdk_export/) page
+describes how a firmware function becomes an SDK API.
 
 The SDK that developers install with `pebble sdk install` is built from a
 firmware release. The C API reference on this site at [/docs/c/](/docs/c/) is
@@ -91,6 +186,15 @@ it also carries the
 {% guide_link tools-and-resources/developer-connection "Developer Connection" %}
 that the `pebble` tool uses to install and debug apps on a watch. Its source
 is at [github.com/coredevices/mobileapp](https://github.com/coredevices/mobileapp).
+
+Changes to the firmware are often paired with changes to the Pebble mobile
+app, for example a new Pebble Protocol endpoint or a change to how firmware
+is installed. The mobile app can connect to a PebbleOS emulator over TCP in
+place of a watch, so both sides of a change can be tested without hardware.
+{% guide_link tools-and-resources/testing-with-the-mobile-app %}
+covers running the phone app against the emulator. The
+[Mobile App](/mobile-app/) section covers building the app and sending
+changes to its repository.
 
 > Note: Two different things are called an SDK. The Pebble SDK builds
 > watchapps. The PebbleOS SDK at

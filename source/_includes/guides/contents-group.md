@@ -19,7 +19,7 @@
 * [**{{ sub_grp.title }}**]({{sub_grp.url}}) - {{ sub_grp.description }}
 {% endfor %}
 {% if include.group.guides.size > 0 %}
-{% assign guides = include.group.guides | sort: 'title' | where:'menu',true %}
+{% assign guides = include.group.guides | sort: include.group.sort_by | where:'menu',true %}
 {% for guide in guides %}
 * [**{{ guide.title }}**]({{guide.url}}) - {{ guide.summary }}
 {% endfor %}

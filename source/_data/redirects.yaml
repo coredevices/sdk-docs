@@ -65,7 +65,7 @@
   - /faqs/
 -
   - /1/04_MoreResources/015_libpebble/index.html
-  - /community/libraries/libpebble/
+  - /community/libraries/
 -
   - /1/04_MoreResources/02_Support/index.html
   - /contact/
@@ -83,16 +83,16 @@
   - /getting-started/watchface-tutorial/
 -
   - /1/GettingStarted/Linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /1/GettingStarted/MacOS/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /1/GettingStarted/UsingExamples/index.html
   - /examples/
 -
   - /1/GettingStarted/Windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /1/index.html
   - /
@@ -1373,7 +1373,7 @@
   - /guides/publishing-tools/publish-to-pebble-appstore/
 -
   - /2/distribute/whitelisting.html
-  - /guides/publishing-tools/whitelisting/
+  - /guides/appstore-publishing/
 -
   - /2/getting-started/developer-connection/index.html
   - /guides/publishing-tools/developer-connection/
@@ -1382,16 +1382,16 @@
   - /getting-started/watchface-tutorial/
 -
   - /2/getting-started/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/getting-started/install-pebble-sdk/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/getting-started/linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /2/getting-started/macosx/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /2/getting-started/pb-sdk/index.html
   - /guides/publishing-tools/pebble-tool/
@@ -1403,7 +1403,7 @@
   - /examples/
 -
   - /2/getting-started/windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /2/guides/about-pebble-apps.html
   - /guides/
@@ -1484,7 +1484,7 @@
   - /guides/pebble-apps/app-events/wakeup/
 -
   - /2/index.html
-  - /sdk/install/
+  - /sdk/
 -
   - /2/ios-reference/Categories/NSDataPebble.html
   - /docs/pebblekit-ios/Categories/NSData+Pebble/
@@ -1628,16 +1628,19 @@
   - /sdk/
 -
   - /download-sdk/linux/index.html
-  - /sdk/install/linux/
+  - /sdk/
 -
   - /download-sdk/macosx/index.html
-  - /sdk/install/mac/
+  - /sdk/
 -
   - /download-sdk/windows/index.html
-  - /sdk/install/windows/
+  - /sdk/
 -
   - /events/aahackathon/index.html
-  - /community/events/aahackathon/
+  - /community/
+-
+  - /community/events/aahackathon/index.html
+  - /community/
 -
   - /events/developer-retreat-2013/index.html
   - /community/events/developer-retreat-2013/
@@ -1676,7 +1679,7 @@
   - /community/events/
 -
   - /help/index.html
-  - /community/#stackoverflow
+  - /community/
 -
   - /iossdkref/Categories/NSDataPebble.html
   - /docs/pebblekit-ios/Categories/NSData+Pebble/
@@ -2338,32 +2341,32 @@
   - /blog/archive/index.html
   - /blog/
 -
- - /guides/js-apps/pebblekit-js/index.html
- - /guides/pebble-apps/pebblekit-js/
+  - /guides/js-apps/pebblekit-js/index.html
+  - /guides/pebble-apps/pebblekit-js/
 -
- - /guides/js-apps/pebblekit-js/adding-js/index.html
- - /guides/pebble-apps/pebblekit-js/adding-js/
+  - /guides/js-apps/pebblekit-js/adding-js/index.html
+  - /guides/pebble-apps/pebblekit-js/adding-js/
 -
- - /guides/js-apps/pebblekit-js/js-app-comm/index.html
- - /guides/pebble-apps/pebblekit-js/js-app-comm/
+  - /guides/js-apps/pebblekit-js/js-app-comm/index.html
+  - /guides/pebble-apps/pebblekit-js/js-app-comm/
 -
- - /guides/js-apps/pebblekit-js/js-capabilities/index.html
- - /guides/pebble-apps/pebblekit-js/js-capabilities/
+  - /guides/js-apps/pebblekit-js/js-capabilities/index.html
+  - /guides/pebble-apps/pebblekit-js/js-capabilities/
 -
- - /guides/js-apps/pebblekit-js/app-configuration/index.html
- - /guides/pebble-apps/pebblekit-js/app-configuration/
+  - /guides/js-apps/pebblekit-js/app-configuration/index.html
+  - /guides/pebble-apps/pebblekit-js/app-configuration/
 -
- - /guides/js-apps/pebble-js/index.html
- - /guides/js-apps/
+  - /guides/js-apps/pebble-js/index.html
+  - /guides/js-apps/
 -
- - /guides/js-apps/pebble-js/js-ui/index.html
- - /guides/js-apps/js-ui/
+  - /guides/js-apps/pebble-js/js-ui/index.html
+  - /docs/pebblejs/
 -
- - /guides/js-apps/pebble-js/js-ajax/index.html
- - /guides/js-apps/js-ajax/
+  - /guides/js-apps/pebble-js/js-ajax/index.html
+  - /docs/pebblejs/
 -
- - /guides/js-apps/pebble-js/js-other/index.html
- - /guides/js-apps/js-other/
+  - /guides/js-apps/pebble-js/js-other/index.html
+  - /docs/pebblejs/
 -
   - /getting-started/index.html
   - /tutorials/
@@ -2381,16 +2384,16 @@
   - /tutorials/watchface-tutorial/part3/
 -
   - /getting-started/pebble-js-tutorial/index.html
-  - /tutorials/pebble-js-tutorial/part1/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part1/index.html
-  - /tutorials/pebble-js-tutorial/part1/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part2/index.html
-  - /tutorials/pebble-js-tutorial/part2/
+  - /docs/pebblejs/
 -
   - /getting-started/pebble-js-tutorial/part3/index.html
-  - /tutorials/pebble-js-tutorial/part3/
+  - /docs/pebblejs/
 -
   - /getting-started/android-tutorial/index.html
   - /guides/communication/using-pebblekit-android/
@@ -2404,13 +2407,13 @@
   - /getting-started/android-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part1/
+  - /tutorials/android-tutorial/part1/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part2/
+  - /tutorials/android-tutorial/part2/index.html
   - /guides/communication/using-pebblekit-android/
 -
-  - /tutorials/android-tutorial/part3/
+  - /tutorials/android-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-android/
 -
   - /getting-started/ios-tutorial/index.html
@@ -2425,17 +2428,17 @@
   - /getting-started/ios-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part1/
+  - /tutorials/ios-tutorial/part1/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part2/
+  - /tutorials/ios-tutorial/part2/index.html
   - /guides/communication/using-pebblekit-ios/
 -
-  - /tutorials/ios-tutorial/part3/
+  - /tutorials/ios-tutorial/part3/index.html
   - /guides/communication/using-pebblekit-ios/
 -
   - /smartstraps/index.html
-  - /guides/
+  - /guides/smartstraps/
 -
   - /tools/color-picker/index.html
   - /more/color-picker/
@@ -2443,338 +2446,425 @@
   - /color-picker/index.html
   - /more/color-picker/
 -
-  - /sdk/migration-guide/index.html
-  - /guides/migration/migration-guide-3/
--
-  - /sdk/migration-guide-2/index.html
-  - /guides/migration/migration-guide/
--
   - /sdk/whats-new/index.html
   - /sdk/changelogs/
 -
- - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-1/index.html
- - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/
+  - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-1/index.html
+  - /blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/
 -
- - /guides/pebble-timeline/timeline-enabling/index.html
- - /guides/pebble-timeline/
+  - /guides/pebble-timeline/timeline-enabling/index.html
+  - /guides/pebble-timeline/
 -
- - /guides/best-practices/battery-perform-guide/index.html
- - /guides/best-practices/conserving-battery-life/
+  - /guides/best-practices/battery-perform-guide/index.html
+  - /guides/best-practices/conserving-battery-life/
 -
- - /guides/best-practices/design/index.html
- - /guides/design-and-interaction/
+  - /guides/best-practices/design/index.html
+  - /guides/design-and-interaction/
 -
- - /sdk/beta/index.html
- - /sdk/download/
+  - /sdk/beta/index.html
+  - /sdk/
 -
- - /guides/pebble-apps/sensors/health/index.html
- - /guides/events-and-services/health/
+  - /guides/pebble-apps/sensors/health/index.html
+  - /guides/events-and-services/health/
 -
- - /guides/best-practices/multi-platform/index.html
- - /guides/best-practices/building-for-every-pebble/
+  - /guides/best-practices/multi-platform/index.html
+  - /guides/best-practices/building-for-every-pebble/
 -
- - /guides/js-apps/index.html
- - /guides/
+  - /guides/js-apps/index.html
+  - /guides/
 -
- - /guides/mobile-apps/index.html
- - /guides/communication/about-pebble-communication/
+  - /guides/mobile-apps/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/android/index.html
- - /guides/communication/
+  - /guides/mobile-apps/android/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/android/android-advanced/index.html
- - /guides/communication/
+  - /guides/mobile-apps/android/android-advanced/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/android/android-comms/index.html
- - /guides/communication/
+  - /guides/mobile-apps/android/android-comms/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/android/android-datalogging/index.html
- - /guides/communication/datalogging/
+  - /guides/mobile-apps/android/android-datalogging/index.html
+  - /guides/communication/datalogging/
 -
- - /guides/mobile-apps/android/android-examples/index.html
- - /guides/communication/
+  - /guides/mobile-apps/android/android-examples/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/android/android-sports/index.html
- - /guides/communication/using-the-sports-api/
+  - /guides/mobile-apps/android/android-sports/index.html
+  - /guides/communication/using-the-sports-api/
 -
- - /guides/mobile-apps/ios/index.html
- - /guides/communication/
+  - /guides/mobile-apps/ios/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/ios/ios-comms/index.html
- - /guides/communication/
+  - /guides/mobile-apps/ios/ios-comms/index.html
+  - /guides/communication/
 -
- - /guides/mobile-apps/ios/ios-datalogging/index.html
- - /guides/communication/datalogging/
+  - /guides/mobile-apps/ios/ios-datalogging/index.html
+  - /guides/communication/datalogging/
 -
- - /guides/mobile-apps/ios/ios-install/index.html
- - /guides/communication/using-pebblekit-android-or-ios/
+  - /guides/mobile-apps/ios/ios-install/index.html
+  - /guides/communication/using-pebblekit-ios/
 -
- - /guides/mobile-apps/ios/ios-sports/index.html
- - /guides/communication/
+  - /guides/mobile-apps/ios/ios-sports/index.html
+  - /guides/communication/
 -
- - /guides/pebble-apps/index.html
- - /guides/
+  - /guides/pebble-apps/index.html
+  - /guides/
 -
- - /guides/pebble-apps/app-events/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-events/app-interruptions/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/app-interruptions/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-events/battery-service/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/battery-service/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-events/bluetooth-connection/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/bluetooth-connection/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-events/tick-timer/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/tick-timer/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-events/wakeup/index.html
- - /guides/user-interfaces/events/
+  - /guides/pebble-apps/app-events/wakeup/index.html
+  - /guides/user-interfaces/events/
 -
- - /guides/pebble-apps/app-structure/index.html
- - /guides/user-interfaces/
+  - /guides/pebble-apps/app-structure/index.html
+  - /guides/user-interfaces/
 -
- - /guides/pebble-apps/app-structure/clicks/index.html
- - /guides/events-and-services/buttons/
+  - /guides/pebble-apps/app-structure/clicks/index.html
+  - /guides/events-and-services/buttons/
 -
- - /guides/pebble-apps/app-structure/persistent-storage/index.html
- - /guides/user-interfaces/persistent-storage/
+  - /guides/pebble-apps/app-structure/persistent-storage/index.html
+  - /guides/events-and-services/persistent-storage/
 -
- - /guides/pebble-apps/app-structure/windows/index.html
- - /guides/user-interfaces/layers/
+  - /guides/pebble-apps/app-structure/windows/index.html
+  - /guides/user-interfaces/layers/
 -
- - /guides/pebble-apps/background/index.html
- - /guides/user-interfaces/background-worker/
+  - /guides/pebble-apps/background/index.html
+  - /guides/events-and-services/background-worker/
 -
- - /guides/pebble-apps/communications/index.html
- - /guides/communication/
+  - /guides/pebble-apps/communications/index.html
+  - /guides/communication/
 -
- - /guides/pebble-apps/communications/appmessage/index.html
- - /guides/communication/sending-and-receiving-data/
+  - /guides/pebble-apps/communications/appmessage/index.html
+  - /guides/communication/sending-and-receiving-data/
 -
- - /guides/pebble-apps/communications/appsync/index.html
- - /guides/communication/sending-and-receiving-data/
+  - /guides/pebble-apps/communications/appsync/index.html
+  - /guides/communication/sending-and-receiving-data/
 -
- - /guides/pebble-apps/communications/pebble-datalogging/index.html
- - /guides/communication/datalogging/
+  - /guides/pebble-apps/communications/pebble-datalogging/index.html
+  - /guides/communication/datalogging/
 -
- - /guides/pebble-apps/debugging/index.html
- - /guides/debugging/
+  - /guides/pebble-apps/debugging/index.html
+  - /guides/debugging/
 -
- - /guides/pebble-apps/debugging/runtime-problems/index.html
- - /guides/debugging/common-runtime-errors/
+  - /guides/pebble-apps/debugging/runtime-problems/index.html
+  - /guides/debugging/common-runtime-errors/
 -
- - /guides/pebble-apps/debugging/common-c-problems/index.html
- - /guides/debugging/common-syntax-errors/
+  - /guides/pebble-apps/debugging/common-c-problems/index.html
+  - /guides/debugging/common-syntax-errors/
 -
- - /guides/pebble-apps/debugging/debugging-guide/index.html
- - /guides/debugging/debugging-with-app-logs/
+  - /guides/pebble-apps/debugging/debugging-guide/index.html
+  - /guides/debugging/debugging-with-app-logs/
 -
- - /guides/pebble-apps/display-and-animations/index.html
- - /guides/graphics-and-animations/
+  - /guides/pebble-apps/display-and-animations/index.html
+  - /guides/graphics-and-animations/
 -
- - /guides/pebble-apps/display-and-animations/action-menu/index.html
- - /guides/user-interfaces/
+  - /guides/pebble-apps/display-and-animations/action-menu/index.html
+  - /guides/user-interfaces/
 -
- - /guides/pebble-apps/display-and-animations/circular-graphics/index.html
- - /guides/user-interfaces/creating-round-apps/
+  - /guides/pebble-apps/display-and-animations/circular-graphics/index.html
+  - /guides/user-interfaces/round-app-ui/
 -
- - /guides/pebble-apps/display-and-animations/composite-animations/index.html
- - /guides/graphics-and-animations/animations/
+  - /guides/pebble-apps/display-and-animations/composite-animations/index.html
+  - /guides/graphics-and-animations/animations/
 -
- - /guides/pebble-apps/display-and-animations/drawing/index.html
- - /guides/graphics-and-animations/drawing-primitives-images-and-text/
+  - /guides/pebble-apps/display-and-animations/drawing/index.html
+  - /guides/graphics-and-animations/drawing-primitives-images-and-text/
 -
- - /guides/pebble-apps/display-and-animations/intro-to-colors/index.html
- - /guides/graphics-and-animations/
+  - /guides/pebble-apps/display-and-animations/intro-to-colors/index.html
+  - /guides/graphics-and-animations/
 -
- - /guides/pebble-apps/display-and-animations/layers/index.html
- - /guides/user-interfaces/layers/
+  - /guides/pebble-apps/display-and-animations/layers/index.html
+  - /guides/user-interfaces/layers/
 -
- - /guides/pebble-apps/display-and-animations/property-animations/index.html
- - /guides/graphics-and-animations/animations/
+  - /guides/pebble-apps/display-and-animations/property-animations/index.html
+  - /guides/graphics-and-animations/animations/
 -
- - /guides/pebble-apps/display-and-animations/ux-fonts/index.html
- - /guides/app-resources/fonts/
+  - /guides/pebble-apps/display-and-animations/ux-fonts/index.html
+  - /guides/app-resources/fonts/
 -
- - /guides/pebble-apps/pebblekit-js/index.html
- - /guides/communication/using-pebblekit-js/
+  - /guides/pebble-apps/pebblekit-js/index.html
+  - /guides/communication/using-pebblekit-js/
 -
- - /guides/pebble-apps/pebblekit-js/adding-js/index.html
- - /guides/communication/using-pebblekit-js/
+  - /guides/pebble-apps/pebblekit-js/adding-js/index.html
+  - /guides/communication/using-pebblekit-js/
 -
- - /guides/pebble-apps/pebblekit-js/app-configuration/index.html
- - /guides/user-interfaces/app-configuration/
+  - /guides/pebble-apps/pebblekit-js/app-configuration/index.html
+  - /guides/user-interfaces/app-configuration/
 -
- - /guides/pebble-apps/pebblekit-js/js-app-comm/index.html
- - /guides/communication/using-pebblekit-js/
+  - /guides/pebble-apps/pebblekit-js/js-app-comm/index.html
+  - /guides/communication/using-pebblekit-js/
 -
- - /guides/pebble-apps/pebblekit-js/js-capabilities/index.html
- - /guides/communication/using-pebblekit-js/
+  - /guides/pebble-apps/pebblekit-js/js-capabilities/index.html
+  - /guides/communication/using-pebblekit-js/
 -
- - /guides/pebble-apps/resources/index.html
- - /guides/app-resources/
+  - /guides/pebble-apps/resources/index.html
+  - /guides/app-resources/
 -
- - /guides/pebble-apps/resources/animated-pngs/index.html
- - /guides/app-resources/animated-images/
+  - /guides/pebble-apps/resources/animated-pngs/index.html
+  - /guides/app-resources/animated-images/
 -
- - /guides/pebble-apps/resources/font-resources/index.html
- - /guides/app-resources/fonts/
+  - /guides/pebble-apps/resources/font-resources/index.html
+  - /guides/app-resources/fonts/
 -
- - /guides/pebble-apps/resources/image-resources/index.html
- - /guides/app-resources/images/
+  - /guides/pebble-apps/resources/image-resources/index.html
+  - /guides/app-resources/images/
 -
- - /guides/pebble-apps/resources/raw-resources/index.html
- - /guides/app-resources/raw-data-files/
+  - /guides/pebble-apps/resources/raw-resources/index.html
+  - /guides/app-resources/raw-data-files/
 -
- - /guides/pebble-apps/sensors/index.html
- - /guides/events-and-services/
+  - /guides/pebble-apps/sensors/index.html
+  - /guides/events-and-services/
 -
- - /guides/pebble-apps/sensors/accelerometer/index.html
- - /guides/events-and-services/accelerometer/
+  - /guides/pebble-apps/sensors/accelerometer/index.html
+  - /guides/events-and-services/accelerometer/
 -
- - /guides/pebble-apps/sensors/dictation/index.html
- - /guides/events-and-services/dictation/
+  - /guides/pebble-apps/sensors/dictation/index.html
+  - /guides/events-and-services/dictation/
 -
- - /guides/pebble-apps/sensors/magnetometer/index.html
- - /guides/events-and-services/compass/
+  - /guides/pebble-apps/sensors/magnetometer/index.html
+  - /guides/events-and-services/compass/
 -
- - /guides/hardware/index.html
- - /guides/
+  - /guides/hardware/index.html
+  - /guides/smartstraps/
 -
- - /guides/hardware/smartstrap-hardware/index.html
- - /guides/
+  - /guides/hardware/smartstrap-hardware/index.html
+  - /guides/smartstraps/
 -
- - /guides/hardware/smartstrap-protocol/index.html
- - /guides/
+  - /guides/smartstraps/smartstrap-hardware/index.html
+  - /guides/smartstraps/
 -
- - /guides/hardware/talking-to-pebble/index.html
- - /guides/
+  - /guides/hardware/smartstrap-protocol/index.html
+  - /guides/smartstraps/
 -
- - /guides/hardware/talking-to-smartstraps/index.html
- - /guides/
+  - /guides/smartstraps/smartstrap-protocol/index.html
+  - /guides/smartstraps/
 -
- - /guides/smartstraps/index.html
- - /guides/
+  - /guides/hardware/talking-to-pebble/index.html
+  - /guides/smartstraps/
 -
- - /guides/smartstraps/smartstrap-hardware/index.html
- - /guides/
+  - /guides/smartstraps/talking-to-pebble/index.html
+  - /guides/smartstraps/
 -
- - /guides/smartstraps/smartstrap-protocol/index.html
- - /guides/
+  - /guides/hardware/talking-to-smartstraps/index.html
+  - /guides/smartstraps/
 -
- - /guides/smartstraps/talking-to-pebble/index.html
- - /guides/
+  - /guides/smartstraps/talking-to-smartstraps/index.html
+  - /guides/smartstraps/
 -
- - /guides/smartstraps/talking-to-smartstraps/index.html
- - /guides/
+  - /guides/timeline/index.html
+  - /guides/pebble-timeline/
 -
- - /guides/timeline/index.html
- - /guides/pebble-timeline/
+  - /guides/timeline/pin-structure/index.html
+  - /guides/pebble-timeline/pin-structure/
 -
- - /guides/timeline/pin-structure/index.html
- - /guides/pebble-timeline/pin-structure/
+  - /guides/timeline/timeline-architecture/index.html
+  - /guides/pebble-timeline/timeline-architecture/
 -
- - /guides/timeline/timeline-architecture/index.html
- - /guides/pebble-timeline/timeline-architecture/
+  - /guides/timeline/timeline-enabling/index.html
+  - /guides/pebble-timeline/timeline-enabling/
 -
- - /guides/timeline/timeline-enabling/index.html
- - /guides/pebble-timeline/timeline-enabling/
+  - /guides/timeline/timeline-js/index.html
+  - /guides/pebble-timeline/timeline-js/
 -
- - /guides/timeline/timeline-js/index.html
- - /guides/pebble-timeline/timeline-js/
+  - /guides/timeline/timeline-libraries/index.html
+  - /guides/pebble-timeline/timeline-libraries/
 -
- - /guides/timeline/timeline-libraries/index.html
- - /guides/pebble-timeline/timeline-libraries/
+  - /guides/timeline/timeline-public/index.html
+  - /guides/pebble-timeline/timeline-public/
 -
- - /guides/timeline/timeline-public/index.html
- - /guides/pebble-timeline/timeline-public/
+  - /guides/publishing-tools/index.html
+  - /guides/
 -
- - /guides/publishing-tools/index.html
- - /guides/
+  - /guides/publishing-tools/cloudpebble-ui-editor/index.html
+  - /guides/tools-and-resources/
 -
- - /guides/publishing-tools/cloudpebble-ui-editor/index.html
- - /guides/tools-and-resources/cloudpebble/
+  - /guides/publishing-tools/developer-connection/index.html
+  - /guides/tools-and-resources/developer-connection/
 -
- - /guides/publishing-tools/developer-connection/index.html
- - /guides/tools-and-resources/developer-connection/
+  - /guides/publishing-tools/i18n-guide/index.html
+  - /guides/tools-and-resources/internationalization/
 -
- - /guides/publishing-tools/i18n-guide/index.html
- - /guides/tools-and-resources/internationalization/
+  - /guides/publishing-tools/pebble-tool/index.html
+  - /guides/tools-and-resources/pebble-tool/
 -
- - /guides/publishing-tools/pebble-tool/index.html
- - /guides/tools-and-resources/pebble-tool/
+  - /guides/publishing-tools/publish-to-pebble-appstore/index.html
+  - /guides/appstore-publishing/
 -
- - /guides/publishing-tools/publish-to-pebble-appstore/index.html
- - /guides/appstore-publishing/
+  - /guides/publishing-tools/publishing-faq/index.html
+  - /guides/appstore-publishing/
 -
- - /guides/publishing-tools/publishing-faq/index.html
- - /guides/appstore-publishing/
+  - /guides/publishing-tools/screenshots/index.html
+  - /guides/appstore-publishing/
 -
- - /guides/publishing-tools/screenshots/index.html
- - /guides/appstore-publishing/
+  - /guides/publishing-tools/whitelisting/index.html
+  - /guides/
 -
- - /guides/publishing-tools/whitelisting/index.html
- - /guides/appstore-publishing/whitelisting/
+  - /more/color-picker/index.html
+  - /guides/tools-and-resources/color-picker/
 -
- - /more/color-picker/index.html
- - /guides/tools-and-resources/color-picker/
+  - /guides/pebble-apps/app-structure/app-metadata/index.html
+  - /guides/tools-and-resources/app-metadata/
 -
- - /guides/pebble-apps/app-structure/app-metadata/index.html
- - /guides/tools-and-resources/app-metadata/
+  - /guides/user-interfaces/events/index.html
+  - /guides/events-and-services/events/
 -
- - /guides/user-interfaces/events/index.html
- - /guides/events-and-services/events/
+  - /guides/graphics-and-animations/converting-svg-to-pdc/index.html
+  - /guides/app-resources/converting-svg-to-pdc/
 -
- - /guides/graphics-and-animations/converting-svg-to-pdc/index.html
- - /guides/app-resources/converting-svg-to-pdc/
+  - /docs/pebblejs/index.html
+  - http://pebble.github.io/pebblejs/
 -
- - /docs/pebblejs/index.html
- - http://pebble.github.io/pebblejs/
+  - /sdk/round-getting-started/index.html
+  - /guides/user-interfaces/round-app-ui/
 -
- - /sdk/round-getting-started/index.html
- - /guides/getting-started-pebble-time-round/
+  - /round/getting-started/index.html
+  - /guides/user-interfaces/round-app-ui/
 -
- - /round/getting-started/index.html
- - /guides/getting-started-pebble-time-round/
+  - /round/index.html
+  - /guides/user-interfaces/round-app-ui/
 -
- - /docs/c/preview/User_Interface/Layer
- - /docs/c/User_Interface/Layer
+  - /guides/getting-started-pebble-time-round/index.html
+  - /guides/user-interfaces/round-app-ui/
 -
- - /docs/pebblekit-ios/Classes/Protocols/PBDataLoggingServiceDelegate.html
- - /docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/
+  - /docs/c/preview/User_Interface/Layer
+  - /docs/c/User_Interface/Layer
 -
- - /docs/pebblekit-ios/Classes/Classes/PBFirmwareVersion.html
- - /docs/pebblekit-ios/Classes/PBFirmwareVersion/
+  - /docs/pebblekit-ios/Classes/Protocols/PBDataLoggingServiceDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/
 -
- - /docs/pebblekit-ios/Protocols/Classes/PBWatch.html
- - /docs/pebblekit-ios/Classes/PBWatch/
+  - /docs/pebblekit-ios/Classes/Classes/PBFirmwareVersion.html
+  - /docs/pebblekit-ios/Classes/PBFirmwareVersion/
 -
- - /docs/pebblekit-ios/Classes/Protocols/PBWatchDelegate.html
- - /docs/pebblekit-ios/Protocols/PBWatchDelegate/
+  - /docs/pebblekit-ios/Protocols/Classes/PBWatch.html
+  - /docs/pebblekit-ios/Classes/PBWatch/
 -
- - /docs/pebblekit-ios/Classes/Classes/PBVersionInfo.html
- - /docs/pebblekit-ios/Classes/PBVersionInfo/
+  - /docs/pebblekit-ios/Classes/Protocols/PBWatchDelegate.html
+  - /docs/pebblekit-ios/Protocols/PBWatchDelegate/
 -
- - /docs/pebblekit-ios/Classes/Classes/PBPebbleCentral.html
- - /docs/pebblekit-ios/Classes/PBPebbleCentral/
+  - /docs/pebblekit-ios/Classes/Classes/PBVersionInfo.html
+  - /docs/pebblekit-ios/Classes/PBVersionInfo/
 -
- - /sdk/migration/migration-guide-3
- - /guides/migration/migration-guide-3/
+  - /docs/pebblekit-ios/Classes/Classes/PBPebbleCentral.html
+  - /docs/pebblekit-ios/Classes/PBPebbleCentral/
 -
- - /guides/pebble-imeline/pin-structure
- - /guides/pebble-timeline/pin-structure/
+  - /guides/pebble-imeline/pin-structure
+  - /guides/pebble-timeline/pin-structure/
 -
- - /sdk/download/
- - /sdk
+  - /guides/pebble-timeline/timeline-public/index.html
+  - /guides/pebble-timeline/timeline-local-pins/
 -
- - /sdk/install/mac/
- - /sdk/#macos
+  - /guides/pebble-timeline/timeline-libraries/index.html
+  - /guides/pebble-timeline/timeline-local-pins/
 -
- - /sdk/install/linux/
- - /sdk/#ubuntu
+  - /guides/user-interfaces/appglance-rest/index.html
+  - /guides/user-interfaces/appglance-c/
 -
- - /sdk/install/windows/
- - /sdk/#windows
+  - /sdk4/index.html
+  - /sdk/
+-
+  - /sdk4/getting-started/index.html
+  - /sdk/
+-
+  - /inspiration/index.html
+  - /community/
+-
+  - /xda-challenge/official-rules.html
+  - /community/
+-
+  - /guides/rocky-js/index.html
+  - /guides/alloy/
+-
+  - /guides/rocky-js/rocky-js-overview/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/CanvasRenderingContext2D/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/console/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/Date/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearTimeout/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/setInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/clearInterval/index.html
+  - /guides/alloy/
+-
+  - /docs/rockyjs/rocky/index.html
+  - /guides/alloy/
+-
+  - /tutorials/rocky-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/rocky-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part1/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /tutorials/js-watchface-tutorial/part2/index.html
+  - /tutorials/alloy-watchface-tutorial/part1/
+-
+  - /guides/communication/plugins/index.html
+  - /guides/plugins/
+-
+  - /index-01/plugins/index.html
+  - /guides/plugins/
+-
+  - /guides/communication/pebblekit-js-in-the-mobile-app/index.html
+  - /guides/communication/using-pebblekit-js/#differences-in-the-pebble-mobile-app
+-
+  - /pebbleos/exposing-apis/index.html
+  - /pebbleos/
+-
+  - /sdk/download/index.html
+  - /sdk
+-
+  - /sdk/install/mac/index.html
+  - /sdk/#macos
+-
+  - /sdk/install/linux/index.html
+  - /sdk/#ubuntu
+-
+  - /sdk/install/windows/index.html
+  - /sdk/#windows
+-
+  - /guides/appstore-publishing/appstore-assets/index.html
+  - /guides/appstore-publishing/preparing-a-submission/

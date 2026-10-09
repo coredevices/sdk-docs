@@ -25,6 +25,7 @@ platforms:
   - diorite
   - emery
   - flint
+  - gabbro
 related_docs:
   - HealthService
 related_examples:

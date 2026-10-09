@@ -68,7 +68,7 @@ firmware 3.x the following important changes **MUST** be made:
     GRect bitmap_bounds = gbitmap_get_bounds(s_bitmap);
     ```
 
-* If your app uses either the ``Dictation`` or ``Smartstrap`` APIs, you must
+* If your app uses either the ``Dictation`` or `Smartstrap` APIs, you must
   check that any code dependent on these hardware features fails gracefully when
   they are not available. This should be done by checking for `NULL` or
   appropriate `enum` values returned from affected API calls. An example is
@@ -144,4 +144,4 @@ changes:
 
 That's it! It will be quite straightforward to update most of your apps, but if
 you do have any problems or queries, feel free to
-[contact us](/contact/) or find us on [Discord]({{ site.links.discord_invite }}).
+[contact us](/contact/) or find us on Discord.

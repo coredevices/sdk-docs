@@ -55,9 +55,9 @@ displays the time and date on a black background:
 ## Creating a New Project
 
 ^CP^ Go to [CloudPebble]({{ site.links.cloudpebble }}) and click **Create** to
-start a new project. Choose **Alloy** as the project type and name it
-"watchface". Then go to **Settings** on the left and set **App Kind** to
-**Watchface**.
+start a new project. Choose **JavaScript SDK (beta)** as the project type
+(this is Alloy) and name it "watchface". Then go to **Settings** on the left and
+set **App Kind** to **Watchface**.
 
 ^LC^ Before we begin, make sure you have the Pebble SDK installed. If you haven't
 done this yet, head over to the [download page](/sdk) to get set up.

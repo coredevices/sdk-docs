@@ -4,7 +4,6 @@ author: niharika
 tags: 
 - Timeline
 banner: /images/blog/greeneys_collage.png
-image: https://assets.getpebble.com/api/file/sEYe7jsPRTqycshR84XZ/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 As the summer begins, we're all feeling the urge to relax a bit. With the 7th 

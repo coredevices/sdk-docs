@@ -3,8 +3,6 @@ title: Pebble Timeline Challenge Week 9 Winner - Tideline!
 author: niharika
 tags: 
 - Timeline
-banner: https://assets.getpebble.com/api/file/ElNX37g9RZCzo8hHrBoh/convert?cache=true&fit=crop&w=720&h=320
-image: https://assets.getpebble.com/api/file/F4DF5LhgSr6JkhEjPslZ/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 With summer in full swing, we're all itching to get to the beach. Use the 9th 

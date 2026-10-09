@@ -92,7 +92,7 @@ Feel free to discuss this update here or in the forums!
 
 [pebble-1.12]: https://forums.getpebble.com/discussion/6222/announcing-pebbleos-v1-12-firmware-release-notes/1
 [sdk-download]: /sdk/download
-[sdk-install]: /sdk/install
+[sdk-install]: /sdk/
 [libpebble]: {{ site.links.libpebble }}
 [sdk-reference]: /docs/c
 [sdk-changelog]: /sdk/changelogs/

@@ -31,7 +31,9 @@ related_examples:
 ---
 
 On hardware platforms with a built-in speaker, the Speaker API gives apps four
-different ways to make sound:
+different ways to make sound (see the platform support table in
+{% guide_link tools-and-resources/hardware-information#platform-support %} for which watches
+have a speaker):
 
 * A **one-shot tone**, for short beeps and confirmation sounds.
 * A **note sequence**, for monophonic melodies that the system synthesizes

@@ -32,7 +32,9 @@ The Pebble Time 2 and Pebble 2 (excluding SE model)
 {% guide_link tools-and-resources/hardware-information "devices" %} include a
 heart rate monitor. This guide will demonstrate how to use the ``HealthService``
 API to retrieve information about the user's current, and historical heart
-rates.
+rates. See the platform support table in
+{% guide_link tools-and-resources/hardware-information#platform-support %} for
+which watches have a heart rate monitor.
 
 If you aren't already familiar with the ``HealthService``, we recommended that
 you read the {% guide_link events-and-services/health "Health guide" %}

@@ -90,10 +90,10 @@ better used to select an entire block of code.
 | `PBL_COMPASS` | None | Running on hardware that includes a compass. |
 | `PBL_MICROPHONE` | `PBL_IF_MICROPHONE_ELSE()` | Running on hardware that includes a microphone. |
 | `PBL_HEALTH` | `PBL_IF_HEALTH_ELSE()` | Running on hardware that supports Pebble Health and the `HealthService` API. |
-| `PBL_RGB_BACKLIGHT` | None | Running on hardware that has includes a RGB backlight |
+| `PBL_RGB_BACKLIGHT` | None | Running on hardware that has an RGB backlight |
 | `PBL_RECT` | `PBL_IF_RECT_ELSE()` | Running on hardware with a rectangular display. |
 | `PBL_ROUND` | `PBL_IF_ROUND_ELSE()` | Running on hardware with a round display. |
-| `PBL_SMARTSTRAP` | `PBL_IF_SMARTSTRAP_ELSE` | Running on hardware with smartstrap support. |
+| `PBL_SMARTSTRAP` | `PBL_IF_SMARTSTRAP_ELSE()` | Running on hardware with smartstrap support. |
 | `PBL_SMARTSTRAP_POWER` | None | Running on hardware that includes a smartstrap connector capable of supplying power. |
 | `PBL_SPEAKER` | None | Running on hardware that includes a speaker. |
 | `PBL_TOUCH` | None | Running on hardware that includes a touch screen. |
@@ -113,6 +113,30 @@ better used to select an entire block of code.
 > Note: It is strongly recommended to conditionally compile code using
 > applicable feature defines instead of `PBL_PLATFORM` defines to be as specific
 > as possible.
+
+## Selecting Values by Platform
+
+``PBL_PLATFORM_SWITCH()`` picks one of seven values by platform. The
+``PlatformType`` enum names every platform and ``PBL_PLATFORM_TYPE_CURRENT``
+is the platform of the current build:
+
+```c
+// Width of the action bar on each platform
+int width = PBL_PLATFORM_SWITCH(PBL_PLATFORM_TYPE_CURRENT,
+    /*aplite*/ 30, /*basalt*/ 30, /*chalk*/ 40, /*diorite*/ 30,
+    /*emery*/ 34, /*flint*/ 30, /*gabbro*/ 40);
+```
+
+The SDK defines ``ACTION_BAR_WIDTH`` in exactly this way. The macro expands to
+a chain of comparisons, so with ``PBL_PLATFORM_TYPE_CURRENT`` as the first
+argument the compiler resolves it at compile time and the result is the same
+as the `PBL_IF_*` macros above. It only becomes a runtime choice when the
+first argument is a variable, for example a ``PlatformType`` the app has
+derived from a ``WatchInfoModel`` to lay out content for a different watch.
+The first argument is evaluated once per comparison, so pass a variable
+rather than a function call. ``PBL_PLATFORM_SWITCH_DEFAULT()`` takes an extra
+default value that is returned for a platform the app does not know about.
+
 
 ## API Detection
 
@@ -189,6 +213,13 @@ share the same screen width and height.
   uint8_t offset_y = 60;
 #endif
 ```
+
+| Platform | Display | Shape |
+|----------|---------|-------|
+| aplite, basalt, diorite, flint | 144 × 168 | Rectangular |
+| chalk | 180 × 180 | Round |
+| emery | 200 × 228 | Rectangular |
+| gabbro | 260 × 260 | Round |
 
 > Note: Although this method is preferable to platform detection, it is better
 to dynamically calculate the display width and height based on the unobstructed
@@ -302,8 +333,8 @@ console.log('Pebble model: ' + info.model);
 
 ## Detecting Platform-specific JS Features
 
-A number of features in PebbleKit JS (such as ``Pebble.timelineSubscribe()`` and
-``Pebble.getActiveWatchInfo()``) exist on SDK 3.x. If an app tries to use any of
+A number of features in PebbleKit JS (such as ``Pebble.getActiveWatchInfo()``)
+exist on SDK 3.x. If an app tries to use any of
 these on an older Pebble mobile app version where they are not available, the JS
 app will crash.
 

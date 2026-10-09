@@ -253,6 +253,15 @@ $section-menu-width: 240px;
   }
 }
 
+.section-menu--mobile-app {
+  background-color: $color-mobile-app;
+  border-right-color: color.adjust($color-mobile-app, $lightness: -10%, $space: hsl);
+
+  .section-menu__header {
+    background-color: $color-mobile-app;
+  }
+}
+
 .section-menu--getting-started {
   background-color: $color-getting-started;
   border-right-color: color.adjust($color-getting-started, $lightness: -10%, $space: hsl);

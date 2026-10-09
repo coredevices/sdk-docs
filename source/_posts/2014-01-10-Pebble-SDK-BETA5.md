@@ -5,12 +5,7 @@ tags:
 - Freshly Baked
 ---
 
-We've had a pretty awesome start to 2014 and we couldn't have done it without you! First, we kicked off the year by sponsoring the wildly successful [AT&T Developer Summit hackathon](https://devsummit.att.com/), which was followed shortly after by our announcement of the new [Pebble Steel]({{ site.links.pebble }}/steel) during [CES](https://www.cesweb.org/). In addition, we announced that 2.0 will be publicly released along with the Pebble appstore at the end of January. Here's a sneak peek of what the appstore will look like.
-
-
-
-![]({{ site.links.s3_assets }}/blog_assets/musicboss.png)
-![]({{ site.links.s3_assets }}/blog_assets/vlc.png)
+We've had a pretty awesome start to 2014 and we couldn't have done it without you! First, we kicked off the year by sponsoring the wildly successful [AT&T Developer Summit hackathon](https://devsummit.att.com/), which was followed shortly after by our announcement of the new [Pebble Steel]({{ site.links.pebble }}/steel) during [CES](https://www.cesweb.org/). In addition, we announced that 2.0 will be publicly released along with the Pebble appstore at the end of January. 
 
 Have you [submitted your Pebble app](https://dev-portal.getpebble.com/) yet?
 

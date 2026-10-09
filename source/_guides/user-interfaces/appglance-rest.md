@@ -18,6 +18,7 @@ description: |
   How to update an app's app glance using the REST API.
 guide_group: user-interfaces
 order: 2
+published: false
 related_docs:
   - AppGlanceSlice
 related_examples:

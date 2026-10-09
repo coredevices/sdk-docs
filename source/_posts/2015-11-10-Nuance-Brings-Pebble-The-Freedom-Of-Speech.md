@@ -189,4 +189,4 @@ If you’re looking to find out more about voice integration, checkout our
 and our
 [simple example app](https://github.com/pebble-examples/simple-voice-demo). We
 also have a very friendly and helpful Pebble community on Discord; why not
-[join us]({{ site.links.discord_invite }})?
+join us?

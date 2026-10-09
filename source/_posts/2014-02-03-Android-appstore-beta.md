@@ -6,9 +6,9 @@ tags:
 - Freshly Baked
 ---
 
-**Update:** [A new version is available](/blog/2014/03/03/android-beta11/).
+**Update:** [A new version is available](/blog/2014/03/03/Android-Beta11/).
 
-This morning [we released the Pebble appstore for iOS](/blog/2014/02/03/pebble-appstore-is-live/). We love Android and feature parity is extremely important for us. We are releasing today a beta of the Pebble Android mobile app that includes the Pebble appstore to all developers.
+This morning [we released the Pebble appstore for iOS](/blog/2014/02/03/Pebble-appstore-is-live/). We love Android and feature parity is extremely important for us. We are releasing today a beta of the Pebble Android mobile app that includes the Pebble appstore to all developers.
 
 
 
@@ -35,4 +35,4 @@ This is a BETA release, and comes with some known issues that we are working on:
 Please come back to this list regularly. We will update it with new known problems.
 
 
-**Update:** [A new version is available](/blog/2014/03/03/android-beta11/).
+**Update:** [A new version is available](/blog/2014/03/03/Android-Beta11/).

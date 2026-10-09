@@ -23,11 +23,53 @@
 # C SDK Examples - Featured
 # -----------------------------------------------------------------------------
 
+- title: C Watchface Tutorial
+  repo: coredevices/c-watchface-tutorial
+  languages:
+    - c
+  hardware_platforms:
+    - aplite
+    - basalt
+    - chalk
+    - diorite
+    - emery
+    - flint
+    - gabbro
+  screenshot: /images/tutorials/watchface-tutorial/part6~emery.png
+  screenshot_platform: emery
+  description: |
+    The finished code for each part of the C watchface tutorial: time and
+    date, custom fonts, battery and Bluetooth indicators, weather from
+    PebbleKit JS, Timeline Peek and a Clay settings page.
+  featured: true
+  tags:
+    - Tutorial
+    - Watchface
+
+- title: Alloy Watchface Tutorial
+  repo: coredevices/alloy-watchface-tutorial
+  languages:
+    - embeddedjs
+  hardware_platforms:
+    - emery
+    - gabbro
+  screenshot: /images/tutorials/alloy-watchface-tutorial/part6~emery.png
+  screenshot_platform: emery
+  description: |
+    The finished code for each part of the Alloy watchface tutorial, written
+    in JavaScript: time and date, custom fonts, battery and connection
+    indicators, weather with fetch(), Timeline Peek and user settings.
+  featured: true
+  tags:
+    - Tutorial
+    - Watchface
+
 - title: Weather Cards Example
   repo: pebble-examples/cards-example
   languages:
     - c
   hardware_platforms:
+    - aplite
     - basalt
   screenshot: https://raw.githubusercontent.com/pebble-examples/cards-example/master/screenshots/screenshot1.gif
   screenshot_platform: basalt
@@ -69,6 +111,7 @@
     - basalt
     - chalk
     - diorite
+    - emery
   screenshot_platform: basalt
   screenshot: https://raw.githubusercontent.com/pebble-examples/ks-clock-face/master/screenshots/screenshot-color.png
   description: |
@@ -89,7 +132,8 @@
     - aplite
     - basalt
     - chalk
-  featured: true
+    - diorite
+    - emery
   screenshot_platform: chalk
   screenshot: https://raw.githubusercontent.com/pebble-examples/concentricity/master/screenshots/concentricity~chalk.png
   description: |
@@ -108,6 +152,7 @@
   hardware_platforms:
     - aplite
     - basalt
+    - chalk
   screenshot_platform: aplite
   screenshot: https://raw.githubusercontent.com/pebble-examples/simple-analog/master/simple-analog-screenshot.png
   description: |
@@ -124,6 +169,7 @@
     - c
   hardware_platforms:
     - basalt
+    - chalk
   screenshot_platform: basalt
   screenshot: https://github.com/pebble-hacks/block-world/raw/master/screenshots/screenshot.png
   description: |
@@ -165,6 +211,7 @@
     - embeddedjs
   hardware_platforms:
     - emery
+    - gabbro
   screenshot_platform: emery
   screenshot: /images/examples/poco-qrcode.png
   description: |
@@ -183,6 +230,7 @@
     - embeddedjs
   hardware_platforms:
     - emery
+    - gabbro
   screenshot_platform: emery
   screenshot: /images/examples/zurich.png
   description: |
@@ -236,6 +284,7 @@
     - embeddedjs
   hardware_platforms:
     - emery
+    - gabbro
   screenshot_platform: emery
   screenshot: /images/examples/hellopiu-balls.gif
   description: |
@@ -247,6 +296,43 @@
     - Alloy
     - Piu
     - Animation
+
+- title: "Yoyogi"
+  repo: Moddable-OpenSource/pebble-examples/tree/main/piu/watchfaces/yoyogi
+  languages:
+    - embeddedjs
+  hardware_platforms:
+    - emery
+  screenshot_platform: emery
+  screenshot: /images/examples/yoyogi.png
+  description: |
+    Analog watchface built with the Piu UI framework. Draws the hands and
+    their shadows from PDC vector images over a bitmap dial, and handles
+    display size changes.
+  featured: true
+  tags:
+    - Alloy
+    - Watchface
+    - Piu
+
+- title: "Poco PDC Process"
+  repo: Moddable-OpenSource/pebble-examples/tree/main/hellopoco-pdc-process
+  languages:
+    - embeddedjs
+  hardware_platforms:
+    - emery
+    - gabbro
+  screenshot_platform: emery
+  screenshot: /images/examples/hellopoco-pdc-process.png
+  description: |
+    Cycles through five PDC vector images, cloning each one and changing its
+    stroke and fill colors with the draw command list `process()` method
+    before drawing it with Poco.
+  featured: true
+  tags:
+    - Alloy
+    - Poco
+    - Graphics
 
 # -----------------------------------------------------------------------------
 # Community Open Source Examples - Featured
@@ -263,6 +349,8 @@
     - chalk
     - diorite
     - emery
+    - flint
+    - gabbro
   screenshot_platform: emery
   screenshot: /images/examples/timestyle.png
   description: |
@@ -287,6 +375,8 @@
     - chalk
     - diorite
     - emery
+    - flint
+    - gabbro
   screenshot_platform: emery
   screenshot: /images/examples/halcyon.png
   description: |
@@ -335,6 +425,7 @@
   hardware_platforms:
     - aplite
     - basalt
+    - chalk
   screenshot: https://raw.githubusercontent.com/pebble-examples/pebble-faces/11305757db5fa9ce5e448aa0ba4e7beb8a38b020/screenshots/screenshot.png
   screenshot_platform: aplite
   description: |
@@ -350,6 +441,8 @@
   languages:
     - c
   hardware_platforms:
+    - aplite
+    - basalt
     - chalk
   screenshot_platform: chalk
   screenshot: https://raw.githubusercontent.com/pebble-examples/time-dots/master/screenshot.png
@@ -365,7 +458,9 @@
   languages:
     - c
   hardware_platforms:
+    - aplite
     - basalt
+    - chalk
   screenshot_platform: basalt
   screenshot: https://github.com/pebble-hacks/isotime/raw/master/screenshots/screenshot.png
   description: |
@@ -385,6 +480,7 @@
   hardware_platforms:
     - aplite
     - basalt
+    - chalk
   screenshot_platform: aplite
   screenshot: https://raw.githubusercontent.com/pebble-examples/classio-battery-connection/master/classio-battery-connection-screenshot.png
   description: |
@@ -406,6 +502,7 @@
     - chalk
     - diorite
     - emery
+    - flint
   screenshot_platform: emery
   screenshot: /images/examples/compass.png
   description: |

@@ -31,9 +31,6 @@ sidebar_only: false
       <li class="section-menu__item{% if page.url == '/pebbleos/contributing/' %} active{% endif %}">
         <a href="/pebbleos/contributing/">Contributing</a>
       </li>
-      <li class="section-menu__item{% if page.url == '/pebbleos/exposing-apis/' %} active{% endif %}">
-        <a href="/pebbleos/exposing-apis/">Exposing APIs to the SDK</a>
-      </li>
       {% for group in site.data.pebbleos.groups %}
         <li class="section-menu__item{% if page.pebbleos_group == group.slug %} open{% if page.url == group.url %} active{% endif %}{% endif %}">
           <a href="{{ group.url }}">{{ group.title }}</a>

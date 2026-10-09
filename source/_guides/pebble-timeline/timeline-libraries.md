@@ -18,14 +18,13 @@ description: |
   A list of libraries available for interacting with the Pebble timeline.
 guide_group: pebble-timeline
 order: 1
-related_examples:
- - title: Hello Timeline
-   url: https://github.com/pebble-examples/hello-timeline
- - title: Timeline TV Tracker
-   url: https://github.com/pebble-examples/timeline-tv-tracker
- - title: Timeline Push Pin
-   url: https://github.com/pebble-examples/timeline-push-pin
+published: false
 ---
+
+> Note: The timeline web API is no longer available. The Pebble mobile app
+> does not sync pins from a server. Use
+> {% guide_link pebble-timeline/timeline-local-pins "local pins" %}
+> instead.
 
 This page contains libraries that are currently available to interact with
 the timeline. You can use these to build apps and services that push pins to

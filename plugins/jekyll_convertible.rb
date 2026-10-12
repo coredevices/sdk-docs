@@ -45,7 +45,9 @@ module Jekyll
         highlight: true)
       payload = {}
       info = { :filters => [Jekyll::Filters], :registers => { :site => site, :page => payload['page'] } }
-      raw_content = render_liquid(content, payload, info, '.')
+      # Jekyll caches parsed Liquid templates by this path, so it must be
+      # unique per document or every page gets the first page's content.
+      raw_content = render_liquid(content, payload, info, relative_path)
       redcarpet.render(raw_content)
     end
 

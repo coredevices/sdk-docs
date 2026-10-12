@@ -42,6 +42,11 @@
     margin-top: 1em;
   }
 
+  p a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
   .vcenter,
   .vcenter--wrapper {
     height: 100%;

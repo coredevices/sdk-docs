@@ -4,7 +4,6 @@ author: niharika
 tags: 
 - Timeline
 banner: /images/blog/pokedex_collage.png
-image: https://assets.getpebble.com/api/file/cLf8UecrTUWnBLYQ1jDs/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 Pokemon fans are going to love the 8th winner of the Pebble Timeline Challenge, 

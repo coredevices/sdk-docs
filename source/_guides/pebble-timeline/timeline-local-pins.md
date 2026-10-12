@@ -22,17 +22,16 @@ order: 5
 ---
 
 PebbleKit JS can insert pins into the timeline directly from the phone. Local
-pins are created by the new Pebble app and synced to the watch, which means:
+pins are created by the Pebble mobile app and synced to the watch, which means:
 
 * No timeline token, API key, or appstore listing is needed, so sideloaded apps
   can use them.
 * Pins only exist on the phone that created them - they are not shared with the
   user's other phones, and cannot be created while your app's JS is not running.
 
-> The new Pebble app does not support the
-> {% guide_link pebble-timeline/timeline-public "timeline web API" %}, so pins
-> can no longer be pushed to users from a web server. Local pins are the only
-> way to add pins to the timeline.
+> The Pebble mobile app does not support the timeline web API, so pins can no
+> longer be pushed to users from a web server. Local pins are the only way to
+> add pins to the timeline from an app.
 
 
 ## Inserting a Pin
@@ -80,7 +79,7 @@ Only requests made by your app's JS are intercepted. Pins your backend pushes
 to the timeline web API will never reach the watch.
 
 > Interception can be turned off by the user with the 'Emulate Timeline
-> Webservice' setting in the Pebble app, so new apps should call
+> Webservice' setting in the Pebble mobile app, so new apps should call
 > `Pebble.insertTimelinePin()` directly.
 
 

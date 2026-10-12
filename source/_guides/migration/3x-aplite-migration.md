@@ -79,7 +79,7 @@ firmware 3.x the following important changes **MUST** be made:
   built-in PNG support, which allows a single black and white image with
   transparency to be used in place of the older compositing technique.
 
-* If your app uses either the ``Dictation`` or ``Smartstrap`` APIs, you must
+* If your app uses either the ``Dictation`` or `Smartstrap` APIs, you must
   check that any code dependant on these hardware features fails gracefully when
   they are not available. This should be done by checking for `NULL` or
   appropriate `enum` values returned from affected API calls. An example is

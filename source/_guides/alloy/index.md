@@ -31,7 +31,8 @@ modern JavaScript (ES2025, ES6++) with powerful UI frameworks and access
 to Pebble hardware features.
 
 > **Platform Support**: Alloy currently supports Emery (Pebble Time 2) and
-> Gabbro (Pebble Round 2).
+> Gabbro (Pebble Round 2). See the platform support table in
+> {% guide_link tools-and-resources/hardware-information#platform-support %}.
 
 ## Key Features
 
@@ -79,6 +80,11 @@ The simplest Alloy app:
 ```javascript
 console.log("Hello, Pebble!");
 ```
+
+
+## Rocky.js
+
+Rocky.js is no longer part of the firmware or the SDK. Alloy replaces it.
 
 ## Guides
 

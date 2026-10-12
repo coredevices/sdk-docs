@@ -53,6 +53,17 @@ action should use the ``ActionBarLayer`` or ``ActionMenu`` to give hints about
 what each button will do.
 
 
+> Note: Watchfaces do not receive button clicks. A ``ClickConfigProvider``
+> set on a watchface ``Window`` is still called, but the system handles the
+> button events itself: by default Up opens Health and Down opens the
+> timeline (both can be reassigned in the watch's Quick Launch settings),
+> Select opens the launcher and Back is used for Quick Launch, so the
+> subscribed handlers never run. Build a watchapp instead, or read
+> {% guide_link user-interfaces/app-exit-reason %} and the launch reasons in
+> {% guide_link design-and-interaction/one-click-actions %} for ways to open an
+> app from the watchface.
+
+
 ## Listening for Button Clicks
 
 Button clicks are received via a subscription to one of the types of button

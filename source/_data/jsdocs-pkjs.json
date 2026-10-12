@@ -469,7 +469,7 @@
                           },
                           {
                             "type": "text",
-                            "value": "). The payload consists of key-value pairs, where the keys \nare strings containing integers (e.g: \"0\"), or aliases for keys defined \nin package.json (e.g: \"KEY_EXAMPLE\"). Values should be integers, strings \nor byte arrays (arrays of characters). This event is not available to \n",
+                            "value": "). The payload consists of key-value pairs, where the keys \nare strings containing integers (e.g: \"0\"), or aliases for keys defined \nin package.json (e.g: \"KEY_EXAMPLE\"). Values should be integers, strings \nor byte arrays (arrays of characters).",
                             "position": {
                               "start": {
                                 "line": 12,
@@ -487,48 +487,6 @@
                                 5,
                                 5
                               ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 16,
-                                "column": 5,
-                                "offset": 757
-                              },
-                              "end": {
-                                "line": 16,
-                                "column": 36,
-                                "offset": 788
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " applications, and attempting to register it will throw an exception.",
-                            "position": {
-                              "start": {
-                                "line": 16,
-                                "column": 36,
-                                "offset": 788
-                              },
-                              "end": {
-                                "line": 16,
-                                "column": 105,
-                                "offset": 857
-                              },
-                              "indent": []
                             }
                           }
                         ],
@@ -777,817 +735,6 @@
                         1
                       ]
                     }
-                  },
-                  {
-                    "type": "listItem",
-                    "loose": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "inlineCode",
-                            "value": "message",
-                            "position": {
-                              "start": {
-                                "line": 25,
-                                "column": 5,
-                                "offset": 1369
-                              },
-                              "end": {
-                                "line": 25,
-                                "column": 14,
-                                "offset": 1378
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " - Provide a ",
-                            "position": {
-                              "start": {
-                                "line": 25,
-                                "column": 14,
-                                "offset": 1378
-                              },
-                              "end": {
-                                "line": 25,
-                                "column": 27,
-                                "offset": 1391
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "#PostMessageCallback",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "PostMessageCallback"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 25,
-                                "column": 27,
-                                "offset": 1391
-                              },
-                              "end": {
-                                "line": 25,
-                                "column": 75,
-                                "offset": 1439
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " \nas the callback. The message event is emitted every time PebbleKit JS \nreceives a ",
-                            "position": {
-                              "start": {
-                                "line": 25,
-                                "column": 75,
-                                "offset": 1439
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 16,
-                                "offset": 1531
-                              },
-                              "indent": [
-                                5,
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "#postMessage",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "postMessage"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 27,
-                                "column": 16,
-                                "offset": 1531
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 48,
-                                "offset": 1563
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " from the ",
-                            "position": {
-                              "start": {
-                                "line": 27,
-                                "column": 48,
-                                "offset": 1563
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 58,
-                                "offset": 1573
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 27,
-                                "column": 58,
-                                "offset": 1573
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 89,
-                                "offset": 1604
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "break",
-                            "position": {
-                              "start": {
-                                "line": 27,
-                                "column": 89,
-                                "offset": 1604
-                              },
-                              "end": {
-                                "line": 28,
-                                "column": 5,
-                                "offset": 1611
-                              },
-                              "indent": [
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " application. The payload contains a simple JavaScript object. (i.e. ",
-                            "position": {
-                              "start": {
-                                "line": 28,
-                                "column": 5,
-                                "offset": 1611
-                              },
-                              "end": {
-                                "line": 28,
-                                "column": 74,
-                                "offset": 1680
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "inlineCode",
-                            "value": "event.data",
-                            "position": {
-                              "start": {
-                                "line": 28,
-                                "column": 74,
-                                "offset": 1680
-                              },
-                              "end": {
-                                "line": 28,
-                                "column": 86,
-                                "offset": 1692
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": "). \nThis event type can only be used with ",
-                            "position": {
-                              "start": {
-                                "line": 28,
-                                "column": 86,
-                                "offset": 1692
-                              },
-                              "end": {
-                                "line": 29,
-                                "column": 43,
-                                "offset": 1738
-                              },
-                              "indent": [
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 29,
-                                "column": 43,
-                                "offset": 1738
-                              },
-                              "end": {
-                                "line": 29,
-                                "column": 74,
-                                "offset": 1769
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " applications.",
-                            "position": {
-                              "start": {
-                                "line": 29,
-                                "column": 74,
-                                "offset": 1769
-                              },
-                              "end": {
-                                "line": 29,
-                                "column": 88,
-                                "offset": 1783
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 25,
-                            "column": 5,
-                            "offset": 1369
-                          },
-                          "end": {
-                            "line": 29,
-                            "column": 88,
-                            "offset": 1783
-                          },
-                          "indent": [
-                            5,
-                            5,
-                            5,
-                            5
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 25,
-                        "column": 1,
-                        "offset": 1365
-                      },
-                      "end": {
-                        "line": 29,
-                        "column": 88,
-                        "offset": 1783
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1,
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "listItem",
-                    "loose": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "inlineCode",
-                            "value": "postmessageconnected",
-                            "position": {
-                              "start": {
-                                "line": 30,
-                                "column": 5,
-                                "offset": 1788
-                              },
-                              "end": {
-                                "line": 30,
-                                "column": 27,
-                                "offset": 1810
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " - Provide a ",
-                            "position": {
-                              "start": {
-                                "line": 30,
-                                "column": 27,
-                                "offset": 1810
-                              },
-                              "end": {
-                                "line": 30,
-                                "column": 40,
-                                "offset": 1823
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "#PostMessageConnectedCallback",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "PostMessageConnectedCallback"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 30,
-                                "column": 40,
-                                "offset": 1823
-                              },
-                              "end": {
-                                "line": 30,
-                                "column": 106,
-                                "offset": 1889
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " \nas the callback. The event may be emitted immediately upon subscription, \nif the subsystem is already connected. It is also emitted when connectivity is established. \nThis event type can only be used with ",
-                            "position": {
-                              "start": {
-                                "line": 30,
-                                "column": 106,
-                                "offset": 1889
-                              },
-                              "end": {
-                                "line": 33,
-                                "column": 43,
-                                "offset": 2108
-                              },
-                              "indent": [
-                                5,
-                                5,
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 33,
-                                "column": 43,
-                                "offset": 2108
-                              },
-                              "end": {
-                                "line": 33,
-                                "column": 74,
-                                "offset": 2139
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " applications.",
-                            "position": {
-                              "start": {
-                                "line": 33,
-                                "column": 74,
-                                "offset": 2139
-                              },
-                              "end": {
-                                "line": 33,
-                                "column": 88,
-                                "offset": 2153
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 30,
-                            "column": 5,
-                            "offset": 1788
-                          },
-                          "end": {
-                            "line": 33,
-                            "column": 88,
-                            "offset": 2153
-                          },
-                          "indent": [
-                            5,
-                            5,
-                            5
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 30,
-                        "column": 1,
-                        "offset": 1784
-                      },
-                      "end": {
-                        "line": 33,
-                        "column": 88,
-                        "offset": 2153
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "listItem",
-                    "loose": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "inlineCode",
-                            "value": "postmessagedisconnected",
-                            "position": {
-                              "start": {
-                                "line": 34,
-                                "column": 5,
-                                "offset": 2158
-                              },
-                              "end": {
-                                "line": 34,
-                                "column": 30,
-                                "offset": 2183
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " - Provide a ",
-                            "position": {
-                              "start": {
-                                "line": 34,
-                                "column": 30,
-                                "offset": 2183
-                              },
-                              "end": {
-                                "line": 34,
-                                "column": 43,
-                                "offset": 2196
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "#PostMessageDisconnectedCallback",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "PostMessageDisconnectedCallback"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 34,
-                                "column": 43,
-                                "offset": 2196
-                              },
-                              "end": {
-                                "line": 34,
-                                "column": 115,
-                                "offset": 2268
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " \nas the callback. The event may be emitted immediately upon subscription, \nif the subsystem is already disconnected. It is also emitted when connectivity is lost. \nThis event type can only be used with ",
-                            "position": {
-                              "start": {
-                                "line": 34,
-                                "column": 115,
-                                "offset": 2268
-                              },
-                              "end": {
-                                "line": 37,
-                                "column": 43,
-                                "offset": 2483
-                              },
-                              "indent": [
-                                5,
-                                5,
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 37,
-                                "column": 43,
-                                "offset": 2483
-                              },
-                              "end": {
-                                "line": 37,
-                                "column": 74,
-                                "offset": 2514
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " applications.",
-                            "position": {
-                              "start": {
-                                "line": 37,
-                                "column": 74,
-                                "offset": 2514
-                              },
-                              "end": {
-                                "line": 37,
-                                "column": 88,
-                                "offset": 2528
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 34,
-                            "column": 5,
-                            "offset": 2158
-                          },
-                          "end": {
-                            "line": 37,
-                            "column": 88,
-                            "offset": 2528
-                          },
-                          "indent": [
-                            5,
-                            5,
-                            5
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 34,
-                        "column": 1,
-                        "offset": 2154
-                      },
-                      "end": {
-                        "line": 37,
-                        "column": 88,
-                        "offset": 2528
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "listItem",
-                    "loose": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "inlineCode",
-                            "value": "postmessageerror",
-                            "position": {
-                              "start": {
-                                "line": 38,
-                                "column": 5,
-                                "offset": 2533
-                              },
-                              "end": {
-                                "line": 38,
-                                "column": 23,
-                                "offset": 2551
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " - Provide a ",
-                            "position": {
-                              "start": {
-                                "line": 38,
-                                "column": 23,
-                                "offset": 2551
-                              },
-                              "end": {
-                                "line": 38,
-                                "column": 36,
-                                "offset": 2564
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "#PostMessageErrorCallback",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "PostMessageErrorCallback"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 38,
-                                "column": 36,
-                                "offset": 2564
-                              },
-                              "end": {
-                                "line": 38,
-                                "column": 94,
-                                "offset": 2622
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " \nas the callback. The event is emitted when a transmission error occurrs. \nYour message has not been delivered. The type of error is not provided. \nThis event type can only be used with ",
-                            "position": {
-                              "start": {
-                                "line": 38,
-                                "column": 94,
-                                "offset": 2622
-                              },
-                              "end": {
-                                "line": 41,
-                                "column": 43,
-                                "offset": 2821
-                              },
-                              "indent": [
-                                5,
-                                5,
-                                5
-                              ]
-                            }
-                          },
-                          {
-                            "type": "link",
-                            "url": "/docs/rockyjs/",
-                            "title": null,
-                            "jsdoc": true,
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "Rocky.js"
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 41,
-                                "column": 43,
-                                "offset": 2821
-                              },
-                              "end": {
-                                "line": 41,
-                                "column": 74,
-                                "offset": 2852
-                              },
-                              "indent": []
-                            }
-                          },
-                          {
-                            "type": "text",
-                            "value": " applications.",
-                            "position": {
-                              "start": {
-                                "line": 41,
-                                "column": 74,
-                                "offset": 2852
-                              },
-                              "end": {
-                                "line": 41,
-                                "column": 88,
-                                "offset": 2866
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 38,
-                            "column": 5,
-                            "offset": 2533
-                          },
-                          "end": {
-                            "line": 41,
-                            "column": 88,
-                            "offset": 2866
-                          },
-                          "indent": [
-                            5,
-                            5,
-                            5
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 38,
-                        "column": 1,
-                        "offset": 2529
-                      },
-                      "end": {
-                        "line": 41,
-                        "column": 88,
-                        "offset": 2866
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1
-                      ]
-                    }
                   }
                 ],
                 "position": {
@@ -1655,7 +802,7 @@
           "tags": [
             {
               "title": "desc",
-              "description": "Adds a listener for PebbleKit JS events, such as when an ``AppMessage`` is\n    received or the configuration view is opened or closed.\n\n  #### Event Type Options\n\n  Possible values:\n\n  * `ready` - The watchapp has been launched and the PebbleKit JS component \n    is now ready to receive events.\n  * `appmessage` - The watch sent an ``AppMessage`` to PebbleKit JS. The \n    AppMessage ``Dictionary`` is contained in the payload property (i.e: \n    `event.payload`). The payload consists of key-value pairs, where the keys \n    are strings containing integers (e.g: \"0\"), or aliases for keys defined \n    in package.json (e.g: \"KEY_EXAMPLE\"). Values should be integers, strings \n    or byte arrays (arrays of characters). This event is not available to \n    {@link /docs/rockyjs/ Rocky.js} applications, and attempting to register it will throw an exception.\n  * `showConfiguration` - The user has requested the app's configuration \n    webview to be displayed. This can occur either upon the app's initial \n    install or when the user taps 'Settings' in the 'My Pebble' view within \n    the phone app.\n  * `webviewclosed` - The configuration webview was closed by the user. If \n    the webview had a response, it will be contained in the response property \n    (i.e: `event.response`). This response can be used to feed back user \n    preferences to the watchapp.\n  * `message` - Provide a {@link #PostMessageCallback PostMessageCallback} \n    as the callback. The message event is emitted every time PebbleKit JS \n    receives a {@link #postMessage postMessage} from the {@link /docs/rockyjs/ Rocky.js}  \n     application. The payload contains a simple JavaScript object. (i.e. `event.data`). \n    This event type can only be used with {@link /docs/rockyjs/ Rocky.js} applications.\n  * `postmessageconnected` - Provide a {@link #PostMessageConnectedCallback PostMessageConnectedCallback} \n    as the callback. The event may be emitted immediately upon subscription, \n    if the subsystem is already connected. It is also emitted when connectivity is established. \n    This event type can only be used with {@link /docs/rockyjs/ Rocky.js} applications.\n  * `postmessagedisconnected` - Provide a {@link #PostMessageDisconnectedCallback PostMessageDisconnectedCallback} \n    as the callback. The event may be emitted immediately upon subscription, \n    if the subsystem is already disconnected. It is also emitted when connectivity is lost. \n    This event type can only be used with {@link /docs/rockyjs/ Rocky.js} applications.\n  * `postmessageerror` - Provide a {@link #PostMessageErrorCallback PostMessageErrorCallback} \n    as the callback. The event is emitted when a transmission error occurrs. \n    Your message has not been delivered. The type of error is not provided. \n    This event type can only be used with {@link /docs/rockyjs/ Rocky.js} applications.",
+              "description": "Adds a listener for PebbleKit JS events, such as when an ``AppMessage`` is\n    received or the configuration view is opened or closed.\n\n  #### Event Type Options\n\n  Possible values:\n\n  * `ready` - The watchapp has been launched and the PebbleKit JS component \n    is now ready to receive events.\n  * `appmessage` - The watch sent an ``AppMessage`` to PebbleKit JS. The \n    AppMessage ``Dictionary`` is contained in the payload property (i.e: \n    `event.payload`). The payload consists of key-value pairs, where the keys \n    are strings containing integers (e.g: \"0\"), or aliases for keys defined \n    in package.json (e.g: \"KEY_EXAMPLE\"). Values should be integers, strings \n    or byte arrays (arrays of characters).\n  * `showConfiguration` - The user has requested the app's configuration \n    webview to be displayed. This can occur either upon the app's initial \n    install or when the user taps 'Settings' in the 'My Pebble' view within \n    the phone app.\n  * `webviewclosed` - The configuration webview was closed by the user. If \n    the webview had a response, it will be contained in the response property \n    (i.e: `event.response`). This response can be used to feed back user \n    preferences to the watchapp.\n",
               "lineNumber": 1
             },
             {
@@ -1900,436 +1047,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Attaches an event handler to the specified events. Synonymous with \n",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 68
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "#addEventListener",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Pebble.addEventListener()",
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 2,
-                            "offset": 69
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 27,
-                            "offset": 94
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 68
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 47,
-                        "offset": 114
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ". Only applicable to \n",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 47,
-                        "offset": 114
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 1,
-                        "offset": 136
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "/docs/rockyjs/",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Rocky.js"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 1,
-                        "offset": 136
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 32,
-                        "offset": 167
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " applications.",
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 32,
-                        "offset": 167
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 46,
-                        "offset": 181
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 46,
-                    "offset": 181
-                  },
-                  "indent": [
-                    1,
-                    1
-                  ]
-                }
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "inlineCode",
-                    "value": "Pebble.on(type, callback);",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 1,
-                        "offset": 183
-                      },
-                      "end": {
-                        "line": 5,
-                        "column": 29,
-                        "offset": 211
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 5,
-                    "column": 1,
-                    "offset": 183
-                  },
-                  "end": {
-                    "line": 5,
-                    "column": 29,
-                    "offset": 211
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 5,
-                "column": 29,
-                "offset": 211
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "desc",
-              "description": "Attaches an event handler to the specified events. Synonymous with \n[Pebble.addEventListener()](#addEventListener). Only applicable to \n{@link /docs/rockyjs/ Rocky.js} applications.\n\n`Pebble.on(type, callback);`",
-              "lineNumber": 1
-            },
-            {
-              "title": "param",
-              "description": "The type of the event, from the list described above.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "String"
-              },
-              "name": "type"
-            },
-            {
-              "title": "param",
-              "description": "The developer defined {@link #EventCallback EventCallback}\n  to receive any events of the type specified that occur.",
-              "lineNumber": 8,
-              "type": {
-                "type": "NameExpression",
-                "name": "EventCallback"
-              },
-              "name": "callback"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 62,
-              "column": 0
-            },
-            "end": {
-              "line": 72,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 73,
-                "column": 0
-              },
-              "end": {
-                "line": 73,
-                "column": 41
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "params": [
-            {
-              "name": "type",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The type of the event, from the list described above.",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 54,
-                            "offset": 53
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 54,
-                        "offset": 53
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 54,
-                    "offset": 53
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "String"
-              }
-            },
-            {
-              "name": "callback",
-              "lineNumber": 8,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The developer defined ",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 23,
-                            "offset": 22
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "link",
-                        "url": "#EventCallback",
-                        "title": null,
-                        "jsdoc": true,
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "EventCallback"
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 23,
-                            "offset": 22
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 59,
-                            "offset": 58
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": "\n  to receive any events of the type specified that occur.",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 59,
-                            "offset": 58
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 58,
-                            "offset": 116
-                          },
-                          "indent": [
-                            1
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 58,
-                        "offset": 116
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 58,
-                    "offset": 116
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "EventCallback"
-              }
-            }
-          ],
-          "name": "on",
-          "kind": "function",
-          "memberof": "Pebble",
-          "scope": "static",
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "on",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "Pebble.on"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "Remove an existing event listener previously registered with \n  ",
                     "position": {
                       "start": {
@@ -2380,60 +1097,6 @@
                         "line": 2,
                         "column": 49,
                         "offset": 110
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " or ",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 49,
-                        "offset": 110
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 53,
-                        "offset": 114
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "#on",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Pebble.on()",
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 54,
-                            "offset": 115
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 65,
-                            "offset": 126
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 53,
-                        "offset": 114
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 71,
-                        "offset": 132
                       },
                       "indent": []
                     }
@@ -2750,452 +1413,6 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Remove an existing event handler from the specified events. Synonymous \n       with ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 13,
-                        "offset": 84
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "#removeEventListener",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Pebble.removeEventListener()",
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 14,
-                            "offset": 85
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 42,
-                            "offset": 113
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 13,
-                        "offset": 84
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 65,
-                        "offset": 136
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ". Only applicable to \n      ",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 65,
-                        "offset": 136
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 7,
-                        "offset": 164
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "/docs/rockyjs/",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Rocky.js"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 7,
-                        "offset": 164
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 38,
-                        "offset": 195
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " applications.",
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 38,
-                        "offset": 195
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 52,
-                        "offset": 209
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 52,
-                    "offset": 209
-                  },
-                  "indent": [
-                    1,
-                    1
-                  ]
-                }
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "inlineCode",
-                    "value": "Pebble.off(type, callback);",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 1,
-                        "offset": 211
-                      },
-                      "end": {
-                        "line": 5,
-                        "column": 30,
-                        "offset": 240
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 5,
-                    "column": 1,
-                    "offset": 211
-                  },
-                  "end": {
-                    "line": 5,
-                    "column": 30,
-                    "offset": 240
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 5,
-                "column": 30,
-                "offset": 240
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "desc",
-              "description": "Remove an existing event handler from the specified events. Synonymous \n       with [Pebble.removeEventListener()](#removeEventListener). Only applicable to \n      {@link /docs/rockyjs/ Rocky.js} applications.\n\n`Pebble.off(type, callback);`",
-              "lineNumber": 1
-            },
-            {
-              "title": "param",
-              "description": "The type of the event listener to be removed. See \n  [Pebble.addEventListener()](#addEventListener) for a list of available types.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "String"
-              },
-              "name": "type"
-            },
-            {
-              "title": "param",
-              "description": "The existing developer-defined function that was \n  previously registered.",
-              "lineNumber": 9,
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              },
-              "name": "callback"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 86,
-              "column": 0
-            },
-            "end": {
-              "line": 97,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 98,
-                "column": 0
-              },
-              "end": {
-                "line": 98,
-                "column": 42
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "params": [
-            {
-              "name": "type",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The type of the event listener to be removed. See \n  ",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 3,
-                            "offset": 53
-                          },
-                          "indent": [
-                            1
-                          ]
-                        }
-                      },
-                      {
-                        "type": "link",
-                        "title": null,
-                        "url": "#addEventListener",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "Pebble.addEventListener()",
-                            "position": {
-                              "start": {
-                                "line": 2,
-                                "column": 4,
-                                "offset": 54
-                              },
-                              "end": {
-                                "line": 2,
-                                "column": 29,
-                                "offset": 79
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 3,
-                            "offset": 53
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 49,
-                            "offset": 99
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": " for a list of available types.",
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 49,
-                            "offset": 99
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 80,
-                            "offset": 130
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 80,
-                        "offset": 130
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 80,
-                    "offset": 130
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "String"
-              }
-            },
-            {
-              "name": "callback",
-              "lineNumber": 9,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "The existing developer-defined function that was \n  previously registered.",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 25,
-                            "offset": 74
-                          },
-                          "indent": [
-                            1
-                          ]
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 25,
-                        "offset": 74
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 25,
-                    "offset": 74
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              }
-            }
-          ],
-          "name": "off",
-          "kind": "function",
-          "memberof": "Pebble",
-          "scope": "static",
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "off",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "Pebble.off"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
                     "value": "Show a simple modal notification on the connected watch.",
                     "position": {
                       "start": {
@@ -3480,7 +1697,7 @@
                   },
                   {
                     "type": "text",
-                    "value": " \n    Please note that ",
+                    "value": " ",
                     "position": {
                       "start": {
                         "line": 4,
@@ -3495,160 +1712,6 @@
                       "indent": [
                         1
                       ]
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "sendAppMessage",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 22,
-                        "offset": 296
-                      },
-                      "end": {
-                        "line": 5,
-                        "column": 38,
-                        "offset": 312
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " is ",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 38,
-                        "offset": 312
-                      },
-                      "end": {
-                        "line": 5,
-                        "column": 42,
-                        "offset": 316
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "undefined",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 42,
-                        "offset": 316
-                      },
-                      "end": {
-                        "line": 5,
-                        "column": 53,
-                        "offset": 327
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " in \n    ",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 53,
-                        "offset": 327
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 5,
-                        "offset": 336
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "/docs/rockyjs/",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Rocky.js"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 5,
-                        "offset": 336
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 36,
-                        "offset": 367
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " applications, see ",
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 36,
-                        "offset": 367
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 55,
-                        "offset": 386
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "#postMessage",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "postMessage"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 55,
-                        "offset": 386
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 87,
-                        "offset": 418
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " instead.",
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 87,
-                        "offset": 418
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 96,
-                        "offset": 427
-                      },
-                      "indent": []
                     }
                   }
                 ],
@@ -3689,7 +1752,7 @@
           "tags": [
             {
               "title": "desc",
-              "description": "Send an AppMessage to the app running on the watch. Messages should be \n    in the form of JSON objects containing key-value pairs. See \n    Pebble.sendAppMessage() for valid key and value data types. \n    `Pebble.sendAppMessage = function(data, onSuccess, onFailure) { };` \n    Please note that `sendAppMessage` is `undefined` in \n    {@link /docs/rockyjs/ Rocky.js} applications, see {@link #postMessage postMessage} instead.",
+              "description": "Send an AppMessage to the app running on the watch. Messages should be \n    in the form of JSON objects containing key-value pairs. See \n    Pebble.sendAppMessage() for valid key and value data types. \n    `Pebble.sendAppMessage = function(data, onSuccess, onFailure) { };`",
               "lineNumber": 1
             },
             {
@@ -4125,488 +2188,26 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "Sends a message to the ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 24,
-                        "offset": 23
-                      },
-                      "indent": []
-                    }
+                    "value": "The Pebble mobile app returns a token only for apps installed from the appstore. Sideloaded apps receive the failure callback. The timeline web API is no longer available, so the token cannot be used to push pins. Use "
                   },
                   {
                     "type": "link",
-                    "url": "/docs/rockyjs/",
+                    "url": "#insertTimelinePin",
                     "title": null,
                     "jsdoc": true,
                     "children": [
                       {
                         "type": "text",
-                        "value": "Rocky.js"
+                        "value": "insertTimelinePin"
                       }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 24,
-                        "offset": 23
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 55,
-                        "offset": 54
-                      },
-                      "indent": []
-                    }
+                    ]
                   },
                   {
                     "type": "text",
-                    "value": " component. Please be aware \n   that messages should be kept concise. Each message is queued, so \n   ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 55,
-                        "offset": 54
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 4,
-                        "offset": 155
-                      },
-                      "indent": [
-                        1,
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "postMessage()",
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 4,
-                        "offset": 155
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 19,
-                        "offset": 170
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " can be called multiple times immediately. If there is a momentary loss of connectivity, queued \n   messages may still be delivered, or automatically removed from the queue \n   after a few seconds of failed connectivity. Any transmission failures, or \n   out of memory errors will be raised via the ",
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 19,
-                        "offset": 170
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 48,
-                        "offset": 469
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "postmessageerror",
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 48,
-                        "offset": 469
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 66,
-                        "offset": 487
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": " event.",
-                    "position": {
-                      "start": {
-                        "line": 6,
-                        "column": 66,
-                        "offset": 487
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 73,
-                        "offset": 494
-                      },
-                      "indent": []
-                    }
+                    "value": " instead."
                   }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 73,
-                    "offset": 494
-                  },
-                  "indent": [
-                    1,
-                    1,
-                    1,
-                    1,
-                    1
-                  ]
-                }
+                ]
               },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "inlineCode",
-                    "value": "Pebble.postMessage({temperature: 30, conditions: 'Sunny'});",
-                    "position": {
-                      "start": {
-                        "line": 8,
-                        "column": 1,
-                        "offset": 496
-                      },
-                      "end": {
-                        "line": 8,
-                        "column": 62,
-                        "offset": 557
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 8,
-                    "column": 1,
-                    "offset": 496
-                  },
-                  "end": {
-                    "line": 8,
-                    "column": 62,
-                    "offset": 557
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 8,
-                "column": 62,
-                "offset": 557
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "desc",
-              "description": "Sends a message to the {@link /docs/rockyjs/ Rocky.js} component. Please be aware \n   that messages should be kept concise. Each message is queued, so \n   `postMessage()` can be called multiple times immediately. If there is a momentary loss of connectivity, queued \n   messages may still be delivered, or automatically removed from the queue \n   after a few seconds of failed connectivity. Any transmission failures, or \n   out of memory errors will be raised via the `postmessageerror` event.\n\n`Pebble.postMessage({temperature: 30, conditions: 'Sunny'});`",
-              "lineNumber": 1
-            },
-            {
-              "title": "param",
-              "description": "A {@link #PostMessageCallback PostMessageCallback} containing \n        the data to deliver to the watch.\n        This will be received in the `data` field of the `type` delivered to \n        the `on('message', ...)` handler.",
-              "lineNumber": 10,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "data"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 128,
-              "column": 0
-            },
-            "end": {
-              "line": 142,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 143,
-                "column": 0
-              },
-              "end": {
-                "line": 143,
-                "column": 40
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "params": [
-            {
-              "name": "data",
-              "lineNumber": 10,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "A ",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 3,
-                            "offset": 2
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "link",
-                        "url": "#PostMessageCallback",
-                        "title": null,
-                        "jsdoc": true,
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "PostMessageCallback"
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 3,
-                            "offset": 2
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 51,
-                            "offset": 50
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": " containing \n        the data to deliver to the watch.\n        This will be received in the ",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 51,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 38,
-                            "offset": 142
-                          },
-                          "indent": [
-                            1,
-                            1
-                          ]
-                        }
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "data",
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 38,
-                            "offset": 142
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 44,
-                            "offset": 148
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": " field of the ",
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 44,
-                            "offset": 148
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 58,
-                            "offset": 162
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "type",
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 58,
-                            "offset": 162
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 64,
-                            "offset": 168
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": " delivered to \n        the ",
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 64,
-                            "offset": 168
-                          },
-                          "end": {
-                            "line": 4,
-                            "column": 13,
-                            "offset": 195
-                          },
-                          "indent": [
-                            1
-                          ]
-                        }
-                      },
-                      {
-                        "type": "inlineCode",
-                        "value": "on('message', ...)",
-                        "position": {
-                          "start": {
-                            "line": 4,
-                            "column": 13,
-                            "offset": 195
-                          },
-                          "end": {
-                            "line": 4,
-                            "column": 33,
-                            "offset": 215
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "text",
-                        "value": " handler.",
-                        "position": {
-                          "start": {
-                            "line": 4,
-                            "column": 33,
-                            "offset": 215
-                          },
-                          "end": {
-                            "line": 4,
-                            "column": 42,
-                            "offset": 224
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 4,
-                        "column": 42,
-                        "offset": 224
-                      },
-                      "indent": [
-                        1,
-                        1,
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 4,
-                    "column": 42,
-                    "offset": 224
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "name": "postMessage",
-          "kind": "function",
-          "memberof": "Pebble",
-          "scope": "static",
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "postMessage",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "Pebble.postMessage"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
               {
                 "type": "paragraph",
                 "children": [
@@ -4960,6 +2561,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Subscribe the user to a timeline topic for your app. This can be used \n    to filter the different pins a user could receive according to their \n    preferences, as well as maintain groups of users.",
                     "position": {
                       "start": {
@@ -5294,6 +2920,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Unsubscribe the user from a timeline topic for your app. Once \n    unsubscribed, the user will no longer receive any pins pushed to this \n    topic.",
                     "position": {
                       "start": {
@@ -5619,6 +3270,31 @@
           "description": {
             "type": "root",
             "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The timeline web API is no longer available and the callbacks never fire. Use "
+                  },
+                  {
+                    "type": "link",
+                    "url": "#insertTimelinePin",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "insertTimelinePin"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
               {
                 "type": "paragraph",
                 "children": [
@@ -6847,6 +4523,31 @@
                 "children": [
                   {
                     "type": "text",
+                    "value": "Not supported in the Pebble mobile app. The callbacks never fire. Use the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/user-interfaces/appglance-c/",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "C AppGlance API"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " from the watchapp instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
                     "value": "Triggers a reload of the app glance which first clears any existing \n slices and then adds the provided slices.",
                     "position": {
                       "start": {
@@ -7694,6 +5395,783 @@
             }
           ],
           "namespace": "Pebble.openURL"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the installed plugins. Each entry has "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "uuid"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "sources"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "actions"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", copied from the plugin's manifest. Returns an empty array when the call fails."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Returns the installed plugins, with their sources and actions.",
+              "lineNumber": 1
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "description": "An array of plugin descriptions."
+            }
+          ],
+          "kind": "function",
+          "name": "enumeratePlugins",
+          "memberof": "Pebble",
+          "scope": "static",
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Array"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An array of plugin descriptions."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "enumeratePlugins",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.enumeratePlugins"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Subscribes to one item of one category and delivers every update to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "config.onData"
+                  },
+                  {
+                    "type": "text",
+                    "value": " as an envelope with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "pluginUuid"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "validUntilMs"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "instances"
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Throws when "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "category"
+                  },
+                  {
+                    "type": "text",
+                    "value": " or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "item"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is missing. Failures the Pebble mobile app detects, such as no plugin for the item or a missing permission, are reported to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "config.onError"
+                  },
+                  {
+                    "type": "text",
+                    "value": " as "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ code, message }"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Subscribes to a plugin source and delivers updates to config.onData.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "config",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "An object with category, item, and optional properties, plugin, iconPixelSize, onData and onError."
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "A subscription with an unsubscribe() method."
+            }
+          ],
+          "kind": "function",
+          "name": "subscribeToSource",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "config",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An object with "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "category"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "item"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (required), and optional "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "properties"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (array of property names), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "plugin"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (UUID of a preferred plugin), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "iconPixelSize"
+                      },
+                      {
+                        "type": "text",
+                        "value": " ("
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "{ w, h }"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", needed for "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "icon"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "image"
+                      },
+                      {
+                        "type": "text",
+                        "value": " shapes), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "onData"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "onError"
+                      },
+                      {
+                        "type": "text",
+                        "value": " callbacks."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A subscription object with an "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "unsubscribe()"
+                      },
+                      {
+                        "type": "text",
+                        "value": " method. The subscription also ends when the app's JavaScript stops."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "subscribeToSource",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.subscribeToSource"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Invokes one action on one plugin. The returned Promise always resolves: with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ ok: true, text, refreshed }"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on success, or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "{ ok: false, code, message }"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", with text, refreshed and message omitted when the plugin did not set them. Throws when "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "plugin"
+                  },
+                  {
+                    "type": "text",
+                    "value": " or "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "action"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is missing. Actions never fall back to another plugin."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Invokes a plugin action and resolves with its result.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "config",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "An object with plugin, action, and optional args and timeoutMs."
+            },
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              },
+              "description": "A Promise that resolves with the action result."
+            }
+          ],
+          "kind": "function",
+          "name": "invokeAction",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "config",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An object with "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "plugin"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (the plugin's UUID) and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "action"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (required), "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "args"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (an object matching the action's parameters schema, default "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "{}"
+                      },
+                      {
+                        "type": "text",
+                        "value": ") and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "timeoutMs"
+                      },
+                      {
+                        "type": "text",
+                        "value": " (1 to 60000, default 15000)."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "returns": [
+            {
+              "type": {
+                "type": "NameExpression",
+                "name": "Promise"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A Promise that resolves with the action result."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "invokeAction",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.invokeAction"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Pushes a message to the app's own settings page while that page is open. The page receives it as a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "message"
+                  },
+                  {
+                    "type": "text",
+                    "value": " event with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "e.target"
+                  },
+                  {
+                    "type": "text",
+                    "value": " set to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "\"pkjs\""
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "e.data"
+                  },
+                  {
+                    "type": "text",
+                    "value": " set to the message. There is no reply, and nothing happens when no page is open."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Preview."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Does nothing useful until the plugins preview is turned on in the Pebble mobile app. The API will change. See the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/guides/plugins/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Plugins (Preview) guide"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "desc",
+              "description": "Pushes a message to the app's open settings page.",
+              "lineNumber": 1
+            },
+            {
+              "title": "param",
+              "name": "message",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": "Any JSON value to deliver to the page."
+            }
+          ],
+          "kind": "function",
+          "name": "sendConfigMessage",
+          "memberof": "Pebble",
+          "scope": "static",
+          "params": [
+            {
+              "name": "message",
+              "lineNumber": 1,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Any JSON value to deliver to the page."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "members": {
+            "instance": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Pebble",
+              "kind": "namespace"
+            },
+            {
+              "name": "sendConfigMessage",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Pebble.sendConfigMessage"
         },
         {
           "description": {
@@ -9584,1618 +8062,6 @@
             }
           ],
           "namespace": "PebbleAppGlanceReloadSuccessCallback"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The callback function signature to be used with the ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "message",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 62,
-                        "offset": 61
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": "\n   ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 62,
-                        "offset": 61
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 65
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "#on",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "event"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 65
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 82
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ".",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 82
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 22,
-                        "offset": 83
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 22,
-                    "offset": 83
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 22,
-                "offset": 83
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 1,
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              },
-              "name": "PostMessageCallback"
-            },
-            {
-              "title": "memberof",
-              "description": "Pebble",
-              "lineNumber": 2
-            },
-            {
-              "title": "desc",
-              "description": "The callback function signature to be used with the `message`\n   {@link #on event}.",
-              "lineNumber": 4
-            },
-            {
-              "title": "param",
-              "description": "An object containing information about the event:\n  * `type` - The type of event which was triggered.\n  * `data` - The data sent within the message.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "event"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 336,
-              "column": 0
-            },
-            "end": {
-              "line": 346,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 264,
-                "column": 0
-              },
-              "end": {
-                "line": 264,
-                "column": 35
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "kind": "typedef",
-          "name": "PostMessageCallback",
-          "type": {
-            "type": "NameExpression",
-            "name": "Function"
-          },
-          "memberof": "Pebble",
-          "params": [
-            {
-              "name": "event",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "An object containing information about the event:",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 50,
-                            "offset": 49
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 50,
-                        "offset": 49
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "list",
-                    "ordered": false,
-                    "start": null,
-                    "loose": false,
-                    "children": [
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "type",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 5,
-                                    "offset": 54
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The type of event which was triggered.",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 52,
-                                    "offset": 101
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 2,
-                                "column": 5,
-                                "offset": 54
-                              },
-                              "end": {
-                                "line": 2,
-                                "column": 52,
-                                "offset": 101
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 1,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 52,
-                            "offset": 101
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "data",
-                                "position": {
-                                  "start": {
-                                    "line": 3,
-                                    "column": 5,
-                                    "offset": 106
-                                  },
-                                  "end": {
-                                    "line": 3,
-                                    "column": 11,
-                                    "offset": 112
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The data sent within the message.",
-                                "position": {
-                                  "start": {
-                                    "line": 3,
-                                    "column": 11,
-                                    "offset": 112
-                                  },
-                                  "end": {
-                                    "line": 3,
-                                    "column": 47,
-                                    "offset": 148
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 3,
-                                "column": 5,
-                                "offset": 106
-                              },
-                              "end": {
-                                "line": 3,
-                                "column": 47,
-                                "offset": 148
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 1,
-                            "offset": 102
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 47,
-                            "offset": 148
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 50
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 47,
-                        "offset": 148
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 47,
-                    "offset": 148
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "PostMessageCallback",
-              "kind": "typedef"
-            }
-          ],
-          "namespace": "PebblePostMessageCallback"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The callback function signature to be used with the ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "postmessageerror",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 71,
-                        "offset": 70
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": "\n   ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 71,
-                        "offset": 70
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 74
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "#on",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "event"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 74
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 91
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ".",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 91
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 22,
-                        "offset": 92
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 22,
-                    "offset": 92
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 22,
-                "offset": 92
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 1,
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              },
-              "name": "PostMessageErrorCallback"
-            },
-            {
-              "title": "memberof",
-              "description": "Pebble",
-              "lineNumber": 2
-            },
-            {
-              "title": "desc",
-              "description": "The callback function signature to be used with the `postmessageerror`\n   {@link #on event}.",
-              "lineNumber": 4
-            },
-            {
-              "title": "param",
-              "description": "An object containing information about the event:\n  * `type` - The type of event which was triggered.\n  * `data` - The data failed to send within the message.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "event"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 348,
-              "column": 0
-            },
-            "end": {
-              "line": 358,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 264,
-                "column": 0
-              },
-              "end": {
-                "line": 264,
-                "column": 35
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "kind": "typedef",
-          "name": "PostMessageErrorCallback",
-          "type": {
-            "type": "NameExpression",
-            "name": "Function"
-          },
-          "memberof": "Pebble",
-          "params": [
-            {
-              "name": "event",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "An object containing information about the event:",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 50,
-                            "offset": 49
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 50,
-                        "offset": 49
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "list",
-                    "ordered": false,
-                    "start": null,
-                    "loose": false,
-                    "children": [
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "type",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 5,
-                                    "offset": 54
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The type of event which was triggered.",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 52,
-                                    "offset": 101
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 2,
-                                "column": 5,
-                                "offset": 54
-                              },
-                              "end": {
-                                "line": 2,
-                                "column": 52,
-                                "offset": 101
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 1,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 52,
-                            "offset": 101
-                          },
-                          "indent": []
-                        }
-                      },
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "data",
-                                "position": {
-                                  "start": {
-                                    "line": 3,
-                                    "column": 5,
-                                    "offset": 106
-                                  },
-                                  "end": {
-                                    "line": 3,
-                                    "column": 11,
-                                    "offset": 112
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The data failed to send within the message.",
-                                "position": {
-                                  "start": {
-                                    "line": 3,
-                                    "column": 11,
-                                    "offset": 112
-                                  },
-                                  "end": {
-                                    "line": 3,
-                                    "column": 57,
-                                    "offset": 158
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 3,
-                                "column": 5,
-                                "offset": 106
-                              },
-                              "end": {
-                                "line": 3,
-                                "column": 57,
-                                "offset": 158
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 3,
-                            "column": 1,
-                            "offset": 102
-                          },
-                          "end": {
-                            "line": 3,
-                            "column": 57,
-                            "offset": 158
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 50
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 57,
-                        "offset": 158
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 57,
-                    "offset": 158
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "PostMessageErrorCallback",
-              "kind": "typedef"
-            }
-          ],
-          "namespace": "PebblePostMessageErrorCallback"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The callback function signature to be used with the ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "postmessageconnected",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 75,
-                        "offset": 74
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": "\n   ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 75,
-                        "offset": 74
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 78
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "#on",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "event"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 78
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 95
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ".",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 95
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 22,
-                        "offset": 96
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 22,
-                    "offset": 96
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 22,
-                "offset": 96
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 1,
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              },
-              "name": "PostMessageConnectedCallback"
-            },
-            {
-              "title": "memberof",
-              "description": "Pebble",
-              "lineNumber": 2
-            },
-            {
-              "title": "desc",
-              "description": "The callback function signature to be used with the `postmessageconnected`\n   {@link #on event}.",
-              "lineNumber": 4
-            },
-            {
-              "title": "param",
-              "description": "An object containing information about the event:\n  * `type` - The type of event which was triggered.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "event"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 360,
-              "column": 0
-            },
-            "end": {
-              "line": 369,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 264,
-                "column": 0
-              },
-              "end": {
-                "line": 264,
-                "column": 35
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "kind": "typedef",
-          "name": "PostMessageConnectedCallback",
-          "type": {
-            "type": "NameExpression",
-            "name": "Function"
-          },
-          "memberof": "Pebble",
-          "params": [
-            {
-              "name": "event",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "An object containing information about the event:",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 50,
-                            "offset": 49
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 50,
-                        "offset": 49
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "list",
-                    "ordered": false,
-                    "start": null,
-                    "loose": false,
-                    "children": [
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "type",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 5,
-                                    "offset": 54
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The type of event which was triggered.",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 52,
-                                    "offset": 101
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 2,
-                                "column": 5,
-                                "offset": 54
-                              },
-                              "end": {
-                                "line": 2,
-                                "column": 52,
-                                "offset": 101
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 1,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 52,
-                            "offset": 101
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 50
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 52,
-                        "offset": 101
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 52,
-                    "offset": 101
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "PostMessageConnectedCallback",
-              "kind": "typedef"
-            }
-          ],
-          "namespace": "PebblePostMessageConnectedCallback"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "The callback function signature to be used with the ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "inlineCode",
-                    "value": "postmessagedisconnected",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 53,
-                        "offset": 52
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 78,
-                        "offset": 77
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": "\n   ",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 78,
-                        "offset": 77
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 81
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  },
-                  {
-                    "type": "link",
-                    "url": "#on",
-                    "title": null,
-                    "jsdoc": true,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "event"
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 4,
-                        "offset": 81
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 98
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "text",
-                    "value": ".",
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 21,
-                        "offset": 98
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 22,
-                        "offset": 99
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 22,
-                    "offset": 99
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 22,
-                "offset": 99
-              }
-            }
-          },
-          "tags": [
-            {
-              "title": "typedef",
-              "description": null,
-              "lineNumber": 1,
-              "type": {
-                "type": "NameExpression",
-                "name": "Function"
-              },
-              "name": "PostMessageDisconnectedCallback"
-            },
-            {
-              "title": "memberof",
-              "description": "Pebble",
-              "lineNumber": 2
-            },
-            {
-              "title": "desc",
-              "description": "The callback function signature to be used with the `postmessagedisconnected`\n   {@link #on event}.",
-              "lineNumber": 4
-            },
-            {
-              "title": "param",
-              "description": "An object containing information about the event:\n  * `type` - The type of event which was triggered.",
-              "lineNumber": 7,
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              },
-              "name": "event"
-            }
-          ],
-          "loc": {
-            "start": {
-              "line": 371,
-              "column": 0
-            },
-            "end": {
-              "line": 380,
-              "column": 3
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 264,
-                "column": 0
-              },
-              "end": {
-                "line": 264,
-                "column": 35
-              }
-            },
-            "file": "/Users/devsite/Pebble/developer.getpebble.com/js-docs/pkjs/Pebble.js"
-          },
-          "kind": "typedef",
-          "name": "PostMessageDisconnectedCallback",
-          "type": {
-            "type": "NameExpression",
-            "name": "Function"
-          },
-          "memberof": "Pebble",
-          "params": [
-            {
-              "name": "event",
-              "lineNumber": 7,
-              "description": {
-                "type": "root",
-                "children": [
-                  {
-                    "type": "paragraph",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "An object containing information about the event:",
-                        "position": {
-                          "start": {
-                            "line": 1,
-                            "column": 1,
-                            "offset": 0
-                          },
-                          "end": {
-                            "line": 1,
-                            "column": 50,
-                            "offset": 49
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 50,
-                        "offset": 49
-                      },
-                      "indent": []
-                    }
-                  },
-                  {
-                    "type": "list",
-                    "ordered": false,
-                    "start": null,
-                    "loose": false,
-                    "children": [
-                      {
-                        "type": "listItem",
-                        "loose": false,
-                        "checked": null,
-                        "children": [
-                          {
-                            "type": "paragraph",
-                            "children": [
-                              {
-                                "type": "inlineCode",
-                                "value": "type",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 5,
-                                    "offset": 54
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "indent": []
-                                }
-                              },
-                              {
-                                "type": "text",
-                                "value": " - The type of event which was triggered.",
-                                "position": {
-                                  "start": {
-                                    "line": 2,
-                                    "column": 11,
-                                    "offset": 60
-                                  },
-                                  "end": {
-                                    "line": 2,
-                                    "column": 52,
-                                    "offset": 101
-                                  },
-                                  "indent": []
-                                }
-                              }
-                            ],
-                            "position": {
-                              "start": {
-                                "line": 2,
-                                "column": 5,
-                                "offset": 54
-                              },
-                              "end": {
-                                "line": 2,
-                                "column": 52,
-                                "offset": 101
-                              },
-                              "indent": []
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 2,
-                            "column": 1,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 2,
-                            "column": 52,
-                            "offset": 101
-                          },
-                          "indent": []
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 2,
-                        "column": 1,
-                        "offset": 50
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 52,
-                        "offset": 101
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 52,
-                    "offset": 101
-                  }
-                }
-              },
-              "type": {
-                "type": "NameExpression",
-                "name": "Object"
-              }
-            }
-          ],
-          "members": {
-            "instance": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Pebble",
-              "kind": "namespace"
-            },
-            {
-              "name": "PostMessageDisconnectedCallback",
-              "kind": "typedef"
-            }
-          ],
-          "namespace": "PebblePostMessageDisconnectedCallback"
         },
         {
           "description": {

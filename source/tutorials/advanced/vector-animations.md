@@ -22,12 +22,6 @@ description: |
   How to use vector images in icons and animations.
 permalink: /tutorials/advanced/vector-animations/
 generate_toc: true
-platforms:
-  - basalt
-  - chalk
-  - diorite
-  - emery
-  - flint
 ---
 
 Some of the best Pebble apps make good use of the ``Animation`` and the
@@ -138,16 +132,6 @@ We recommend using Adobe Illustrator to create compatible SVG icons and images.
 
 For simplicity, compatible image and sequence files will be provided for you to
 use in your own project.
-
-
-### PDC icons
-
-Example PDC image files are available for the icons listed in
-[*App Assets*](/guides/app-resources/app-assets/).
-These are ideal for use in many common types of apps, such as notification or
-weather apps.
-
-[Download PDC icon files >{center,bg-lightblue,fg-white}]({{ site.links.s3_assets }}/assets/other/pebble-timeline-icons-pdc.zip)
 
 
 ## Getting Started

@@ -3,8 +3,6 @@ title: Pebble Timeline Challenge Week 12 Winner - TV Shows!
 author: niharika
 tags: 
 - Timeline
-banner: https://assets.getpebble.com/api/file/oTPKvUUzSLCvKS0M7722/convert?cache=true&fit=crop&w=720&h=320
-image: https://assets.getpebble.com/api/file/BxDVwzJ9RXiRZTL3gMnA/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 Since we announced the Pebble timeline, getting timeline pins about your favorite 

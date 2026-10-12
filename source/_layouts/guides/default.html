@@ -22,47 +22,7 @@ regenerate: true
 <div class="row">
   <div class="col-l-8 col-m-12">
     <h1 class="pagetitle">{{ page.title }}</h1>
-    {% if page.platforms contains 'basalt' and page.platforms contains 'chalk' and page.platforms contains 'diorite' and page.platforms contains 'emery' %}
-    <div class="alert alert--fg-white alert--bg-purple alert--medium">
-      <p>
-        <strong>PLATFORM NOTICE</strong><br>
-        This guide does not apply to apps built to run on the Aplite platform
-        (Pebble Classic, Pebble Steel).
-      </p>
-    </div>
-    {% elsif page.platforms contains 'basalt' and page.platforms contains 'chalk' and page.platforms contains 'diorite' %}
-    <div class="alert alert--fg-white alert--bg-purple alert--medium">
-      <p>
-        <strong>PLATFORM NOTICE</strong><br>
-        This guide does not apply to apps built to run on the Aplite, Emery or Flint platforms
-        (Pebble Classic, Pebble Steel, Pebble Time 2* and Pebble 2 Duo).
-      </p>
-    </div>
-    {% elsif page.platforms contains 'basalt' and page.platforms contains 'chalk' %}
-    <div class="alert alert--fg-white alert--bg-purple alert--medium">
-      <p>
-        <strong>PLATFORM NOTICE</strong><br>
-        This guide only applies for apps built to run on the Basalt or Chalk platforms
-        (Pebble Time, Pebble Time Steel and Pebble Time Round).
-      </p>
-    </div>
-    {% elsif page.platforms contains 'basalt' %}
-    <div class="alert alert--fg-white alert--bg-purple alert--medium">
-      <p>
-        <strong>PLATFORM NOTICE</strong><br>
-        This guide only applies for apps built to run on the Basalt platform
-        (Pebble Time and Pebble Time Steel).
-      </p>
-    </div>
-    {% elsif page.platforms contains 'chalk' %}
-    <div class="alert alert--fg-white alert--bg-purple alert--medium">
-      <p>
-        <strong>PLATFORM NOTICE</strong><br>
-        This guide only applies for apps built to run on the Chalk platform
-        (Pebble Time Round watches).
-      </p>
-    </div>
-    {% endif %}
+    {% include guides/platform-notice.html %}
     <div class="markdown markdown--staff">
     {{ content }}
     </div>

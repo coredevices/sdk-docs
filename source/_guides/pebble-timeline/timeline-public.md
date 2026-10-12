@@ -18,13 +18,7 @@ description: |
   How to push Pebble timeline data to an app's users using the public web API.
 guide_group: pebble-timeline
 order: 3
-related_examples:
- - title: Hello Timeline
-   url: https://github.com/pebble-examples/hello-timeline
- - title: Timeline TV Tracker
-   url: https://github.com/pebble-examples/timeline-tv-tracker
- - title: Timeline Push Pin
-   url: https://github.com/pebble-examples/timeline-push-pin
+published: false
 ---
 
 While users can register subscriptions and receive data from the timeline using

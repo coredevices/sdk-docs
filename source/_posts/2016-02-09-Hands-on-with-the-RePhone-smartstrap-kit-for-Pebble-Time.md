@@ -78,7 +78,7 @@ The Pebble developer community have been eagerly hacking away with their kits,
 [blog](http://ishotjr.com/seeed-rephone-smartstrap-for-pebble-time-unboxing/)
 and created a [useful wiki](https://github.com/ishotjr/rephone-smartstrap/wiki).
 If you want to get involved, you can find them in #smartstraps over on the 
-[Pebble Developer Discord]({{ site.links.discord_invite }}).
+Pebble Developer Discord.
 
 We've only just scratched the surface of what's possible with this smartstrap kit
 and we can't wait to see what the community produce. If you build a custom app 

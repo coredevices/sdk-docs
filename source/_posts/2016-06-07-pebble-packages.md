@@ -25,7 +25,7 @@ launched our own packaging system: Pebble Packages!
 
 
 There are already a healthy selection of Pebble libraries to be had, such as
-Yuriy's excellent [EffectLayer](https://github.com/ygalanter/EffectLayer),
+Yuriy's excellent [EffectLayer](https://github.com/ygalanter/pebble-effect-layer),
 Reboot's Ramblings'
 [palette manipulator](https://github.com/rebootsramblings/GBitmap-Colour-Palette-Manipulator),
 or even our own [weather library](https://github.com/pebble-hacks/owm-weather).

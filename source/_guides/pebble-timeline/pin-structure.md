@@ -34,7 +34,7 @@ object. Those marked in **bold** are required.
 | Field | Type | Function |
 |-------|------|----------|
 | **`id`** | String (max. 64 chars) | Developer-implemented identifier for this pin event, which cannot be re-used. This means that any pin that was previously deleted cannot then be re-created with the same `id`. |
-| **`time`** | String ([ISO date-time](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)) | The start time of the event the pin represents, such as the beginning of a meeting. See {% guide_link pebble-timeline/timeline-public#pin-time-limitations "Pin Time Limitations" %} for information on the acceptable time range. |
+| **`time`** | String ([ISO date-time](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)) | The start time of the event the pin represents, such as the beginning of a meeting. |
 | `duration` | Integer number | The duration of the event the pin represents, in minutes. |
 | `createNotification` | [Notification object](#notification-object) | The notification shown when the event is first created. |
 | `updateNotification` | [Notification object](#notification-object) | The notification shown when the event is updated but already exists. |
@@ -231,10 +231,6 @@ can be used when pushing a pin in the following manner:
   "tinyIcon": "system://images/NOTIFICATION_FLAG"
 }
 ```
-
-> For general use in watchapps, PDC files are available for these icons in 
-> {% guide_link app-resources/app-assets#pebble-timeline-pin-icons %}.
-
 
 ### Notifications
 

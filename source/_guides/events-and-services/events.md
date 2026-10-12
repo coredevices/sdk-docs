@@ -26,6 +26,8 @@ related_docs:
   - HealthService
   - AppFocusService
   - CompassService
+  - BacklightService
+  - AlarmService
 ---
 
 All Pebble apps are executed in three phases, which are summarized below:
@@ -77,6 +79,8 @@ signature and a brief description of what they do:
 | ``HealthService`` | ``HealthEventHandler`` | Allows apps to be notified to changes in various ``HealthMetric`` values as the user performs physical activities. |
 | ``AppFocusService`` | ``AppFocusHandler`` | Allows apps to know when they are obscured by another window, such as when a notification modal appears. |
 | ``CompassService`` | ``CompassHeadingHandler`` | Allows apps to read a compass heading, including calibration status of the sensor. |
+| ``BacklightService`` | ``BacklightHandler`` | Allows apps to know when the backlight turns on or off. See {% guide_link events-and-services/light %}. |
+| ``AlarmService`` | None | Lets apps peek at the next alarm the user has set. |
 
 In addition, many other APIs also operate through the use of various callbacks
 including ``MenuLayer``, ``AppMessage``, ``Timer``, and ``Wakeup``, but these
@@ -302,6 +306,28 @@ app_focus_service_subscribe_handlers((AppFocusHandlers) {
   .did_focus = did_focus_handler
 });
 ```
+
+
+### Alarm Service
+
+The ``AlarmService`` has no handler. ``alarm_service_peek_next()`` reports
+whether at least one enabled alarm is scheduled and writes the UTC time it
+fires, which is enough for a watchface to show an alarm indicator:
+
+```c
+time_t next_alarm;
+if (alarm_service_peek_next(&next_alarm)) {
+  struct tm *t = localtime(&next_alarm);
+  strftime(s_alarm_buffer, sizeof(s_alarm_buffer), "%H:%M", t);
+  text_layer_set_text(s_alarm_layer, s_alarm_buffer);
+} else {
+  text_layer_set_text(s_alarm_layer, "");
+}
+```
+
+Alarms cannot be created or changed from an app. The function is available on
+Pebble 2 Duo, Pebble Time 2 and Pebble Round 2; on older platforms it compiles
+to a stub that returns `false`.
 
 
 ### Compass Service

@@ -4,7 +4,6 @@ author: niharika
 tags: 
 - Timeline
 banner: /images/blog/flightsbanner.png
-image: https://assets.getpebble.com/api/file/8c8LYNH7Qve4QdATgPgn/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 We've all been there at some point: you've just sprinted through the airport, 

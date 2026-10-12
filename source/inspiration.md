@@ -20,6 +20,7 @@ menu_subsection: inspiration
 permalink: /inspiration/
 generate_toc: true
 page_class: inspiration-page
+published: false
 ---
 
 We're often asked by developers at hackathons and code days what kinds of apps

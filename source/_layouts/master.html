@@ -55,6 +55,9 @@
   {% endif %}
   <meta name="theme-color" content="{% if layout.menu_section_color %}{{ layout.menu_section_color }}{% else %}#ff4700{% endif %}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url }}">
+  {% if page.llms_md_path %}
+  <link rel="alternate" type="text/markdown" href="{{ page.llms_md_path | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
   <link href="{{ site.asset_path }}/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">

@@ -1,0 +1,40 @@
+{% comment %}
+ Copyright 2025 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+{% endcomment %}
+{% if page.platforms %}
+{% assign names = "" | split: "" %}
+{% assign watches = "" | split: "" %}
+{% assign included = "" | split: "" %}
+{% assign included_watches = "" | split: "" %}
+{% for entry in site.data.platforms %}{% assign id = entry[0] %}{% assign platform = entry[1] %}{% if page.platforms contains id %}{% assign included = included | push: platform.name %}{% assign included_watches = included_watches | concat: platform.watches %}{% else %}{% assign names = names | push: platform.name %}{% assign watches = watches | concat: platform.watches %}{% endif %}{% endfor %}
+{% if names.size > 0 %}
+<div class="alert alert--fg-white alert--bg-purple alert--medium">
+  <p>
+    <strong>PLATFORM NOTICE</strong><br>
+    {%- if included.size < names.size %}
+    This guide only applies to apps built to run on the
+    {%- for name in included %}{% if forloop.first %} {% elsif forloop.last %} and {% else %}, {% endif %}{{ name }}{% endfor %}
+    platform{% if included.size > 1 %}s{% endif %}
+    ({% for watch in included_watches %}{% if forloop.first %}{% elsif forloop.last %} and {% else %}, {% endif %}{{ watch }}{% endfor %}).
+    {%- else %}
+    This guide does not apply to apps built to run on the
+    {%- for name in names %}{% if forloop.first %} {% elsif forloop.last %} or {% else %}, {% endif %}{{ name }}{% endfor %}
+    platform{% if names.size > 1 %}s{% endif %}
+    ({% for watch in watches %}{% if forloop.first %}{% elsif forloop.last %} and {% else %}, {% endif %}{{ watch }}{% endfor %}).
+    {%- endif %}
+  </p>
+</div>
+{% endif %}
+{% endif %}

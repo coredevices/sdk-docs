@@ -314,9 +314,8 @@ This adds `@rebble/clay` to the `dependencies` in `package.json`.
 
 ## Enabling Configuration
 
-^CP^ In CloudPebble, go to **Settings** and add `configurable` to the
-**Capabilities** list so the gear icon appears next to your watchface in the
-phone app.
+^CP^ In CloudPebble, go to **Settings** and tick the **Configurable** checkbox
+so the gear icon appears next to your watchface in the phone app.
 
 ^LC^ For the gear icon to appear next to your watchface in the phone app, add
 `configurable` to the `capabilities` array in `package.json`:
@@ -593,5 +592,5 @@ In this final part we learned how to:
 Check your code against
 [the source for this part](https://github.com/coredevices/alloy-watchface-tutorial/tree/main/part6).
 Now it is time to
-[publish your watchface](https://developer.repebble.com/dashboard)
-and share it with the world!
+{% guide_link appstore-publishing "publish your watchface" %} in the Pebble
+appstore.

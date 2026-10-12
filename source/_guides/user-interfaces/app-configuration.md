@@ -89,9 +89,10 @@ setting in our application:
 
 ## Creating the Clay Configuration
 
-The Clay configuration file (`config.js`) should be created in your
-`src/pkjs/` folder. It allows the easy definition of each type of HTML form
-entity that is required. These types include:
+Create the Clay configuration file as `src/pkjs/config.js`. It is not part of
+the project template, so `pebble new-project` and CloudPebble do not create it.
+It defines each type of HTML form entity that is required. These types
+include:
 
 * [Section](https://github.com/pebble-dev/clay#section)
 * [Heading](https://github.com/pebble-dev/clay#heading)

@@ -169,7 +169,7 @@ bool bezier_fixed(GPathBuilder *builder, GPoint p1, GPoint p2, GPoint p3, GPoint
 In order to make it easy for developers, we have prepared the GPathBuilder
 library which will ease the process of creating GPaths out of a few Bezier
 curves and/or lines. The resulting path can already be manipulated with the 
-[existing APIs](/docs/c/group___path_drawing.html#ga1ba79344b9a34432a44af09bed8b00fd). You can find it on the
+[existing APIs](/docs/c/Graphics/Drawing_Paths/). You can find it on the
 [pebble-hacks Github page](https://github.com/pebble-hacks/gpath-bezier) along 
 with a simple demo app.
 

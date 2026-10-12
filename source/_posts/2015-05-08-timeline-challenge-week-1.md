@@ -4,7 +4,6 @@ author: niharika
 tags:
 - Timeline
 banner: /images/blog/batteryplusbanner.png
-image: https://assets.getpebble.com/api/file/0Z1f9lINTNyGVTuDbT3x/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 On Monday, we announced the first winner of the Timeline Challenge: [Battery+][appstore-link].

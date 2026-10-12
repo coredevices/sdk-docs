@@ -25,7 +25,9 @@ related_examples:
 
 On hardware platforms with a touchscreen, the `TouchService` lets an app
 receive touchdown, lift-off, and position updates as the user moves their
-finger across the display. This is the same low-level event stream the system
+finger across the display. See the platform support table in
+{% guide_link tools-and-resources/hardware-information#platform-support %} for which watches
+have a touchscreen. This is the same low-level event stream the system
 itself uses, so apps can build draggable UI or free-form input on top of it.
 Apps that want gestures rather than raw touches can use the built-in
 [gesture recognizers](#gesture-recognizers), and apps that just want their

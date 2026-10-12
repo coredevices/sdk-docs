@@ -76,7 +76,7 @@ Pebble.js on CloudPebble, [this is the video for you!](https://www.codementor.io
 Like many companies, Apple is
 [taking a break from approvals](https://developer.apple.com/news/?id=12082104a)
 over the holiday break starting on December 18th. This means you should
-[submit your app for whitelisting](/guides/appstore-publishing/whitelisting/)
+submit your app for whitelisting
 before **December 16th 20:00 PST** to give us time to process and submit your
 app before you can submit it on the 18th.
 
@@ -98,4 +98,4 @@ you would like to see more of this type of give-away.
 As a rapidly growing company, we're always on the lookout for new talent to grow
 our various teams. If you or anyone you know has the technical skills, wearable
 enthusiasm and a taste for the Valley lifestyle, have a look at our
-[jobs page]({{ site.links.jobs }}) to see a list of open positions.
+[jobs page](https://www.pebble.com/jobs/) to see a list of open positions.

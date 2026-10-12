@@ -4,7 +4,6 @@ author: niharika
 tags:
     - Timeline
 banner: /images/blog/fitcatbanner.png
-image: https://assets.getpebble.com/api/file/3X6ZSHBASbn6QBn4U0Ys/convert?cache=true&fit=crop&w=80&h=80
 ---
 
 Has anyone been missing their Tamagotchi pet lately? If so, your prayers have 

@@ -59,16 +59,11 @@ card.show();
 ```
 
 Two new elements were added,
-[Line](/docs/pebblejs/#line) and
-[Radial](/docs/pebblejs/#radial), and all elements
-now include [borderWidth](/docs/pebblejs/#element-
-borderwidth- width), [borderColor](/docs/pebblejs
-/#element- bordercolor-color) and
-[backgroundColor](/docs/pebblejs/#element-
-backgroundcolor-color) properties (except `Line`, which uses
-[strokeWidth](/docs/pebblejs/#line-strokewidth-
-width) and [strokeColor](/docs/pebblejs/#line-
-strokecolor-color) instead).
+[Line](/docs/pebblejs/) and
+[Radial](/docs/pebblejs/), and all elements
+now include [borderWidth](/docs/pebblejs/), [borderColor](/docs/pebblejs/) and
+[backgroundColor](/docs/pebblejs/) properties (except `Line`, which uses
+[strokeWidth](/docs/pebblejs/) and [strokeColor](/docs/pebblejs/) instead).
 
 There are many bugfixes as well. Scrolling is no longer jittery for cards and
 menus, the status bar will no longer disappear upon changing windows that both
@@ -81,11 +76,10 @@ adding more details to [#161](https://github.com/pebble/pebblejs/issues/161).
 
 This update also comes with two new guides to help familiarize yourself with the
 exciting new world of round and colorful apps. [Using
-Color](/docs/pebblejs/#using-color) will help you
+Color](/docs/pebblejs/) will help you
 understand all the different ways you can specify which color you want your text
 (and other elements) to be, and how you would go about styling your app with
-color. [Using Feature](/docs/pebblejs/#using-
-feature) will help you understand the new Feature API, how it can be used to
+color. [Using Feature](/docs/pebblejs/) will help you understand the new Feature API, how it can be used to
 specify different behaviours and UIs depending on what platform you're running
 on, and what features it includes.
 

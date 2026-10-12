@@ -93,4 +93,4 @@ you as soon as it’s ready.
 As always, keep the feedback and bug reports coming! Hopefully nothing is
 missing or broken, but if it is be sure to tweet
 [@PebbleDev](https://twitter.com/PebbleDev) on Twitter or find me in our
-[Discord]({{ site.links.discord_invite }}) group.
+Discord group.

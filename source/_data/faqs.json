@@ -85,11 +85,11 @@
     "questions": [
       {
         "question": "How do I install an app I'm developing onto a real watch?",
-        "answer": "The default flow uses a cloud relay, so your computer and phone don't need to be on the same network. One-time setup:\n\n1. Install the new Pebble mobile app from [repebble.com/app](https://repebble.com/app).\n2. In the app: **Devices → ⋯ → Enable Dev Connect**, then sign in with GitHub.\n3. On your computer, run `pebble login` and sign in with the same GitHub account.\n\nThen build and install:\n\n```bash\n$ pebble build\n$ pebble install --cloudpebble\n```\n\nIf you'd rather install over local Wi-Fi (the legacy route), enable the [Developer Connection](/guides/tools-and-resources/developer-connection) in the mobile app and use `pebble install --phone IP_ADDRESS` with the Server IP it shows."
+        "answer": "The default flow uses a cloud relay, so your computer and phone don't need to be on the same network. One-time setup:\n\n1. Install the new Pebble mobile app from [repebble.com/app](https://repebble.com/app).\n2. In the app, sign in with your Pebble account, then open **Devices → ⋯** and enable **Dev Connection**.\n3. On your computer, run `pebble login` and sign in with the same Pebble account.\n\nThen build and install:\n\n```bash\n$ pebble build\n$ pebble install --cloudpebble\n```\n\nIf you'd rather install over local Wi-Fi (the legacy route), enable the [Developer Connection](/guides/tools-and-resources/developer-connection) in the mobile app and use `pebble install --phone IP_ADDRESS` with the Server IP it shows."
       },
       {
         "question": "How do I install an app on the emulator instead of a physical watch?",
-        "answer": "Pass `--emulator` with the platform you want to run:\n\n```bash\n$ pebble install --emulator basalt\n```\n\nValid platforms are `aplite`, `basalt`, `chalk`, `diorite`, and `emery`. The same flag works for `pebble logs`, `pebble screenshot`, and other commands that target a watch. Full reference: {% guide_link tools-and-resources/pebble-tool \"Pebble Tool\" %}."
+        "answer": "Pass `--emulator` with the platform you want to run:\n\n```bash\n$ pebble install --emulator basalt\n```\n\nValid platforms are `aplite`, `basalt`, `chalk`, `diorite`, `emery`, `flint` and `gabbro`. The same flag works for `pebble logs`, `pebble screenshot`, and other commands that target a watch. Full reference: {% guide_link tools-and-resources/pebble-tool \"Pebble Tool\" %}."
       },
       {
         "question": "How do I see logs from my app?",

@@ -21,11 +21,23 @@ alloy:
   category: interactive-apps
   sort_by: order
 
+ai-agents:
+  title: Building with AI Agents
+  description: How to give an AI coding agent the documentation, project instructions and emulator commands it needs to build a Pebble app.
+  category: building-apps
+  sort_by: order
+
 app-resources:
   title: App Resources
   description: Information on the many kinds of files that can be used inside Pebble apps.
   category: beautiful-apps
   sort_by: title
+
+appstore-publishing:
+  title: Appstore Publishing
+  description: How to publish apps in the Pebble appstore from the Developer Dashboard, the pebble tool or CloudPebble.
+  category: building-apps
+  sort_by: order
 
 best-practices:
   title: Best Practices
@@ -71,7 +83,13 @@ pebble-packages:
 
 pebble-timeline:
   title: Pebble Timeline
-  description: How to use Pebble timeline to bring timely information to app users outside the app itself via web services.
+  description: How to use Pebble timeline to bring timely information to app users outside the app itself.
+  category: interactive-apps
+  sort_by: title
+
+plugins:
+  title: Plugins (Preview)
+  description: How a .pbw's JavaScript can provide data sources and actions to other apps through the Pebble mobile app, and how a watchapp reads them from PebbleKit JS.
   category: interactive-apps
   sort_by: title
 

@@ -107,7 +107,7 @@ If developers want to add additional functionality to their config page, they ca
 
  - [App configuration guide.](/guides/user-interfaces/app-configuration/)
  - [Clay GitHub repository including full documentation.](https://github.com/pebble/clay)
- - Chat to us in the `#clay` channel on [Discord]({{ site.links.discord_invite }}).
+ - Chat to us in the `#clay` channel on Discord.
  - Visit the [Pebble Forums](https://forums.pebble.com/)
  - Tweet at [@pebbledev](https://twitter.com/pebbledev)
 

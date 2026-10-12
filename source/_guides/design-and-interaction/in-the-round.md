@@ -32,19 +32,11 @@ new features and limitations into account when designing their apps. New and
 existing apps that successfully adapt their layout and colors for both Aplite
 and Basalt should also endeavor to do so for the Chalk platform.
 
-
-## Minor Margins
-
-The Pebble Time Round display requires a small two pixel border on each edge, to
-compensate for the bezel design. To this end, it is highly encouraged to allow
-for this in an app's design. This may involve stretching a background color to
-all outer edges, or making sure that readable information cannot be displayed in
-this margin, or else it may not be visible.
-
-Avoid thin rings around the edge of the display, even after accounting for the
-two pixel margin as manufacturing variations may cause them to be visibly 
-off-center. Instead use thick rings, or inset them significantly from the edge
-of the screen.
+Pebble Round 2 (the Gabbro platform) has a 260 x 260 round display, compared
+to the 180 x 180 display of Pebble Time Round. The advice in this guide applies
+to both. Designs that are drawn relative to the display bounds scale between
+them; designs made from fixed-size bitmaps need a second set of assets for
+Gabbro.
 
 
 ## Center of Attention

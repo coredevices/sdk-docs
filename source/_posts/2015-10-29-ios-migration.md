@@ -33,7 +33,7 @@ the major changes and steps to take to support the new BLE connection.
 
 
 ## What do you need to do?
-Import the new [PebbleKit iOS 3.0](/guides/migration/pebblekit-ios-3/#how-to-upgrade) library into your project.
+Import the new PebbleKit iOS 3.0 library into your project.
 
 ### API Changes
 
@@ -96,4 +96,4 @@ Go to edit the companion app listing in your [developer dashboard]({{ site.links
 
 ### Final thoughts
 
-With a few quick steps, you can bring compatability for the BLE connection to your app. In the coming months, we'll be rolling out updates for users of Pebble and Pebble Time to take advantage of BLE-only connection as well. In the short term, if you intend to support Pebble Time Round, these steps are mandatory. For the complete details on migrating to PebbleKit 3.0, take a look at our [migration guide](/guides/migration/pebblekit-ios-3/). If you have any issues in migrating or have any questions concerning PebbleKit 3.0, feel free to [contact](/contact/) us anytime!
+With a few quick steps, you can bring compatability for the BLE connection to your app. In the coming months, we'll be rolling out updates for users of Pebble and Pebble Time to take advantage of BLE-only connection as well. In the short term, if you intend to support Pebble Time Round, these steps are mandatory. For the complete details on migrating to PebbleKit 3.0, take a look at our migration guide. If you have any issues in migrating or have any questions concerning PebbleKit 3.0, feel free to [contact](/contact/) us anytime!

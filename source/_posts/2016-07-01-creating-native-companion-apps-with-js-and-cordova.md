@@ -152,7 +152,7 @@ All we have to do now is send the relevent bits of information down to our
 Pebble app.  This is where the Pebble plugin is going to come in handy.  At the
 end of the function, we'll call `sendAppMessage` which works in a similar
 manner to [PebbleKit JS'
-sendAppMessage](/pebblekit-js/Pebble/#sendAppMessage)
+sendAppMessage](/docs/pebblekit-js/Pebble/#sendAppMessage)
 function.
 
 The title is easy to snag - it's a property on the event object, available via

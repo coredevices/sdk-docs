@@ -19,6 +19,7 @@ description: |
   Pebble Time Round.
 guide_group: tools-and-resources
 order: 99
+published: false
 ---
 
 With the addition of Pebble Time Round to the Pebble hardware family, the Pebble
@@ -31,7 +32,7 @@ that are compatible with all hardware platforms. New graphics APIs and UI
 component behaviors assist with creating layouts ideally suited for both the
 rectangular and round display types.
 
-[Get the SDK >{center,bg-lightblue,fg-white}](/sdk/download/?sdk={{ site.data.sdk.c.version }})
+[Get the SDK >{center,bg-lightblue,fg-white}](/sdk/)
 
 ## New Resources
 

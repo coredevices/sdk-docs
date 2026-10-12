@@ -50,8 +50,7 @@ using any part of a Pebble trademark exclusively inures to the benefit of and
 belongs to Pebble. Except for the limited right to use as expressly permitted
 under these Guidelines, no other rights of any kind are granted hereunder, by
 implication or otherwise.  If you have any questions regarding these guidelines,
-please talk to your Pebble representative or submit your query to Pebble’s
-Trademark Department at legal@getpebble.com.
+submit your query to Core Devices through the [contact page](/contact/).
 
 ### Authorized Use of Pebble Trademarks
 
@@ -97,7 +96,7 @@ Trademark Department at legal@getpebble.com.
 1. **3.5** A disclaimer of sponsorship, affiliation, or endorsement by Pebble,
    similar to the following, is included on the publication and on all related
    printed materials: “(Title) is an independent (publication) and has not been
-   authorized, sponsored, or otherwise approved by Pebble Technology Corp..”
+   authorized, sponsored, or otherwise approved by Core Devices LLC.”
 1. **3.6** A trademark attribution notice is included in the credit section
    giving notice of Pebble’s ownership of its trademark(s).  Please refer to the
    section below titled “Proper Trademark Notice and Attribution.”
@@ -196,9 +195,9 @@ Trademark Department at legal@getpebble.com.
    the credit notice section of your product, product documentation, or other
    product communication. Following are the correct formats:
     
-    _________ and _______ are registered trademarks of Pebble Technology Corp.
+    _________ and _______ are registered trademarks of Core Devices LLC
     
-    _________ and _______ are trademarks of Pebble Technology Corp.
+    _________ and _______ are trademarks of Core Devices LLC
 
 1. **2.** **Distribution Outside the United States:**
 
@@ -207,10 +206,10 @@ Trademark Department at legal@getpebble.com.
    States.
 2. **2.2** Use one of the following international credit notices:
    
-   _________ is a trademark of Pebble Technology Corp., registered in the U.S.
+   _________ is a trademark of Core Devices LLC, registered in the U.S.
    and other countries. 
 
-   _________ is a trademark of Pebble Technology Corp.
+   _________ is a trademark of Core Devices LLC
 
 ### Depictions of Pebble Products
 
@@ -231,10 +230,10 @@ Trademark Department at legal@getpebble.com.
    not an artist’s rendering (Note: You must obtain express written permission
    from Pebble before using any photograph owned or licensed by Pebble).
 1. **2.3** The Pebble product is shown only in the best light, in a manner or
-   context that reflects favorably on the Pebble products and on Pebble
-   Technology Corp.
+   context that reflects favorably on the Pebble products and on Core Devices
+   LLC.
 1. **2.4** The reference to Pebble does not create a sense of endorsement or
    sponsorship by, or other false association with, Pebble or Pebble products.
 
 For further information with respect to Pebble’s copyrights, please submit your
-request in writing to the Copyright Team at legal@getpebble.com.
+request in writing through the [contact page](/contact/).

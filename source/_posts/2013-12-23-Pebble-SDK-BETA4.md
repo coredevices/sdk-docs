@@ -4,7 +4,7 @@ tags:
 - Freshly Baked
 ---
 
-Busy times for the Pebble elves! Beta3 last week, [the app store announcement](/blog/2013/12/18/all-aboard-the-pebble-app-store/) on wednesday and now a new BETA! [Pebble SDK BETA4 is available on our website now](/sdk/download). Existing iOS developers will receive an email with a link to install it; if you are not on that list yet, please [fill the form](https://docs.google.com/a/pulse-dev.net/forms/d/14r3MHPsdH5ha-BCkfuquQuAKuQSEJLmxm--XXpBA8mg/viewform) to request it.
+Busy times for the Pebble elves! Beta3 last week, [the app store announcement](/blog/2013/12/18/All-Aboard-the-Pebble-app-store/) on wednesday and now a new BETA! [Pebble SDK BETA4 is available on our website now](/sdk/download). Existing iOS developers will receive an email with a link to install it; if you are not on that list yet, please [fill the form](https://docs.google.com/a/pulse-dev.net/forms/d/14r3MHPsdH5ha-BCkfuquQuAKuQSEJLmxm--XXpBA8mg/viewform) to request it.
 
 
 
@@ -28,7 +28,7 @@ We wish you a very pleasant time with family and friends - And please, please, p
 
 #### Pebble JavaScript tips and tricks
 
-We posted a new blog post on our website yesterday with tips and tricks to make the most out of PebbleKit JavaScript. Make sure you [read it!](/blog/2013/12/20/pebble-javascript-tips-and-tricks/)
+We posted a new blog post on our website yesterday with tips and tricks to make the most out of PebbleKit JavaScript. Make sure you [read it!](/blog/2013/12/20/Pebble-Javascript-Tips-and-Tricks/)
 
 #### Last call! #ifihadpebble
 

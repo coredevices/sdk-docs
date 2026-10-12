@@ -114,4 +114,4 @@ Beta](/sdk/beta) page.
 
 Please [contact us](/contact/) if you run into any issues installing or using
 `pebble` v4.0, or if you have any feedback. You can also frequently find me
-on ~~Slack~~ Discord — [join us]({{ site.links.discord_invite }})!
+on ~~Slack~~ Discord — join us!

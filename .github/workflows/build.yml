@@ -1,17 +1,25 @@
 name: Build static site
 
+# Pushes to main build and deploy the site. Pull requests build it the same
+# way (C, PebbleKit Android and iOS references included) and check every
+# internal link in the result; they never deploy and never touch the
+# production search index.
 on:
   workflow_dispatch:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
   gendocs-c:
     runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/pebble-dev/pebbleos-docker:main
+      image: ghcr.io/coredevices/pebbleos-docker:v8
 
     steps:
+      - name: Mark Github workspace as safe
+        run: git config --system --add safe.directory "${GITHUB_WORKSPACE}"
+
       - name: Checkout sdk-docs
         uses: actions/checkout@v6
 
@@ -31,14 +39,19 @@ jobs:
           pip install -U pip
           pip install -r requirements.txt
 
-      - name: Build emery SDK
+      # Tags up to v4.36.x build with waf; v4.37.0 and later build with
+      # CMake through the pbl tool, and nothing there runs doxygen anymore.
+      - name: Build emery SDK and generate SDK documentation
         run: |
-          ./waf configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
-          ./waf build --onlysdk
-
-      - name: Generate SDK documentation
-        run: |
-          ./waf docs_sdk
+          if [ -f wscript ]; then
+            ./waf configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
+            ./waf build --onlysdk
+            ./waf docs_sdk
+          else
+            pbl -b build configure --board qemu_emery -DCONFIG_MODDABLE_XS=n
+            pbl -b build build sdk
+            doxygen build/sdk/emery/Doxyfile-SDK.auto
+          fi
 
       - name: Publish docs artifact
         uses: actions/upload-artifact@v6
@@ -124,17 +137,50 @@ jobs:
           name: docs-pebbleos
           path: /tmp/pebbleos-site
 
+  # Developer documentation kept next to the code in the Pebble mobile app
+  # (plugins preview, Index 01 webhooks), rendered into the site by
+  # scripts/import_mobileapp_docs.py.
+  gendocs-mobileapp:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout sdk-docs
+        uses: actions/checkout@v6
+
+      - name: Checkout mobileapp
+        uses: actions/checkout@v6
+        with:
+          repository: coredevices/mobileapp
+          ref: master
+          path: mobileapp
+
+      - name: Import mobile app documentation
+        run: python3 scripts/import_mobileapp_docs.py mobileapp /tmp/mobileapp-site
+
+      - name: Publish docs artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: docs-mobileapp
+          path: /tmp/mobileapp-site
+
   build:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
     needs:
       - gendocs-c
       - gendocs-android
       - gendocs-ios
       - gendocs-pebbleos
+      - gendocs-mobileapp
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          # Full history: the Markdown export dates each page from git.
+          fetch-depth: 0
 
       - name: Download docs artifacts
         uses: actions/download-artifact@v7
@@ -149,6 +195,9 @@ jobs:
 
       - name: Prepare PebbleOS docs
         run: cp -R /tmp/docs/docs-pebbleos/source/. source/
+
+      - name: Prepare mobile app docs
+        run: cp -R /tmp/docs/docs-mobileapp/source/. source/
 
       - name: Prepare PebbleKit archives
         working-directory: /tmp/docs
@@ -171,16 +220,100 @@ jobs:
           HTTPS_URL: https://developer.repebble.com
           JEKYLL_ENV: production
           DOCS_URL: /tmp/docs/
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-          ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+          ALGOLIA_APP_ID: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_APP_ID || '' }}
+          ALGOLIA_API_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_API_KEY || '' }}
+          ALGOLIA_SEARCH_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_SEARCH_KEY || '' }}
           ALGOLIA_PREFIX: developer-repebble-com-prod-
+
+      # Offline: internal links and anchors only. Known legacy patterns are
+      # listed in .lycheeignore.
+      - name: Check internal links
+        if: github.event_name == 'pull_request'
+        uses: lycheeverse/lychee-action@v2
+        with:
+          lycheeVersion: v0.24.2
+          fail: true
+          args: >-
+            --offline
+            --root-dir ${{ github.workspace }}/__public__
+            --index-files index.html
+            --include-fragments
+            --preprocess ${{ github.workspace }}/scripts/lychee-preprocess.sh
+            --exclude-path __public__/pebbleos/apidoc
+            --exclude-path __public__/docs/pebblekit-android
+            --exclude-path __public__/docs/pebblekit-ios
+            --no-progress
+            '__public__/**/*.html'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           name: site-build
           path: __public__
+
+      # Pull requests also build main from the same docs artifacts and
+      # publish a side-by-side comparison (scripts/compare_builds.py) as an
+      # artifact, so reviewers can look at every changed page.
+      - name: Checkout main for comparison
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: baseline
+          fetch-depth: 0
+      - name: Build main for comparison
+        if: github.event_name == 'pull_request'
+        working-directory: baseline
+        run: |
+          mkdir -p emery/doxygen_sdk
+          cp -r /tmp/docs/docs-c-emery/* emery/doxygen_sdk/
+          cp -R /tmp/docs/docs-pebbleos/source/. source/
+          # Only once main itself imports these pages.
+          [ -f scripts/import_mobileapp_docs.py ] && cp -R /tmp/docs/docs-mobileapp/source/. source/
+          BUNDLE_GEMFILE="$GITHUB_WORKSPACE/Gemfile" bundle exec jekyll build
+        env:
+          URL: https://developer.repebble.com
+          HTTPS_URL: https://developer.repebble.com
+          JEKYLL_ENV: production
+          DOCS_URL: /tmp/docs/
+          ALGOLIA_PREFIX: developer-repebble-com-prod-
+      - name: Build the comparison site
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/compare_builds.py --old baseline/__public__ --new __public__ --static site-compare
+      - name: Upload the comparison site
+        if: github.event_name == 'pull_request'
+        id: compare
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-compare
+          path: site-compare
+          retention-days: 30
+      - name: Deploy the comparison to Cloudflare Pages
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site-compare --project-name=sdk-docs-compare --branch=pr-${{ github.event.pull_request.number }} --commit-dirty=true
+      - name: Link the comparison from the pull request
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          URL: ${{ steps.compare.outputs.artifact-url }}
+        run: |
+          body="<!-- site-compare -->
+          **Side-by-side comparison of this build against \`main\`:** https://pr-$PR.sdk-docs-compare.pages.dev/
+
+          The left side is the current site, the right side is this pull request; added blocks are highlighted on the right and removed ones on the left. Use the arrows or the \`n\`, \`p\` and \`j\` keys to step through changed pages.
+
+          The same comparison is attached as the [\`site-compare\` artifact]($URL); unzip it and run \`python3 -m http.server\` inside it to view it locally. Built from $GITHUB_SHA."
+          existing=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --jq '.[] | select(.body | startswith("<!-- site-compare -->")) | .id' | head -1)
+          if [ -n "$existing" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$existing" -f body="$body" > /dev/null
+          else
+            gh pr comment "$PR" --body "$body"
+          fi
 
   deploy:
     runs-on: ubuntu-24.04

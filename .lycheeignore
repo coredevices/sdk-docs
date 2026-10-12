@@ -1,0 +1,28 @@
+# Patterns lychee skips when checking __public__ (see build.yml).
+# Each line is a regular expression matched against the link.
+
+# Protocol-relative embeds (//www.youtube.com/..., //www.slideshare.net/...)
+# in blog posts and event pages. lychee reads them as file://host/... when
+# it checks local files.
+^file://[^/]
+
+# Tag filters on the examples page. They are handled by JavaScript and have
+# no matching element id.
+/examples/index\.html#
+
+# The event submission form posts to site.data_server, which is not set
+# anywhere since the move to repebble; the backend behind it is gone.
+/events/submit$
+
+# PebbleKit iOS and Android references are unpacked from archived
+# documentation bundles whose internal anchors do not match their page ids.
+/docs/pebblekit-ios
+/docs/pebblekit-android
+
+# Rocky.js reference pages are redirects to the Alloy guides now; blog posts
+# still link to anchors on them.
+/docs/rockyjs/
+
+# A 2016 post links to the beta-SDK section of the retired download page;
+# the page now redirects to /sdk/ and has no such anchor.
+/sdk/download/?#testing-beta-sdks

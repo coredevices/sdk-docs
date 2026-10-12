@@ -27,6 +27,13 @@
     }
   }
 
+  // Two rows of boxes share the viewport on wider screens.
+  .landing-row {
+    @include bp-min(m) {
+      height: 50%;
+    }
+  }
+
   .row.no-gutter {
     @include bp-max(s) {
       flex: 1;

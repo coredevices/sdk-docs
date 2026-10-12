@@ -14,39 +14,35 @@
  * limitations under the License.
  */
 
-// Landing page: fill the viewport with the content boxes when they are
-// stacked vertically (at the `s` breakpoint and below, where no col-m/col-l
-// widths apply so the boxes go full-width and stack).
+// Landing page: the content boxes share the viewport. Two rows of two on
+// medium and large screens; one column at the `s` breakpoint and below,
+// where no col-m/col-l widths apply.
 .landing-page {
   .content--narrow {
-    @include bp-max(s) {
-      display: flex;
-      flex-direction: column;
-      // Fill the viewport minus the fixed search bar header.
-      min-height: calc(100vh - #{$header-height});
-    }
+    display: flex;
+    flex-direction: column;
+    // Fill the viewport minus the fixed search bar header.
+    min-height: calc(100vh - #{$header-height});
   }
 
-  // Two rows of boxes share the viewport on wider screens.
   .landing-row {
-    @include bp-min(m) {
-      height: 50%;
-    }
-  }
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
 
-  .row.no-gutter {
-    @include bp-max(s) {
-      flex: 1;
+    > [class*="col-"] {
       display: flex;
+
+      > .bigbox {
+        flex: 1;
+      }
+    }
+
+    @include bp-max(s) {
       flex-direction: column;
 
       > [class*="col-"] {
         flex: 1;
-        display: flex;
-
-        > .bigbox {
-          flex: 1;
-        }
       }
     }
   }

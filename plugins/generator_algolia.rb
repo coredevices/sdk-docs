@@ -88,6 +88,18 @@ module Jekyll
       @client.multiple_batch(
         Algolia::Search::BatchParams.new(requests: requests)
       )
+      delete_stale
+    end
+
+    # Records are added with this build's random code; anything left in an
+    # index with another code belongs to a page that no longer exists.
+    def delete_stale
+      @site.data['search_indexes'].each_key do |name|
+        @client.delete_by(
+          "#{@prefix}#{name}",
+          Algolia::Search::DeleteByParams.new(filters: "NOT randomCode:#{@random_code}")
+        )
+      end
     end
 
     def random_code

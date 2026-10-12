@@ -10,6 +10,7 @@
         "content:30"
       ],
       "attributes_for_faceting": [
+        "filterOnly(randomCode)"
       ],
       "attribute_for_distinct": "urlDisplay",
       "highlight_pre_tag": "<span class=\"search__result__highlight\">",
@@ -27,6 +28,7 @@
         "content:30"
       ],
       "attributes_for_faceting": [
+        "filterOnly(randomCode)"
       ],
       "custom_ranking": [
         "asc(age)"
@@ -48,7 +50,8 @@
         "summary:30"
       ],
       "attributes_for_faceting": [
-        "language"
+        "language",
+        "filterOnly(randomCode)"
       ],
       "custom_ranking": [
         "desc(ranking)"
@@ -69,6 +72,7 @@
         "summary:30"
       ],
       "attributes_for_faceting": [
+        "filterOnly(randomCode)"
       ],
       "attribute_for_distinct": null,
       "highlight_pre_tag": "<span class=\"search__result__highlight\">",
@@ -86,6 +90,7 @@
         "content:30"
       ],
       "attributes_for_faceting": [
+        "filterOnly(randomCode)"
       ],
       "attribute_for_distinct": null,
       "highlight_pre_tag": "<span class=\"search__result__highlight\">",
@@ -102,6 +107,7 @@
         "content:30"
       ],
       "attributes_for_faceting": [
+        "filterOnly(randomCode)"
       ],
       "attribute_for_distinct": null,
       "highlight_pre_tag": "<span class=\"search__result__highlight\">",

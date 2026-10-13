@@ -160,10 +160,11 @@
   font-size: 0.9 * $base-font-size;
   line-height: 0.9 * $base-line-height;
   margin: 0;
-  max-height: 0.9 * $base-line-height;
+  max-height: 3 * 0.9 * $base-line-height;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .search__result__highlight {
@@ -184,7 +185,6 @@
 .quicksearch__section {
   margin: 0;
   font-size: 0.75em;
-  text-transform: uppercase;
   color: $gray-11;
   font-weight: bold;
   width: auto;

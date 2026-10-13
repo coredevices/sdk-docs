@@ -72,6 +72,9 @@ Search.indexes = {
       if (hit.subgroup && hit.subgroup.length) {
         section.push(hit.subgroup);
       }
+      if (hit.sectionTitle) {
+        section.push(hit.sectionTitle);
+      }
       return section;
     }
   },
@@ -89,7 +92,11 @@ Search.indexes = {
       var dateString = hit.posted.split(" ")[0];
       if (!dateString) return "Invalid Date";
 
-      return [ moment(dateString).format('MMM DD YYYY')];
+      var section = [ moment(dateString).format('MMM DD YYYY') ];
+      if (hit.sectionTitle) {
+        section.push(hit.sectionTitle);
+      }
+      return section;
     }
   },
   'examples': {

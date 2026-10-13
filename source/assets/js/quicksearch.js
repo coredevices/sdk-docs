@@ -30,7 +30,7 @@
 
   var search = new Search({
     appId: '{{ site.algolia_app_id }}',
-    apiKey: '{{ site.algolia_api_key }}',
+    apiKey: '{{ site.algolia_search_key }}',
     prefix: '{{ site.algolia_prefix }}',
     options: {
       hitsPerPage: 8,

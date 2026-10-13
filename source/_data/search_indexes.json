@@ -3,11 +3,12 @@
     "settings": {
       "searchable_attributes": [
         "unordered(title)",
+        "unordered(sectionTitle)",
         "unordered(content)",
         "unordered(type)"
       ],
       "attributes_to_snippet": [
-        "content:30"
+        "content:40"
       ],
       "attributes_for_faceting": [
         "filterOnly(randomCode)"
@@ -21,11 +22,12 @@
     "settings": {
       "searchable_attributes": [
         "unordered(title)",
+        "unordered(sectionTitle)",
         "unordered(content)",
         "unordered(type)"
       ],
       "attributes_to_snippet": [
-        "content:30"
+        "content:40"
       ],
       "attributes_for_faceting": [
         "filterOnly(randomCode)"
@@ -47,7 +49,7 @@
         "unordered(type)"
       ],
       "attributes_to_snippet": [
-        "summary:30"
+        "summary:40"
       ],
       "attributes_for_faceting": [
         "language",
@@ -69,7 +71,7 @@
         "unordered(type)"
       ],
       "attributes_to_snippet": [
-        "summary:30"
+        "summary:40"
       ],
       "attributes_for_faceting": [
         "filterOnly(randomCode)"
@@ -87,7 +89,7 @@
         "unordered(type)"
       ],
       "attributes_to_snippet": [
-        "content:30"
+        "content:40"
       ],
       "attributes_for_faceting": [
         "filterOnly(randomCode)"
@@ -104,7 +106,7 @@
         "unordered(content)"
       ],
       "attributes_to_snippet": [
-        "content:30"
+        "content:40"
       ],
       "attributes_for_faceting": [
         "filterOnly(randomCode)"

@@ -60,6 +60,36 @@ that adds the Pebble-specific pieces right into the editor:
   ones still waiting for review, so you can test before anything is final.
 
 
+## From Your Browser To Your Wrist
+
+So what happens to a translation after you hit save?
+
+1. **On the web.** Your translation is saved on translate.repebble.com, and
+   Weblate commits it to the
+   [pebbleos-translations](https://github.com/coredevices/pebbleos-translations)
+   repository on GitHub. A reviewer for your language then checks it and
+   approves it.
+2. **Building the pack.** Every hour, an automated build collects the approved
+   strings for each language and turns them into a language pack: a single
+   file containing the translated strings and any extra fonts the language
+   needs. Only approved strings make it in. A language is published once it
+   has a reviewer and at least 80% of its strings are approved. One pack works
+   on every supported watch. New packs are published to GitHub, along with a
+   list of all the available languages.
+3. **On your phone.** The Pebble app reads that list. In your watch's settings
+   in the app, tap **Language** to see the available packs, with ones matching
+   your phone's language at the top. Pick one and the app downloads it and
+   checks that it arrived intact.
+4. **On your watch.** The app sends the pack to your watch over Bluetooth. The
+   watch switches to the new language right away, with no restart needed, and
+   keeps it across reboots. Your watch holds one language pack at a time, and
+   you can switch back to English at any time under **Settings > Display >
+   Language** on the watch.
+
+Draft packs take a shortcut: build one in the editor, download the `.pbl`
+file, and open it with the Pebble app to send it straight to your watch.
+
+
 ## How To Get Involved
 
 1. Head over to [translate.repebble.com](https://translate.repebble.com) and
@@ -74,6 +104,10 @@ Each existing language already has a select few reviewers from the community.
 They check new translations before they make it into a language pack, which
 keeps each language consistent and high quality. So don't worry about getting
 everything perfect. Your suggestions will get a second pair of eyes.
+
+Want to help look after a language yourself?
+[Apply to become a reviewer](https://translate.repebble.com/contact/?topic=server)
+and tell us which language you'd like to review.
 
 New languages are open to everyone. If your language isn't on the site yet,
 you don't need to ask permission. Start it and get translating!
@@ -91,10 +125,10 @@ A few tips to keep in mind:
 
 ## What's Next
 
-This is just the beginning. Draft packs are for testing for now. Next, we're
-working on full-screen watch previews and on publishing reviewed language packs
-so they reach everyone's watches. Translators who get started now will be the
-ones who make sure their language is ready on day one.
+This is just the beginning. Next, we're working on full-screen watch previews,
+and on getting reviewers in place for every language so its pack can be
+published. Translators who get started now will be the ones who make sure
+their language is ready for everyone.
 
 
 ## Join Us

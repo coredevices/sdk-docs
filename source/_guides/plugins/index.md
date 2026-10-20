@@ -24,7 +24,8 @@ tools.
 {% alert important %}
 Plugins are a preview. The API will change before plugins are released to all
 users, and the Pebble mobile app ships with them turned off. Do not publish
-apps that use or provide plugins to the appstore yet.
+apps that use plugins to the appstore yet; publishing plugins is limited to
+invited developers (see {% guide_link plugins/publishing-plugins %}).
 {% endalert %}
 
 The documentation is maintained alongside the implementation and the example

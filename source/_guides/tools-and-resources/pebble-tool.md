@@ -349,6 +349,27 @@ captures static screenshots as well. Uploaded releases are published
 immediately; `--is-published` is accepted but has no effect in the current
 version.
 
+For a plugin project the command uploads a plugin listing instead: it asks for a
+plugin category, skips screenshots, and generates a line icon if you don't
+provide one. If the plugin declares OAuth connectors, the command then offers to
+set up any that aren't set up yet; `--reconfigure-oauth` asks about every one.
+See {% guide_link plugins/publishing-plugins %}.
+
+
+#### oauth-connector
+
+```nc|text
+$ pebble oauth-connector [show|set|delete] [--slug SLUG] [--app-id ID]
+```
+
+Show, set up or delete the OAuth connectors of the current plugin project's
+appstore listing. `set` prompts for the provider's authorization URL, token URL,
+scopes, client ID and client secret; for CI pass them as flags
+(`--provider-label`, `--authorize-url`, `--token-url`, `--scopes`,
+`--client-id`), with the secret in `--client-secret-file` or
+`PEBBLE_OAUTH_CLIENT_SECRET`, and add `--non-interactive`. Requires
+`pebble login`.
+
 
 ### SDK Management
 

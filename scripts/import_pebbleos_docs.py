@@ -341,6 +341,9 @@ def main():
              # The book theme's page hooks fail under the JSON builder, and
              # only the bodies are used here.
              '-D', 'html_theme=basic',
+             # The playground page embeds a WebAssembly firmware build that
+             # needs Emscripten; leave it out.
+             '-D', 'pbl_playground=0',
              '-d', os.path.join(work, 'doctrees'),
              os.path.join(checkout, 'docs'), json_dir])
 

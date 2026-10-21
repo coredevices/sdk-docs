@@ -201,13 +201,14 @@ def nav_groups(env):
     group_of = {}
     for node in env.tocs['index'].findall(addnodes.toctree):
         caption = re.sub(r'^[^\w]+', '', node.get('caption') or '').strip()
-        entries = [name for _, name in node['entries']]
+        # Entries can also be external URLs; only pages are imported.
+        entries = [name for _, name in node['entries'] if name in titles]
         if not caption or not entries:
             continue
         slug = re.sub(r'[^a-z0-9]+', '-', caption.lower()).strip('-')
         if len(entries) == 1 and includes.get(entries[0]):
             root = entries[0]
-            pages = includes[root]
+            pages = [name for name in includes[root] if name in titles]
             group_of[root] = slug
         else:
             root = entries[0]

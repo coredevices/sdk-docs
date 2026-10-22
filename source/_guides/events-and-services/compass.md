@@ -110,20 +110,26 @@ The magnetic heading value is presented as a number between 0 and
 TRIG_MAX_ANGLE (65536). This range is used to give a higher level of 
 precision for drawing commands, which is preferable to using only 360 degrees. 
 
-If you imagine an analogue clock face on your Pebble, the angle 0 is always at 
-the 12 o'clock position, and the magnetic heading angle is calculated in a 
-counter clockwise direction from 0.
+If you imagine an analogue clock face on your Pebble, the magnetic heading is
+the position of magnetic North on that face, measured clockwise from the 12
+o'clock position. For example, if North is at 3 o'clock the value is 90
+degrees, and if North is at 9 o'clock it is 270 degrees. This makes it easy to
+draw a needle pointing North: rotate it clockwise by `magnetic_heading`.
 
-This can be confusing to grasp at first, as it’s opposite of how direction is 
-measured on a compass, but it's simple to convert the values into a clockwise 
-direction:
+As a result, the value increases as you turn the watch counter clockwise, which
+is the opposite of a compass bearing. To get the direction the top of the watch
+is facing, measured clockwise from North as on a compass, subtract the value
+from ``TRIG_MAX_ANGLE``:
 
 ```c
-int clockwise_angle = TRIG_MAX_ANGLE - heading_data.magnetic_heading;
+int bearing = TRIG_MAX_ANGLE - heading_data.magnetic_heading;
 ```
 
-Once you have an angle relative to North, you can convert that to degrees using 
-the helper function ``TRIGANGLE_TO_DEG()``:
+For example, with the top of the watch facing East, North is at 9 o'clock, so
+`magnetic_heading` is 270 degrees and `bearing` is 90 degrees.
+
+You can convert either value to degrees using the helper function
+``TRIGANGLE_TO_DEG()``:
 
 ```c
 int degrees = TRIGANGLE_TO_DEG(TRIG_MAX_ANGLE - heading_data.magnetic_heading);

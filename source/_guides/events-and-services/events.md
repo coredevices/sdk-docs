@@ -341,7 +341,7 @@ static void compass_heading_handler(CompassHeadingData heading_data) {
   // Is the compass calibrated?
   if(heading_data.compass_status == CompassStatusCalibrated) {
     APP_LOG(APP_LOG_LEVEL_INFO, "Calibrated! Heading is %ld",
-                             TRIGANGLE_TO_DEG(heading_data.magnetic_heading));
+                             TRIGANGLE_TO_DEG(TRIG_MAX_ANGLE - heading_data.magnetic_heading));
   }
 }
 ```

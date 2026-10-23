@@ -76,6 +76,113 @@
     width: 100%;
   }
 
+  // Option lists of the pbl command pages.
+  dl.pbl-options dt code {
+    font-weight: 600;
+  }
+
+  // Board pages: the photo and key facts beside the overview.
+  .board-card {
+    background-color: $white;
+    border-radius: $base-border-radius * 2;
+    float: right;
+    margin: 0 0 1.5em 2em;
+    padding: 1.2em 1.2em 0.6em;
+    width: 260px;
+
+    img {
+      display: block;
+      margin: 0 auto 1em;
+      width: 100%;
+    }
+
+    dl.field-list {
+      font-size: 0.9em;
+      grid-template-columns: auto 1fr;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    @include bp-max (s) {
+      float: none;
+      margin: 0 0 1.5em;
+      width: auto;
+
+      img {
+        max-width: 240px;
+      }
+    }
+  }
+
+  // sphinx-design grids: one column on small screens, the md/lg column
+  // count from there up.
+  .sd-row {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr;
+    margin-bottom: 1em;
+
+    @include bp-min (m) {
+      &.sd-row-cols-md-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      &.sd-row-cols-md-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  .sd-col figure {
+    margin-bottom: 0;
+  }
+
+  // sphinxcontrib-mermaid diagrams, drawn in the page by mermaid.js.
+  pre.mermaid {
+    background: none;
+    border: 0;
+    color: inherit;
+    overflow-x: auto;
+    padding: 0;
+    text-align: center;
+    white-space: pre;
+
+    // Natural size, shrunk only to fit the column (mermaid_height = "auto").
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  // The playground (pbl-playground directive): the frame sizes itself to the
+  // page inside it.
+  .pbl-playground {
+    margin-bottom: 1em;
+
+    iframe {
+      border: 0;
+      display: block;
+      height: 760px;
+      width: 100%;
+    }
+
+    select {
+      background-color: $white;
+      border: 1px solid $gray-06;
+      border-radius: $base-border-radius;
+      display: block;
+      font: inherit;
+      margin: 0 auto 0.5em;
+      padding: 4px 8px;
+
+      &[hidden] {
+        display: none;
+      }
+    }
+  }
+
   dl.field-list {
     display: grid;
     gap: 0.25em 1em;

@@ -26,6 +26,31 @@ regenerate: true
     <div class="markdown markdown--staff pebbleos-doc">
     {{ content }}
     </div>
+    {% if content contains 'class="mermaid"' %}
+    <script type="module">
+      // Same version and settings as sphinxcontrib-mermaid in pebbleos docs/conf.py.
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({
+        startOnLoad: false,
+        flowchart: { useMaxWidth: false },
+        block: { useMaxWidth: false },
+        sequence: { useMaxWidth: false },
+        class: { useMaxWidth: false },
+      });
+      mermaid.run({ querySelector: '.pebbleos-doc pre.mermaid' });
+    </script>
+    {% endif %}
+    {% if content contains 'class="math' %}
+    <script>
+      // MyST marks whole pages mathjax_ignore; Sphinx's math elements opt back in.
+      window.MathJax = { options: { processHtmlClass: 'tex2jax_process|mathjax_process|math|output_area' } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
+    {% endif %}
+    {% if content contains 'id="__kconfig-search"' %}
+    <link rel="stylesheet" href="kconfig.css">
+    <script type="module" src="kconfig.mjs"></script>
+    {% endif %}
     {% if page.pebbleos_source %}
     <p class="pebbleos-doc__footer">
       Generated from PebbleOS

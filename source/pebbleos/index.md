@@ -45,41 +45,31 @@ The steps below take a build from nothing to running in the emulator and
 installed on a watch. Each step links to the imported page that covers it, so
 the instructions themselves come from the pebbleos repository.
 
-<!-- A pebbleos pull request adds a single quickstart page under
-     docs/development/. Once that page is imported, this list can collapse
-     to one link to it. -->
-
-1. Set up the build environment.
-   [Prerequisites](/pebbleos/docs/development/getting_started/#prerequisites)
+1. Follow the [Getting started guide](/pebbleos/docs/getting_started/): it
    installs the
-   [PebbleOS SDK](/pebbleos/docs/development/getting_started/#pebbleos-sdk)
-   toolchain bundle and the
-   [system packages](/pebbleos/docs/development/getting_started/#system-level-dependencies),
-   then [gets the source](/pebbleos/docs/development/getting_started/#get-the-source-code)
-   with its submodules and installs the
-   [Python dependencies](/pebbleos/docs/development/getting_started/#python-dependencies).
-2. Configure and build for an emulator board.
-   [Build](/pebbleos/docs/development/qemu/#build) on the QEMU page runs
-   `pbl configure --board qemu_flint` and `pbl build`.
-   [Choosing your target](/pebbleos/docs/development/options/#choosing-your-target)
-   lists the boards and revisions `pbl configure` accepts.
-3. Run the build. [Run](/pebbleos/docs/development/qemu/#run) starts the
-   emulator with `pbl qemu`, and
-   [Install PBW applications](/pebbleos/docs/development/qemu/#install-pbw-applications)
-   installs an app into it with the `pebble` tool.
-4. Configure and build again for the board of your watch, from the table
-   under [Boards](#boards), bundle a `.pbz` with `pbl bundle`, and install
-   it in one of three ways: sideload the file from the Pebble mobile app
-   (*Firmware Update Debug* > *Sideload FW*, with debug options shown), as
-   described in
-   [Loading firmware via Bluetooth](/pebbleos/docs/development/building_fw/#loading-firmware-via-bluetooth);
-   send it through the
-   {% guide_link tools-and-resources/developer-connection %} with
-   `pebble fw install <file>.pbz --phone <ip>`; or, on a board with its
-   debug connector exposed, flash it with `pbl flash` as described in
-   [Loading firmware with a firmware development kit](/pebbleos/docs/development/building_fw/#loading-firmware-with-a-firmware-development-kit).
+   [dependencies](/pebbleos/docs/getting_started/#install-dependencies) and the
+   [PebbleOS SDK](/pebbleos/docs/getting_started/#install-the-pebbleos-sdk),
+   [gets the source](/pebbleos/docs/getting_started/#get-the-source-code),
+   [builds for a board](/pebbleos/docs/getting_started/#build-for-a-board)
+   and [runs the firmware](/pebbleos/docs/getting_started/#run-the-firmware)
+   in the emulator. [`pbl configure`](/pebbleos/docs/pbl/configure/) lists
+   the boards and options it accepts, and the
+   [Emulator](/pebbleos/docs/development/emulation/emulator/#apps) page
+   installs apps into the running emulator. To try the firmware without
+   building anything, open the [Playground](/pebbleos/docs/playground/).
+2. Configure and build again for the board of your watch, from the table
+   under [Boards](#boards), bundle a `.pbz` with
+   [`pbl bundle`](/pebbleos/docs/pbl/bundle/), and install it in one of three
+   ways: sideload the file
+   [with the Pebble app](/pebbleos/docs/pbl/bundle/#sideloading-with-the-pebble-app)
+   (*Firmware Update Debug* > *Sideload FW*, with debug options shown); send
+   it through the
+   {% guide_link tools-and-resources/developer-connection %} as described in
+   [Sideloading with the pebble tool](/pebbleos/docs/pbl/bundle/#sideloading-with-the-pebble-tool);
+   or, on a board with its debug connector exposed, flash it with
+   [`pbl flash`](/pebbleos/docs/pbl/flash/).
 
-Read [Installing a Custom Build](#installing-a-custom-build) before step 4.
+Read [Installing a Custom Build](#installing-a-custom-build) before step 2.
 
 
 ## Installing a Custom Build
@@ -96,16 +86,13 @@ When a firmware fails to start, the bootloader records the attempt in the
 boot bits and after repeated failures boots PRF instead. From PRF the Pebble
 mobile app installs a firmware again. To get to PRF by hand, hold *Back*,
 *Up* and *Select* together for five seconds, or run `pebble fw enter-prf`.
-[Recovery Firmware](/pebbleos/contributing/#recovery-firmware) has the
-details.
 
 If the bootloader or PRF has been erased, the watch can only be programmed
 through its debug connector: over SWD with openocd on Pebble 2 Duo, and over
 the serial adapter with sftool, which does not depend on the bootloader, on
 Pebble Time 2 and Pebble Round 2. A sealed watch has no accessible debug
-connector; a
-[firmware development kit](/pebbleos/contributing/#the-firmware-development-kit)
-does.
+connector; [Programmers](/pebbleos/docs/programmers/) covers the boards
+that connect to one.
 
 
 ## Boards
@@ -171,7 +158,7 @@ app SDK from its own sources: `pebble.h` with the exported declarations, and
 `libpebble.a` with trampolines that call into the firmware through a function
 table compiled into the firmware image. Apps run as unprivileged processes
 and reach OS state through syscalls. The imported
-[Exposing functions to the SDK](/pebbleos/docs/development/sdk_export/) page
+[Exporting a function](/pebbleos/docs/sdk/exporting/) page
 describes how a firmware function becomes an SDK API.
 
 The SDK that developers install with `pebble sdk install` is built from a
@@ -205,10 +192,10 @@ changes to its repository.
 
 ## Where the Documentation Starts
 
-* [Prerequisites](/pebbleos/docs/development/getting_started/) sets up a
-  build environment and gets the source. The rest of the Development pages
-  cover the `pbl` tool, configuration options, building and flashing,
-  testing, the emulator, debugging and contributing.
+* The [Getting started guide](/pebbleos/docs/getting_started/) sets up a
+  build environment and gets the source. The Development pages cover
+  [the `pbl` tool](/pebbleos/docs/pbl/) and its commands, the build system,
+  testing, the emulator and debugging.
 * [Architecture overview](/pebbleos/docs/architecture/) is a tour of the
   source tree with links to the design documents.
 * [Boards](/pebbleos/docs/boards/) describes the hardware and how to connect
@@ -220,6 +207,5 @@ changes to its repository.
   services and subsystems. It describes interfaces inside the firmware; the
   [C API reference](/docs/c/) is the one to use when writing apps.
 
-[Contributing to PebbleOS](/pebbleos/contributing/) collects the steps for
-getting a change merged and answers to the questions that come up most often
-on the forum.
+The [Contribution Guidelines](/pebbleos/docs/community/contributing/) cover
+getting a change merged.

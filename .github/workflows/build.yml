@@ -128,6 +128,21 @@ jobs:
           sudo apt-get install -y doxygen
           pip install -r pebbleos/docs/requirements.txt
 
+      # The playground page embeds WebAssembly builds of the firmware. Set up
+      # what that build needs (submodules, Python packages, the PebbleOS SDK,
+      # Emscripten) with pebbleos's own Read the Docs script, so it follows
+      # the firmware's requirements; the script puts em-config in
+      # $READTHEDOCS_VIRTUALENV_PATH/bin.
+      - name: Install the playground's firmware toolchain
+        working-directory: pebbleos
+        env:
+          READTHEDOCS_VIRTUALENV_PATH: ${{ runner.temp }}/playground
+        run: |
+          sudo apt-get install -y clang cmake gettext librsvg2-bin ninja-build
+          mkdir -p "$READTHEDOCS_VIRTUALENV_PATH/bin"
+          sh docs/_scripts/pbl_playground_setup_rtd.sh
+          echo "$READTHEDOCS_VIRTUALENV_PATH/bin" >> "$GITHUB_PATH"
+
       - name: Import PebbleOS documentation
         run: python3 scripts/import_pebbleos_docs.py pebbleos /tmp/pebbleos-site
 

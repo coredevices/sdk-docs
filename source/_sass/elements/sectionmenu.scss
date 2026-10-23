@@ -32,6 +32,25 @@ $section-menu-width: 240px;
   top: 0;
   width: $section-menu-width;
   overflow-y: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
 
   > ul {
     padding: 1em;
@@ -114,6 +133,38 @@ $section-menu-width: 240px;
   }
 }
 
+.section-menu__caption {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin: $base-line-height * 0.5 0 0;
+  opacity: 0.7;
+  padding: 0.5em;
+  text-transform: uppercase;
+}
+
+.section-menu__item--caption > ul > .section-menu__subitem > a {
+  margin-left: 0;
+}
+
+.section-menu__subitem--parent > a span::after {
+  content: '\203A';
+  margin-left: 0.4em;
+  opacity: 0.6;
+}
+
+.section-menu__subitem--parent.open > a span::after {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.section-menu__subitem--external > a span::after {
+  content: '\2197';
+  margin-left: 0.3em;
+  opacity: 0.6;
+}
+
 .section-menu__subitem {
 
   > a {
@@ -174,6 +225,11 @@ $section-menu-width: 240px;
 }
 
 .section-menu--light {
+  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
 
   &,
   a,

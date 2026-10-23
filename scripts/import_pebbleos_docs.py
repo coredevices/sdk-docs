@@ -22,14 +22,20 @@ Given a checkout of github.com/coredevices/pebbleos, this script:
 * runs the Sphinx JSON builder on ``docs/`` and writes one Jekyll page per
   document under ``source/pebbleos/docs/<path>/index.html``, with the
   resolved HTML body and front matter for the ``pebbleos/default`` layout;
-* copies the images Sphinx collected to ``source/pebbleos/docs/images/``;
+* writes a redirect page for every old URL in ``pbl_redirects``;
+* copies the images Sphinx collected to ``source/pebbleos/docs/images/``, and
+  the playground's WebAssembly firmware builds to
+  ``source/pebbleos/docs/playground-build/``;
 * writes ``source/_data/pebbleos.json`` with the sidebar navigation (taken
-  from the toctrees in ``docs/index.md``) and the PebbleOS commit it was
+  from the toctrees in ``docs/index.md``, grouped by caption like the Read the
+  Docs sidebar) and the PebbleOS commit it was
   generated from.
 
 Nothing is written into the pebbleos checkout. Run it with the Python
 environment that has ``docs/requirements.txt`` installed, and with
-``doxygen`` on the PATH:
+``doxygen`` on the PATH. The playground also needs what the firmware build
+needs (see ``docs/_scripts/pbl_playground_setup_rtd.sh`` in pebbleos), or
+``--skip-playground``:
 
     python3 scripts/import_pebbleos_docs.py /path/to/pebbleos .
 
@@ -38,6 +44,7 @@ The second argument is the sdk-docs checkout (or any directory with the same
 """
 
 import argparse
+import html
 import json
 import os
 import pickle
@@ -52,6 +59,8 @@ from html.parser import HTMLParser
 
 SITE_PREFIX = '/pebbleos/docs/'
 APIDOC_PREFIX = '/pebbleos/apidoc/'
+# Sphinx's _playground/ output; Jekyll skips directories starting with "_".
+PLAYGROUND_URL = SITE_PREFIX + 'playground-build/'
 HUB_URL = '/pebbleos/'
 # Pinned in pebbleos/.readthedocs.yaml (doxygen-awesome-css v2.4.2).
 AWESOME_CSS_REPO = 'https://github.com/jothepro/doxygen-awesome-css.git'
@@ -99,6 +108,11 @@ def rewrite_target(docname, target):
     path, sep, fragment = target.partition('#')
     if not path:
         return target
+    # The {apidoc} role writes html-builder paths (../ per path segment of
+    # the docname), not the dirhtml-style ones the rest of the body uses.
+    apidoc = re.match(r'^(?:\.\./)*apidoc/(.*)$', path)
+    if apidoc:
+        return APIDOC_PREFIX + apidoc.group(1) + sep + fragment
     resolved = posixpath.normpath(posixpath.join(doc_base(docname), path))
     if resolved == '.':
         resolved = ''
@@ -117,7 +131,9 @@ def rewrite_target(docname, target):
 def rewrite_body(docname, body):
     def repl(match):
         return f'{match.group(1)}="{rewrite_target(docname, match.group(2))}"'
-    return re.sub(r'\b(href|src)="([^"]*)"', repl, body)
+    body = re.sub(r'\b(href|src)="([^"]*)"', repl, body)
+    # The playground's script gets the builds' location as a relative string.
+    return re.sub(r'"(?:\.\./)*_playground/"', f'"{PLAYGROUND_URL}"', body)
 
 
 def selftest():
@@ -128,10 +144,15 @@ def selftest():
     assert rewrite_target('development/building_fw', '../../boards/') == '/pebbleos/docs/boards/'
     assert rewrite_target('boards/index', 'asterix/#programming') == '/pebbleos/docs/boards/asterix/#programming'
     assert rewrite_target('architecture/index', '../apidoc/index.html') == '/pebbleos/apidoc/index.html'
+    assert rewrite_target('subsystems/bluetooth', '../apidoc/d3/ddb/g.html') == '/pebbleos/apidoc/d3/ddb/g.html'
     assert rewrite_target('architecture/activity/index', '../../_images/a.png') == '/pebbleos/docs/images/a.png'
     assert rewrite_target('reference/index', '../') == '/pebbleos/'
     assert rewrite_target('development/qemu', 'https://example.com/x') == 'https://example.com/x'
     assert rewrite_target('development/qemu', '#run') == '#run'
+    assert external_url('https://pebbleos.readthedocs.io/en/latest/apidoc/index.html') == '/pebbleos/apidoc/index.html'
+    assert external_url('https://example.com/x') == 'https://example.com/x'
+    assert rewrite_body('playground', 'const base = "_playground/";') == \
+        'const base = "/pebbleos/docs/playground-build/";'
 
 
 # --- Sphinx output -----------------------------------------------------------
@@ -186,44 +207,56 @@ def escape_liquid(body):
     return body.replace('{{', '&#123;&#123;').replace('{%', '&#123;%')
 
 
-def nav_groups(env):
-    """Sidebar groups from the toctrees in docs/index.md.
+def external_url(url):
+    """Point links to the Read the Docs API reference at the copy on this site."""
+    match = re.match(r'^https://pebbleos\.readthedocs\.io/[^/]+/[^/]+/apidoc/(.*)$', url)
+    return APIDOC_PREFIX + match.group(1) if match else url
 
-    A caption whose single entry has its own toctree (Architecture, Boards,
-    Reference) becomes a group rooted at that page listing its children. A
-    caption with several entries (Development) lists them directly.
+
+def nav_groups(env):
+    """Sidebar groups from the toctrees in docs/index.md, as on Read the Docs.
+
+    Each caption (Development, System, ...) is a group listing its entries;
+    each entry lists the pages of its own toctree. Returns the groups and,
+    per document, its group slug and the URL of the entry it falls under.
     """
     from sphinx import addnodes
 
     includes = env.toctree_includes
     titles = {name: node.astext() for name, node in env.titles.items()}
     groups = []
-    group_of = {}
+    place = {}
+
+    def claim(name, slug, parent, shown):
+        # shown: the sidebar entry that stands for this page, the page itself
+        # down to the entries' children, their ancestor below that.
+        if name in place:
+            return
+        place[name] = (slug, parent, shown)
+        for child in includes.get(name, []):
+            claim(child, slug, parent, doc_url(child) if shown == parent else shown)
+
     for node in env.tocs['index'].findall(addnodes.toctree):
         caption = re.sub(r'^[^\w]+', '', node.get('caption') or '').strip()
-        # Entries can also be external URLs; only pages are imported.
-        entries = [name for _, name in node['entries'] if name in titles]
-        if not caption or not entries:
+        if not caption:
             continue
         slug = re.sub(r'[^a-z0-9]+', '-', caption.lower()).strip('-')
-        if len(entries) == 1 and includes.get(entries[0]):
-            root = entries[0]
-            pages = [name for name in includes[root] if name in titles]
-            group_of[root] = slug
-        else:
-            root = entries[0]
-            pages = entries
-        for name in pages:
-            group_of[name] = slug
-            for child in includes.get(name, []):
-                group_of[child] = slug
-        groups.append({
-            'slug': slug,
-            'title': caption,
-            'url': doc_url(root),
-            'pages': [{'title': titles[name], 'url': doc_url(name)} for name in pages],
-        })
-    return groups, group_of
+        pages = []
+        for title, name in node['entries']:
+            if name in titles:
+                url = doc_url(name)
+                claim(name, slug, url, url)
+                pages.append({
+                    'title': title or titles[name],
+                    'url': url,
+                    'children': [{'title': titles[child], 'url': doc_url(child)}
+                                 for child in includes.get(name, []) if child in titles],
+                })
+            elif re.match(r'^https?://', name):
+                pages.append({'title': title or name, 'url': external_url(name), 'external': True})
+        if pages:
+            groups.append({'slug': slug, 'title': caption, 'url': pages[0]['url'], 'pages': pages})
+    return groups, place
 
 
 def front_matter(data):
@@ -238,7 +271,7 @@ def front_matter(data):
 def write_pages(json_dir, out_docs, sha):
     with open(os.path.join(json_dir, 'environment.pickle'), 'rb') as handle:
         env = pickle.load(handle)
-    groups, group_of = nav_groups(env)
+    groups, place = nav_groups(env)
 
     count = 0
     for docname in sorted(env.all_docs):
@@ -246,15 +279,18 @@ def write_pages(json_dir, out_docs, sha):
             continue
         with open(os.path.join(json_dir, docname + '.fjson'), encoding='utf-8') as handle:
             page = json.load(handle)
-        group = group_of.get(docname)
+        group, parent, shown = place.get(docname, (None, None, None))
         if group is None:
             log(f'warning: {docname} is not reachable from docs/index.md toctrees')
         url = doc_url(docname)
         data = {
             'layout': 'pebbleos/default',
-            'title': page['title'],
+            # Sphinx gives titles as HTML (``<code>`` for ``pbl build``).
+            'title': html.unescape(re.sub(r'<[^>]+>', '', page['title'])),
             'permalink': url,
             'pebbleos_group': group,
+            'pebbleos_parent': parent,
+            'pebbleos_active': shown,
             'menu_subsection': group,
             'pebbleos_source': page['current_page_name'] + page['page_source_suffix'],
             'pebbleos_sha': sha,
@@ -271,8 +307,25 @@ def write_pages(json_dir, out_docs, sha):
         with open(target, 'w', encoding='utf-8') as handle:
             handle.write(front_matter(data))
             handle.write(body)
+        if 'id="__kconfig-search"' in body:
+            # kconfig.mjs fetches kconfig.json next to the page; the layout
+            # loads the script and its styles from there too.
+            for name in ('kconfig.json', '_static/kconfig.mjs', '_static/kconfig.css'):
+                shutil.copy2(os.path.join(json_dir, name), os.path.dirname(target))
         count += 1
     log(f'wrote {count} pages')
+
+    # Pages that moved (pbl_redirects in docs/conf.py) keep their old URL.
+    redirects = getattr(env.config, 'pbl_redirects', None) or {}
+    for old, new in redirects.items():
+        target = os.path.join(out_docs, doc_url(old)[len(SITE_PREFIX):], 'index.html')
+        if os.path.exists(target) or new not in env.all_docs:
+            continue
+        os.makedirs(os.path.dirname(target), exist_ok=True)
+        with open(target, 'w', encoding='utf-8') as handle:
+            handle.write(front_matter({'layout': 'utils/redirect_permanent',
+                                       'redirect_to': doc_url(new)}))
+    log(f'wrote {len(redirects)} redirects')
     return groups
 
 
@@ -321,6 +374,8 @@ def main():
     parser.add_argument('site', help='sdk-docs checkout, or a staging directory')
     parser.add_argument('--sha', help='PebbleOS commit to record (default: git rev-parse HEAD)')
     parser.add_argument('--skip-apidoc', action='store_true', help='do not run Doxygen')
+    parser.add_argument('--skip-playground', action='store_true',
+                        help='do not build the firmware for the playground page')
     args = parser.parse_args()
 
     checkout = os.path.abspath(args.checkout)
@@ -342,9 +397,11 @@ def main():
              # The book theme's page hooks fail under the JSON builder, and
              # only the bodies are used here.
              '-D', 'html_theme=basic',
-             # The playground page embeds a WebAssembly firmware build that
-             # needs Emscripten; leave it out.
-             '-D', 'pbl_playground=0',
+             # The playground page embeds WebAssembly builds of the firmware,
+             # which need CMake, Ninja and Emscripten. Build them outside the
+             # checkout.
+             '-D', f'pbl_playground={0 if args.skip_playground else 1}',
+             '-D', f'pbl_playground_build_dir={os.path.join(work, "playground")}',
              '-d', os.path.join(work, 'doctrees'),
              os.path.join(checkout, 'docs'), json_dir])
 
@@ -353,6 +410,9 @@ def main():
         groups = write_pages(json_dir, out_docs, sha)
         if os.path.isdir(os.path.join(json_dir, '_images')):
             replace_tree(os.path.join(json_dir, '_images'), os.path.join(out_docs, 'images'))
+        if os.path.isdir(os.path.join(json_dir, '_playground')):
+            replace_tree(os.path.join(json_dir, '_playground'),
+                         os.path.join(out_docs, PLAYGROUND_URL[len(SITE_PREFIX):]))
 
         if not args.skip_apidoc:
             replace_tree(build_apidoc(checkout, work), out_apidoc)

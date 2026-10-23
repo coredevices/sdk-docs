@@ -110,19 +110,24 @@
     <li class="mobile-nav--pebbleos"><a href="/pebbleos/">PebbleOS</a>
       <!-- layouts/pebbleos/master -->
       <ul>
-        <li><a href="/pebbleos/contributing/">Contributing</a></li>
         {% for group in site.data.pebbleos.groups %}
           <li><a href="{{ group.url }}">{{ group.title }}</a>
             <ul>
               {% for doc in group.pages %}
-                <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+                <li>
+                  <a href="{{ doc.url }}">{{ doc.title }}</a>
+                  {% if doc.children.size > 0 %}
+                    <ul>
+                      {% for child in doc.children %}
+                        <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
               {% endfor %}
             </ul>
           </li>
         {% endfor %}
-        {% if site.data.pebbleos %}
-          <li><a href="/pebbleos/apidoc/index.html">Firmware API Reference</a></li>
-        {% endif %}
       </ul>
     </li>
     <li class="mobile-nav--mobile-app"><a href="/mobile-app/">Mobile App</a>

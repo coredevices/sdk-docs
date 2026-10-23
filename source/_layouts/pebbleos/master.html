@@ -28,28 +28,29 @@ sidebar_only: false
       <li class="section-menu__item{% if page.url == '/pebbleos/' %} active{% endif %}">
         <a href="/pebbleos/">Overview</a>
       </li>
-      <li class="section-menu__item{% if page.url == '/pebbleos/contributing/' %} active{% endif %}">
-        <a href="/pebbleos/contributing/">Contributing</a>
-      </li>
       {% for group in site.data.pebbleos.groups %}
-        <li class="section-menu__item{% if page.pebbleos_group == group.slug %} open{% if page.url == group.url %} active{% endif %}{% endif %}">
-          <a href="{{ group.url }}">{{ group.title }}</a>
-          {% if page.pebbleos_group == group.slug %}
-            <ul>
-            {% for doc in group.pages %}
-              <li class="section-menu__subitem{% if page.url == doc.url %} active{% endif %}">
-                <a href="{{ doc.url }}"><span>{{ doc.title }}</span></a>
-              </li>
-            {% endfor %}
-            </ul>
-          {% endif %}
+        <li class="section-menu__item section-menu__item--caption open">
+          <span class="section-menu__caption">{{ group.title }}</span>
+          <ul>
+          {% for doc in group.pages %}
+            {% assign doc_open = false %}
+            {% if page.pebbleos_parent == doc.url %}{% assign doc_open = true %}{% endif %}
+            <li class="section-menu__subitem{% if doc_open %} open{% endif %}{% if page.pebbleos_active == doc.url %} active{% endif %}{% if doc.children.size > 0 %} section-menu__subitem--parent{% endif %}{% if doc.external %} section-menu__subitem--external{% endif %}">
+              <a href="{{ doc.url }}"><span>{{ doc.title }}</span></a>
+              {% if doc_open and doc.children.size > 0 %}
+                <ul>
+                {% for child in doc.children %}
+                  <li class="section-menu__subsubitem{% if page.pebbleos_active == child.url %} active{% endif %}">
+                    <a href="{{ child.url }}"><span>{{ child.title }}</span></a>
+                  </li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
         </li>
       {% endfor %}
-      {% if site.data.pebbleos %}
-      <li class="section-menu__item">
-        <a href="/pebbleos/apidoc/index.html">Firmware API Reference</a>
-      </li>
-      {% endif %}
     </ul>
   </div>
 </div><!-- sidebar__wrapper -->

@@ -3,12 +3,20 @@ name: Build static site
 # Pushes to main build and deploy the site. Pull requests build it the same
 # way (C, PebbleKit Android and iOS references included) and check every
 # internal link in the result; they never deploy and never touch the
-# production search index.
+# production search index. pebbleos runs this workflow (workflow_dispatch)
+# when its documentation changes on main, so the imported PebbleOS pages are
+# rebuilt.
 on:
   workflow_dispatch:
   push:
     branches: [main]
   pull_request:
+
+# One build per branch at a time; a burst of pushes or dispatches waits as a
+# single queued build instead of deploying over each other.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   gendocs-c:

@@ -61,12 +61,15 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
   <link href="{{ site.asset_path }}/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="{{ site.asset_path }}/css/main.css">
+  {% comment %}The CSS and JS keep their URLs between builds and are cached for
+  hours; the build time in the query makes each deploy fetch them again.{% endcomment %}
+  {% capture asset_version %}{{ site.time | date: '%s' }}{% endcapture %}
+  <link rel="stylesheet" type="text/css" href="{{ site.asset_path }}/css/main.css?v={{ asset_version }}">
   {% for style in page.styles %}
   {% asset_css style %}
   {% endfor %}
   <noscript>
-  <link rel="stylesheet" type="text/css" href="{{ site.asset_path }}/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="{{ site.asset_path }}/css/noscript.css?v={{ asset_version }}">
   </noscript>
   {% unless jekyll.environment == 'development' %}
   <script type="text/javascript" >
@@ -111,11 +114,11 @@
   {% else %}
   <script type="text/javascript" src="{{ site.asset_path }}/js/libs-{{ site.data.js.lib_hash }}.js"></script>
   {% endif %}
-  <script type="text/javascript" src="{{ site.asset_path }}/js/templates.js"></script>
-  <script type="text/javascript" src="{{ site.asset_path }}/js/app.js"></script>
-  <script type="text/javascript" src="{{ site.asset_path }}/js/search.js"></script>
-  <script type="text/javascript" src="{{ site.asset_path }}/js/quicksearch.js"></script>
-  <script type="text/javascript" src="{{ site.asset_path }}/js/disqus.js"></script>
+  <script type="text/javascript" src="{{ site.asset_path }}/js/templates.js?v={{ asset_version }}"></script>
+  <script type="text/javascript" src="{{ site.asset_path }}/js/app.js?v={{ asset_version }}"></script>
+  <script type="text/javascript" src="{{ site.asset_path }}/js/search.js?v={{ asset_version }}"></script>
+  <script type="text/javascript" src="{{ site.asset_path }}/js/quicksearch.js?v={{ asset_version }}"></script>
+  <script type="text/javascript" src="{{ site.asset_path }}/js/disqus.js?v={{ asset_version }}"></script>
   {% for script in page.scripts %}
   {% asset_js script %}
   {% endfor %}

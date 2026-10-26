@@ -1,0 +1,34 @@
+name: Watch PebbleOS
+
+# The PebbleOS pages track pebbleos main. Rebuild the site when main has moved
+# past the revision the deployed site was built from (pebbleos-revision.txt,
+# written by build.yml), so pebbleos needs no workflow or token of its own.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Rebuild the site if pebbleos main has moved
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head=$(git ls-remote https://github.com/coredevices/pebbleos refs/heads/main | cut -f1)
+          built=$(curl -fsS https://developer.repebble.com/pebbleos-revision.txt || true)
+          echo "pebbleos main: $head, site: ${built:-unknown}"
+          if [ -z "$head" ] || [ "$head" = "$built" ]; then
+            exit 0
+          fi
+          pending=$(gh run list -R "$GITHUB_REPOSITORY" -w build.yml -b main -L 20 \
+            --json status --jq '[.[] | select(.status != "completed")] | length')
+          if [ "$pending" -gt 0 ]; then
+            echo "A main build is already running or queued"
+            exit 0
+          fi
+          gh workflow run build.yml -R "$GITHUB_REPOSITORY" --ref main

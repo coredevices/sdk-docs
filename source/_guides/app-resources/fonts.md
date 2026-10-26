@@ -79,8 +79,8 @@ graphics_draw_text(ctx, text, fonts_get_system_font(FONT_KEY_GOTHIC_24), bounds,
 After placing the font file in the project's `resources` directory, the custom
 font can be added to a project as `font` `type` item in the `media` array in
 `package.json`. The `name` field's contents will be made available at compile
-time with `RESOURCE_ID_` at the front, and must end with the desired font size,
-after an underscore. For example:
+time with `RESOURCE_ID_` at the front, and should end with the desired font
+size, after an underscore. For example:
 
 ```js
 "resources": {
@@ -94,10 +94,12 @@ after an underscore. For example:
 }
 ```
 
-SDK 4.33 and earlier read the first number anywhere in the name as the size, so
-keep other numbers out of it. If the name needs another number, add
-`pixelHeight` to set the size directly. SDK 4.17 and up read it, and SDKs
-before 4.17 ignore it, so there the example below builds at 2 pixels:
+SDK 4.39 and later take the size from the last number in the name that stands
+on its own between underscores, so `FONT_PIXEL8BIT_24` is 24 pixels high. SDK
+4.38 and earlier take the first number anywhere in the name instead, so keep
+other numbers out of the name when building with them. To set the size
+directly, add `pixelHeight`. SDK 4.9.179 and later read it; earlier SDKs ignore
+it, and there the example below builds at 2 pixels:
 
 ```js
 {
@@ -107,6 +109,9 @@ before 4.17 ignore it, so there the example below builds at 2 pixels:
   "pixelHeight": 20
 }
 ```
+
+A font with `extended` set still takes its baseline from the number in its
+name, so keep the size in the name there too.
 
 {% alert important %}
 The maximum recommended font size is 48.

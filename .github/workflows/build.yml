@@ -3,9 +3,9 @@ name: Build static site
 # Pushes to main build and deploy the site. Pull requests build it the same
 # way (C, PebbleKit Android and iOS references included) and check every
 # internal link in the result; they never deploy and never touch the
-# production search index. pebbleos runs this workflow (workflow_dispatch)
-# when its documentation changes on main, so the imported PebbleOS pages are
-# rebuilt.
+# production search index. watch-pebbleos.yml runs this workflow
+# (workflow_dispatch) when pebbleos main moves past the revision the site was
+# built from, so the imported PebbleOS pages are rebuilt.
 on:
   workflow_dispatch:
   push:
@@ -110,6 +110,8 @@ jobs:
   # pinned to EMERY_SDK_VERSION separately.
   gendocs-pebbleos:
     runs-on: ubuntu-24.04
+    outputs:
+      revision: ${{ steps.revision.outputs.sha }}
 
     steps:
       - name: Checkout sdk-docs
@@ -123,7 +125,11 @@ jobs:
           path: pebbleos
 
       - name: Record PebbleOS revision
-        run: echo "Generated from PebbleOS $(git -C pebbleos rev-parse HEAD)"
+        id: revision
+        run: |
+          sha=$(git -C pebbleos rev-parse HEAD)
+          echo "Generated from PebbleOS $sha"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -247,6 +253,10 @@ jobs:
           ALGOLIA_API_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_API_KEY || '' }}
           ALGOLIA_SEARCH_KEY: ${{ github.event_name != 'pull_request' && secrets.ALGOLIA_SEARCH_KEY || '' }}
           ALGOLIA_PREFIX: developer-repebble-com-prod-
+
+      # Read by watch-pebbleos.yml to tell whether pebbleos main has moved.
+      - name: Stamp the PebbleOS revision
+        run: echo "${{ needs.gendocs-pebbleos.outputs.revision }}" > __public__/pebbleos-revision.txt
 
       # Offline: internal links and anchors only. Known legacy patterns are
       # listed in .lycheeignore.

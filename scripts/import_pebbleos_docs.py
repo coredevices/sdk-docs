@@ -17,7 +17,7 @@
 
 Given a checkout of github.com/coredevices/pebbleos, this script:
 
-* runs Doxygen with the repository's ``Doxyfile.rtd`` and copies the HTML
+* runs Doxygen with the repository's ``docs/_doxygen/Doxyfile.rtd`` and copies the HTML
   output to ``source/pebbleos/apidoc/``;
 * runs the Sphinx JSON builder on ``docs/`` and writes one Jekyll page per
   document under ``source/pebbleos/docs/<path>/index.html``, with the
@@ -339,14 +339,19 @@ def build_apidoc(checkout, work):
     out = os.path.join(work, 'doxygen')
     # Doxyfile.rtd includes Doxyfile; doxygen crashes on nested @INCLUDE
     # from a third file, so concatenate the two and append the overrides.
-    with open(os.path.join(checkout, 'Doxyfile'), encoding='utf-8') as handle:
+    doxygen_dir = os.path.join(checkout, 'docs', '_doxygen')
+    with open(os.path.join(doxygen_dir, 'Doxyfile'), encoding='utf-8') as handle:
         config = handle.read()
-    with open(os.path.join(checkout, 'Doxyfile.rtd'), encoding='utf-8') as handle:
+    with open(os.path.join(doxygen_dir, 'Doxyfile.rtd'), encoding='utf-8') as handle:
         config += ''.join(line for line in handle if not line.startswith('@INCLUDE'))
     config += '\n'.join([
         '',
         f'OUTPUT_DIRECTORY = {out}',
-        f'HTML_EXTRA_STYLESHEET = {os.path.join(css_dir, "doxygen-awesome.css")}',
+        'HTML_EXTRA_STYLESHEET = ' + ' '.join([
+            os.path.join(css_dir, 'doxygen-awesome.css'),
+            os.path.join(css_dir, 'doxygen-awesome-sidebar-only.css'),
+            os.path.join(doxygen_dir, 'pebble.css'),
+        ]),
         'GENERATE_TAGFILE =',
         # Read the Docs fails its own build on warnings; the site build does not.
         'WARN_AS_ERROR = NO',
@@ -355,7 +360,11 @@ def build_apidoc(checkout, work):
     config_path = os.path.join(work, 'Doxyfile')
     with open(config_path, 'w', encoding='utf-8') as handle:
         handle.write(config)
-    run(['doxygen', config_path], cwd=checkout)
+    # Doxyfile.rtd takes the version from PBL_DOCS_VERSION, as docs/conf.py
+    # takes it from git describe.
+    version = subprocess.check_output(['git', 'describe'], cwd=checkout, text=True).strip()
+    run(['doxygen', config_path], cwd=checkout,
+        env={**os.environ, 'PBL_DOCS_VERSION': version})
     return os.path.join(out, 'apidoc')
 
 

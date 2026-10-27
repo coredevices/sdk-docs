@@ -123,6 +123,9 @@ jobs:
           repository: coredevices/pebbleos
           ref: main
           path: pebbleos
+          # docs/conf.py takes the version from git describe, which needs the
+          # tags and the history down to them.
+          fetch-depth: 0
 
       - name: Record PebbleOS revision
         id: revision

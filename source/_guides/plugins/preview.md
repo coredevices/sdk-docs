@@ -711,10 +711,21 @@ pushes the live readings back, so each option is labelled with what it currently
 
 ### Packaging and sideloading
 
-Build with `pebble build`, using SDK 4.42 or later and a `pebble-tool` with plugin support. A
-plugin-only project sets `"projectType": "plugin"` in `package.json`. The SDK marks the pbw as using
-[permissions](#declaring) (`manifestVersion` 2) by default. The plugins in
-[coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins) are worked examples.
+Use `pebble-tool` 5.1.0 or later, and build the pbw with
+[`scripts/pack-plugin-pbw.py`](https://github.com/coredevices/pebble-plugins/blob/main/scripts/pack-plugin-pbw.py)
+from [coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins):
+
+```bash
+python3 pack-plugin-pbw.py <project-dir>
+```
+
+A plugin-only project (no `src/c`) sets `"projectType": "plugin"` in `package.json` and needs no
+SDK; for a watchapp project the script runs `pebble build` itself. The script writes
+`<project-dir>/build/<name>.pbw`, marked as using [permissions](#declaring) (`manifestVersion` 2).
+The plugins in that repository are worked examples.
+
+The script is only needed until `pebble build` supports plugins, which is planned for the next SDK
+release.
 
 ## Future
 

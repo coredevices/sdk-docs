@@ -28,9 +28,7 @@ apps that use plugins to the appstore yet; publishing plugins is limited to
 invited developers (see {% guide_link plugins/publishing-plugins %}).
 {% endalert %}
 
-The documentation is maintained alongside the implementation in the
-[Pebble mobile app repository](https://github.com/coredevices/mobileapp/blob/master/test-apps/plugins.md),
-and is reproduced here. The example plugins and apps are in
+The example plugins and apps are in
 [coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins).
 
 ## Contents

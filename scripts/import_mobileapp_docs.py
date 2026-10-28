@@ -48,20 +48,6 @@ REPO = 'https://github.com/coredevices/mobileapp'
 # (path in mobileapp, path under source/, front matter)
 PAGES = [
     (
-        'test-apps/plugins.md',
-        '_guides/plugins/preview.md',
-        {
-            'title': 'Pebble Plugins Preview',
-            'description': 'What plugins are, how to try the preview in the '
-                           'Pebble mobile app, how a watchapp reads plugin '
-                           'data from PebbleKit JS, and how to write a plugin.',
-            'guide_group': 'plugins',
-            'permalink': '/guides/plugins/preview/',
-            'menu': True,
-            'generate_toc': True,
-        },
-    ),
-    (
         'experimental/src/commonMain/kotlin/coredevices/ring/external/'
         'indexwebhook/INDEX_WEBHOOK_API.md',
         'index-01/webhooks.md',

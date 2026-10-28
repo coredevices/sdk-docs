@@ -252,7 +252,8 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone
   Each package is its own permission ("Read your notifications from …"), and you only see those
   apps' notifications (by their `package` property). Bare `Notifications` is all of them, and
   allowing it allows every package. Ask for just the apps you need if you can: users are far
-  more likely to allow one app's notifications than all of them.
+  more likely to allow one app's notifications than all of them. Users are always asked about
+  notifications, whatever their permission settings.
 - `ReadFiles` and `WriteFiles` let your settings page ask the user for a file or folder. They take
   no parameters: you can't name paths in the manifest. Each entry the user picks is its own
   permission (`ReadFiles/<path>`, or `WriteFiles/<path>` for read-write), listed on the app's page
@@ -289,9 +290,10 @@ A plugin can also define its own permissions, to guard its sources and actions:
 }
 ```
 
-`kind` is `read`, `write` or `exfiltrating`, and decides when users are asked, as for a built-in
-permission. The name is scoped to your plugin, and users see your label with where it came from
-("Control your lights (via Hue)").
+`kind` is `read`, `write`, `exfiltrating` or `dangerous`, and decides when users are asked, as for
+a built-in permission. Users are always asked about a `dangerous` one, whatever their settings.
+The name is scoped to your plugin, and users see your label with where it came from ("Control your
+lights (via Hue)").
 
 Actions get one more check: if your plugin can send data off the phone, an app invoking its actions
 needs the user's permission for that too (`InvokeAction`), since the arguments go wherever your plugin
@@ -331,7 +333,9 @@ users can trust you. An app holding `Location` whose only network access is
 
 ## Writing a watchface or app that uses plugins
 
-Your app uses plugins from its PKJS (`pebble-js-app.js`).
+Your app uses plugins from its PKJS (`pebble-js-app.js`), and must use
+[permissions](#declaring) (`manifestVersion: 2`). For a legacy app, `Pebble.enumeratePlugins()`
+returns nothing and every request fails with `PERMISSION_DENIED`.
 
 ### Three ways to use plugins
 

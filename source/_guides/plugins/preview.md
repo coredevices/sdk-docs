@@ -7,6 +7,9 @@ menu: true
 generate_toc: true
 ---
 {% raw %}
+**Version:** this guide describes mobile app version 1.16.0.5 unless stated otherwise. Anything
+marked **Next release** is in the next release after it.
+
 Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
 
 - **provides data**: (*sources*) that any Pebble watchface/app (and Index) can read
@@ -42,8 +45,8 @@ default.
 First, enable plugins in the mobile app (v1.16.x or above): **Settings → Plugins → Plugins / permissions preview**. A **Plugins** tab appears in the Apps
 screen listing plugins and their settings pages. The demo apps below are on the app store.
 
-Note: this document represents the API/functionality of mobile app version 1.16.x. Apps/plugins built
-previously may not work, as there have been many changes to both in 1.16.
+Note: apps/plugins built for versions before 1.16 may not work, as there have been many changes to
+both in 1.16.
 
 ### Try the demo apps and plugins
 
@@ -326,8 +329,8 @@ data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSe
 
 While your app is running (or, for a plugin, while something reads from it), a request shows the
 user a notification and a card in the Pebble app. Until they answer, it fails with
-`PERMISSION_DENIED` (a blocked `fetch` rejects like a network error), possibly after waiting a few
-seconds. Try again later rather than treating it as permanent.
+`PERMISSION_DENIED` (a blocked `fetch` rejects like a network error; **Next release:** with a
+`NotAllowedError`), possibly after waiting a few seconds. Try again later rather than treating it as permanent.
 
 Users can allow or deny any permission on the app's page, and choose in settings when apps have to ask.
 Their answers follow their account to other phones, and an app added from the web store is
@@ -335,6 +338,23 @@ reviewed there, so it doesn't ask again on the phone.
 Declare what you need up front, and keep `Internet` to the domains you use: fewer prompts, and
 users can trust you. An app holding `Location` whose only network access is
 `api.openweathermap.org` can't send the user's location anywhere else.
+
+#### Checking a permission
+
+**Next release.** Your plugin or PKJS can check one of its own permissions with
+`Pebble.permissions.query`, which resolves to:
+
+- `"granted"`: using it will work, because the user allowed it or their settings allow it.
+- `"prompt"`: the user has to allow it first, so tell them to, in the Pebble app.
+- `"denied"`: the user turned it off for your app.
+
+```javascript
+const state = await Pebble.permissions.query("Internet/api.example.com");
+```
+
+It takes a permission as you'd declare it (`Location`, `Internet/<domain>`,
+`Notifications/<package>`, ...) and doesn't count as using it. The answer is only true right now:
+it can change without the user doing anything, e.g. when they change their settings.
 
 ## Writing a watchface or app that uses plugins
 
@@ -582,7 +602,9 @@ Pebble.registerActionHandler(async (request, respond) => {
 What a plugin has to work with:
 
 - **`fetch`** for HTTP, to hosts the user has allowed (see [Approval](#approval)). A blocked host
-  rejects like a network error. Plain-HTTP LAN devices are reachable with `LocalNetwork`.
+  rejects like a network error, with a `TypeError`. **Next release:** a blocked host rejects with
+  an error named `NotAllowedError` instead. Plain-HTTP LAN devices are reachable with
+  `LocalNetwork`.
 - **`WebSocket`** under the same rules: a blocked host fires `error` then `close`. Binary frames
   arrive as `ArrayBuffer`. Sockets are closed when the session ends, so one only lives for the
   request that opened it. These aren't intended for long-running connections.

@@ -127,6 +127,9 @@ Examples now:
 | `agent`         | `chats`, `configured`                                             |           |
 | `preferences`   | `units`, `complications`, `weather_location`                      | built-in  |
 
+**Phone.** On iOS, `phone/phone_state`'s `battery_level` only changes in steps of 5%, because
+iOS doesn't report it any more finely.
+
 **Weather.** `weather/location` serves one instance per place, with the user's weather locations
 (`preferences/weather_location`) under the same `instanceId`s. Temperatures are `numericValue`s
 in `°C` or `°F` (say which in `unit`), with `shortText`/`longText` in the user's units. Series
@@ -313,8 +316,8 @@ can approve them when installing your app (if that plugin is already installed):
 
 Network access and companion apps let data leave the phone, so they're what make reading someone's
 data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSettings`,
-`ControlMusic`, `LaunchApps`), need the user's approval unless they've set apps to never ask. Reading is up to a
-setting; by default:
+`ControlMusic`, `LaunchApps`), need the user's approval unless they've set apps to never ask.
+`Notifications` always needs it. Reading is up to a setting; by default:
 
 - **An app that can send data off the phone** has the user approve each permission: the ones it
   declares when it's installed, and anything else (an undeclared permission, or a new domain) when
@@ -327,6 +330,8 @@ user a notification and a card in the Pebble app. Until they answer, it fails wi
 seconds. Try again later rather than treating it as permanent.
 
 Users can allow or deny any permission on the app's page, and choose in settings when apps have to ask.
+Their answers follow their account to other phones, and an app added from the web store is
+reviewed there, so it doesn't ask again on the phone.
 Declare what you need up front, and keep `Internet` to the domains you use: fewer prompts, and
 users can trust you. An app holding `Location` whose only network access is
 `api.openweathermap.org` can't send the user's location anywhere else.
@@ -662,6 +667,14 @@ Pebble.addEventListener("configmessage", (e) => e.respond({ theme: theme() }));
 
 Wait for `ready` before sending: the plugin is started when the page opens.
 
+Because a page can only reach your declared domains, links to anywhere else (your source code, a
+help page) won't open in it. Use `Pebble.openUrl` instead: the user sees the address and can open
+it in their browser. It takes an http(s) url and resolves to whether they opened it.
+
+```javascript
+const opened = await Pebble.openUrl("https://github.com/you/your-plugin");
+```
+
 ### File access
 
 A plugin can read and write to files/directories the user permits. Declare `ReadFiles` 
@@ -736,9 +749,12 @@ release.
 We're planning:
 
 - More extensive documentation.
-- A watch-side (C / Alloy) API, so apps can use plugins without any phone-side JS.
+- Likely: Ability to pass parameter into plugin subscription requests (e.g. to request weather for an arbitrary location)
+- Likely: A watch-side (C / Alloy) API, so apps can use plugins without any phone-side JS.
+- Likely: an API to receive push messages to a plugin, to trigger some work
+- More APIs e.g. send a notification to the watch
 - A way to cache images on the watch (the Weather and Complication demo faces need a phone
   connection to display images after restarting, right now)
-- PebbleKit-Android plugin support.
+- PebbleKit-Android 2.0 plugin support.
 - More built-in plugins exposing more things.
 {% endraw %}

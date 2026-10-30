@@ -609,7 +609,8 @@ What a plugin has to work with:
 - **`fetch`** for HTTP, to hosts the user has allowed (see [Approval](#approval)). A blocked host
   rejects like a network error, with a `TypeError`. **Next release:** a blocked host rejects with
   an error named `NotAllowedError` instead. Plain-HTTP LAN devices are reachable with
-  `LocalNetwork`.
+  `LocalNetwork`. **Next release:** each redirect is checked like the first request, so a redirect
+  to a host you may not reach fails the same way.
 - **`WebSocket`** under the same rules: a blocked host fires `error` then `close`. Binary frames
   arrive as `ArrayBuffer`. Sockets are closed when the session ends, so one only lives for the
   request that opened it. These aren't intended for long-running connections.
@@ -679,6 +680,10 @@ If it's set, it's used instead of the legacy `showConfiguration` flow.
 A settings page has the same network access as your app: everything it loads or connects to
 (scripts, styles, fonts, images, `fetch`, WebSockets) must be on a domain you declared in `Internet`
 and the user allowed. Bundle what the page needs rather than loading it from a CDN.
+
+**Next release:** `LocalNetwork` doesn't apply to a settings page; reach LAN devices through your
+plugin or PKJS. Settings pages and Android PKJS have no WebRTC, workers or service workers, and
+PKJS on Android can't use iframes.
 
 ```javascript
 // in the page

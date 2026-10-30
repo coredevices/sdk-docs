@@ -184,13 +184,17 @@ and you pick one.
 | Shape          | For                                    | Payload                                      |
 | -------------- | -------------------------------------- | -------------------------------------------- |
 | `shortText`    | up to ~7 characters                    | `{ text: "72°F" }`                           |
-| `longText`     | a line of text                         | `{ text: "Partly cloudy, breezy" }`          |
+| `longText`     | a line of text                         | `{ text: "Partly cloudy" }`                  |
 | `numericValue` | a number, with a range if it has one   | `{ value: 84, unit: "%", min: 0, max: 100 }` |
 | `timestamp`    | a moment, in epoch seconds UTC         | `{ value: 1716940800 }`                      |
 | `boolean`      | on/off state                           | `{ value: true }`                            |
 | `icon`         | a monochrome glyph                     | `{ pixels, palette, width, height }`         |
 | `image`        | a colour bitmap                        | `{ pixels, palette, width, height }`         |
 
+- **Every shape of a property is the same reading,** so an app can fill a slot from whichever shape
+  fits. A `temperature` property is `{ shortText: { text: "72°F" }, longText: { text: "72°F" },
+  numericValue: { value: 72, unit: "°F" } }`. Its `longText` is never "Partly cloudy, 72°F": the
+  condition is its own property.
 - Some shapes carry optional metadata (unit, min, max) so an app can render the data in context.
 - `icon` and `image` are 4-bpp palettised bitmaps (base64), only produced if you ask for them with
   `iconPixelSize`.
@@ -386,6 +390,7 @@ const subscription = Pebble.subscribeToSource({
   item: "location",
   properties: ["name", "temperature", "condition"],  // optional hint; omit for everything
   iconPixelSize: { w: 48, h: 48 },                   // optional; ask only if you want bitmaps
+  // Next release: names the source doesn't declare are dropped, and the size is capped at 260×260.
   onData: ({ instances }) => {
     // the location picked on your settings page, else the user's first
     const here = instances.find((i) => i.instanceId === savedId) ?? instances[0];

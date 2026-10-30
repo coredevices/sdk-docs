@@ -17,23 +17,25 @@ layout: tutorials/tutorial
 tutorial: watchface
 tutorial_part: 4
 
-title: Adding Weather with Open-Meteo
+title: Adding Weather with Plugins
 description: |
-  How to fetch weather data from the web using PebbleKit JS and
-  display it on your watchface.
+  How to read the weather from the Pebble app's weather plugin using
+  PebbleKit JS and display it on your watchface.
 permalink: /tutorials/watchface-tutorial/part4/
 generate_toc: true
 platform_choice: true
 ---
 
 Up until now, everything in our watchface has been running entirely on the
-watch. In this part we take a big step: communicating with the phone to fetch
-live weather data from the web.
+watch. In this part we take a big step: communicating with the phone to get
+live weather data.
 
 We will use [PebbleKit JS](/guides/communication/using-pebblekit-js/) to run
-JavaScript on the connected phone, fetch weather data from the free
-[Open-Meteo](https://open-meteo.com) API (no API key needed!), and send it to
-the watch using ``AppMessage``.
+JavaScript on the connected phone, read the weather from the Pebble app's
+weather [plugin](/guides/plugins/preview/), and send it to the watch using
+``AppMessage``. The Pebble app already fetches the weather for the user's
+locations from the provider they chose, so the watchface doesn't need its own
+weather API, API key or location lookup.
 
 This section continues from
 [*Part 3*](/tutorials/watchface-tutorial/part3/).
@@ -61,30 +63,30 @@ conditions:
 
 Pebble watches cannot access the internet directly. Instead, they communicate
 with a JavaScript environment called **PebbleKit JS** (PKJS) that runs on the
-connected phone. Your JS code can make HTTP requests, access GPS, and send data
-back to the watch using ``AppMessage``.
+connected phone. Your JS code can read data from plugins in the Pebble app,
+make HTTP requests, and send data back to the watch using ``AppMessage``.
 
 ```text
-┌─────────────┐          ┌──────────────────┐          ┌──────────────┐
-│   Watch     │          │  Phone (PKJS)    │          │   Internet   │
-│             │          │                  │          │              │
-│  C code   ──┼── msg ──>│  index.js      ──┼── HTTP ─>│  API server  │
-│             │          │                  │          │              │
-│  <── msg ───┼──────────┤  <── response ───┼──────────┤              │
-│             │          │                  │          │              │
-│  AppMessage │          │  geolocation     │          │              │
-│  request  ──┼── msg ──>│  → GPS lookup    │          │              │
-│  <── msg ───┼──────────┤  → sends coords  │          │              │
-└─────────────┘          └──────────────────┘          └──────────────┘
+┌─────────────┐          ┌──────────────────┐          ┌──────────────────┐
+│   Watch     │          │  Phone (PKJS)    │          │  Pebble app      │
+│             │          │                  │          │                  │
+│             │          │  index.js      ──┼─ sub ──> │  weather plugin  │
+│             │          │                  │          │                  │
+│  <── msg ───┼──────────┤  <── updates ────┼──────────┤                  │
+│             │          │                  │          │                  │
+│  request  ──┼── msg ──>│  → resends the   │          │                  │
+│  <── msg ───┼──────────┤    latest reading│          │                  │
+└─────────────┘          └──────────────────┘          └──────────────────┘
 ```
 
 The flow for weather is:
 
-1. The watch sends an ``AppMessage`` to the phone requesting weather.
-2. PKJS uses `navigator.geolocation` to get GPS coordinates.
-3. PKJS makes an HTTP request to a weather API.
-4. PKJS sends the result back to the watch via ``AppMessage``.
-5. The watch receives the message and updates the display.
+1. When PKJS starts, it subscribes to the weather from the Pebble app's
+   weather plugin.
+2. The plugin sends the current weather right away, and again whenever it
+   changes.
+3. PKJS sends each reading to the watch via ``AppMessage``.
+4. The watch receives the message and updates the display.
 
 All communication between watch and phone uses ``AppMessage`` - a key-value
 dictionary system. You define the keys in `package.json` and they become
@@ -131,19 +133,15 @@ text_layer_destroy(s_weather_layer);
 ``AppMessage`` is the communication channel between the watch and phone.
 Messages are key-value dictionaries.
 
-^CP^ In CloudPebble, go to **Settings** on the left sidebar. Check **Uses
-Location** to allow the phone to access GPS. Then scroll down to **PebbleKit JS
-Message Keys** and add the following keys: `TEMPERATURE`, `CONDITIONS`, and
-`REQUEST_WEATHER`.
+^CP^ In CloudPebble, go to **Settings** on the left sidebar, scroll down to
+**PebbleKit JS Message Keys** and add the following keys: `TEMPERATURE`,
+`CONDITIONS`, and `REQUEST_WEATHER`.
 
 ^LC^ First, define the message keys in `package.json`. Add these to the `pebble`
 section:
 
 {% platform local %}
 ```json
-"capabilities": [
-  "location"
-],
 "messageKeys": [
   "TEMPERATURE",
   "CONDITIONS",
@@ -151,8 +149,6 @@ section:
 ]
 ```
 {% endplatform %}
-
-^LC^ The `location` capability allows the phone to access GPS.
 
 The message keys
 become `MESSAGE_KEY_TEMPERATURE`, `MESSAGE_KEY_CONDITIONS`, and
@@ -195,6 +191,38 @@ app_message_open(inbox_size, outbox_size);
 ```
 
 
+## Declaring Permissions
+
+Plugins only share data with apps that declare what they need, and the user
+stays in control of it. The weather is tied to the user's location, so reading
+it needs the `Location` permission.
+
+^LC^ Add `usesPermissions` to the `pebble` section of `package.json`:
+
+{% platform local %}
+```json
+"usesPermissions": [
+  "Location"
+]
+```
+{% endplatform %}
+
+Permissions need the app to be built with `manifestVersion` 2, which is the
+default from SDK 4.44. Users also need plugins turned on in the Pebble app
+(**Settings → Plugins → Plugins / permissions preview**).
+
+Our watchface doesn't declare `Internet`, so it can't send the user's location
+anywhere. By default, the Pebble app lets an app like that read the weather
+without asking the user. If the user has chosen to be asked, the first reading
+fails with `PERMISSION_DENIED` until they answer, and the user can allow or
+deny the permission on the app's page in the Pebble app at any time. See
+[Permissions](/guides/plugins/preview/#permissions) for the details.
+
+> **Note:** The watchface doesn't need the `location` capability or
+> `navigator.geolocation`. The weather plugin already serves the weather for
+> the user's locations.
+
+
 ## Writing the JavaScript
 
 ^CP^ Click **Add New** next to **Source Files** in the left sidebar, select
@@ -204,85 +232,84 @@ phone whenever the watchface is open.
 ^LC^ Create a new file at `src/pkjs/index.js`. This code runs on the phone whenever
 the watchface is open.
 
-Start with a helper function for making HTTP requests:
+We keep the latest reading so we can send it again whenever the watch asks for
+it:
 
 ```js
-var xhrRequest = function (url, type, callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    callback(this.responseText);
-  };
-  xhr.open(type, url);
-  xhr.send();
-};
-```
+var latestWeather = null;
 
-Next, a function to convert Open-Meteo weather codes to readable strings:
-
-```js
-function weatherCodeToCondition(code) {
-  if (code === 0) return 'Clear';
-  if (code <= 3) return 'Cloudy';
-  if (code <= 48) return 'Fog';
-  if (code <= 55) return 'Drizzle';
-  if (code <= 57) return 'Fz. Drizzle';
-  if (code <= 65) return 'Rain';
-  if (code <= 67) return 'Fz. Rain';
-  if (code <= 75) return 'Snow';
-  if (code <= 77) return 'Snow Grains';
-  if (code <= 82) return 'Showers';
-  if (code <= 86) return 'Snow Shwrs';
-  if (code === 95) return 'T-Storm';
-  if (code <= 99) return 'T-Storm';
-  return 'Unknown';
+function sendWeather() {
+  if (!latestWeather) {
+    return;
+  }
+  Pebble.sendAppMessage(latestWeather,
+    function(e) { console.log('Weather info sent!'); },
+    function(e) { console.log('Error sending weather info!'); }
+  );
 }
 ```
 
-Now the weather fetching logic. We first get the user's location, then call
-the Open-Meteo API with those coordinates:
+The weather plugin reports temperatures in the units the user picked in the
+Pebble app, either `°C` or `°F`. Our watch code expects Celsius, so add a helper
+to convert:
 
 ```js
-function locationSuccess(pos) {
-  var url = 'https://api.open-meteo.com/v1/forecast?' +
-      'latitude=' + pos.coords.latitude +
-      '&longitude=' + pos.coords.longitude +
-      '&current=temperature_2m,weather_code';
+function toCelsius(reading) {
+  if (reading.unit === '°F') {
+    return (reading.value - 32) * 5 / 9;
+  }
+  return reading.value;
+}
+```
 
-  xhrRequest(url, 'GET',
-    function(responseText) {
-      var json = JSON.parse(responseText);
+Now subscribe to the weather with `Pebble.subscribeToSource()`. We ask for the
+`location` item of the `weather` category, which serves one instance per
+weather location the user set up in the Pebble app, in their order. We use the
+first one:
 
-      var temperature = Math.round(json.current.temperature_2m);
-      var conditions = weatherCodeToCondition(json.current.weather_code);
+```js
+function subscribeToWeather() {
+  Pebble.subscribeToSource({
+    category: 'weather',
+    item: 'location',
+    properties: ['temperature', 'condition'],
+    onData: function(update) {
+      var here = update.instances[0];
+      if (!here) {
+        return;
+      }
 
-      var dictionary = {
-        'TEMPERATURE': temperature,
-        'CONDITIONS': conditions
+      // Any property can be missing, so check before using it
+      var temperature = here.properties.temperature;
+      var condition = here.properties.condition;
+      if (!temperature || !temperature.numericValue ||
+          !condition || !condition.shortText) {
+        return;
+      }
+
+      latestWeather = {
+        'TEMPERATURE': Math.round(toCelsius(temperature.numericValue)),
+        'CONDITIONS': condition.shortText.text
       };
-
-      Pebble.sendAppMessage(dictionary,
-        function(e) { console.log('Weather info sent!'); },
-        function(e) { console.log('Error sending weather info!'); }
-      );
+      sendWeather();
+    },
+    onError: function(err) {
+      console.log('Weather unavailable: ' + err.code + ' ' + err.message);
     }
-  );
-}
-
-function locationError(err) {
-  console.log('Error requesting location!');
-}
-
-function getWeather() {
-  navigator.geolocation.getCurrentPosition(
-    locationSuccess,
-    locationError,
-    { timeout: 15000, maximumAge: 60000 }
-  );
+  });
 }
 ```
 
-> **Why Open-Meteo?** Unlike many weather APIs, Open-Meteo is completely free
-> and requires no API key. The URL is simple and the response is clean JSON.
+Each property comes in one or more **shapes**. We read `temperature` as a
+`numericValue` (a number with a `unit`) and `condition` as a `shortText`, a
+short label like "Cloudy". `onData` is called with the current weather right
+away, and again whenever it changes, so we don't need to poll. An error doesn't
+end the subscription: the next update can still succeed.
+
+> **Why a plugin?** The user picks their weather provider and locations once in
+> the Pebble app, and every watchface that uses the weather plugin follows
+> them. Your watchface works with whichever weather plugin the user has
+> installed.
 
 Finally, set up the event listeners:
 
@@ -290,7 +317,7 @@ Finally, set up the event listeners:
 Pebble.addEventListener('ready',
   function(e) {
     console.log('PebbleKit JS ready!');
-    getWeather();
+    subscribeToWeather();
   }
 );
 
@@ -298,15 +325,15 @@ Pebble.addEventListener('appmessage',
   function(e) {
     console.log('AppMessage received!');
     if (e.payload['REQUEST_WEATHER']) {
-      getWeather();
+      sendWeather();
     }
   }
 );
 ```
 
-When the JS environment starts (`ready`), we fetch weather immediately. The
-`appmessage` listener checks for the `REQUEST_WEATHER` key before refreshing,
-so it only fetches weather when the watch explicitly asks for it.
+When the JS environment starts (`ready`), we subscribe to the weather. The
+`appmessage` listener checks for the `REQUEST_WEATHER` key and sends the latest
+reading again, so the watch can ask for it whenever it needs to.
 
 
 ## Processing Weather Data on the Watch
@@ -336,27 +363,14 @@ We use ``dict_find()`` to look up each key. Numbers arrive as `int32`, strings
 as `cstring`.
 
 
-## Automatic Refresh
+## Keeping the Weather Current
 
-To keep the weather current, trigger a refresh every 30 minutes from the tick
-handler:
+There's nothing more to do here. The subscription pushes a new reading
+whenever the weather changes, and PKJS forwards it to the watch, so the
+watchface stays up to date without polling.
 
-```c
-static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-  update_time();
-
-  // Get weather update every 30 minutes
-  if (tick_time->tm_min % 30 == 0) {
-    DictionaryIterator *iter;
-    app_message_outbox_begin(&iter);
-    dict_write_uint8(iter, MESSAGE_KEY_REQUEST_WEATHER, 1);
-    app_message_outbox_send();
-  }
-}
-```
-
-This sends an AppMessage with the `REQUEST_WEATHER` key to the phone. The JS
-`appmessage` listener sees this key and calls `getWeather()`.
+In the emulator, the weather plugin serves sample weather and every permission
+is granted, so the watchface shows the weather as soon as it starts.
 
 
 ## Conclusion
@@ -365,11 +379,10 @@ In this part we learned how to:
 
 1. Set up ``AppMessage`` for watch-phone communication.
 2. Write PebbleKit JS to run on the phone.
-3. Use `navigator.geolocation` to get the user's location.
-4. Fetch data from a web API using `XMLHttpRequest`.
-5. Parse a JSON response and send data to the watch.
+3. Declare the `Location` permission in `usesPermissions`.
+4. Read the weather from the weather plugin with `Pebble.subscribeToSource()`.
+5. Send the data to the watch.
 6. Display received data in a ``TextLayer``.
-7. Set up automatic refresh via the tick handler.
 
 Your watchface now shows live weather data! Check your code against
 [the source for this part](https://github.com/coredevices/c-watchface-tutorial/tree/main/part4).

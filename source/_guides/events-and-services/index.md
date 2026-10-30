@@ -28,7 +28,7 @@ All Pebble watches contain a collection of sensors than can be used as input
 devices for apps. Available sensors include four buttons, an accelerometer, and
 a magnetometer (accessible via the ``CompassService`` API). In addition, the
 Basalt and Chalk platforms also include a microphone (accessible via the
-``Dictation`` API) and access to Pebble Health data sets. Read 
+``Dictation`` and ``Microphone`` APIs) and access to Pebble Health data sets. Read 
 {% guide_link tools-and-resources/hardware-information %} for more information
 on sensor availability per platform.
 

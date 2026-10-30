@@ -331,7 +331,7 @@ disconnects. Check your code against
 
 ## What's Next?
 
-In the next part we will add weather information by fetching data from the
-Open-Meteo API - our first foray into phone-watch communication.
+In the next part we will add weather information from the Pebble app's
+weather plugin - our first foray into phone-watch communication.
 
 [Go to Part 4 &rarr; >{wide,bg-dark-red,fg-white}](/tutorials/watchface-tutorial/part4/)

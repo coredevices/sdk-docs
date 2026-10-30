@@ -50,23 +50,23 @@ both in 1.16.
 
 ### Try the demo apps and plugins
 
-Source for each is in [coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins):
+Source for each is in [coredevices/pebble-apps](https://github.com/coredevices/pebble-apps):
 
-- **[`weather-face`](https://github.com/coredevices/pebble-plugins/tree/main/weather-face)** ("Weather Face (Plugin Demo)"): a watchface built entirely from a weather
+- **[`weather-face`](https://github.com/coredevices/pebble-apps/tree/main/weather-face)** ("Weather Face (Plugin Demo)"): a watchface built entirely from a weather
   plugin: any installed one (the built-in one, `met-weather`, or yours), picked on its settings
   page.
-- **[`complication-face`](https://github.com/coredevices/pebble-plugins/tree/main/complication-face)** ("Complication Face (Plugin Demo)"): the time and date with two slots,
+- **[`complication-face`](https://github.com/coredevices/pebble-apps/tree/main/complication-face)** ("Complication Face (Plugin Demo)"): the time and date with two slots,
   a number and a bitmap, filled from the user's preferred readings (`preferences/complications`):
   each takes the first entry offering its shape that the other hasn't taken.
-- **[`met-weather`](https://github.com/coredevices/pebble-plugins/tree/main/met-weather)**: weather for your weather locations from MET Norway (api.met.no), in your
+- **[`met-weather`](https://github.com/coredevices/pebble-apps/tree/main/met-weather)**: weather for your weather locations from MET Norway (api.met.no), in your
   units, an alternative to the built-in weather plugin. It can also be the watch's weather
   provider (Settings → Weather → Weather provider). Shows `Pebble.subscribeSource`,
   `navigator.geolocation` and drawing condition images in JS.
-- **[`plugin-test`](https://github.com/coredevices/pebble-plugins/tree/main/plugin-test)** ("Dashboard (Plugin Demo)"): a watchapp with eight tiles, each set from its
+- **[`plugin-test`](https://github.com/coredevices/pebble-apps/tree/main/plugin-test)** ("Dashboard (Plugin Demo)"): a watchapp with eight tiles, each set from its
   settings page to any reading from any installed plugin. This shows what data is available through the example/built-in plugins. You can also configure taps to take actions, or make a tile a button for any action that takes no arguments (e.g. "Back", the default, goes to the previous app). A tile can also show the date, from the watch's own clock.
-- **[`stocks`](https://github.com/coredevices/pebble-plugins/tree/main/stocks)**: share prices for tickers you pick on its settings page.
-- **[`hue`](https://github.com/coredevices/pebble-plugins/tree/main/hue)**: Control Philips Hue lights on your local bridge (pair from its settings page).
-- **[`notion`](https://github.com/coredevices/pebble-plugins/tree/main/notion)**, **[`ticktick`](https://github.com/coredevices/pebble-plugins/tree/main/ticktick)**, **[`todoist`](https://github.com/coredevices/pebble-plugins/tree/main/todoist)**: examples of plugins that sign in with OAuth.
+- **[`stocks`](https://github.com/coredevices/pebble-apps/tree/main/stocks)**: share prices for tickers you pick on its settings page.
+- **[`hue`](https://github.com/coredevices/pebble-apps/tree/main/hue)**: Control Philips Hue lights on your local bridge (pair from its settings page).
+- **[`notion`](https://github.com/coredevices/pebble-apps/tree/main/notion)**, **[`ticktick`](https://github.com/coredevices/pebble-apps/tree/main/ticktick)**, **[`todoist`](https://github.com/coredevices/pebble-apps/tree/main/todoist)**: examples of plugins that sign in with OAuth.
 
 ### What can't I do yet?
 
@@ -507,7 +507,7 @@ built-in one.
 
 A plugin ships in a `.pbw`: either alongside a watchapp/watchface, or on its own as a
 **plugin-only** pbw (no watch binary). It uses the pbw's uuid and name. The simplest example to
-copy is [`stocks`](https://github.com/coredevices/pebble-plugins/tree/main/stocks).
+copy is [`stocks`](https://github.com/coredevices/pebble-apps/tree/main/stocks).
 
 **If your app fetches data from a service and displays it, consider splitting it into a plugin plus
 the app, in one pbw.** The app reads from its own plugin (pass your pbw's uuid as `plugin`), and
@@ -645,7 +645,7 @@ What a plugin has to work with:
   secret. Declare the connector in the manifest (`"oauth": { "todoist": {} }`), then
   `await Pebble.oauth.authorize("todoist")` for a token and
   `Pebble.oauth.refresh("todoist", broker_refresh)` to renew it; keep both in `Pebble.secureStorage`. The connector has to be registered
-  with the Pebble app store (see the [`todoist`](https://github.com/coredevices/pebble-plugins/tree/main/todoist) example).
+  with the Pebble app store (see the [`todoist`](https://github.com/coredevices/pebble-apps/tree/main/todoist) example).
 - **`Pebble.fileSystem`** for files and folders on the phone the user has handed your plugin from
   its settings page (see [File access](#file-access)); needs `ReadFiles` / `WriteFiles`.
   `await Pebble.fileSystem.getHandle(id)` gives a `FileSystemFileHandle` /
@@ -751,8 +751,8 @@ pushes the live readings back, so each option is labelled with what it currently
 ### Packaging and sideloading
 
 Use `pebble-tool` 5.1.0 or later, and build the pbw with
-[`scripts/pack-plugin-pbw.py`](https://github.com/coredevices/pebble-plugins/blob/main/scripts/pack-plugin-pbw.py)
-from [coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins):
+[`scripts/pack-plugin-pbw.py`](https://github.com/coredevices/pebble-apps/blob/main/scripts/pack-plugin-pbw.py)
+from [coredevices/pebble-apps](https://github.com/coredevices/pebble-apps):
 
 ```bash
 python3 pack-plugin-pbw.py <project-dir>

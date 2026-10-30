@@ -29,7 +29,7 @@ invited developers (see {% guide_link plugins/publishing-plugins %}).
 {% endalert %}
 
 The example plugins and apps are in
-[coredevices/pebble-plugins](https://github.com/coredevices/pebble-plugins).
+[coredevices/pebble-apps](https://github.com/coredevices/pebble-apps).
 
 ## Contents
 

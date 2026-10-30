@@ -186,12 +186,15 @@ SDK, sorted by family. A sample of each is also shown.
 The following system fonts are available to developers in the SDK can be found
 online for use in design mockups:
 
-* [Raster Gothic](http://www.marksimonson.com/) - By Mark Simonson
+* [Raster Gothic](https://www.marksimonson.com/fonts/view/raster-gothic/) - By Mark Simonson
 
 * [Gotham (Bitham)](http://www.typography.com/fonts/gotham/overview/) -
   Available from Typography.com
 
-* [Droid Serif](https://www.google.com/fonts/specimen/Droid+Serif) - Available
+* [Droid Serif](https://www.1001fonts.com/droid-serif-font.html) - Available
+  from 1001 Fonts
+
+* [Roboto](https://fonts.google.com/specimen/Roboto) - Available
   from Google Fonts
 
 * [LECO 1976](https://www.myfonts.com/fonts/carnoky/leco-1976/) - Available from

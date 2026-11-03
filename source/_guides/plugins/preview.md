@@ -683,7 +683,8 @@ and the user allowed. Bundle what the page needs rather than loading it from a C
 
 **Next release:** `LocalNetwork` doesn't apply to a settings page; reach LAN devices through your
 plugin or PKJS. Settings pages and Android PKJS have no WebRTC, workers or service workers, and
-PKJS on Android can't use iframes.
+PKJS on Android can't use iframes. On Android a settings page can't use `<object>` or `<embed>`,
+and each iframe it adds is reloaded once straight away.
 
 ```javascript
 // in the page

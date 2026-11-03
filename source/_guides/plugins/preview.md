@@ -262,7 +262,9 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone
   Each package is its own permission ("Read your notifications from …"), and you only see those
   apps' notifications (by their `package` property). Bare `Notifications` is all of them, and
   allowing it allows every package. Ask for just the apps you need if you can: users are far
-  more likely to allow one app's notifications than all of them. Users are always asked about
+  more likely to allow one app's notifications than all of them. **Next release:** a notification
+  holding a one-time code (a sign-in or verification code) reaches you with its text replaced by
+  "Sensitive content". Users are always asked about
   notifications, whatever their permission settings.
 - `ReadFiles` and `WriteFiles` let your settings page ask the user for a file or folder. They take
   no parameters: you can't name paths in the manifest. Each entry the user picks is its own

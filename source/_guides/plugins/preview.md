@@ -255,7 +255,7 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 }
 ```
 
-The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone`, `Notifications`, `Calendar`,
+The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicrophone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
 `LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`; **Next release:**
 also `ReadApps`.
@@ -279,12 +279,12 @@ also `ReadApps`.
   with it. See [File access](#file-access).
 - `LegacyPebbleKit` lets your watchapp talk to a companion app over PebbleKit Classic. A PebbleKit 2
   companion doesn't need declaring: each package your appinfo lists is asked about on its own.
-- `Microphone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
-  capture (SDK revision 111); declare it in `usesPermissions`.
+- `WatchMicrophone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
+  capture (SDK revision 111). See {% guide_link events-and-services/microphone %}.
 - `Health` isn't enforced yet: health data is read on the watch, so enforcing it needs permissions
   synced to the watch, which isn't built yet. Declare it anyway if you use health data.
 
-The [packaging script](#packaging-and-sideloading) marks the pbw as using permissions
+The SDK [marks the pbw](#packaging-and-sideloading) as using permissions
 (`manifestVersion: 2` in its appinfo). Without that it's a legacy app, which keeps what apps had
 before permissions: internet access, location and timeline pins if it has PebbleKit JS, and
 `LegacyPebbleKit` if it has an Android companion app. Users can have legacy apps ask too, with
@@ -760,21 +760,14 @@ pushes the live readings back, so each option is labelled with what it currently
 
 ### Packaging and sideloading
 
-Use `pebble-tool` 5.1.0 or later, and build the pbw with
-[`scripts/pack-plugin-pbw.py`](https://github.com/coredevices/pebble-apps/blob/main/scripts/pack-plugin-pbw.py)
-from [coredevices/pebble-apps](https://github.com/coredevices/pebble-apps):
-
-```bash
-python3 pack-plugin-pbw.py <project-dir>
-```
+Build with `pebble build`, using SDK 4.44 or later and `pebble-tool` 5.1.0 or later. The build
+bundles the plugin script and a local `configPage` into the pbw, and checks the `plugin` block when
+the project is configured.
 
 A plugin-only project (no `src/c`) sets `"projectType": "plugin"` in `package.json` and needs no
 SDK; for a watchapp project the script runs `pebble build` itself. The script writes
 `<project-dir>/build/<name>.pbw`, marked as using [permissions](#declaring) (`manifestVersion` 2).
 The plugins in that repository are worked examples.
-
-The script is only needed until `pebble build` supports plugins, which is planned for the next SDK
-release.
 
 ## Future
 

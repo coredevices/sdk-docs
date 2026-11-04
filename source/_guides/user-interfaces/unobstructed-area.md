@@ -32,8 +32,9 @@ related_examples:
 
 The ``UnobstructedArea`` API, added in SDK 4.0, allows developers to dynamically
 adapt their watchface design when an area of the screen is partially obstructed
-by a system overlay. Currently, the Timeline Quick View feature is the only
-system overlay.
+by a system overlay. There are two system overlays: Timeline Quick View, on
+watchfaces, and the "Listening" indicator, on watchapps while they use the
+microphone (see {% guide_link events-and-services/microphone %}).
 
 Developers are not required to adjust their designs to cater for such system
 overlays, but by using the ``UnobstructedArea`` API they can detect changes to

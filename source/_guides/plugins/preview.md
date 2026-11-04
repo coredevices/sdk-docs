@@ -7,7 +7,7 @@ menu: true
 generate_toc: true
 ---
 {% raw %}
-**Version:** this guide describes mobile app version 1.16.0.5 unless stated otherwise. Anything
+**Version:** this guide describes mobile app version 1.17.0.1 unless stated otherwise. Anything
 marked **Next release** is in the next release after it.
 
 Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
@@ -122,7 +122,7 @@ Examples now:
 | `phone`         | `phone_state`, `find_my_phone`                                    | built-in  |
 | `music`         | `track`                                                           | built-in (Android) |
 | `notifications` | `notification`                                                    | built-in (Android) |
-| `watch`         | `switch_setting`, `number_setting`, `text_setting`, `app_setting` | built-in  |
+| `watch`         | `switch_setting`, `number_setting`, `text_setting`, `app_setting`, `app` (**Next release**) | built-in  |
 | `home`          | `home_lights`, `room_lights`, `light`                             | Hue demo  |
 | `finance`       | `stock`                                                           | Stocks demo |
 | `notes`         | `destination`, `configured`                                       | Notion demo |
@@ -171,9 +171,13 @@ as `chat_id`. Without that source the chat sent to is decided by the plugin (usu
 time). Unlike `create_note` and `create_reminder`, `send_to_agent` is also offered to the Index agent
 as a tool, so the user can ask for something to be sent to the agent by name.
 
-The built-in Watch State plugin has no sources, only actions, both needing `LaunchApps`:
+The built-in Watch State plugin has two actions, both needing `LaunchApps`:
 `launch_app` (`{ uuid }`) opens an app or watchface in the user's locker, and
-`launch_previous_app` goes back to whatever ran before the current app.
+`launch_previous_app` goes back to whatever ran before the current app. **Next release:** it also
+has a `watch/app` source, needing `ReadApps`: one instance per app or watchface in the locker that
+can be opened on the watch (plugin-only apps are left out), with the app's uuid as its id, its
+`name`, and its `type` (`watchapp` or `watchface`). `launch_app` targets it, taking the app's uuid as
+`instanceId` as well as `uuid`, so a tile showing an app can open it.
 
 ### Shapes
 
@@ -253,7 +257,8 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 
 The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
-`LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`.
+`LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`; **Next release:**
+also `ReadApps`.
 
 - Each `Internet` domain is its own permission and covers its subdomains. `LocalNetwork` covers
   devices on the LAN.
@@ -262,7 +267,7 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone
   Each package is its own permission ("Read your notifications from …"), and you only see those
   apps' notifications (by their `package` property). Bare `Notifications` is all of them, and
   allowing it allows every package. Ask for just the apps you need if you can: users are far
-  more likely to allow one app's notifications than all of them. **Next release:** a notification
+  more likely to allow one app's notifications than all of them. A notification
   holding a one-time code (a sign-in or verification code) reaches you with its text replaced by
   "Sensitive content". Users are always asked about
   notifications, whatever their permission settings.
@@ -335,8 +340,7 @@ data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSe
 
 While your app is running (or, for a plugin, while something reads from it), a request shows the
 user a notification and a card in the Pebble app. Until they answer, it fails with
-`PERMISSION_DENIED` (a blocked `fetch` rejects like a network error; **Next release:** with a
-`NotAllowedError`), possibly after waiting a few seconds. Try again later rather than treating it as permanent.
+`PERMISSION_DENIED` (a blocked `fetch` rejects with a `NotAllowedError`), possibly after waiting a few seconds. Try again later rather than treating it as permanent.
 
 Users can allow or deny any permission on the app's page, and choose in settings when apps have to ask.
 Their answers follow their account to other phones, and an app added from the web store is
@@ -347,7 +351,7 @@ users can trust you. An app holding `Location` whose only network access is
 
 #### Checking a permission
 
-**Next release.** Your plugin or PKJS can check one of its own permissions with
+Your plugin or PKJS can check one of its own permissions with
 `Pebble.permissions.query`, which resolves to:
 
 - `"granted"`: using it will work, because the user allowed it or their settings allow it.
@@ -392,7 +396,7 @@ const subscription = Pebble.subscribeToSource({
   item: "location",
   properties: ["name", "temperature", "condition"],  // optional hint; omit for everything
   iconPixelSize: { w: 48, h: 48 },                   // optional; ask only if you want bitmaps
-  // Next release: names the source doesn't declare are dropped, and the size is capped at 260×260.
+  // names the source doesn't declare are dropped, and the size is capped at 260×260.
   onData: ({ instances }) => {
     // the location picked on your settings page, else the user's first
     const here = instances.find((i) => i.instanceId === savedId) ?? instances[0];
@@ -609,8 +613,7 @@ Pebble.registerActionHandler(async (request, respond) => {
 What a plugin has to work with:
 
 - **`fetch`** for HTTP, to hosts the user has allowed (see [Approval](#approval)). A blocked host
-  rejects like a network error, with a `TypeError`. **Next release:** a blocked host rejects with
-  an error named `NotAllowedError` instead. Plain-HTTP LAN devices are reachable with
+  rejects with an error named `NotAllowedError`. Plain-HTTP LAN devices are reachable with
   `LocalNetwork`.
 - **`WebSocket`** under the same rules: a blocked host fires `error` then `close`. Binary frames
   arrive as `ArrayBuffer`. Sockets are closed when the session ends, so one only lives for the

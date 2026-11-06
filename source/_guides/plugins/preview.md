@@ -124,6 +124,7 @@ Examples now:
 | `notifications` | `notification`                                                    | built-in (Android) |
 | `watch`         | `switch_setting`, `number_setting`, `text_setting`, `app_setting`, `app` (**Next release**) | built-in  |
 | `home`          | `home_lights`, `room_lights`, `light`                             | Hue demo  |
+| `home`          | `home`, `room`, `device`, `scene` (**Next release**)              | built-in (iOS) |
 | `finance`       | `stock`                                                           | Stocks demo |
 | `notes`         | `destination`, `configured`                                       | Notion demo |
 | `reminders`     | `list`, `configured`                                              | Todoist, TickTick demos |
@@ -178,6 +179,17 @@ has a `watch/app` source, needing `ReadApps`: one instance per app or watchface 
 can be opened on the watch (plugin-only apps are left out), with the app's uuid as its id, its
 `name`, and its `type` (`watchapp` or `watchface`). `launch_app` targets it, taking the app's uuid as
 `instanceId` as well as `uuid`, so a tile showing an app can open it.
+
+**Next release:** the built-in Apple Home plugin (iOS only) serves the homes, rooms, accessories and
+scenes in the user's Home app, needing `ReadHome`: `home/home`, `home/room`, `home/device` (one
+instance per accessory service, with its `type`, `online` and readings such as `on`, `brightness`,
+`locked` or `ambient_temperature`) and `home/scene` (with `runnable`). Its actions, needing
+`ControlHome`, are `turn_on`, `turn_off`, `set_brightness`, `set_color`, `set_color_temperature`,
+`set_fan_speed`, `set_thermostat`, `set_volume`, `set_muted`, `media_control` and `run_scene`;
+`get_state` reads a device fresh and needs `ReadHome`. A device is chosen by `instanceId` or exact
+`device` name, or a whole room with `all`, `room` and `device_type` (at most 10 devices). `lock` and
+`unlock` take one lock and need `ControlLocks`, which the user always has to approve; `unlock` also
+needs Face ID or the passcode with the Pebble app open. Scenes that touch a lock can't be run.
 
 ### Shapes
 
@@ -258,7 +270,7 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicrophone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
 `LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`; **Next release:**
-also `ReadApps`.
+also `ReadApps`, and `ReadHome`/`ControlHome`/`ControlLocks` (iOS).
 
 - Each `Internet` domain is its own permission and covers its subdomains. `LocalNetwork` covers
   devices on the LAN.
@@ -330,8 +342,8 @@ can approve them when installing your app (if that plugin is already installed):
 
 Network access and companion apps let data leave the phone, so they're what make reading someone's
 data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSettings`,
-`ControlMusic`, `LaunchApps`), need the user's approval unless they've set apps to never ask.
-`Notifications` always needs it. Reading is up to a setting; by default:
+`ControlMusic`, `LaunchApps`; **Next release:** `ControlHome`), need the user's approval unless they've set apps to never ask.
+`Notifications` always needs it (**Next release:** so does `ControlLocks`). Reading is up to a setting; by default:
 
 - **An app that can send data off the phone** has the user approve each permission: the ones it
   declares when it's installed, and anything else (an undeclared permission, or a new domain) when

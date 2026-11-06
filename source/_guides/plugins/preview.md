@@ -722,6 +722,11 @@ it in their browser. It takes an http(s) url and resolves to whether they opened
 const opened = await Pebble.openUrl("https://github.com/you/your-plugin");
 ```
 
+**Next release:** a link to an app on the app store, followed or passed to `Pebble.openUrl`, opens
+that app's page in the Pebble app straight away, without asking. That's an app's store page
+(`https://apps.repebble.com/91-dub-v4-0_52b231c2b70e1c159500009b`, or just the id after the `/`)
+or `pebble://appstore/<id>`. Use it to point users at a companion watchface or plugin.
+
 ### File access
 
 A plugin can read and write to files/directories the user permits. Declare `ReadFiles` 

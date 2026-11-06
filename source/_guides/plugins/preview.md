@@ -258,7 +258,8 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicrophone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
 `LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`; **Next release:**
-also `ReadApps`.
+also `ReadApps` and `ShowNotifications` (showing notifications on the watch, including
+`Pebble.showSimpleNotificationOnPebble` and a pin's notifications).
 
 - Each `Internet` domain is its own permission and covers its subdomains. `LocalNetwork` covers
   devices on the LAN.
@@ -329,7 +330,7 @@ can approve them when installing your app (if that plugin is already installed):
 #### Approval
 
 Network access and companion apps let data leave the phone, so they're what make reading someone's
-data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSettings`,
+data risky. Those, and permissions that change things (`Timeline`, `ShowNotifications`, `WriteWatchSettings`,
 `ControlMusic`, `LaunchApps`), need the user's approval unless they've set apps to never ask.
 `Notifications` always needs it. Reading is up to a setting; by default:
 
@@ -663,6 +664,20 @@ What a plugin has to work with:
   [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API)
   surface: `getFile()`, `createWritable()`, `getFileHandle()`, `getDirectoryHandle()`,
   `removeEntry()`, `entries()`, `queryPermission()`.
+- **`Pebble.insertTimelinePin(pin)`** and **`Pebble.deleteTimelinePin(id)`** (**Next release**),
+  as in PKJS, with the [pin JSON](/guides/pebble-timeline/pin-structure/). A pin's
+  `createNotification` is shown when it's first inserted, and its `updateNotification` when a later
+  insert changes it. Pins need `Timeline`; their notifications need `ShowNotifications` too.
+- **`Pebble.showNotification({ layout, actions? })`** (**Next release**) to show a notification on
+  the watch, with the same `layout` as a pin's (`type` is `genericNotification` or
+  `commNotification`). Needs `ShowNotifications`.
+- **`pluginAction` actions** (**Next release**) on a pin or notification (including a pin's
+  `createNotification`/`updateNotification`):
+  `{ title: "Done", type: "pluginAction", action: "complete", args: { id: "42" } }`. Picking it on
+  the watch calls your action handler with that `action` and `args`; the watch shows your
+  `respond.ok` `text` (or "Done"), or "Failed" on an error. Add `inputArg: "text"` (and optionally
+  `replies: ["Yes", "No"]`) to ask the user for a reply by voice, emoji or a canned reply; it
+  arrives in `args.text`.
 - **`console.log`** shows up in `pebble logs`, beside your app's PKJS logs.
 - Nothing else: unlike PKJS, a plugin has no WebView APIs.
 

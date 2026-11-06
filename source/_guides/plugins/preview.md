@@ -189,7 +189,9 @@ instance per accessory service, with its `type`, `online` and readings such as `
 `get_state` reads a device fresh and needs `ReadHome`. A device is chosen by `instanceId` or exact
 `device` name, or a whole room with `all`, `room` and `device_type` (at most 10 devices). `lock` and
 `unlock` take one lock and need `ControlLocks`, which the user always has to approve; `unlock` also
-needs Face ID or the passcode with the Pebble app open. Scenes that touch a lock can't be run.
+needs Face ID or the passcode with the Pebble app open. The user can turn that off in the plugin's
+settings ("Ask before locking or unlocking"); `lock` and `unlock` then need only `ControlHome`, so
+ask for both if your app locks doors. Scenes that touch a lock can't be run.
 
 ### Shapes
 

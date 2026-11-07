@@ -68,13 +68,6 @@ Source for each is in [coredevices/pebble-apps](https://github.com/coredevices/p
 - **[`hue`](https://github.com/coredevices/pebble-apps/tree/main/hue)**: Control Philips Hue lights on your local bridge (pair from its settings page).
 - **[`notion`](https://github.com/coredevices/pebble-apps/tree/main/notion)**, **[`ticktick`](https://github.com/coredevices/pebble-apps/tree/main/ticktick)**, **[`todoist`](https://github.com/coredevices/pebble-apps/tree/main/todoist)**: examples of plugins that sign in with OAuth.
 
-### What can't I do yet?
-
-**Don't ship anything that uses/offers plugins to the app store yet.** The API is unstable and will change
-before plugins are released to everyone. We want your feedback on it first.
-
-See [Future](#future) for what's planned but not built yet.
-
 ## Concepts
 
 ### Sources and actions

@@ -22,14 +22,14 @@ plugins, and the [Index 01](/index-01/) assistant will call plugin actions as
 tools.
 
 {% alert important %}
-Plugins are a preview. The API will change before plugins are released to all
-users, and the Pebble mobile app ships with them turned off. Do not publish
-apps that use plugins to the appstore yet; publishing plugins is limited to
-invited developers (see {% guide_link plugins/publishing-plugins %}).
+Plugins are a preview. The Pebble mobile app ships with them turned off. Enable
+them in Settings → Plugins.
 {% endalert %}
 
 The example plugins and apps are in
-[coredevices/pebble-apps](https://github.com/coredevices/pebble-apps).
+[coredevices/pebble-apps](https://github.com/coredevices/pebble-apps). Browse
+published plugins on the appstore at
+[apps.repebble.com/plugins](https://apps.repebble.com/plugins).
 
 ## Contents
 

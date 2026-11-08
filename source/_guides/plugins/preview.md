@@ -7,7 +7,7 @@ menu: true
 generate_toc: true
 ---
 {% raw %}
-**Version:** this guide describes mobile app version 1.18.0. Anything marked **Next release** is in
+**Version:** this guide describes mobile app version 1.18.0.1. Anything marked **Next release** is in
 the next release after it. See the [changelog](#changelog) for what changed in each version.
 
 Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
@@ -267,7 +267,7 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 }
 ```
 
-**Next release:** give every permission a `reason` and say whether it's `required`:
+**1.18.0.1:** give every permission a `reason` and say whether it's `required`:
 
 - `reason`: what your app does with it, in a short sentence: "To show the weather where you are",
   not "Accesses your location" (the permission's name already says that). Users see it wherever
@@ -358,7 +358,7 @@ data risky. Those, and permissions that change things (`Timeline`, `ShowNotifica
 - **Any other app** can read without asking, since the data can't go anywhere.
 
 While your app is running (or, for a plugin, while something reads from it), a request shows the
-user a notification and a card in the Pebble app (**Next release:** an optional permission only
+user a notification and a card in the Pebble app (**1.18.0.1:** an optional permission only
 once your app uses it). Until they answer, it fails with `PERMISSION_DENIED` (a blocked `fetch`
 rejects with a `NotAllowedError`), possibly after a few seconds. Try again later rather than
 treating it as permanent.
@@ -561,8 +561,8 @@ Add a `plugin` block to the `pebble` section of `package.json`:
     {
       "name": "Internet",
       "parameters": { "domains": ["query1.finance.yahoo.com"] },
-      "reason": "To get share prices",     // Next release
-      "required": true                    // Next release
+      "reason": "To get share prices",     // 1.18.0.1
+      "required": true                    // 1.18.0.1
     }
   ],
   "plugin": {
@@ -823,7 +823,7 @@ We're planning:
 
 Changes to plugins, permissions and settings pages in each version of the mobile app.
 
-**Next release**
+**1.18.0.1**
 
 - `reason` and `required` on each entry in `usesPermissions` ([Declaring](#declaring)). Installing
   and store listings split permissions into Required and Optional, installing waits only for the

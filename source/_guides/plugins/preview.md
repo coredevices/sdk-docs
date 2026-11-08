@@ -243,19 +243,25 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
   "usesPermissions": [
     {
       "name": "Location",
-      "reason": "Shows the weather where you are",
+      "reason": "To show the weather where you are",
       "required": true
     },
     {
       "name": "LocalNetwork",
-      "reason": "Finds your lights on your home network",
+      "reason": "To find your lights on your home network",
       "required": false
     },
     {
       "name": "Internet",
       "parameters": { "domains": ["api.example.com"] },
-      "reason": "Fetches the forecast",
+      "reason": "To get the forecast",
       "required": true
+    },
+    {
+      "name": "Internet",
+      "parameters": { "domains": ["radar.example.com"] },
+      "reason": "To show the rain radar",
+      "required": false
     }
   ]
 }
@@ -263,12 +269,16 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 
 **Next release:** give every permission a `reason` and say whether it's `required`:
 
-- `reason`: why you need it, in a short sentence. Users see it wherever they decide; past two lines
-  it's cut off.
+- `reason`: what your app does with it, in a short sentence: "To show the weather where you are",
+  not "Accesses your location" (the permission's name already says that). Users see it wherever
+  they decide; past two lines it's cut off.
 - `required`: whether your app works without it. Installing waits for an answer on required ones;
   optional ones can wait until your app first uses them.
 
 If no entry says `required`, installing asks about all of them. Older app versions ignore both.
+
+Each entry's `reason` and `required` cover all its parameters, so give a domain (or a
+`Notifications` package) used for something different its own entry, as with the radar above.
 
 The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicrophone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
@@ -330,8 +340,8 @@ can approve them when installing your app (if that plugin is already installed):
 
 ```json
 "usesPermissions": [
-  { "name": "HomeControl", "plugin": "<Hue's uuid>", "reason": "Turns your lights on at sunset", "required": true },
-  { "name": "InvokeAction", "plugin": "<Hue's uuid>", "reason": "Turns your lights on at sunset", "required": true }
+  { "name": "HomeControl", "plugin": "<Hue's uuid>", "reason": "To turn your lights on at sunset", "required": true },
+  { "name": "InvokeAction", "plugin": "<Hue's uuid>", "reason": "To turn your lights on at sunset", "required": true }
 ]
 ```
 
@@ -551,7 +561,7 @@ Add a `plugin` block to the `pebble` section of `package.json`:
     {
       "name": "Internet",
       "parameters": { "domains": ["query1.finance.yahoo.com"] },
-      "reason": "Fetches share prices",   // Next release
+      "reason": "To get share prices",     // Next release
       "required": true                    // Next release
     }
   ],

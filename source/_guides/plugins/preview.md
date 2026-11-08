@@ -841,6 +841,9 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 - Settings pages can only reach declared, allowed `Internet` domains, for everything they load or
   connect to, and other ways around network permissions were closed.
 - Fixed `image` series being rejected.
+- Fixed a bundled `configPage` not opening for an app from the store that has no plugin.
+- An app from a store that doesn't send its manifest (permissions, settings page) gets them from
+  its pbw.
 
 **1.17.0.1**
 

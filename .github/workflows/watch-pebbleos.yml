@@ -5,7 +5,9 @@ name: Watch PebbleOS
 # written by build.yml), so pebbleos needs no workflow or token of its own.
 on:
   schedule:
-    - cron: '17 * * * *'
+    # Once a day: pebbleos main moves several times a day, and the docs
+    # can trail it by a day.
+    - cron: '17 9 * * *'
   workflow_dispatch:
 
 permissions:

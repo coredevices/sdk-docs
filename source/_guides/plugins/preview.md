@@ -661,19 +661,20 @@ What a plugin has to work with:
   yours. Call it on every run: whatever a run doesn't subscribe to is dropped. While subscribed,
   `readSource` answers from the subscription. At most 8; changes are debounced by a second.
 
-  ```javascript
-  Pebble.registerSourceHandler(async function (request, respond) {
-    var units = { category: 'preferences', item: 'units' };
-    Pebble.subscribeSource(units);
-    var unit = (await Pebble.readSource(units)).instances[0].properties.temperature.shortText.text;
-    // ...
-  });
-  ```
+```javascript
+Pebble.registerSourceHandler(async function (request, respond) {
+  var units = { category: 'preferences', item: 'units' };
+  Pebble.subscribeSource(units);
+  var unit = (await Pebble.readSource(units)).instances[0].properties.temperature.shortText.text;
+  // ...
+});
+```
 
-  Either way you read with your plugin's permissions. What you read can reach your callers, so each
-  of your sources and actions must require of its callers at least what you declared to read it
-  (declared Maps' `Notifications`? Require Maps' notifications of your callers). A plugin can't read
-  itself, or one that already reads it.
+Either way you read with your plugin's permissions. What you read can reach your callers, so each
+of your sources and actions must require of its callers at least what you declared to read it
+(declared Maps' `Notifications`? Require Maps' notifications of your callers). A plugin can't read
+itself, or one that already reads it.
+
 - **`Pebble.refreshSources(["finance/stock"])`** when data changes outside a request (for example,
   the user added a ticker on the settings page).
 - **`Pebble.oauth`** for sign-in with OAuth providers, without the plugin ever holding a client

@@ -755,6 +755,19 @@ For an example, see the `plugin-test` dashboard: its settings page fills its dro
 (built from `enumeratePlugins`) and sends each change straight back, so the watch updates as the
 user edits, with no save button.
 
+#### Restrictions
+
+While the plugins preview is enabled, these apply to every app, plugin or not:
+
+- **Domains.** PKJS, plugins and settings pages (and any page a settings page navigates to, such as
+  a sign-in page) can only reach declared, allowed `Internet` domains ([legacy apps](#declaring)
+  keep their old access unless the user changes it). In a settings page a blocked
+  load just fails, with no prompt, so a page that comes up blank is often missing a domain.
+- **Android web APIs.** PKJS and settings pages have no WebRTC, `WebTransport`, `WebSocketStream`,
+  workers or service workers. PKJS also has no frames or `customElements`; settings pages have no
+  `<object>`/`<embed>`, and lose `srcdoc` and `javascript:` frames. Since 1.18.0 settings pages
+  have no `customElements` either (**Next release:** they do again).
+
 ### File access
 
 A plugin can read and write files and folders the user hands it. Declare `ReadFiles` (and/or
@@ -823,6 +836,11 @@ We're planning:
 ## Changelog
 
 Changes to plugins, permissions and settings pages in each version of the mobile app.
+
+**Next release**
+
+- Settings pages on Android have `customElements` again, so pages using web components load
+  ([Restrictions](#restrictions)).
 
 **1.18.0.1**
 

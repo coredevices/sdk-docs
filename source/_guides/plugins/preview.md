@@ -419,6 +419,7 @@ const subscription = Pebble.subscribeToSource({
   item: "location",
   properties: ["name", "temperature", "condition"],  // optional hint; omit for everything
   iconPixelSize: { w: 48, h: 48 },                   // optional; ask only if you want bitmaps
+  limit: 50,                                         // optional; at most this many instances (Next release)
   // names the source doesn't declare are dropped, and the size is capped at 260×260.
   onData: ({ instances }) => {
     // the location picked on your settings page, else the user's first
@@ -605,7 +606,7 @@ regularly for fresh data (currently every `suggestedRefreshIntervalSec`, but thi
 ```javascript
 // plugin.js
 Pebble.registerSourceHandler(async (request, respond) => {
-  // request: { category, item, properties?, iconPixelSize? }
+  // request: { category, item, properties?, iconPixelSize?, limit? }
   if (request.category === "finance" && request.item === "stock") {
     const quotes = await loadQuotes();
     respond.data({
@@ -652,7 +653,7 @@ What a plugin has to work with:
 - **`Pebble.secureStorage`** for credentials (tokens, API keys): `await getItem(key)`,
   `setItem(key, value)` and `removeItem(key)`, encrypted by the phone's keystore. Private to your
   plugin (PKJS can't read it) and deleted when the app is removed.
-- **`await Pebble.readSource({ category, item, plugin?, properties?, iconPixelSize? })`** to read
+- **`await Pebble.readSource({ category, item, plugin?, properties?, iconPixelSize?, limit? })`** to read
   another plugin's source (built-in or not), e.g. `preferences/units` (see
   [User preferences](#user-preferences)). It rejects with `PLUGIN_UNAVAILABLE`,
   `PERMISSION_DENIED`, `INVALID_REQUEST` or `TIMEOUT`.
@@ -706,7 +707,9 @@ itself, or one that already reads it.
 - Nothing else: unlike PKJS, a plugin has no WebView APIs.
 
 Return every property and shape you can; text shapes cost nothing once you have the data, and the
-app picks. Only produce `icon`/`image` when the request has `iconPixelSize`.
+app picks. Only produce `icon`/`image` when the request has `iconPixelSize`. If your source caps
+how many instances it returns, let `limit` (1 to 200) override the cap; the app drops any
+instances past it, or past 200 without one (**Next release**).
 
 The Pebble app checks every update before an app sees it: a shape your manifest doesn't declare, or
 one that doesn't match its format (above), is dropped. Why shows up in `pebble logs`.
@@ -832,6 +835,7 @@ We're planning:
   connection to display images after restarting, right now)
 - PebbleKit-Android 2.0 plugin support.
 - More built-in plugins exposing more things.
+- Support `Pebble.oauth` callbacks without using the app store broker service.
 
 ## Changelog
 
@@ -839,6 +843,9 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 
 **Next release**
 
+- Subscriptions and reads take `limit`, the most instances you get back, up to 200 (also the
+  most you get without one). `calendar/event` returns the next 10 events unless you ask for more.
+- `calendar/event` has a `description` (`longText`, up to 300 characters, as on timeline pins).
 - Settings pages on Android have `customElements` again, so pages using web components load
   ([Restrictions](#restrictions)).
 

@@ -45,6 +45,9 @@ errors in the returned transcription.
 > a microphone should use the `PBL_MICROPHONE` compile-time define (as well as
 > checking API return values) to gracefully handle when it is not available.
 
+To get the raw audio instead of a transcription, use the Microphone API
+described in {% guide_link events-and-services/microphone %}.
+
 
 ## How the Dictation API Works
 

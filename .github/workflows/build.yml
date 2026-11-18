@@ -145,23 +145,39 @@ jobs:
           sudo apt-get install -y doxygen
           pip install -r pebbleos/docs/requirements.txt
 
-      # The playground page embeds WebAssembly builds of the firmware. Set up
-      # what that build needs (submodules, Python packages, the PebbleOS SDK,
-      # Emscripten) with pebbleos's own Read the Docs script, so it follows
-      # the firmware's requirements; the script puts em-config in
-      # $READTHEDOCS_VIRTUALENV_PATH/bin.
-      - name: Install the playground's firmware toolchain
+      # The playground page embeds WebAssembly builds of the firmware. Take
+      # them from pebbleos CI, with pebbleos's own Read the Docs script: the
+      # native firmware run of the commit stores them as artifacts. It exits
+      # 2 while that run has not finished, so wait for it a while; without
+      # the builds the page goes without the playground.
+      - name: Download the playground's firmware builds
+        id: playground
         working-directory: pebbleos
         env:
-          READTHEDOCS_VIRTUALENV_PATH: ${{ runner.temp }}/playground
+          PBL_PLAYGROUND_GITHUB_TOKEN: ${{ github.token }}
+          READTHEDOCS_GIT_COMMIT_HASH: ${{ steps.revision.outputs.sha }}
+          READTHEDOCS_VERSION_TYPE: branch
         run: |
-          sudo apt-get install -y clang cmake gettext librsvg2-bin ninja-build
-          mkdir -p "$READTHEDOCS_VIRTUALENV_PATH/bin"
-          sh docs/_scripts/pbl_playground_setup_rtd.sh
-          echo "$READTHEDOCS_VIRTUALENV_PATH/bin" >> "$GITHUB_PATH"
+          for i in $(seq 20); do
+            rc=0; python3 docs/_scripts/pbl_playground_fetch_rtd.py || rc=$?
+            [ $rc -eq 2 ] || break
+            sleep 60
+          done
+          if [ $rc -eq 0 ]; then
+            echo "dir=$PWD/docs/_build/playground" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::No playground builds for this commit (exit $rc), skipping the playground"
+          fi
 
       - name: Import PebbleOS documentation
-        run: python3 scripts/import_pebbleos_docs.py pebbleos /tmp/pebbleos-site
+        env:
+          PLAYGROUND_DIR: ${{ steps.playground.outputs.dir }}
+        run: |
+          if [ -n "$PLAYGROUND_DIR" ]; then
+            python3 scripts/import_pebbleos_docs.py pebbleos /tmp/pebbleos-site --prebuilt-playground "$PLAYGROUND_DIR"
+          else
+            python3 scripts/import_pebbleos_docs.py pebbleos /tmp/pebbleos-site --skip-playground
+          fi
 
       - name: Publish docs artifact
         uses: actions/upload-artifact@v6

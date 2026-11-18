@@ -81,7 +81,6 @@ phone app.
 {% platform local %}
 ```json
 "capabilities": [
-  "location",
   "configurable"
 ]
 ```
@@ -380,8 +379,8 @@ contain `BackgroundColor`, `TextColor`, etc. Both can be handled independently
 in the same callback.
 
 Notice that when the temperature unit changes we immediately request a weather
-refresh. Without this, the display would keep showing the old unit until the
-next scheduled 30-minute update.
+refresh. PKJS sends the latest reading again, so the display shows the new
+unit right away instead of waiting for the weather to change.
 
 Also increase the AppMessage buffer sizes in `init()` to accommodate the
 larger Clay messages:
@@ -428,7 +427,7 @@ Here is everything it includes:
 
 1. **Digital time display** with a custom font.
 2. **Date display** that can be toggled on/off.
-3. **Live weather** from Open-Meteo (no API key needed).
+3. **Live weather** from the Pebble app's weather plugin.
 4. **Battery meter** drawn with custom graphics.
 5. **Bluetooth disconnect** icon and vibration alert.
 6. **Timeline Peek** support with smooth animations.

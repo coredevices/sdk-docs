@@ -57,6 +57,6 @@ Not every language and feature is available on every platform:
 | Touch | `emery`, `gabbro` | Watchapps only. Watchfaces cannot receive touch events. See {% guide_link events-and-services/touch %}. |
 | Heart rate monitor | `diorite` (except Pebble 2 SE), `emery` | See {% guide_link events-and-services/hrm %}. |
 | Speaker | `flint`, `emery` | See {% guide_link events-and-services/speaker %}. |
-| Microphone | All except `aplite` | See {% guide_link events-and-services/dictation %}. |
+| Microphone | All except `aplite` | See {% guide_link events-and-services/dictation %}. The Microphone API ({% guide_link events-and-services/microphone %}) needs `emery`, `flint` or `gabbro`. |
 
 Watchfaces cannot receive button or touch events on any platform.

@@ -7,8 +7,8 @@ menu: true
 generate_toc: true
 ---
 {% raw %}
-**Version:** this guide describes mobile app version 1.16.0.5 unless stated otherwise. Anything
-marked **Next release** is in the next release after it.
+**Version:** this guide describes mobile app version 1.18.0.1. Anything marked **Next release** is in
+the next release after it. See the [changelog](#changelog) for what changed in each version.
 
 Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
 
@@ -17,7 +17,7 @@ Plugins are nearly here (finally). A plugin is a small piece of JavaScript that 
 
 It has a generic API, designed to allow any type of data to be exposed, in multiple formats.
 
-Right now they're supported in the Pebble mobile app (v1.16.x), but are in preview, and disabled by
+They're supported in the Pebble mobile app (1.16 and later), but are in preview, and disabled by
 default.
 
 ### Why?
@@ -42,8 +42,8 @@ default.
 - Build a watchface or app that uses plugin data.
 - Build a plugin.
 
-First, enable plugins in the mobile app (v1.16.x or above): **Settings → Plugins → Plugins / permissions preview**. A **Plugins** tab appears in the Apps
-screen listing plugins and their settings pages. The demo apps below are on the app store.
+First, enable plugins in the mobile app (1.16 or later): **Settings → Plugins → Plugins / permissions
+preview** (**Next release**: plugins and permissions are on for everyone, with no setting). A **Plugins** tab appears in the Apps screen listing plugins and their settings pages. The demo apps below are on the app store.
 
 Note: apps/plugins built for versions before 1.16 may not work, as there have been many changes to
 both in 1.16.
@@ -63,17 +63,13 @@ Source for each is in [coredevices/pebble-apps](https://github.com/coredevices/p
   provider (Settings → Weather → Weather provider). Shows `Pebble.subscribeSource`,
   `navigator.geolocation` and drawing condition images in JS.
 - **[`plugin-test`](https://github.com/coredevices/pebble-apps/tree/main/plugin-test)** ("Dashboard (Plugin Demo)"): a watchapp with eight tiles, each set from its
-  settings page to any reading from any installed plugin. This shows what data is available through the example/built-in plugins. You can also configure taps to take actions, or make a tile a button for any action that takes no arguments (e.g. "Back", the default, goes to the previous app). A tile can also show the date, from the watch's own clock.
+  settings page to any reading from any installed plugin, which shows what data the example and
+  built-in plugins offer. Taps can take actions, and a tile can be a button for any action that
+  takes no arguments (e.g. "Back", the default, goes to the previous app). A tile can also show the
+  date, from the watch's own clock.
 - **[`stocks`](https://github.com/coredevices/pebble-apps/tree/main/stocks)**: share prices for tickers you pick on its settings page.
 - **[`hue`](https://github.com/coredevices/pebble-apps/tree/main/hue)**: Control Philips Hue lights on your local bridge (pair from its settings page).
 - **[`notion`](https://github.com/coredevices/pebble-apps/tree/main/notion)**, **[`ticktick`](https://github.com/coredevices/pebble-apps/tree/main/ticktick)**, **[`todoist`](https://github.com/coredevices/pebble-apps/tree/main/todoist)**: examples of plugins that sign in with OAuth.
-
-### What can't I do yet?
-
-**Don't ship anything that uses/offers plugins to the app store yet.** The API is unstable and will change
-before plugins are released to everyone. We want your feedback on it first.
-
-See [Future](#future) for what's planned but not built yet.
 
 ## Concepts
 
@@ -122,7 +118,7 @@ Examples now:
 | `phone`         | `phone_state`, `find_my_phone`                                    | built-in  |
 | `music`         | `track`                                                           | built-in (Android) |
 | `notifications` | `notification`                                                    | built-in (Android) |
-| `watch`         | `switch_setting`, `number_setting`, `text_setting`, `app_setting` | built-in  |
+| `watch`         | `switch_setting`, `number_setting`, `text_setting`, `app_setting`, `app` | built-in  |
 | `home`          | `home_lights`, `room_lights`, `light`                             | Hue demo  |
 | `finance`       | `stock`                                                           | Stocks demo |
 | `notes`         | `destination`, `configured`                                       | Notion demo |
@@ -157,23 +153,24 @@ weather app and timeline pins, as well as apps. For that it needs at least `temp
 `daily_condition_code`, `daily_sunrise` and `daily_sunset`; the rest fills in what the watch
 shows if it's there. A place it doesn't serve, or a read that fails, falls back to Pebble's own.
 
-A plugin is offered as a notes / reminders / agent destination for the Index agent when it declares
-a `create_note` / `create_reminder` / `send_to_agent` action *and* serves `notes/configured` /
-`reminders/configured` / `agent/configured`: one instance whose `configured` property is a `boolean`
-that is true once the user has signed in and set everything the action needs. While it reads false
-the destination shows a Connect button that opens the plugin's settings page. An action without its
-`configured` source is not offered.
+A plugin is a notes / reminders / agent destination for Index when it declares a `create_note` /
+`create_reminder` / `send_to_agent` action *and* serves `notes/configured` / `reminders/configured`
+/ `agent/configured`: one instance whose `configured` `boolean` is true once the user has set
+everything the action needs. While it's false, the destination shows a Connect button that opens
+the plugin's settings page.
 
-`send_to_agent` takes `{ message, chat_id? }` and forwards the user's message to an external agent.
-A plugin that keeps several chats can serve `agent/chats`, one instance per chat with its id as the
-`instanceId` and its nickname as the `name` property; the host lists these and passes the chosen one
-as `chat_id`. Without that source the chat sent to is decided by the plugin (usually a new chat each
-time). Unlike `create_note` and `create_reminder`, `send_to_agent` is also offered to the Index agent
-as a tool, so the user can ask for something to be sent to the agent by name.
+`send_to_agent` takes `{ message, chat_id? }` and forwards the message to an external agent. To offer
+a choice of chats, serve `agent/chats` (one instance per chat: its id as `instanceId`, its nickname
+as `name`); the chosen one is passed as `chat_id`. The Index agent can also call `send_to_agent` as
+a tool, so the user can ask for something to be sent to the agent by name.
 
-The built-in Watch State plugin has no sources, only actions, both needing `LaunchApps`:
+The built-in Watch State plugin has two actions, both needing `LaunchApps`:
 `launch_app` (`{ uuid }`) opens an app or watchface in the user's locker, and
-`launch_previous_app` goes back to whatever ran before the current app.
+`launch_previous_app` goes back to whatever ran before the current app. It also has a `watch/app`
+source, needing `ReadApps`: one instance per app or watchface in the locker that
+can be opened on the watch (plugin-only apps are left out), with the app's uuid as its id, its
+`name`, and its `type` (`watchapp` or `watchface`). `launch_app` targets it, taking the app's uuid as
+`instanceId` as well as `uuid`, so a tile showing an app can open it.
 
 ### Shapes
 
@@ -234,8 +231,8 @@ UV index, a light's brightness. A small text slot can take any `shortText`, what
 
 ### Permissions
 
-Plugins introduce a fine-grained permission system, covering your plugin and your app's PKJS. This
-ships in v1.15 of the mobile app, and is only in place when plugins are enabled.
+Plugins introduce a fine-grained permission system, covering your plugin and your app's PKJS. It's
+only in place when plugins are enabled.
 
 #### Declaring
 
@@ -244,26 +241,58 @@ Declare what your app and its plugin need once, in the `pebble` block of `packag
 ```json
 "pebble": {
   "usesPermissions": [
-    "Location",
-    "LocalNetwork",
-    { "name": "Internet", "parameters": { "domains": ["api.example.com"] } }
+    {
+      "name": "Location",
+      "reason": "To show the weather where you are",
+      "required": true
+    },
+    {
+      "name": "LocalNetwork",
+      "reason": "To find your lights on your home network",
+      "required": false
+    },
+    {
+      "name": "Internet",
+      "parameters": { "domains": ["api.example.com"] },
+      "reason": "To get the forecast",
+      "required": true
+    },
+    {
+      "name": "Internet",
+      "parameters": { "domains": ["radar.example.com"] },
+      "reason": "To show the rain radar",
+      "required": false
+    }
   ]
 }
 ```
 
-The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone`, `Notifications`, `Calendar`,
+**1.18.0.1:** give every permission a `reason` and say whether it's `required`:
+
+- `reason`: what your app does with it, in a short sentence: "To show the weather where you are",
+  not "Accesses your location" (the permission's name already says that). Users see it wherever
+  they decide; past two lines it's cut off.
+- `required`: whether your app works without it. Installing waits for an answer on required ones;
+  optional ones can wait until your app first uses them.
+
+If no entry says `required`, installing asks about all of them. Older app versions ignore both.
+
+Each entry's `reason` and `required` cover all its parameters, so give a domain (or a
+`Notifications` package) used for something different its own entry, as with the radar above.
+
+The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicrophone`, `Notifications`, `Calendar`,
 `Contacts`, `Timeline`, `ReadWatchSettings`/`WriteWatchSettings`, `ReadMusic`/`ControlMusic`,
-`LaunchApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit` and `Health`.
+`LaunchApps`, `ReadApps`, `FindMyPhone`, `ReadFiles`/`WriteFiles`, `LegacyPebbleKit`, `Health` and
+`ShowNotifications` (showing notifications on the watch, including
+`Pebble.showSimpleNotificationOnPebble` and a pin's notifications).
 
 - Each `Internet` domain is its own permission and covers its subdomains. `LocalNetwork` covers
   devices on the LAN.
-- `Notifications` can be narrowed to some apps (Android):
+- `Notifications` is always asked about. It can be narrowed to some apps (Android):
   `{ "name": "Notifications", "parameters": { "packages": ["com.google.android.apps.maps"] } }`.
-  Each package is its own permission ("Read your notifications from …"), and you only see those
-  apps' notifications (by their `package` property). Bare `Notifications` is all of them, and
-  allowing it allows every package. Ask for just the apps you need if you can: users are far
-  more likely to allow one app's notifications than all of them. Users are always asked about
-  notifications, whatever their permission settings.
+  Each package is its own permission, and you only see those apps' notifications (by their
+  `package` property). Users are far more likely to allow one app's notifications than all of
+  them. A notification holding a one-time code reaches you as "Sensitive content".
 - `ReadFiles` and `WriteFiles` let your settings page ask the user for a file or folder. They take
   no parameters: you can't name paths in the manifest. Each entry the user picks is its own
   permission (`ReadFiles/<path>`, or `WriteFiles/<path>` for read-write), listed on the app's page
@@ -272,24 +301,28 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `Microphone
   with it. See [File access](#file-access).
 - `LegacyPebbleKit` lets your watchapp talk to a companion app over PebbleKit Classic. A PebbleKit 2
   companion doesn't need declaring: each package your appinfo lists is asked about on its own.
-- `Microphone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
-  capture (SDK revision 111); declare it in `usesPermissions`.
-- `Health` isn't enforced yet: health data is read on the watch, so enforcing it needs permissions
-  synced to the watch, which isn't built yet. Declare it anyway if you use health data.
+- `WatchMicrophone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
+  capture (SDK revision 111). See {% guide_link events-and-services/microphone %}.
+- `Health` covers the `health_service_*` APIs. Declare it if you use health data. The watch enforces
+  it, once its firmware supports that (**Next release**: the app sends it to the watch); until
+  then, and on watches that can't update, your app keeps health access whatever the user chooses.
+  The SDK fails the build if your app or worker uses health (in JavaScript, `pebble/health` or the
+  `health` event) without declaring it, or with `manifestVersion: 1` (**Next release**, SDK
+  revision 114, version 5.113).
+  Apps built with an SDK from before health use was checked keep health access like legacy apps,
+  even if they declare it, unless the user turns on **Ask before older apps use permissions**;
+  then they're asked if they declare `Health` or their appinfo lists the `health` capability.
 
-The [packaging script](#packaging-and-sideloading) marks the pbw as using permissions
+The SDK [marks the pbw](#packaging-and-sideloading) as using permissions
 (`manifestVersion: 2` in its appinfo). Without that it's a legacy app, which keeps what apps had
 before permissions: internet access, location and timeline pins if it has PebbleKit JS, and
 `LegacyPebbleKit` if it has an Android companion app. Users can have legacy apps ask too, with
 **Ask before older apps use permissions** in settings.
 
 Sources and actions guard themselves with **caller permissions**: what an app must hold to use
-them. `calendar/event` needs `Calendar`, `notifications/notification` needs `Notifications`,
-`weather/*` needs `Location`. Caller permissions take the same parameters as `usesPermissions`,
-so a source can ask its callers for one app's notifications rather than all of them. If your
-source needs bare `Notifications`, a caller holding only some apps' is refused
-(`PERMISSION_DENIED`) unless your instances have a `package` property to narrow them by; so
-either add one, or ask for those apps specifically.
+them (`calendar/event` needs `Calendar`, `weather/*` needs `Location`). They take the same
+parameters as `usesPermissions`. A caller holding only some apps' `Notifications` is refused by a
+source that needs all of them, unless its instances have a `package` property to filter by.
 
 A plugin can also define its own permissions, to guard its sources and actions:
 
@@ -314,15 +347,15 @@ can approve them when installing your app (if that plugin is already installed):
 
 ```json
 "usesPermissions": [
-  { "name": "HomeControl", "plugin": "<Hue's uuid>" },
-  { "name": "InvokeAction", "plugin": "<Hue's uuid>" }
+  { "name": "HomeControl", "plugin": "<Hue's uuid>", "reason": "To turn your lights on at sunset", "required": true },
+  { "name": "InvokeAction", "plugin": "<Hue's uuid>", "reason": "To turn your lights on at sunset", "required": true }
 ]
 ```
 
 #### Approval
 
 Network access and companion apps let data leave the phone, so they're what make reading someone's
-data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSettings`,
+data risky. Those, and permissions that change things (`Timeline`, `ShowNotifications`, `WriteWatchSettings`,
 `ControlMusic`, `LaunchApps`), need the user's approval unless they've set apps to never ask.
 `Notifications` always needs it. Reading is up to a setting; by default:
 
@@ -332,20 +365,23 @@ data risky. Those, and permissions that change things (`Timeline`, `WriteWatchSe
 - **Any other app** can read without asking, since the data can't go anywhere.
 
 While your app is running (or, for a plugin, while something reads from it), a request shows the
-user a notification and a card in the Pebble app. Until they answer, it fails with
-`PERMISSION_DENIED` (a blocked `fetch` rejects like a network error; **Next release:** with a
-`NotAllowedError`), possibly after waiting a few seconds. Try again later rather than treating it as permanent.
+user a notification and a card in the Pebble app (**1.18.0.1:** an optional permission only
+once your app uses it). Until they answer, it fails with `PERMISSION_DENIED` (a blocked `fetch`
+rejects with a `NotAllowedError`), possibly after a few seconds. Try again later rather than
+treating it as permanent.
 
-Users can allow or deny any permission on the app's page, and choose in settings when apps have to ask.
-Their answers follow their account to other phones, and an app added from the web store is
-reviewed there, so it doesn't ask again on the phone.
-Declare what you need up front, and keep `Internet` to the domains you use: fewer prompts, and
-users can trust you. An app holding `Location` whose only network access is
-`api.openweathermap.org` can't send the user's location anywhere else.
+Users can change any permission on the app's page (or its settings page's title bar), and choose
+in settings when apps have to ask. Their answers follow their account to other phones, and apps
+added from the web store are reviewed there.
+
+Declare everything you need up front, with a `reason`, and keep `Internet` to the domains you use:
+fewer prompts, and users can see what you'll do. An app holding `Location` whose only network
+access is `api.openweathermap.org` can't send the location anywhere else. An undeclared permission
+is still asked about when used, but with nothing but its name to explain it.
 
 #### Checking a permission
 
-**Next release.** Your plugin or PKJS can check one of its own permissions with
+Your plugin or PKJS can check one of its own permissions with
 `Pebble.permissions.query`, which resolves to:
 
 - `"granted"`: using it will work, because the user allowed it or their settings allow it.
@@ -390,7 +426,8 @@ const subscription = Pebble.subscribeToSource({
   item: "location",
   properties: ["name", "temperature", "condition"],  // optional hint; omit for everything
   iconPixelSize: { w: 48, h: 48 },                   // optional; ask only if you want bitmaps
-  // Next release: names the source doesn't declare are dropped, and the size is capped at 260×260.
+  limit: 50,                                         // optional; at most this many instances (Next release)
+  // names the source doesn't declare are dropped, and the size is capped at 260×260.
   onData: ({ instances }) => {
     // the location picked on your settings page, else the user's first
     const here = instances.find((i) => i.instanceId === savedId) ?? instances[0];
@@ -474,11 +511,10 @@ see. Each source updates when the user changes the setting.
 | `clock`         | `12h`, `24h`                  |
 
 **`preferences/complications`** (no permission): the user's readings, one instance per filled
-slot in order (`instanceId` is the slot number; empty slots are left out). Each has `category`, `item` and `property` (`shortText`) and `index` (`numericValue`): read
-`category/item` as usual and use instance `index`'s `property`. An entry names no plugin and
-reveals nothing about the data, so the list is never filtered: reading an entry may ask the user
-for permission like any other read, and fails with `PERMISSION_DENIED` until they answer. Skip to
-the next entry when one can't be read.
+slot, in order (`instanceId` is the slot number). Each has `category`, `item`, `property`
+(`shortText`) and `index` (`numericValue`): read `category/item` as usual and use instance
+`index`'s `property`. Reading it may need a permission like any other read; skip to the next entry
+when one can't be read.
 
 ```javascript
 Pebble.subscribeToSource({
@@ -530,7 +566,12 @@ Add a `plugin` block to the `pebble` section of `package.json`:
   "sdkVersion": "3",
   "configPage": "config.html",            // optional settings page (a file in the pbw, or a URL)
   "usesPermissions": [
-    { "name": "Internet", "parameters": { "domains": ["query1.finance.yahoo.com"] } }
+    {
+      "name": "Internet",
+      "parameters": { "domains": ["query1.finance.yahoo.com"] },
+      "reason": "To get share prices",     // 1.18.0.1
+      "required": true                    // 1.18.0.1
+    }
   ],
   "plugin": {
     "description": "Share prices for the tickers the user picked.",   // also read by index MCP
@@ -572,7 +613,7 @@ regularly for fresh data (currently every `suggestedRefreshIntervalSec`, but thi
 ```javascript
 // plugin.js
 Pebble.registerSourceHandler(async (request, respond) => {
-  // request: { category, item, properties?, iconPixelSize? }
+  // request: { category, item, properties?, iconPixelSize?, limit? }
   if (request.category === "finance" && request.item === "stock") {
     const quotes = await loadQuotes();
     respond.data({
@@ -607,10 +648,9 @@ Pebble.registerActionHandler(async (request, respond) => {
 What a plugin has to work with:
 
 - **`fetch`** for HTTP, to hosts the user has allowed (see [Approval](#approval)). A blocked host
-  rejects like a network error, with a `TypeError`. **Next release:** a blocked host rejects with
-  an error named `NotAllowedError` instead. Plain-HTTP LAN devices are reachable with
-  `LocalNetwork`. **Next release:** each redirect is checked like the first request, so a redirect
-  to a host you may not reach fails the same way.
+  rejects with an error named `NotAllowedError`. Plain-HTTP LAN devices are reachable with
+  `LocalNetwork`. Each redirect is checked like the first request, so a redirect to a host you may
+  not reach fails the same way.
 - **`WebSocket`** under the same rules: a blocked host fires `error` then `close`. Binary frames
   arrive as `ArrayBuffer`. Sockets are closed when the session ends, so one only lives for the
   request that opened it. These aren't intended for long-running connections.
@@ -621,7 +661,7 @@ What a plugin has to work with:
 - **`Pebble.secureStorage`** for credentials (tokens, API keys): `await getItem(key)`,
   `setItem(key, value)` and `removeItem(key)`, encrypted by the phone's keystore. Private to your
   plugin (PKJS can't read it) and deleted when the app is removed.
-- **`await Pebble.readSource({ category, item, plugin?, properties?, iconPixelSize? })`** to read
+- **`await Pebble.readSource({ category, item, plugin?, properties?, iconPixelSize?, limit? })`** to read
   another plugin's source (built-in or not), e.g. `preferences/units` (see
   [User preferences](#user-preferences)). It rejects with `PLUGIN_UNAVAILABLE`,
   `PERMISSION_DENIED`, `INVALID_REQUEST` or `TIMEOUT`.
@@ -630,21 +670,20 @@ What a plugin has to work with:
   yours. Call it on every run: whatever a run doesn't subscribe to is dropped. While subscribed,
   `readSource` answers from the subscription. At most 8; changes are debounced by a second.
 
-  ```javascript
-  Pebble.registerSourceHandler(async function (request, respond) {
-    var units = { category: 'preferences', item: 'units' };
-    Pebble.subscribeSource(units);
-    var unit = (await Pebble.readSource(units)).instances[0].properties.temperature.shortText.text;
-    // ...
-  });
-  ```
+```javascript
+Pebble.registerSourceHandler(async function (request, respond) {
+  var units = { category: 'preferences', item: 'units' };
+  Pebble.subscribeSource(units);
+  var unit = (await Pebble.readSource(units)).instances[0].properties.temperature.shortText.text;
+  // ...
+});
+```
 
-  Either way you read as your plugin, with its permissions. What you read can reach your callers,
-  so for each caller permission the source needs, every one of your sources and actions must
-  require at least as much of its callers as you declared yourself: a plugin that declared
-  `Notifications` for Maps only must require (at least) Maps' notifications of its callers, and
-  one that declared all notifications must require all of them. A plugin can't read itself, or
-  one that already reads it.
+Either way you read with your plugin's permissions. What you read can reach your callers, so each
+of your sources and actions must require of its callers at least what you declared to read it
+(declared Maps' `Notifications`? Require Maps' notifications of your callers). A plugin can't read
+itself, or one that already reads it.
+
 - **`Pebble.refreshSources(["finance/stock"])`** when data changes outside a request (for example,
   the user added a ticker on the settings page).
 - **`Pebble.oauth`** for sign-in with OAuth providers, without the plugin ever holding a client
@@ -659,11 +698,26 @@ What a plugin has to work with:
   [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API)
   surface: `getFile()`, `createWritable()`, `getFileHandle()`, `getDirectoryHandle()`,
   `removeEntry()`, `entries()`, `queryPermission()`.
+- **`Pebble.insertTimelinePin(pin)`** and **`Pebble.deleteTimelinePin(id)`**, as in PKJS, with the [pin JSON](/guides/pebble-timeline/pin-structure/). A pin's
+  `createNotification` is shown when it's first inserted, and its `updateNotification` when a later
+  insert changes it. Pins need `Timeline`; their notifications need `ShowNotifications` too.
+- **`Pebble.showNotification({ layout, actions? })`** to show a notification on
+  the watch, with the same `layout` as a pin's (`type` is `genericNotification` or
+  `commNotification`). Needs `ShowNotifications`.
+- **`pluginAction` actions** on a pin or notification (including a pin's
+  `createNotification`/`updateNotification`):
+  `{ title: "Done", type: "pluginAction", action: "complete", args: { id: "42" } }`. Picking it on
+  the watch calls your action handler with that `action` and `args`; the watch shows your
+  `respond.ok` `text` (or "Done"), or "Failed" on an error. Add `inputArg: "text"` (and optionally
+  `replies: ["Yes", "No"]`) to ask the user for a reply by voice, emoji or a canned reply; it
+  arrives in `args.text`.
 - **`console.log`** shows up in `pebble logs`, beside your app's PKJS logs.
 - Nothing else: unlike PKJS, a plugin has no WebView APIs.
 
 Return every property and shape you can; text shapes cost nothing once you have the data, and the
-app picks. Only produce `icon`/`image` when the request has `iconPixelSize`.
+app picks. Only produce `icon`/`image` when the request has `iconPixelSize`. If your source caps
+how many instances it returns, let `limit` (1 to 200) override the cap; the app drops any
+instances past it, or past 200 without one (**Next release**).
 
 The Pebble app checks every update before an app sees it: a shape your manifest doesn't declare, or
 one that doesn't match its format (above), is dropped. Why shows up in `pebble logs`.
@@ -681,10 +735,8 @@ A settings page has the same network access as your app: everything it loads or 
 (scripts, styles, fonts, images, `fetch`, WebSockets) must be on a domain you declared in `Internet`
 and the user allowed. Bundle what the page needs rather than loading it from a CDN.
 
-**Next release:** `LocalNetwork` doesn't apply to a settings page; reach LAN devices through your
-plugin or PKJS. Settings pages and Android PKJS have no WebRTC, workers or service workers, and
-PKJS on Android can't use iframes. On Android a settings page can't use `<object>` or `<embed>`,
-and each iframe it adds is reloaded once straight away.
+`LocalNetwork` doesn't apply to a settings page; reach LAN devices through your plugin or PKJS.
+See [Restrictions](#restrictions) for the web APIs settings pages lose on Android.
 
 ```javascript
 // in the page
@@ -708,17 +760,37 @@ it in their browser. It takes an http(s) url and resolves to whether they opened
 const opened = await Pebble.openUrl("https://github.com/you/your-plugin");
 ```
 
+A link to an app on the app store, followed or passed to `Pebble.openUrl`, opens
+that app's page in the Pebble app straight away, without asking. That's an app's store page
+(`https://apps.repebble.com/91-dub-v4-0_52b231c2b70e1c159500009b`, or just the id after the `/`)
+or `pebble://appstore/<id>`. Use it to point users at a companion watchface or plugin.
+
+For an example, see the `plugin-test` dashboard: its settings page fills its dropdowns from PKJS
+(built from `enumeratePlugins`) and sends each change straight back, so the watch updates as the
+user edits, with no save button.
+
+#### Restrictions
+
+While the plugins preview is enabled, these apply to every app, plugin or not:
+
+- **Domains.** PKJS, plugins and settings pages (and any page a settings page navigates to, such as
+  a sign-in page) can only reach declared, allowed `Internet` domains ([legacy apps](#declaring)
+  keep their old access unless the user changes it). In a settings page a blocked
+  load just fails, with no prompt, so a page that comes up blank is often missing a domain.
+- **Android web APIs.** PKJS and settings pages have no WebRTC, `WebTransport`, `WebSocketStream`,
+  workers or service workers. PKJS also has no frames or `customElements`; settings pages have no
+  `<object>`/`<embed>`, and lose `srcdoc` and `javascript:` frames; each iframe a settings page
+  adds is reloaded once straight away. Since 1.18.0 settings pages have no `customElements` either
+  (**Next release:** they do again).
+
 ### File access
 
-A plugin can read and write to files/directories the user permits. Declare `ReadFiles` 
-(and/or `WriteFiles` to change files; allowing it allows reading too) in `usesPermissions`.
+A plugin can read and write files and folders the user hands it. Declare `ReadFiles` (and/or
+`WriteFiles` to change files; allowing it allows reading too) in `usesPermissions`.
 
-The plugin must have the read/write permission to use the associated mode with the file picker
-(called from the settings page) which then grants additional access to that specific file or
-directory in that mode.
-
-The resulting file(s) or folder can be stored and reused outside the settings page, such as during 
-plugin use to read/write files in response to user requests or to facilitate providing data to apps.
+With that permission, your settings page can open a file or folder picker in the matching mode, and
+each pick grants access to that entry. Keep its id: your plugin can use the entry outside the
+settings page too, e.g. to write a file in response to an action, or to read data for a source.
 
 ```javascript
 // in the settings page
@@ -747,47 +819,137 @@ Pebble.registerActionHandler(async (request, respond) => {
 ```
 
 Cancelling the picker rejects with an `AbortError`; a plugin the user hasn't allowed `ReadFiles`
-(or `WriteFiles`, for a read-write pick) gets `NotAllowedError`, as does attempting to write through 
-a read-only pick or any use of an entry the user has since withdrawn.
+(or `WriteFiles`, for a read-write pick) gets `NotAllowedError`, as does writing through a
+read-only pick, or any use of an entry the user has since withdrawn.
 
-Plugins can revoke access they no longer need (such as if the user is re-configuring the plugin) via 
+Give up access you no longer need (e.g. when the user picks a different folder) with
 `Pebble.fileSystem.revoke(id)`.
-
-The `plugin-test` dashboard shows what this makes possible: its settings page asks the app's PKJS
-for the catalogue of everything installed (built from `enumeratePlugins`) to fill its dropdowns. Each
-change is sent straight to PKJS, so the watch updates as the user edits, with no save button. PKJS
-pushes the live readings back, so each option is labelled with what it currently reads (for example
-"temperature: 21°C"), and each tile shows its current value.
 
 ### Packaging and sideloading
 
-Use `pebble-tool` 5.1.0 or later, and build the pbw with
-[`scripts/pack-plugin-pbw.py`](https://github.com/coredevices/pebble-apps/blob/main/scripts/pack-plugin-pbw.py)
-from [coredevices/pebble-apps](https://github.com/coredevices/pebble-apps):
+Build with `pebble build`, using SDK 4.44 or later and `pebble-tool` 5.1.0 or later. The build
+bundles the plugin script and a local `configPage` into the pbw, and checks the `plugin` block when
+the project is configured.
 
-```bash
-python3 pack-plugin-pbw.py <project-dir>
-```
-
-A plugin-only project (no `src/c`) sets `"projectType": "plugin"` in `package.json` and needs no
-SDK; for a watchapp project the script runs `pebble build` itself. The script writes
-`<project-dir>/build/<name>.pbw`, marked as using [permissions](#declaring) (`manifestVersion` 2).
-The plugins in that repository are worked examples.
-
-The script is only needed until `pebble build` supports plugins, which is planned for the next SDK
-release.
+A plugin-only project (no `src/c`) sets `"projectType": "plugin"` in `package.json`. The pbw is
+marked as using [permissions](#declaring) (`manifestVersion` 2). The plugins in
+[coredevices/pebble-apps](https://github.com/coredevices/pebble-apps) are worked examples.
 
 ## Future
 
 We're planning:
 
-- More extensive documentation.
-- Likely: Ability to pass parameter into plugin subscription requests (e.g. to request weather for an arbitrary location)
+- Likely: passing parameters in subscription requests (e.g. to ask for the weather at an arbitrary
+  location)
 - Likely: A watch-side (C / Alloy) API, so apps can use plugins without any phone-side JS.
 - Likely: an API to receive push messages to a plugin, to trigger some work
-- More APIs e.g. send a notification to the watch
 - A way to cache images on the watch (the Weather and Complication demo faces need a phone
   connection to display images after restarting, right now)
 - PebbleKit-Android 2.0 plugin support.
 - More built-in plugins exposing more things.
+- Support `Pebble.oauth` callbacks without using the app store broker service.
+
+## Changelog
+
+Changes to plugins, permissions and settings pages in each version of the mobile app.
+
+**Next release**
+
+- Plugins and permissions are on for everyone: the **Plugins / permissions preview** setting is gone.
+- Subscriptions and reads take `limit`, the most instances you get back, up to 200 (also the
+  most you get without one). `calendar/event` returns the next 10 events unless you ask for more.
+- `calendar/event` has a `description` (`longText`, up to 300 characters, as on timeline pins).
+- `Health` can be allowed or denied for each app that declares it, and is sent to the watch, which
+  enforces it once its firmware supports that. Apps built with an older SDK are only asked about it
+  under **Ask before older apps use permissions**, including for the appinfo `health` capability.
+- Settings pages on Android have `customElements` again, so pages using web components load
+  ([Restrictions](#restrictions)).
+
+**1.18.0.1**
+
+- `reason` and `required` on each entry in `usesPermissions` ([Declaring](#declaring)). Installing
+  and store listings split permissions into Required and Optional, installing waits only for the
+  required ones, and an optional one is asked about when the app first uses it.
+
+**1.18.0**
+
+- `Pebble.insertTimelinePin`, `Pebble.deleteTimelinePin` and `Pebble.showNotification` for plugins,
+  and `pluginAction` actions on pins and notifications, which call your action handler.
+- New permissions: `ShowNotifications` and `ReadApps`.
+- The Watch State plugin's `watch/app` source, targeted by `launch_app`.
+- A settings page can link to an app on the app store, opening its page in the Pebble app.
+- A settings page's title bar has the app's permissions, and a request made while the page is open
+  shows there instead of as a notification.
+- Settings pages can only reach declared, allowed `Internet` domains, for everything they load or
+  connect to, and other ways around network permissions were closed.
+- Fixed `image` series being rejected.
+- Fixed a bundled `configPage` not opening for an app from the store that has no plugin.
+- An app from a store that doesn't send its manifest (permissions, settings page) gets them from
+  its pbw.
+
+**1.17.0.1**
+
+- A notification holding a one-time code reaches plugins with its text replaced by "Sensitive
+  content".
+
+**1.17.0**
+
+- `Pebble.permissions.query` ([Checking a permission](#checking-a-permission)).
+- A `fetch` blocked by permissions rejects with a `NotAllowedError`, distinct from a network error.
+- Each permission on an app's page shows when it was last used.
+
+**1.16.0.5**
+
+- `Pebble.openUrl` for settings pages, to open links in the browser.
+
+**1.16.0.4**
+
+- The `dangerous` permission kind: always asked about, whatever the user's settings.
+- Legacy apps (without `manifestVersion` 2) can't use plugins.
+- Permission decisions follow the user's account to other phones, and apps added from the web store
+  are reviewed there.
+
+**1.16.0.3**
+
+- `Notifications` can be narrowed to some apps' packages, each its own permission.
+- Plugins can read other plugins' sources: `Pebble.readSource` and `Pebble.subscribeSource`.
+- The built-in Preferences plugin ([User preferences](#user-preferences)).
+- A weather plugin can be the user's weather provider, feeding the watch's weather app and timeline.
+- An app updating to `manifestVersion` 2 loses the permissions it had as a legacy app.
+- XHR permission checks use the URL and headers actually sent.
+- Fixed sideloading plugin-only pbws.
+
+**1.16.0.1**
+
+- [Series](#series).
+- Shapes are checked against the manifest, and anything undeclared or malformed is dropped (and
+  logged).
+- Plugin logs in `pebble logs`.
+- File access: `ReadFiles`/`WriteFiles`, the pickers and `Pebble.fileSystem`
+  ([File access](#file-access)).
+- `WatchMicrophone`.
+- `agent` destinations (`send_to_agent`) for Index.
+- WebSockets can send handshake headers; network permission checks also look at the `Host` header.
+- Settings pages are limited by network permissions.
+
+**1.16.0**
+
+- Installing from the store asks about every declared permission.
+- Legacy apps' permissions are collapsed on the app's page unless the user has them ask.
+
+**1.15.0.1**
+
+- `Pebble.secureStorage`.
+- Permissions can be left undecided.
+
+**1.15.0**
+
+- The permission system: `usesPermissions`, `definesPermissions`, `InvokeAction` and
+  `LegacyPebbleKit`, with permissions on each app's page.
+- Plugins on the app store.
+- The Watch State plugin (`launch_app`, `launch_previous_app`).
+- `navigator.geolocation` and `WebSocket` for plugins.
+
+Earlier versions (1.11 to 1.14) had an early preview of plugins, including `Pebble.oauth`. Much
+changed in 1.16, so apps and plugins built for them may not work.
 {% endraw %}

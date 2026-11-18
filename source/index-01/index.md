@@ -80,7 +80,7 @@ the cloud model.
 
 ## Building on Index 01
 
-There are three extension points.
+There are four extension points.
 
 * [Plugins](/guides/plugins/) run inside the Pebble mobile app and declare
   actions and data sources. The assistant will call a plugin's actions as
@@ -94,6 +94,13 @@ There are three extension points.
 * [MCP servers](/index-01/mcp/) add tools to the assistant. The app connects
   to any MCP server over HTTP, lists its tools, and lets the Cloud LLM call
   them when it processes a recording. You run the server.
+* Button advertising packets. The ring broadcasts a BLE advertising packet
+  each time the button is pressed or released, even while it is connected to
+  the phone. Any nearby computer can read them with no pairing or connection,
+  and use the ring as a remote button, for example to advance slides.
+  [index01-detector](https://github.com/ericmigi/index01-detector) is a Mac
+  menu bar app that does this, turning the button into a push-to-talk key for
+  Wispr Flow or any other app with a hold-to-dictate hotkey.
 
 ## Where the Code Lives
 

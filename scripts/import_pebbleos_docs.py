@@ -33,8 +33,9 @@ Given a checkout of github.com/coredevices/pebbleos, this script:
 
 Nothing is written into the pebbleos checkout. Run it with the Python
 environment that has ``docs/requirements.txt`` installed, and with
-``doxygen`` on the PATH. The playground also needs what the firmware build
-needs (see ``docs/_scripts/pbl_playground_setup_rtd.sh`` in pebbleos), or
+``doxygen`` on the PATH. The playground also needs the firmware build's
+toolchain, or ``--prebuilt-playground`` with the wasm builds pebbleos CI
+made (see ``docs/_scripts/pbl_playground_fetch_rtd.py`` in pebbleos), or
 ``--skip-playground``:
 
     python3 scripts/import_pebbleos_docs.py /path/to/pebbleos .
@@ -385,6 +386,9 @@ def main():
     parser.add_argument('--skip-apidoc', action='store_true', help='do not run Doxygen')
     parser.add_argument('--skip-playground', action='store_true',
                         help='do not build the firmware for the playground page')
+    parser.add_argument('--prebuilt-playground', metavar='DIR',
+                        help='take the playground builds from DIR (<board>_wasm/ '
+                             'directories) instead of building them')
     args = parser.parse_args()
 
     checkout = os.path.abspath(args.checkout)
@@ -410,7 +414,9 @@ def main():
              # which need CMake, Ninja and Emscripten. Build them outside the
              # checkout.
              '-D', f'pbl_playground={0 if args.skip_playground else 1}',
-             '-D', f'pbl_playground_build_dir={os.path.join(work, "playground")}',
+             '-D', f'pbl_playground_prebuilt={1 if args.prebuilt_playground else 0}',
+             '-D', 'pbl_playground_build_dir=' + os.path.abspath(
+                 args.prebuilt_playground or os.path.join(work, 'playground')),
              '-d', os.path.join(work, 'doctrees'),
              os.path.join(checkout, 'docs'), json_dir])
 

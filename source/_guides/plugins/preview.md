@@ -7,7 +7,7 @@ menu: true
 generate_toc: true
 ---
 {% raw %}
-**Version:** this guide describes mobile app version 1.18.0.1. Anything marked **Next release** is in
+**Version:** this guide describes mobile app version 2.0.0. Anything marked **Next release** is in
 the next release after it. See the [changelog](#changelog) for what changed in each version.
 
 Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
@@ -42,8 +42,8 @@ default.
 - Build a watchface or app that uses plugin data.
 - Build a plugin.
 
-First, enable plugins in the mobile app (1.16 or later): **Settings → Plugins → Plugins / permissions
-preview** (**Next release**: plugins and permissions are on for everyone, with no setting). A **Plugins** tab appears in the Apps screen listing plugins and their settings pages. The demo apps below are on the app store.
+Plugins and permissions are on for everyone from mobile app 2.0.0 (in 1.16 to 1.18, turn them on
+in **Settings → Plugins → Plugins / permissions preview**). A **Plugins** tab appears in the Apps screen listing plugins and their settings pages. The demo apps below are on the app store.
 
 Note: apps/plugins built for versions before 1.16 may not work, as there have been many changes to
 both in 1.16.
@@ -303,11 +303,11 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicro
   companion doesn't need declaring: each package your appinfo lists is asked about on its own.
 - `WatchMicrophone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
   capture (SDK revision 111). See {% guide_link events-and-services/microphone %}.
-- `Health` covers the `health_service_*` APIs. Declare it if you use health data. The watch enforces
-  it, once its firmware supports that (**Next release**: the app sends it to the watch); until
-  then, and on watches that can't update, your app keeps health access whatever the user chooses.
+- `Health` covers the `health_service_*` APIs. Declare it if you use health data. The Pebble app sends
+  the user's choice to the watch, which enforces it once its firmware supports that; until then,
+  and on watches that can't update, your app keeps health access whatever the user chooses.
   The SDK fails the build if your app or worker uses health (in JavaScript, `pebble/health` or the
-  `health` event) without declaring it, or with `manifestVersion: 1` (**Next release**, SDK
+  `health` event) without declaring it, or with `manifestVersion: 1` (coming in SDK
   revision 114, version 5.113).
   Apps built with an SDK from before health use was checked keep health access like legacy apps,
   even if they declare it, unless the user turns on **Ask before older apps use permissions**;
@@ -426,7 +426,7 @@ const subscription = Pebble.subscribeToSource({
   item: "location",
   properties: ["name", "temperature", "condition"],  // optional hint; omit for everything
   iconPixelSize: { w: 48, h: 48 },                   // optional; ask only if you want bitmaps
-  limit: 50,                                         // optional; at most this many instances (Next release)
+  limit: 50,                                         // optional; at most this many instances
   // names the source doesn't declare are dropped, and the size is capped at 260×260.
   onData: ({ instances }) => {
     // the location picked on your settings page, else the user's first
@@ -717,7 +717,7 @@ itself, or one that already reads it.
 Return every property and shape you can; text shapes cost nothing once you have the data, and the
 app picks. Only produce `icon`/`image` when the request has `iconPixelSize`. If your source caps
 how many instances it returns, let `limit` (1 to 200) override the cap; the app drops any
-instances past it, or past 200 without one (**Next release**).
+instances past it, or past 200 without one.
 
 The Pebble app checks every update before an app sees it: a shape your manifest doesn't declare, or
 one that doesn't match its format (above), is dropped. Why shows up in `pebble logs`.
@@ -780,8 +780,8 @@ While the plugins preview is enabled, these apply to every app, plugin or not:
 - **Android web APIs.** PKJS and settings pages have no WebRTC, `WebTransport`, `WebSocketStream`,
   workers or service workers. PKJS also has no frames or `customElements`; settings pages have no
   `<object>`/`<embed>`, and lose `srcdoc` and `javascript:` frames; each iframe a settings page
-  adds is reloaded once straight away. Since 1.18.0 settings pages have no `customElements` either
-  (**Next release:** they do again).
+  adds is reloaded once straight away. Settings pages had no `customElements` in 1.18;
+  they do again from 2.0.0.
 
 ### File access
 
@@ -853,7 +853,7 @@ We're planning:
 
 Changes to plugins, permissions and settings pages in each version of the mobile app.
 
-**Next release**
+**2.0.0**
 
 - Plugins and permissions are on for everyone: the **Plugins / permissions preview** setting is gone.
 - Subscriptions and reads take `limit`, the most instances you get back, up to 200 (also the

@@ -43,7 +43,7 @@ default.
 - Build a plugin.
 
 First, enable plugins in the mobile app (1.16 or later): **Settings → Plugins → Plugins / permissions
-preview**. A **Plugins** tab appears in the Apps screen listing plugins and their settings pages. The demo apps below are on the app store.
+preview** (**Next release**: plugins and permissions are on for everyone, with no setting). A **Plugins** tab appears in the Apps screen listing plugins and their settings pages. The demo apps below are on the app store.
 
 Note: apps/plugins built for versions before 1.16 may not work, as there have been many changes to
 both in 1.16.
@@ -303,8 +303,15 @@ The built-in permissions are `Internet`, `LocalNetwork`, `Location`, `WatchMicro
   companion doesn't need declaring: each package your appinfo lists is asked about on its own.
 - `WatchMicrophone` allows watch microphone streaming to PebbleKit JS and local `mic_capture_*`
   capture (SDK revision 111). See {% guide_link events-and-services/microphone %}.
-- `Health` isn't enforced yet: health data is read on the watch, so enforcing it needs permissions
-  synced to the watch, which isn't built yet. Declare it anyway if you use health data.
+- `Health` covers the `health_service_*` APIs. Declare it if you use health data. The watch enforces
+  it, once its firmware supports that (**Next release**: the app sends it to the watch); until
+  then, and on watches that can't update, your app keeps health access whatever the user chooses.
+  The SDK fails the build if your app or worker uses health (in JavaScript, `pebble/health` or the
+  `health` event) without declaring it, or with `manifestVersion: 1` (**Next release**, SDK
+  revision 114, version 5.113).
+  Apps built with an SDK from before health use was checked keep health access like legacy apps,
+  even if they declare it, unless the user turns on **Ask before older apps use permissions**;
+  then they're asked if they declare `Health` or their appinfo lists the `health` capability.
 
 The SDK [marks the pbw](#packaging-and-sideloading) as using permissions
 (`manifestVersion: 2` in its appinfo). Without that it's a legacy app, which keeps what apps had
@@ -843,9 +850,13 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 
 **Next release**
 
+- Plugins and permissions are on for everyone: the **Plugins / permissions preview** setting is gone.
 - Subscriptions and reads take `limit`, the most instances you get back, up to 200 (also the
   most you get without one). `calendar/event` returns the next 10 events unless you ask for more.
 - `calendar/event` has a `description` (`longText`, up to 300 characters, as on timeline pins).
+- `Health` can be allowed or denied for each app that declares it, and is sent to the watch, which
+  enforces it once its firmware supports that. Apps built with an older SDK are only asked about it
+  under **Ask before older apps use permissions**, including for the appinfo `health` capability.
 - Settings pages on Android have `customElements` again, so pages using web components load
   ([Restrictions](#restrictions)).
 

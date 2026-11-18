@@ -649,7 +649,8 @@ What a plugin has to work with:
 
 - **`fetch`** for HTTP, to hosts the user has allowed (see [Approval](#approval)). A blocked host
   rejects with an error named `NotAllowedError`. Plain-HTTP LAN devices are reachable with
-  `LocalNetwork`.
+  `LocalNetwork`. Each redirect is checked like the first request, so a redirect to a host you may
+  not reach fails the same way.
 - **`WebSocket`** under the same rules: a blocked host fires `error` then `close`. Binary frames
   arrive as `ArrayBuffer`. Sockets are closed when the session ends, so one only lives for the
   request that opened it. These aren't intended for long-running connections.
@@ -734,6 +735,9 @@ A settings page has the same network access as your app: everything it loads or 
 (scripts, styles, fonts, images, `fetch`, WebSockets) must be on a domain you declared in `Internet`
 and the user allowed. Bundle what the page needs rather than loading it from a CDN.
 
+`LocalNetwork` doesn't apply to a settings page; reach LAN devices through your plugin or PKJS.
+See [Restrictions](#restrictions) for the web APIs settings pages lose on Android.
+
 ```javascript
 // in the page
 Pebble.addEventListener("ready", (e) => { /* e.target ('plugin' or 'pkjs') is up */ });
@@ -775,8 +779,9 @@ While the plugins preview is enabled, these apply to every app, plugin or not:
   load just fails, with no prompt, so a page that comes up blank is often missing a domain.
 - **Android web APIs.** PKJS and settings pages have no WebRTC, `WebTransport`, `WebSocketStream`,
   workers or service workers. PKJS also has no frames or `customElements`; settings pages have no
-  `<object>`/`<embed>`, and lose `srcdoc` and `javascript:` frames. Since 1.18.0 settings pages
-  have no `customElements` either (**Next release:** they do again).
+  `<object>`/`<embed>`, and lose `srcdoc` and `javascript:` frames; each iframe a settings page
+  adds is reloaded once straight away. Since 1.18.0 settings pages have no `customElements` either
+  (**Next release:** they do again).
 
 ### File access
 

@@ -138,7 +138,7 @@ start at the place's local midnight: `stepSec` 3600 for `hourly_*`, 86400 for `d
 | --- | --- | --- |
 | `name`, `temperature`, `feels_like`, `high`, `low` | `shortText`, `longText`, `numericValue` | `high`/`low` for the local day |
 | `condition`, `condition_code` | `shortText`, `longText` (+ `icon`, `image`) | codes: `sun`, `partly_cloudy`, `cloudy`, `light_rain`, `heavy_rain`, `light_snow`, `heavy_snow`, `rain_and_snow`, `unknown` |
-| `uv_index`, `precipitation` (chance, %), `humidity` (%) | `numericValue`, `shortText` | |
+| `uv_index`, `precipitation` (chance, %), `humidity` (%) | `numericValue`, `shortText` | **Next release:** `uv_index` is the hour's, not today's peak |
 | `wind_speed` (`m/s`, `km/h`, `mph` or `knots`), `wind_direction` (degrees it's from) | `numericValue` | |
 | `utc_offset` (minutes east of UTC) | `numericValue` | |
 | `sunrise`, `sunset` | `timestamp` | today's |
@@ -852,6 +852,10 @@ We're planning:
 ## Changelog
 
 Changes to plugins, permissions and settings pages in each version of the mobile app.
+
+**Next release**
+
+- `weather/location` `uv_index` is the UV index for the hour the forecast was fetched, not today's peak.
 
 **2.0.0**
 

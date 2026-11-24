@@ -769,7 +769,7 @@ user edits, with no save button.
 
 #### Restrictions
 
-While the plugins preview is enabled, these apply to every app, plugin or not:
+These apply to every app, plugin or not:
 
 - **Domains.** PKJS, plugins and settings pages (and any page a settings page navigates to, such as
   a sign-in page) can only reach declared, allowed `Internet` domains ([legacy apps](#declaring)

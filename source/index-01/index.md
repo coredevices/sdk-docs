@@ -85,8 +85,7 @@ There are four extension points.
 * [Plugins](/guides/plugins/) run inside the Pebble mobile app and declare
   actions and data sources. The assistant will call a plugin's actions as
   tools, and a plugin that declares `create_note` or `create_reminder` can
-  be offered as a destination for notes and reminders. Plugins are a preview
-  and are off by default.
+  be offered as a destination for notes and reminders.
 * [Webhooks](/index-01/webhooks/) send each recording as a multipart HTTP
   POST to a URL you configure, with the audio, the transcript, or both, and an
   optional HMAC-SHA256 signature. Use this to feed recordings into your own

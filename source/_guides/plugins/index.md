@@ -1,9 +1,9 @@
 ---
-title: Plugins (Preview)
+title: Plugins
 description: |
   How a .pbw's JavaScript can provide data sources and actions to other apps
   through the Pebble mobile app, and how a watchapp reads them from PebbleKit
-  JS. Preview: off by default and subject to change.
+  JS.
 guide_group: plugins
 permalink: /guides/plugins/
 menu: false
@@ -21,10 +21,7 @@ answers. The Pebble mobile app exposes some of its own data as built-in
 plugins, and the [Index 01](/index-01/) assistant will call plugin actions as
 tools.
 
-{% alert important %}
-Plugins are a preview. The Pebble mobile app ships with them turned off. Enable
-them in Settings → Plugins.
-{% endalert %}
+Plugins need the Pebble mobile app 2.0.0 or later.
 
 The example plugins and apps are in
 [coredevices/pebble-apps](https://github.com/coredevices/pebble-apps). Browse

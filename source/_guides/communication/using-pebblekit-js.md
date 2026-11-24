@@ -634,12 +634,10 @@ or the user leaves it with the back button, `webviewclosed` does not fire.
 Read {% guide_link user-interfaces/app-configuration %} for the full flow.
 
 
-### Plugins (Preview)
+### Plugins
 
-The `Pebble` object has four functions for the plugins preview. They do
-nothing useful until the preview is turned on in the Pebble mobile app, which
-is off by default, and the API will change; read
-{% guide_link plugins %} before using them.
+The `Pebble` object has four functions for plugins (Pebble mobile app 2.0.0
+or later); read {% guide_link plugins %} before using them.
 
 * `Pebble.enumeratePlugins()` returns an array of the installed plugins with
   their sources and actions.

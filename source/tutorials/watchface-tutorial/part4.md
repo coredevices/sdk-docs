@@ -208,8 +208,7 @@ it needs the `Location` permission.
 {% endplatform %}
 
 Permissions need the app to be built with `manifestVersion` 2, which is the
-default from SDK 4.44. Users also need plugins turned on in the Pebble app
-(**Settings → Plugins → Plugins / permissions preview**).
+default from SDK 4.44.
 
 Our watchface doesn't declare `Internet`, so it can't send the user's location
 anywhere. By default, the Pebble app lets an app like that read the weather

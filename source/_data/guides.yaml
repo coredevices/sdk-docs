@@ -88,7 +88,7 @@ pebble-timeline:
   sort_by: title
 
 plugins:
-  title: Plugins (Preview)
+  title: Plugins
   description: How a .pbw's JavaScript can provide data sources and actions to other apps through the Pebble mobile app, and how a watchapp reads them from PebbleKit JS.
   category: interactive-apps
   sort_by: title

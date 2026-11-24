@@ -83,10 +83,8 @@ set `"manifestVersion": 1`: the phone never allows the microphone for a
 version 1 app. The build warns when an app calls ``mic_capture_start()`` or
 ``mic_stream_to_phone_start()`` without declaring the permission.
 
-The Pebble mobile app only allows the microphone when permissions are turned
-on (**Settings → Plugins → Plugins / permissions preview**, see
-{% guide_link plugins/preview %}). Without that, every stream and capture is
-refused. Depending on the user's permission settings, the microphone is
+See {% guide_link plugins/preview %} for how permissions work in the Pebble
+mobile app. Depending on the user's permission settings, the microphone is
 allowed straight away or needs the user's approval. A start doesn't wait for
 an answer: while the permission still needs approval, the start is refused,
 and the user can allow it on the app's page in the Pebble app. The user can

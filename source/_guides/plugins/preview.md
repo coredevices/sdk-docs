@@ -1,6 +1,6 @@
 ---
-title: "Pebble Plugins Preview"
-description: "What plugins are, how to try the preview in the Pebble mobile app, how a watchapp reads plugin data from PebbleKit JS, and how to write a plugin."
+title: "Using and Writing Plugins"
+description: "What plugins are, how to try them in the Pebble mobile app, how a watchapp reads plugin data from PebbleKit JS, and how to write a plugin."
 guide_group: "plugins"
 permalink: "/guides/plugins/preview/"
 menu: true
@@ -10,15 +10,14 @@ generate_toc: true
 **Version:** this guide describes mobile app version 2.0.0. Anything marked **Next release** is in
 the next release after it. See the [changelog](#changelog) for what changed in each version.
 
-Plugins are nearly here (finally). A plugin is a small piece of JavaScript that runs on the phone and:
+A plugin is a small piece of JavaScript that runs on the phone and:
 
 - **provides data**: (*sources*) that any Pebble watchface/app (and Index) can read
 - **takes actions**: turn a light off, add a task, that a watchface/app (and Index) can trigger
 
 It has a generic API, designed to allow any type of data to be exposed, in multiple formats.
 
-They're supported in the Pebble mobile app (1.16 and later), but are in preview, and disabled by
-default.
+Plugins ship in the Pebble mobile app 2.0.0 and later.
 
 ### Why?
 
@@ -231,8 +230,7 @@ UV index, a light's brightness. A small text slot can take any `shortText`, what
 
 ### Permissions
 
-Plugins introduce a fine-grained permission system, covering your plugin and your app's PKJS. It's
-only in place when plugins are enabled.
+Plugins introduce a fine-grained permission system, covering your plugin and your app's PKJS.
 
 #### Declaring
 
@@ -954,6 +952,6 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 - The Watch State plugin (`launch_app`, `launch_previous_app`).
 - `navigator.geolocation` and `WebSocket` for plugins.
 
-Earlier versions (1.11 to 1.14) had an early preview of plugins, including `Pebble.oauth`. Much
+Earlier versions (1.11 to 1.14) had an early version of plugins, including `Pebble.oauth`. Much
 changed in 1.16, so apps and plugins built for them may not work.
 {% endraw %}

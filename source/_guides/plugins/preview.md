@@ -142,6 +142,7 @@ start at the place's local midnight: `stepSec` 3600 for `hourly_*`, 86400 for `d
 | `utc_offset` (minutes east of UTC) | `numericValue` | |
 | `sunrise`, `sunset` | `timestamp` | today's |
 | `hourly_temperature`, `hourly_condition`, `hourly_condition_code` | `series` | |
+| `hourly_precipitation` (chance, %), `hourly_precipitation_amount` (mm) | `series` | **Next release** |
 | `daily_high`, `daily_low`, `daily_condition`, `daily_condition_code`, `daily_precipitation`, `daily_sunrise`, `daily_sunset` | `series` (`timestamp` for the sun) | |
 
 The built-in weather plugin serves all of these, from whichever provider the user chose.
@@ -854,6 +855,8 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 **Next release**
 
 - `weather/location` `uv_index` is the UV index for the hour the forecast was fetched, not today's peak.
+- `weather/location` has `hourly_precipitation` (each hour's chance of rain, %) and
+  `hourly_precipitation_amount` (mm). A weather provider plugin's are sent to the watch.
 
 **2.0.0**
 

@@ -608,11 +608,14 @@ Add a `plugin` block to the `pebble` section of `package.json`:
 A plugin only runs when it's needed: for a subscription, an action, or while its settings page is
 open. It doesn't stay running in the background. While an app is subscribed, the plugin is called
 regularly for fresh data (currently every `suggestedRefreshIntervalSec`, but this may change).
+**Next release:** `request.first` is `true` on a subscription's first request, and missing on
+refreshes, so you can answer quickly when an app opens (with a cached location, say) and do the
+slower work on the next one.
 
 ```javascript
 // plugin.js
 Pebble.registerSourceHandler(async (request, respond) => {
-  // request: { category, item, properties?, iconPixelSize?, limit? }
+  // request: { category, item, properties?, iconPixelSize?, limit?, first? }
   if (request.category === "finance" && request.item === "stock") {
     const quotes = await loadQuotes();
     respond.data({
@@ -857,6 +860,7 @@ Changes to plugins, permissions and settings pages in each version of the mobile
 - `weather/location` `uv_index` is the UV index for the hour the forecast was fetched, not today's peak.
 - `weather/location` has `hourly_precipitation` (each hour's chance of rain, %) and
   `hourly_precipitation_amount` (mm). A weather provider plugin's are sent to the watch.
+- A source request has `first: true` on a subscription's first request ([Writing a plugin](#writing-a-plugin)).
 
 **2.0.0**
 
